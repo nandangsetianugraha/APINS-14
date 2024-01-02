@@ -6,7 +6,7 @@
 
 ## Installation
 username : admin<br/>
-password : admin
+password : 20258088
 
 ### Demo
 https://apins.sdi-aljannah.web.id
