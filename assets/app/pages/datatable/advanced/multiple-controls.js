@@ -1,0 +1,1 @@
+"use strict";$(function(){$("#datatable-1").DataTable({responsive:true,dom:"\n      <'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>\n      <'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>\n      <'row'<'col-sm-12'tr>>\n      <'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>\n      <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>\n    "})});

@@ -1,0 +1,3 @@
+<?phprequire_once '../../config/db_connect.php';$idp=$_REQUEST['id'];$smt=$_REQUEST['smt'];$tapel=$_REQUEST['tapel'];$nilai=$_REQUEST['value'];$kolom=$_REQUEST['column'];$ada =$connect->query("select * from data_prestasi where peserta_didik_id='$idp' AND smt='$smt' AND tapel='$tapel'")->num_rows;if ($ada>0){	$utt=$connect->query("select * from data_prestasi where peserta_didik_id='$idp' AND smt='$smt' AND tapel='$tapel'")->fetch_assoc();	$idn=$utt['id'];	$sql = "UPDATE data_prestasi SET $kolom='$nilai' WHERE id='$idn'";}else{	$sql = "INSERT INTO data_prestasi(peserta_didik_id,smt,tapel,$kolom) VALUES('$idp','$smt','$tapel','$nilai')";};$query1 = $connect->query($sql);if($query1==true){
+	echo "saved";}else{	echo "gagal";}
+?>

@@ -1,0 +1,1 @@
+<?php $ids=$_GET['kelas'];if($ids==0){?><option value="0">Pilih Rapor</option><?php }else{ ?><option value="0">Pilih Rapor</option><option value="k3">Pengetahuan (KI-3)</option><option value="k4">Ketrampilan (KI-4)</option><?php } ?>

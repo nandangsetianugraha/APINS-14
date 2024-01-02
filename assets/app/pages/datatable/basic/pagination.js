@@ -1,0 +1,1 @@
+"use strict";$(function(){$("#datatable-1").DataTable({responsive:true,pagingType:"numbers"})});

@@ -1,0 +1,1 @@
+"use strict";$(function(){var isRtl=$("html").attr("dir")==="rtl";$("#widget-carousel").slick({rtl:isRtl,asNavFor:"#widget-carousel-nav",slidesToShow:1,slidesToScroll:1,arrows:false});$("#widget-carousel-nav").slick({rtl:isRtl,asNavFor:"#widget-carousel",slidesToShow:1,slidesToScroll:1,arrows:false,centerMode:true})});

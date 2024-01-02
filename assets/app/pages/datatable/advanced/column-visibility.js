@@ -1,0 +1,1 @@
+"use strict";$(function(){$("#datatable-1").DataTable({responsive:true,order:[[1,"asc"]],columnDefs:[{targets:[0,5],visible:false}]})});

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
+  <defs>
+    <clipPath id="clip-path">
+      <path class="cls-1" d="M107.12 90.42a12.77 12.77 0 01-17.82 2.93L41.2 58.82l14.89-20.75 48.1 34.53a12.77 12.77 0 012.93 17.82z"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect x="75.1" y="44.29" width="7.5" height="13.78" rx="3.48" fill="none"/>
+    </clipPath>
+    <style>
+      .cls-1{fill:#97999f}.cls-7{fill:none}.cls-3{fill:#fff}.cls-4{fill:#7a7d81}.cls-5{fill:#90c3ff}.cls-7{stroke:#1876f2;stroke-linecap:round;stroke-linejoin:round;stroke-width:9.48px}.cls-10{fill:#1876f2}
+    </style>
+  </defs>
+  <g id="General">
+    <path class="cls-3" d="M86.78 102.54l-12.44.09 7.73-19.87 10.77 4.19-6.06 15.59z"/>
+    <path class="cls-4" d="M88.37 107.16l-15.85.1 1.82-4.63 12.44-.09-.61 1.75 2.2 2.87zM74.34 100.54l-15.85.1L60.32 96l12.43-.08-.61 1.75 2.2 2.87z"/>
+    <path class="cls-5" d="M72.64 96.16l-12.44.08 7.73-19.87 10.77 4.19-6.06 15.6z"/>
+    <path class="cls-1" d="M107.12 90.42a12.77 12.77 0 01-17.82 2.93L41.2 58.82l14.89-20.75 48.1 34.53a12.77 12.77 0 012.93 17.82z"/>
+    <g clip-path="url(#clip-path)">
+      <path class="cls-4" d="M107.12 90.42a12.77 12.77 0 01-17.82 2.93L41.2 58.82l14.89-20.75 48.1 34.53a12.77 12.77 0 012.93 17.82z"/>
+    </g>
+    <path class="cls-7" d="M68.76 58.96l-9.13 3.09 1.89 9.59"/>
+    <path class="cls-3" d="M87.69 76.55l-26.25-7.26 3.07-11.12a6.56 6.56 0 018.07-4.56l13.62 3.77a6.54 6.54 0 014.56 8.06z"/>
+    <path class="cls-4" d="M35.35 7.61A29.17 29.17 0 0021.05 10a1.24 1.24 0 00-.21 2.13L41.39 26.9a5.6 5.6 0 011.28 7.82l-8.35 11.64a5.62 5.62 0 01-7.83 1.29L5.77 32.77a1.23 1.23 0 00-1.94.84c0 .39-.08.78-.1 1.17A29.26 29.26 0 1035.35 7.61z"/>
+    <path class="cls-3" d="M91.66 90.06l-15.27-.31A16 16 0 0161.76 68l26.45 7.9a7.7 7.7 0 015 10.14z"/>
+    <path fill="#bcc0c4" d="M34.76 24.31l-10.31-7.4-11.57 5.23-1.25 12.63 10.31 7.4 11.56-5.23 1.26-12.63z"/>
+    <path class="cls-7" d="M86.65 63.16l-4.38 14.9 6.82 11.84"/>
+    <g clip-path="url(#clip-path-2)">
+      <rect class="cls-10" x="75.1" y="44.29" width="7.5" height="13.78" rx="3.48"/>
+      <ellipse class="cls-5" cx="74.83" cy="46.44" rx="7.58" ry="5.93"/>
+    </g>
+    <path class="cls-3" d="M75 48.92a4.24 4.24 0 018.31-1.64"/>
+    <circle class="cls-10" cx="81.1" cy="49.83" r="1.49"/>
+    <circle class="cls-5" cx="73.05" cy="52.22" r="3.19"/>
+    <path class="cls-3" transform="rotate(-11.08 84.387 46.274)" d="M81.18 45.53h6.41v1.52h-6.41z"/>
+    <rect class="cls-10" x="81.33" y="49.37" width="1.9" height=".92" rx=".46" transform="rotate(-13.22 82.251 49.804)"/>
+  </g>
+</svg>

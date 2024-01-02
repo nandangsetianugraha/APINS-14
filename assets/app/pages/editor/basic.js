@@ -1,0 +1,1 @@
+"use strict";$(function(){new Quill("#quill",{theme:"snow"})});
