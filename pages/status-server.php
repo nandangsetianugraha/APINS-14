@@ -113,7 +113,69 @@ $row = $querys->fetch_assoc();
                                                             </form>
 														</div>
 														<div class="tab-pane fade" id="nav3-profile">
-															<p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+															<form class="d-grid gap-3" autocomplete="off">
+                                                                <div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Provinsi</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="prov" name="prov">
+                                                                            <?php 
+                                                                            $sql5 = "select * from provinsi order by id_prov asc";
+                                                                            $query5 = $connect->query($sql5);
+                                                                            while($nks=$query5->fetch_assoc()){
+                                                                                echo '<option value="'.$nks['id_prov'].'">'.$nks['nama'].'</option>';
+                                                                            }	
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahProv"><i class="fa fa-plus"></i></button>
+                                                                        <button class="btn btn-danger" type="button" id="hapusProv"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kabupaten</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="kabu" name="kabu">
+                                                                            <option>Pilih Kabupaten</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahKab"><i class="fa fa-plus"></i></button>
+                                                                        <button class="btn btn-danger" type="button" id="hapusKab"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kecamatan</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="keca" name="keca">
+                                                                            <option>Pilih Kecamatan</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahKec"><i class="fa fa-plus"></i></button>
+                                                                        <button class="btn btn-danger" type="button" id="hapusKec"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Desa</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="desa" name="desa">
+                                                                            <option>Pilih Desa</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahDesa"><i class="fa fa-plus"></i></button>
+                                                                        <button class="btn btn-danger" type="button" id="hapusDesa"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-end mt-3">
+                                                                        <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </form>
 														</div>
 														<div class="tab-pane fade" id="nav3-contact">
 															<p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -197,6 +259,43 @@ $row = $querys->fetch_assoc();
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="tambahProv">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/setting/tambah-prov.php" autocomplete="off" method="POST" id="buatprov">
+				<div class="fetched-data"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="tambahKab">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/setting/tambah-kab.php" autocomplete="off" method="POST" id="buatkab">
+				<div class="fetched-data"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="tambahKec">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/setting/tambah-kec.php" autocomplete="off" method="POST" id="buatkec">
+				<div class="fetched-data"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="tambahDesa">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/setting/tambah-desa.php" autocomplete="off" method="POST" id="buatdesa">
+				<div class="fetched-data"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
@@ -226,6 +325,282 @@ $row = $querys->fetch_assoc();
 		orientation: direction, 
 		todayHighlight: true 
 	});
+	
+	$('#tambahProv').on('show.bs.modal', function (e) {
+            var prov = $('#prov').val();
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/setting/m_prov.php',
+				data :  'prov_id=' + prov,
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+	$("#buatprov").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+					$("#tambahProv").modal('hide');
+					var tapel=$('#tapel').val();
+					$.ajax({
+						type : 'get',
+						url : 'modul/setting/daftar-provinsi.php',
+						data :  'tapel='+ tapel,
+						success : function(data){
+							$("#prov").html(data);
+						}
+					});
+					//$("#createTemaForm")[0].reset();
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
+	
+	$('#prov').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var prov = $('#prov').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/kabupaten.php',
+				data :  'prov_id=' + prov,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kabu").html(data);
+					$('#status').unblock();
+				}
+			});
+	});
+	
+	$('#tambahKab').on('show.bs.modal', function (e) {
+            var prov = $('#prov').val();
+			var kab = $('#kabu').val();
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/setting/m_kab.php',
+				data :  'prov_id=' + prov+'&kab_id='+kab,
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+	$("#buatkab").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+					$("#tambahKab").modal('hide');
+					var prov = $('#prov').val();
+					$.ajax({
+						type : 'GET',
+						url : '<?=base_url();?>pages/kabupaten.php',
+						data :  'prov_id=' + prov,
+						dataType : 'HTML',
+						beforeSend: function()
+						{	
+							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+						},
+						success: function (data) {
+							$('#status').unblock();
+							//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+							$("#kabu").html(data);
+						}
+					});
+					//$("#createTemaForm")[0].reset();
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
+	$('#kabu').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var kab = $('#kabu').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/kecamatan.php',
+				data :  'id_kabupaten=' + kab,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#keca").html(data);
+					$('#status').unblock();
+				}
+			});
+	});
+	
+	$('#tambahKec').on('show.bs.modal', function (e) {
+            var prov = $('#prov').val();
+			var kab = $('#kabu').val();
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/setting/m_kec.php',
+				data :  'prov_id=' + prov+'&kab_id='+kab,
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+	$("#buatkec").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+					$("#tambahKec").modal('hide');
+					var kab = $('#kabu').val();
+					$.ajax({
+						type : 'GET',
+						url : '<?=base_url();?>pages/kecamatan.php',
+						data :  'id_kabupaten=' + kab,
+						dataType : 'HTML',
+						beforeSend: function()
+						{	
+							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+						},
+						success: function (data) {
+							$('#status').unblock();
+							//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+							$("#keca").html(data);
+						}
+					});
+
+					//$("#createTemaForm")[0].reset();
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
+
+	$('#keca').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var desa = $('#keca').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/desa.php',
+				data :  'id_kecamatan=' + desa,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#desa").html(data);
+					$('#status').unblock();
+					// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+				}
+			});
+	});
+	
+	$('#tambahDesa').on('show.bs.modal', function (e) {
+            var prov = $('#prov').val();
+			var kab = $('#kabu').val();
+			var kec = $('#keca').val();
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/setting/m_desa.php',
+				data :  'prov_id=' + prov+'&kab_id='+kab+'&kec_id='+kec,
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+	$("#buatdesa").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+					$("#tambahDesa").modal('hide');
+					var desa = $('#keca').val();
+					$.ajax({
+						type : 'GET',
+						url : '<?=base_url();?>pages/desa.php',
+						data :  'id_kecamatan=' + desa,
+						dataType : 'HTML',
+						beforeSend: function()
+						{	
+							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+						},
+						success: function (data) {
+							//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+							$("#desa").html(data);
+							$('#status').unblock();
+							// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+						}
+					});
+
+					//$("#createTemaForm")[0].reset();
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
 	
 	$("#ubahForm").unbind('submit').bind('submit', function() {
 		var form = $(this);
@@ -308,6 +683,241 @@ $row = $querys->fetch_assoc();
 		return false;
 	}); // /submit form for create member
 	
+		$( "#hapusProv" ).click(function() {
+			var prov = $('#prov').val();
+			if(prov == 0){
+				Swal.fire("Kesalahan",'Pilih Provinsi Dahulu',"error");
+				//swal('Pilih Kelas Dahulu', {buttons: false,timer: 1000,});
+			}else{
+				removeProvinsi(prov);
+				//window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
+			}
+		});
+		$( "#hapusKab" ).click(function() {
+			var kab = $('#kabu').val();
+			if(kab == 0){
+				Swal.fire("Kesalahan",'Pilih Kabupaten Dahulu',"error");
+				//swal('Pilih Kelas Dahulu', {buttons: false,timer: 1000,});
+			}else{
+				removeKabupaten(kab);
+				//window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
+			}
+		});
+		$( "#hapusKec" ).click(function() {
+			var kec = $('#keca').val();
+			if(kec == 0){
+				Swal.fire("Kesalahan",'Pilih Kecamatan Dahulu',"error");
+				//swal('Pilih Kelas Dahulu', {buttons: false,timer: 1000,});
+			}else{
+				removeKecamatan(kec);
+				//window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
+			}
+		});
+		$( "#hapusDesa" ).click(function() {
+			var desa = $('#desa').val();
+			if(desa == 0){
+				Swal.fire("Kesalahan",'Pilih Desa Dahulu',"error");
+				//swal('Pilih Kelas Dahulu', {buttons: false,timer: 1000,});
+			}else{
+				removeDesa(desa);
+				//window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
+			}
+		});
+	
+	function removeProvinsi(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Provinsi ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/setting/hapus-provinsi.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var tapel=$('#tapel').val();
+								$.ajax({
+									type : 'get',
+									url : 'modul/setting/daftar-provinsi.php',
+									data :  'tapel='+ tapel,
+									success : function(data){
+										$("#prov").html(data);
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	function removeKabupaten(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Kabupaten ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/setting/hapus-kabupaten.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var prov = $('#prov').val();
+								$.ajax({
+									type : 'GET',
+									url : '<?=base_url();?>pages/kabupaten.php',
+									data :  'prov_id=' + prov,
+									dataType : 'HTML',
+									beforeSend: function()
+									{	
+										$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+									},
+									success: function (data) {
+										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+										$("#kabu").html(data);
+										$('#status').unblock();
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	function removeKecamatan(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Kecamatan ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/setting/hapus-kecamatan.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var kab = $('#kabu').val();
+								$.ajax({
+									type : 'GET',
+									url : '<?=base_url();?>pages/kecamatan.php',
+									data :  'id_kabupaten=' + kab,
+									dataType : 'HTML',
+									beforeSend: function()
+									{	
+										$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+									},
+									success: function (data) {
+										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+										$("#keca").html(data);
+										$('#status').unblock();
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	function removeDesa(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Desa ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/setting/hapus-desa.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var desa = $('#keca').val();
+								$.ajax({
+									type : 'GET',
+									url : '<?=base_url();?>pages/desa.php',
+									data :  'id_kecamatan=' + desa,
+									dataType : 'HTML',
+									beforeSend: function()
+									{	
+										$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+									},
+									success: function (data) {
+										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+										$("#desa").html(data);
+										$('#status').unblock();
+										// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
 	
 	</script>
 </body>
