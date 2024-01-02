@@ -5,7 +5,8 @@
 <strong>APINS</strong> adalah aplikasi pengolahan nilai untuk Sekolah Dasar yang memakai Kurikulum 2013 atau Kurikulum Merdeka.
 
 ## Installation
--
+username : admin<br/>
+password : admin
 
 ### Demo
 https://apins.sdi-aljannah.web.id
