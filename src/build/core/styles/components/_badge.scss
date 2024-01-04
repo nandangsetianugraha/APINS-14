@@ -1,0 +1,80 @@
+// Base class
+//
+// Requires one of the contextual, color modifier classes for `color` and
+// `background-color`.
+
+.badge {
+  --#{$variable-prefix}badge-padding-x: #{$badge-padding-x};
+  --#{$variable-prefix}badge-padding-y: #{$badge-padding-y};
+  @include rfs($badge-font-size, --#{$variable-prefix}badge-font-size);
+  --#{$variable-prefix}badge-font-weight: #{$badge-font-weight};
+  --#{$variable-prefix}badge-color: #{$badge-color};
+  --#{$variable-prefix}badge-bg: transparent;
+  --#{$variable-prefix}badge-border-color: transparent;
+  --#{$variable-prefix}badge-border: #{$badge-border-width} solid var(--#{$variable-prefix}badge-border-color);
+  --#{$variable-prefix}badge-border-radius: #{$badge-border-radius};
+  --#{$variable-prefix}badge-shape-dimension: #{$badge-shape-dimension};
+  --#{$variable-prefix}badge-shape-line-height: #{$badge-shape-line-height};
+
+  display: inline-block;
+  padding: var(--#{$variable-prefix}badge-padding-y) var(--#{$variable-prefix}badge-padding-x);
+  @include font-size(var(--#{$variable-prefix}badge-font-size));
+  font-weight: var(--#{$variable-prefix}badge-font-weight);
+  line-height: 1;
+  color: var(--#{$variable-prefix}badge-color);
+  background-color: var(--#{$variable-prefix}badge-bg);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-decoration: none;
+  border: var(--#{$variable-prefix}badge-border);
+  @include border-radius(var(--#{$variable-prefix}badge-border-radius));
+
+  // Empty badges collapse automatically
+  &:empty {
+    display: none;
+  }
+}
+
+// Quick fix for badges in buttons
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
+// Shaped badges
+.badge-circle,
+.badge-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--#{$variable-prefix}badge-shape-dimension);
+  width: var(--#{$variable-prefix}badge-shape-dimension);
+  line-height: var(--#{$variable-prefix}badge-shape-line-height);
+}
+
+.badge-circle {
+  border-radius: 50%;
+}
+
+.badge-square {
+  @include border-radius(var(--#{$variable-prefix}badge-border-radius));
+}
+
+@each $state, $color in $theme-colors {
+  .badge-#{$state} {
+    @include badge-variant($color, color-contrast($color), $color);
+  }
+
+  .badge-outline-#{$state} {
+    @include badge-variant(transparent, $color, $color);
+  }
+
+  .badge-label-#{$state} {
+    @include badge-variant(rgba($color, .1), $color, transparent);
+  }
+
+  .badge-text-#{$state} {
+    @include badge-variant(transparent, $color, transparent);
+  }
+}

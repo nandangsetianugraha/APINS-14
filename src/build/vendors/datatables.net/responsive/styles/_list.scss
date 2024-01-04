@@ -1,0 +1,47 @@
+// List of data that was collapsed
+.dataTable > tbody > .child {
+  padding: $datatable-responsive-list-padding-y $datatable-responsive-list-padding-x;
+
+  &:hover {
+    background: transparent !important;
+  }
+
+  // Styling list of data on detail
+  .dtr-details {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      border-bottom: $datatable-responsive-list-border-width $border-style $datatable-responsive-list-border-color;
+
+      &:not(:first-child) {
+        padding-top: $datatable-responsive-list-spacer;
+      }
+
+      &:not(:last-child) {
+        padding-bottom: $datatable-responsive-list-spacer;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .dtr-title {
+    display: inline-block;
+    min-width: $datatable-responsive-list-title-min-width;
+    color: $datatable-responsive-list-title-color;
+    @include font-size($datatable-responsive-list-title-font-size);
+    font-weight: $datatable-responsive-list-title-font-weight;
+  }
+
+  .dtr-data {
+    display: inline-block;
+    color: $datatable-responsive-list-data-color;
+    @include font-size($datatable-responsive-list-data-font-size);
+    font-weight: $datatable-responsive-list-data-font-weight;
+  }
+}

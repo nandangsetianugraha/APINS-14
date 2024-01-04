@@ -1,0 +1,17 @@
+@mixin portlet-variant($bg, $color: color-contrast($bg), $border-color: darken($bg, 7.5%)) {
+  --#{$variable-prefix}portlet-bg: #{$bg};
+  --#{$variable-prefix}portlet-color: #{$color};
+  --#{$variable-prefix}portlet-border-color: #{$border-color};
+
+  > .portlet-header {
+    .portlet-icon,
+    .portlet-subtitle,
+    .portlet-title {
+      color: inherit;
+    }
+  }
+
+  > .portlet-body {
+    color: inherit;
+  }
+}

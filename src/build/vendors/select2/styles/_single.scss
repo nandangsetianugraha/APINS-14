@@ -1,0 +1,30 @@
+.select2-selection--single {
+  // Placeholder style
+  .select2-selection__placeholder {
+    color: $select2-placeholder-color;
+  }
+  // Toggle caret style
+  .select2-selection__arrow {
+    width: $select2-icon-width;
+    text-align: center;
+    @include caret(down);
+  }
+  // Clear button style
+  .select2-selection__clear {
+    right: $select2-icon-width;
+  }
+}
+// Opened state class
+.select2-container--open.select2-container--above {
+  // Rotate caret
+  .select2-selection__arrow {
+    @include caret-transform(up)
+  }
+}
+// Disabled state class
+.select2-container--disabled {
+  // Hide clear button when input disabled
+  .select2-selection__clear {
+    display: none;
+  }
+}

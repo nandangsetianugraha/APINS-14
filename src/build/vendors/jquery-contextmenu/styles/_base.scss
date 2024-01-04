@@ -1,0 +1,150 @@
+// Keyframes
+@if $enable-transitions {
+  @keyframes contextMenuslideUp {
+    0% { opacity: 0; transform: translateY($context-menu-animation-offset); }
+    100% { opacity: 1; transform: translateY(0rem); }
+  }
+}
+@keyframes cm-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Base styles
+.context-menu-list {
+  position: absolute;
+  display: inline-block;
+  min-width: $context-menu-min-width;
+  max-width: $context-menu-max-width;
+  padding: $context-menu-padding-y 0;
+  list-style: none;
+  @if $enable-transitions {
+    animation-name: contextMenuslideUp;
+    animation-duration: $context-menu-animation-duration;
+    animation-fill-mode: both;
+  }
+  background: $context-menu-bg;
+  border: $context-menu-border-width $border-style $context-menu-border-color;
+  @include border-radius($context-menu-border-radius);
+}
+
+.context-menu-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $context-menu-item-color;
+  padding: $context-menu-item-padding-y $context-menu-item-padding-x;
+  user-select: none;
+
+  // Styling context menu item text
+  span {
+    font-family: $font-family-base;
+    @include font-size($context-menu-item-font-size);
+    font-weight: $context-menu-item-font-weight;
+    line-height: $context-menu-item-line-height;
+    flex: 1;
+  }
+
+  // Make inputs are selectable
+  > label {
+    > textarea,
+    > input {
+      user-select: text;
+    }
+  }
+
+  &.context-menu-hover {
+    color: $context-menu-item-hover-color;
+    background: $context-menu-item-hover-bg;
+    cursor: pointer;
+  }
+
+  &.context-menu-disabled {
+    color: $context-menu-item-disabled-color;
+    background: $context-menu-item-disabled-bg;
+    opacity: $context-menu-item-disabled-opacity;
+    cursor: default;
+  }
+
+  > .context-menu-list {
+    display: none;
+  }
+
+  &.context-menu-visible > .context-menu-list {
+    display: block;
+  }
+}
+
+.context-menu-submenu {
+  @include caret(end);
+}
+
+// Menu item divider
+.context-menu-separator {
+  height: 0;
+  border-bottom: $context-menu-divider-width $border-style $context-menu-divider-color;
+  margin: $context-menu-divider-spacer 0;
+  padding: 0;
+}
+
+.context-menu-input {
+  &.context-menu-hover {
+    color: $context-menu-input-color;
+    cursor: default;
+  }
+
+  > label {
+    margin: 0;
+
+    > input[type="text"],
+     > input[type="email"],
+     > textarea,
+     > select,
+    & {
+      display: block;
+      width: 100%;
+    }
+
+    > input[type="checkbox"],
+     > input[type="radio"] {
+      position: relative;
+      display: inline-block;
+      width: $context-menu-input-switch-dimension;
+      height: $context-menu-input-switch-dimension;
+      top: $context-menu-input-switch-top;
+      margin-right: $context-menu-input-switch-spacer;
+    }
+
+    > textarea {
+      height: $context-menu-input-textarea-height;
+    }
+  }
+}
+
+.context-menu-accesskey {
+  text-decoration: $context-menu-access-text-decoration;
+}
+
+.context-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include icon {
+    width: $context-menu-icon-dimension;
+    @include font-size($context-menu-icon-size);
+    text-align: center;
+    margin-right: $context-menu-icon-spacer;
+  }
+}
+
+@each $name, $icon in $context-menu-icons {
+  .context-menu-icon-#{$name}:before {
+    content: $icon;
+  }
+}
+
+// Add animation to loading icon
+.context-menu-icon-loading:before {
+  animation: cm-spin $context-menu-icon-loading-duration infinite linear;
+}

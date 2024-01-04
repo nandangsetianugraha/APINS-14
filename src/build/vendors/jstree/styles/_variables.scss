@@ -1,0 +1,76 @@
+$jstree-base-height:                  2rem !default;
+$jstree-bg:                           transparent !default;
+$jstree-stripe-bg:                    linear-gradient(to bottom, $gray-400 50%, transparent 50%) !default;
+$jstree-border-radius:                $border-radius !default;
+$jstree-transition:                   $btn-transition !default;
+
+$jstree-line-width:                   2px !default;
+$jstree-line-color:                   $bg-level-4 !default;
+
+$jstree-anchor-bg:                    $component-bg !default;
+$jstree-anchor-color:                 $text-level-3 !default;
+$jstree-anchor-hover-bg:              $component-hover-bg !default;
+$jstree-anchor-hover-color:           $component-hover-color !default;
+$jstree-anchor-active-bg:             $component-active-bg !default;
+$jstree-anchor-active-color:          $component-active-color !default;
+$jstree-anchor-disabled-bg:           $component-disabled-bg !default;
+$jstree-anchor-disabled-color:        $component-disabled-color !default;
+$jstree-anchor-disabled-opacity:      $component-disabled-opacity !default;
+$jstree-anchor-padding-x:             $spacer * .5;
+
+$jstree-search-font-style:            italic !default;
+$jstree-search-font-weight:           $font-weight-bold !default;
+
+$jstree-icon-size:                    $font-size-lg !default;
+$jstree-icon-default:                 "\f07b" !default;
+
+$jstree-tool-bg:                      $jstree-anchor-bg !default;
+$jstree-tool-color:                   $text-level-1 !default;
+$jstree-tool-icon-open:               "\f150" !default;
+$jstree-tool-icon-close-ltr:          "\f152" !default;
+$jstree-tool-icon-close-rtl:          "\f191" !default;
+$jstree-tool-icon-uncheck:            "\f0c8" !default;
+$jstree-tool-icon-check:              "\f14a" !default;
+$jstree-tool-icon-undetermined:       "\f146" !default;
+$jstree-tool-spinner-width:           2px !default;
+
+$jstree-menu-min-width:               12rem !default;
+$jstree-menu-submenu-offset-y:        2.5rem !default;
+$jstree-menu-bg:                      $dropdown-bg !default;
+$jstree-menu-padding-y:               $dropdown-padding-y !default;
+$jstree-menu-border-width:            $dropdown-border-width !default;
+$jstree-menu-border-color:            $dropdown-border-color !default;
+$jstree-menu-border-radius:           $dropdown-border-radius !default;
+
+$jstree-menu-icon-dimension:          $dropdown-icon-dimension !default;
+$jstree-menu-icon-size:               $dropdown-icon-size !default;
+$jstree-menu-icon-spacer:             $spacer * .75 !default;
+$jstree-menu-caret-spacer:            $dropdown-caret-spacer !default;
+$jstree-menu-separator-width:         $border-width !default;
+$jstree-menu-separator-color:         $border-color !default;
+
+$jstree-menu-item-padding-y:          $dropdown-item-padding-y !default;
+$jstree-menu-item-padding-x:          $dropdown-item-padding-x !default;
+$jstree-menu-item-color:              $dropdown-item-color !default;
+$jstree-menu-item-hover-bg:           $dropdown-item-hover-bg !default;
+$jstree-menu-item-hover-color:        $dropdown-item-hover-color !default;
+$jstree-menu-item-disabled-color:     $dropdown-item-disabled-bg !default;
+$jstree-menu-item-disabled-bg:        $dropdown-item-disabled-color !default;
+$jstree-menu-item-disabled-opacity:   $dropdown-item-disabled-opacity !default;
+
+$jstree-drag-marker-width:            .5rem !default;
+$jstree-drag-marker-color:            $jstree-tool-color !default;
+
+$jstree-drag-label-height:            $jstree-base-height !default;
+$jstree-drag-label-padding-x:         $tooltip-padding-x !default;
+$jstree-drag-label-bg:                $tooltip-bg !default;
+$jstree-drag-label-color:             $tooltip-color !default;
+$jstree-drag-label-border-width:      $tooltip-border-width !default;
+$jstree-drag-label-border-color:      $tooltip-border-color !default;
+$jstree-drag-label-border-radius:     $tooltip-border-radius !default;
+
+$jstree-drag-label-icon-ok:           "\f00c" !default;
+$jstree-drag-label-icon-ok-color:     $success !default;
+$jstree-drag-label-icon-error:        "\f00d" !default;
+$jstree-drag-label-icon-error-color:  $danger !default;
+$jstree-drag-label-icon-spacer:       $spacer * .25 !default;

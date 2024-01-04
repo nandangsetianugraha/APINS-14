@@ -1,0 +1,43 @@
+.dataTable {
+  thead > tr,
+  tfoot > tr {
+    .dtfc-fixed-left,
+    .dtfc-fixed-right {
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+    }
+  }
+
+  tbody > tr {
+    .dtfc-fixed-left,
+    .dtfc-fixed-right {
+      z-index: 1;
+    }
+  }
+}
+
+.dtfc-left-top-blocker,
+.dtfc-right-top-blocker,
+.dtfc-left-bottom-blocker,
+.dtfc-right-bottom-blocker {
+  background-color: $datatable-side-blocker-bg;
+  border-left: $datatable-blocker-border-width solid $datatable-blocker-border-color;
+}
+
+.dtfc-left-top-blocker,
+.dtfc-right-top-blocker {
+  margin-top: $datatable-side-blocker-spacer;
+}
+
+.dtfc-left-bottom-blocker,
+.dtfc-right-bottom-blocker {
+  margin-bottom: $datatable-side-blocker-spacer;
+}
+
+.dtfc-fixed-right,
+.dataTables_scrollBody
+.dataTables_scrollFootInner .table-bordered tr th:first-child,
+.dataTables_scrollHeadInner .table-bordered tr th:first-child {
+  border-left: $datatable-blocker-border-width solid $datatable-blocker-border-color !important;
+}

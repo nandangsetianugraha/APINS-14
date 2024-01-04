@@ -1,0 +1,6 @@
+.caret        { @include caret(end); }
+
+.caret-up     { @include caret-transform(up); }
+.caret-down   { @include caret-transform(down); }
+.caret-start  { @include caret-transform(start); }
+.caret-end    { @include caret-transform(end); }

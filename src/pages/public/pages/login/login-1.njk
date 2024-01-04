@@ -1,0 +1,92 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Login 1" %}
+{% set enable_container_fluid = true %}
+{% set enable_aside = false %}
+{% set enable_header = false %}
+{% set enable_footer = false %}
+{% set js_links = [
+  "assets/app/pages/pages/login.js" | url
+] %}
+
+{% block content %}
+  <div class="row g-0 align-items-center justify-content-center h-100">
+    <div class="col-sm-8 col-md-6 col-lg-4 col-xl-3">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-body">
+          <div class="text-center mt-4 mb-5">
+
+            <!-- BEGIN Avatar -->
+            <div class="avatar avatar-label-primary avatar-circle widget12">
+              <div class="avatar-display">
+                <i class="fa fa-user-alt"></i>
+              </div>
+            </div>
+            <!-- END Avatar -->
+
+          </div>
+
+          <!-- BEGIN Form -->
+          <form class="d-grid gap-3" id="login-form">
+
+            <!-- BEGIN Validation Container -->
+            <div class="validation-container">
+            
+              <!-- BEGIN Form Floating -->
+              <div class="form-floating">
+                <input class="form-control form-control-lg" type="email" id="email" name="email" placeholder="Please insert your email">
+                <label for="email">Email</label>
+              </div>
+              <!-- END Form Floating -->
+            
+            </div>
+            <!-- END Validation Container -->
+
+            <!-- BEGIN Validation Container -->
+            <div class="validation-container">
+            
+              <!-- BEGIN Form Floating -->
+              <div class="form-floating">
+                <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="Please insert your password">
+                <label for="password">Password</label>
+              </div>
+              <!-- END Form Floating -->
+            
+            </div>
+            <!-- END Validation Container -->
+
+            <!-- BEGIN Flex -->
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="validation-container">
+                
+                <!-- BEGIN Form Check -->
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                  <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+                <!-- END Form Check -->
+              
+              </div>
+              <a href="#">Forgot password?</a>
+            </div>
+            <!-- END Flex -->
+            
+            <!-- BEGIN Flex -->
+            <div class="d-flex align-items-center justify-content-between">
+              <span>Don't have an account? <a href="{{ 'pages/register/register-1.html' | url }}">Register</a></span>
+              <button type="submit" class="btn btn-label-primary btn-lg btn-widest">Login</button>
+            </div>
+            <!-- END Flex -->
+
+          </form>
+          <!-- END Form -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

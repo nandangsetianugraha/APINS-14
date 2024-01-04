@@ -1,0 +1,26 @@
+.nav.widget2 {
+  overflow: auto;
+
+  .nav-item + .nav-item {
+    margin-left: $widget2-link-spacer;
+  }
+
+  .nav-link {
+    border: $widget2-link-border-width $border-style $widget2-link-border-color;
+    @include border-radius($widget2-link-border-radius);
+
+    &:hover,
+    &:focus {
+      color: $widget2-link-hover-color;
+      background: $widget2-link-hover-bg;
+      border-color: $widget2-link-hover-border-color;
+    }
+  }
+  
+  .nav-link.active,
+  .show > .nav-link {
+    color: $widget2-link-active-color;
+    background: $widget2-link-active-bg;
+    border-color: $widget2-link-active-border-color;
+  }
+}

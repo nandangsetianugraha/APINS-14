@@ -1,0 +1,218 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Color" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Color", link: "elements/base/color.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Contextual color</h3>
+        </div>
+        <div class="portlet-body">
+          <p>We have a series of colors that are used by default and you can use these helper classes for most components</p>
+
+          <!-- BEGIN Table -->
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>State</td>
+                <td>Postfix</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-primary">Primary</span></td>
+                <td><code>*-primary</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-secondary">Secondary</span></td>
+                <td><code>*-secondary</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-success">Success</span></td>
+                <td><code>*-success</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-info">Info</span> </td>
+                <td><code>*-info</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-warning">Warning</span></td>
+                <td><code>*-warning</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-danger">Danger</span></td>
+                <td><code>*-danger</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-light">Light</span></td>
+                <td><code>*-light</code></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-dark">Dark</span></td>
+                <td><code>*-dark</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END Table -->
+
+          <p class="mb-0">For each color has its functionality in application as main color of application <strong>(primary)</strong> or warnings to user <strong>(warning)</strong></p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Button examples</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Apply color classes to any component such as button</p>
+
+          <!-- BEGIN Buttons -->
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-success">Success</button>
+          <button class="btn btn-warning">Warning</button>
+          <button class="btn btn-danger">Danger</button>
+          <button class="btn btn-info">Info</button>
+          <!-- END Buttons -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Contrast level</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can change color or background contrast by applying these helper classes</p>
+
+          <!-- BEGIN Table -->
+          <div class="table-responsive-lg">
+            <table class="table table-bordered mb-0">
+              <thead>
+                <tr>
+                  <td>Level</td>
+                  <td>Preview</td>
+                  <td>Class</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-nowrap">
+                  <td>Level 1</td>
+                  <td>
+                    <span class="text-level-1 p-2 mx-1">Text Level 1</span>
+                    <span class="bg-level-1 p-2 mx-1">BG Level 1</span>
+                  </td>
+                  <td>
+                    <code>.text-level-1</code>,
+                    <code>.bg-level-1</code>
+                  </td>
+                </tr>
+                <tr class="text-nowrap">
+                  <td>Level 2</td>
+                  <td>
+                    <span class="text-level-2 p-2 mx-1">Text Level 2</span>
+                    <span class="bg-level-2 p-2 mx-1">BG Level 2</span>
+                  </td>
+                  <td>
+                    <code>.text-level-2</code>,
+                    <code>.bg-level-2</code>
+                  </td>
+                </tr>
+                <tr class="text-nowrap">
+                  <td>Level 3</td>
+                  <td>
+                    <span class="text-level-3 p-2 mx-1">Text Level 3</span>
+                    <span class="bg-level-3 p-2 mx-1">BG Level 3</span>
+                  </td>
+                  <td>
+                    <code>.text-level-3</code>,
+                    <code>.bg-level-3</code>
+                  </td>
+                </tr>
+                <tr class="text-nowrap">
+                  <td>Level 4</td>
+                  <td>
+                    <span class="text-level-4 p-2 mx-1">Text Level 4</span>
+                    <span class="bg-level-4 p-2 mx-1">BG Level 4</span>
+                  </td>
+                  <td>
+                    <code>.text-level-4</code>,
+                    <code>.bg-level-4</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- END Table -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header">
+          <h3 class="portlet-title">Examples</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">Text</h3>
+            </div>
+            <div class="portlet-body">
+              <p>Use <code>text-{color}</code> to applying contextual color to text</p>
+
+              <span class="text-primary mx-1">primary</span>
+              <span class="text-secondary mx-1">secondary</span>
+              <span class="text-success mx-1">success</span>
+              <span class="text-info mx-1">info</span>
+              <span class="text-warning mx-1">warning</span>
+              <span class="text-danger mx-1">danger</span>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">Background</h3>
+            </div>
+            <div class="portlet-body">
+              <p>Use <code>bg-{color}</code> to applying contextual color to background</p>
+
+              <span class="d-inline-block bg-primary p-3 m-1 rounded text-white">Primary</span>
+              <span class="d-inline-block bg-secondary p-3 m-1 rounded text-white">Secondary</span>
+              <span class="d-inline-block bg-success p-3 m-1 rounded text-white">Success</span>
+              <span class="d-inline-block bg-info p-3 m-1 rounded text-white">Info</span>
+              <span class="d-inline-block bg-warning p-3 m-1 rounded text-white">Warning</span>
+              <span class="d-inline-block bg-danger p-3 m-1 rounded text-white">Danger</span>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+// Base styles
+.header {
+	position: relative;
+	display: block;
+	height: auto !important;
+	z-index: $zindex-header;
+}
+
+.header-holder {
+	background: $header-bg;
+	border-bottom: $header-border-width $border-style $header-border-color;
+	@include transition($header-transition);
+}
+
+.header-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	padding-top: $header-container-padding-y;
+	padding-bottom: $header-container-padding-y;
+}
+
+.header-wrap {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+
+	// Fit wrapper to empty space
+	&.header-wrap-block { flex: 1; }
+}
+
+.header-title {
+	color: $header-title-color;
+	font-size: $header-title-font-size;
+	font-weight: $header-title-font-weight;
+	padding: 0;
+	margin: 0;
+}
+
+.header-brand {
+	color: $header-brand-color;
+	font-size: $header-brand-font-size;
+	font-weight: $header-brand-font-weight;
+	padding: 0;
+	margin: 0;
+}
+
+.header-divider {
+	width: 0;
+	height: $header-divider-height;
+	margin: 0 $header-divider-margin-x;
+	border-right: $header-divider-width $border-style $header-divider-color;
+}
+
+// Sticky JS support
+.sticky-wrapper {
+	.sticky-header {
+		width: auto !important;
+	}
+
+	&.is-sticky {
+		z-index: inherit;
+	
+		.sticky-header {
+			right: 0;
+			left: 0;
+			z-index: 9999 !important;
+			@include transition($header-transition);
+		}
+	}
+}
+
+// Breakpoints for hiding .header-holder element
+@include media-breakpoint-down($layout-breakpoint-mobile-desktop) {
+	.header-holder-desktop { display: none; }
+}
+
+@include media-breakpoint-up($layout-breakpoint-mobile-desktop) {
+	.header-holder-mobile { display: none; }
+}

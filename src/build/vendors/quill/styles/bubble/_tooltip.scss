@@ -1,0 +1,116 @@
+.ql-bubble {
+  .ql-tooltip {
+    z-index: 9999;
+    position: absolute;
+    padding: $quill-tooltip-padding-y $quill-tooltip-padding-x;
+    color: $quill-tooltip-color;
+    background: $quill-tooltip-bg;
+    border: $quill-tooltip-border-width solid $quill-tooltip-border-color;
+    @include border-radius($quill-tooltip-border-radius);
+
+    // Tooltip arrow directions
+    &:not(.ql-flip) .ql-tooltip-arrow {
+      top: -#{$quill-tooltip-arrow-width - $quill-tooltip-border-width};
+
+      &:after {
+        border-bottom: $quill-tooltip-arrow-width solid $quill-tooltip-arrow-color;
+      }
+    }
+
+    &.ql-flip .ql-tooltip-arrow {
+      bottom: 0;
+
+      &:after {
+        border-top: $quill-tooltip-arrow-width solid $quill-tooltip-arrow-color;
+      }
+    }
+    // Editing mode tooltip
+    &.ql-editing {
+      .ql-tooltip-editor {
+        display: block;
+      }
+
+      .ql-toolbar {
+        display: none;
+      }
+    }
+  }
+  // Tooltip arrow
+  .ql-tooltip-arrow {
+    position: absolute;
+    margin-left: -$quill-tooltip-arrow-width;
+    left: 50%;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      border-left: $quill-tooltip-arrow-width solid transparent;
+      border-right: $quill-tooltip-arrow-width solid transparent;
+    }
+  }
+  // Tooltip editing mode
+  .ql-tooltip-editor {
+    display: none;
+    // Input form for editing
+    input[type=text] {
+      height: 100%;
+      width: 100%;
+      background: transparent;
+      color: $quill-tooltip-color;
+      @include font-size($quill-input-font-size);
+      padding: $quill-input-padding-y $quill-input-padding-x;
+      border: 0;
+      outline: 0;
+    }
+  }
+  // These styles will active when not disabled
+  &.ql-container:not(.ql-disabled) {
+    a {
+      position: relative;
+
+      &:after,
+      &:before {
+        display: none;
+        position: absolute;
+        margin-left: 50%;
+        left: 0;
+        transform: translate(-50%, -100%);
+      }
+      // Tooltip element
+      &:before {
+        content: attr(href);
+        @include font-size($quill-bubble-link-tooltip-font-size);
+        font-weight: $quill-bubble-link-tooltip-font-weight;
+        font-style: normal;
+        padding: $quill-tooltip-padding-y $quill-tooltip-padding-x;
+        color: $quill-tooltip-color;
+        background: $quill-tooltip-bg;
+        border: $quill-tooltip-border-width solid $quill-tooltip-border-color;
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        top: -$quill-bubble-link-tooltip-arrow-width;
+        z-index: 1;
+        @include border-radius($quill-tooltip-border-radius);
+      }
+      // Tooltip Arrow
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: $quill-bubble-link-tooltip-arrow-width solid transparent;
+        border-right: $quill-bubble-link-tooltip-arrow-width solid transparent;
+        border-top: $quill-bubble-link-tooltip-arrow-width solid $quill-bubble-link-tooltip-arrow-color;
+        top: 0;
+      }
+      // Show tooltip when hovering link
+      &:hover {
+        &:after,
+        &:before {
+          display: block;
+        }
+      }
+    }
+  }
+}

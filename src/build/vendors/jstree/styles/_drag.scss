@@ -1,0 +1,54 @@
+// Marker
+
+#jstree-marker {
+	display: block#{"/* rtl:none !important */"};
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	padding: 0;
+	border-right: 0;
+	transform: translateY(-50%);
+	border-top: $jstree-drag-marker-width solid transparent;
+	border-bottom: $jstree-drag-marker-width solid transparent;
+	border-left: $jstree-drag-marker-width solid $jstree-drag-marker-color;
+}
+// Tooltip
+#jstree-dnd {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: $jstree-drag-label-height;
+	padding-right: $jstree-drag-label-padding-x;
+	color: $jstree-drag-label-color;
+	background: $jstree-drag-label-bg;
+	border: $jstree-drag-label-border-width solid $jstree-drag-label-border-color;
+	margin: 0;
+	@include border-radius($jstree-drag-label-border-radius);
+
+	.jstree-copy,
+	.jstree-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: $jstree-drag-label-height;
+		margin-right: $jstree-drag-label-icon-spacer;
+		padding: 0;
+	}
+
+	.jstree-er,
+	.jstree-ok {
+		@include icon(after);
+	}
+
+	.jstree-ok:after {
+		content: $jstree-drag-label-icon-ok;
+		color: $jstree-drag-label-icon-ok-color;
+	}
+
+	.jstree-er:after {
+		content: $jstree-drag-label-icon-error;
+		color: $jstree-drag-label-icon-error-color;
+	}
+}

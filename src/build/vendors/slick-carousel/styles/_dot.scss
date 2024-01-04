@@ -1,0 +1,57 @@
+// Carousel dots indicator
+
+.slick-dots {
+  position: absolute;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: $slick-dot-offset;
+  padding: $slick-dot-padding !important;
+  background: $slick-dot-bg;
+  border-radius: $slick-dot-border-radius;
+  list-style: none;
+  margin: 0;
+  z-index: 1;
+
+  // Button wrapper
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $slick-dot-item-dimension;
+    width: $slick-dot-item-dimension;
+    margin: 0;
+    padding: 0;
+
+    + li {
+      margin-left: $slick-dot-item-spacer;
+    }
+
+    button {
+      display: block;
+      height: $slick-dot-dimension;
+      width: $slick-dot-dimension;
+      background: $slick-dot-item-bg;
+      color: transparent;
+      padding: 0;
+      outline: 0;
+      border: 0;
+      border-radius: 50%;
+      @include transition($slick-dot-transition);
+
+      &:focus,
+      &:hover {
+        background: $slick-dot-item-hover-bg;
+      }
+    }
+    // Active state
+    &.slick-active button {
+      width: 100%;
+      height: 100%;
+      background: $slick-dot-item-active-bg;
+    }
+  }
+}

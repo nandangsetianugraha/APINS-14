@@ -1,0 +1,17 @@
+// Crosshair will show when chart point hovered
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  opacity: 0;
+  pointer-events: none;
+  @include transition($apexchart-crosshair-transition);
+
+  &.apexcharts-active {
+    opacity: 1;
+    @include transition($apexchart-crosshair-transition);
+  }
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}

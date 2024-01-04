@@ -1,0 +1,48 @@
+{% set defaults = {
+  brand_name: "Upmin",
+  favicon: "assets/images/favicon.ico" | url,
+  theme: "light",
+  enable_container_fluid: true,
+  enable_preload: true,
+  enable_aside: true,
+  enable_minimized_aside: false,
+  enable_header: true,
+  enable_footer: true,
+  enable_analytics: false,
+  google_analytics_id: "G-XXXXXXXXXX",
+  components: {
+    preload: "components/preload/spinner.njk",
+    aside: "components/layout/aside.njk",
+    header: "components/layout/header.njk",
+    footer: "components/layout/footer.njk",
+    offcanvas: [
+      "components/layout/floating-button.njk",
+      "components/offcanvas/navigation.njk",
+      "components/offcanvas/settings.njk",
+      "components/offcanvas/todo.njk"
+    ]
+  },
+  css_links: {
+    ltr: [
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Roboto+Mono&display=swap",
+      "assets/build/styles/ltr-core.css" | url,
+      "assets/build/styles/ltr-vendor.css" | url
+    ],
+    rtl: [
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Roboto+Mono&display=swap",
+      "assets/build/styles/rtl-core.css" | url,
+      "assets/build/styles/rtl-vendor.css" | url
+    ]
+  },
+  js_links: [
+    "assets/build/scripts/mandatory.js" | url,
+    "assets/build/scripts/core.js" | url,
+    "assets/build/scripts/vendor.js" | url,
+    "assets/app/utilities/sticky-header.js" | url,
+    "assets/app/utilities/copyright-year.js" | url,
+    "assets/app/utilities/theme-switcher.js" | url,
+    "assets/app/utilities/tooltip-popover.js" | url,
+    "assets/app/utilities/dropdown-scrollbar.js" | url,
+    "assets/app/utilities/fullscreen-trigger.js" | url
+  ]
+}%}

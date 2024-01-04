@@ -1,0 +1,60 @@
+// Carousel navigation
+
+[class*="slick-next"],
+[class*="slick-prev"] {
+  position: absolute;
+  display: block;
+  border: 0;
+  z-index: 1;
+  cursor: pointer;
+  @include icon-size($slick-nav-icon-size);
+}
+// Navigation defaults style
+.slick-next,
+.slick-prev {
+  bottom: $slick-nav-offset;
+}
+
+.slick-prev {
+  left: $slick-nav-offset + $carousel-gutter;
+}
+
+.slick-next {
+  right: $slick-nav-offset + $carousel-gutter;
+}
+// Alternate navigation styles
+.slick-next-2,
+.slick-prev-2 {
+  height: $slick-nav2-height;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slick-prev-2 {
+  left: $carousel-gutter;
+  @include border-start-radius(0);
+}
+
+.slick-next-2 {
+  right: $carousel-gutter;
+  @include border-end-radius(0);
+}
+
+.slick-next-3,
+.slick-prev-3 {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: $slick-nav3-dimension;
+  width: $slick-nav3-dimension;
+  bottom: $slick-nav-offset;
+  padding: 0;
+}
+
+.slick-prev-3 {
+  right: calc(#{$slick-nav3-dimension} + #{$slick-nav-offset + $slick-nav3-spacer + $carousel-gutter});
+}
+
+.slick-next-3 {
+  right: $slick-nav-offset + $carousel-gutter;
+}

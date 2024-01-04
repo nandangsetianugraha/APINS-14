@@ -1,0 +1,8 @@
+// Pagination
+
+@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+  --#{$variable-prefix}pagination-padding-x: #{$padding-x};
+  --#{$variable-prefix}pagination-padding-y: #{$padding-y};
+  @include rfs($font-size, --#{$variable-prefix}pagination-font-size);
+  --#{$variable-prefix}pagination-border-radius: #{$border-radius};
+}

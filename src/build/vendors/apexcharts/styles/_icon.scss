@@ -1,0 +1,100 @@
+.apexcharts-svg {
+  /* rtl:begin:ignore */
+  direction: ltr;
+  /* rtl:end:ignore */
+
+  &.apexcharts-zoomable.hovering-zoom {
+    cursor: crosshair
+  }
+  
+  &.apexcharts-zoomable.hovering-pan {
+    cursor: move
+  }
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $apexchart-icon-dimension;
+  height: $apexchart-icon-dimension;
+  padding: $apexchart-icon-padding;
+  cursor: pointer;
+  color: $apexchart-icon-color;
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.apexcharts-selection-icon:not(.apexcharts-selected):hover,
+.apexcharts-zoom-icon:not(.apexcharts-selected):hover,
+.apexcharts-zoomin-icon:hover,
+.apexcharts-zoomout-icon:hover,
+.apexcharts-reset-icon:hover,
+.apexcharts-menu-icon:hover {
+  color: $apexchart-icon-hover-color;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+// Resize icon specific for icon
+.apexcharts-selection-icon {
+  transform: scale(.76)
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+  color: $apexchart-icon-color;
+
+  &:not(.apexcharts-selected):hover {
+    color: $apexchart-icon-hover-color;
+  }
+
+  &.apexcharts-selected {
+    color: $apexchart-icon-active-color;
+  }
+}
+
+
+.apexcharts-canvas {
+  .apexcharts-zoom-icon,
+  .apexcharts-selection-icon,
+  .apexcharts-reset-zoom-icon {
+    .apexcharts-selected {
+      color: $apexchart-icon-active-color;
+    }
+  }
+}

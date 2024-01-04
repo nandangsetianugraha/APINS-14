@@ -1,0 +1,108 @@
+.ql-snow {
+  .ql-tooltip {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $quill-tooltip-padding-y $quill-tooltip-padding-x;
+    color: $quill-tooltip-color;
+    background: $quill-tooltip-bg;
+    border: $quill-tooltip-border-width solid $quill-tooltip-border-color;
+    white-space: nowrap;
+    transform: translateY($quill-tooltip-offset);
+    @include border-radius($quill-tooltip-border-radius);
+
+    &::before {
+      content: "Visit URL:";
+      margin-right: $quill-tooltip-content-spacer;
+    }
+    // Input form for editing mode tooltip
+    input[type=text] {
+      display: none;
+      width: $quill-input-width;
+      height: $quill-input-height;
+      @include font-size($quill-input-font-size);
+      padding: $quill-input-padding-y $quill-input-padding-x;
+      margin: 0;
+      color: $quill-input-color;
+      background: $quill-input-bg;
+      border: $quill-input-border-width solid $quill-input-border-color;
+      @include border-radius($quill-input-border-radius);
+
+      &:focus {
+        outline: 0;
+        border-color: $quill-input-focus-border-color;
+      }
+
+      &::placeholder {
+        opacity: 1;
+        color: $quill-input-placeholder-color;
+      }
+    }
+    // Tooltip action button
+    a {
+      text-decoration: none;
+      cursor: pointer;
+
+      &:focus,
+      &:hover {
+        color: $quill-link-color;
+      }
+      // Preview value
+      &.ql-preview {
+        display: inline-block;
+        max-width: $quill-tooltip-preview-width;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+      }
+
+      &.ql-action::after {
+        content: 'Edit';
+        // Add border divider
+        border-right: $quill-tooltip-border-width solid $quill-tooltip-border-color;
+        padding-right: $quill-tooltip-content-spacer;
+        margin-left: $quill-tooltip-content-spacer;
+      }
+
+      &.ql-remove::before {
+        content: 'Remove';
+        margin-left: $quill-tooltip-content-spacer;
+      }
+    }
+
+    &.ql-flip {
+      transform: translateY(-#{$quill-tooltip-offset});
+    }
+    // Editing mode tooltip
+    &.ql-editing {
+      // Hide preview and remove action
+      a.ql-preview,
+      a.ql-remove {
+        display: none;
+      }
+      // Show input form for editing
+      input[type=text] {
+        display: inline-block;
+      }
+
+      a.ql-action::after {
+        content: 'Save';
+        // Remove divider
+        border-right: 0;
+        padding-right: 0;
+      }
+    }
+  }
+  // Tooltip content
+  .ql-tooltip[data-mode=link]::before {
+    content: "Enter link:";
+  }
+
+  .ql-tooltip[data-mode=formula]::before {
+    content: "Enter formula:";
+  }
+
+  .ql-tooltip[data-mode=video]::before {
+    content: "Enter video:";
+  }
+}

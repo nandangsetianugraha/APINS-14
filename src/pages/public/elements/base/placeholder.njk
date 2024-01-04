@@ -1,0 +1,164 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Placeholder" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Placeholder", link: "elements/base/placeholder.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Placeholders can be used to enhance the experience of your application. They’re built only with HTML and CSS, meaning you don’t need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, color, and sizing can be easily customized with our utility classes.</p>
+
+          <!-- BEGIN Card -->
+          <div class="card placeholder-glow">
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="placeholder col-6"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-7"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-6"></span>
+                <span class="placeholder col-8"></span>
+              </p>
+              <a href="#" class="btn btn-primary disabled placeholder col-6"></a>
+            </div>
+          </div>
+          <!-- END Card -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Color</h3>
+        </div>
+        <div class="portlet-body">
+          <p>By default, the <code>placeholder</code> uses <code>currentColor</code>. This can be overridden with a custom color or utility class.</p>
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-body">
+
+              <!-- BEGIN Placeholders -->
+              <span class="placeholder col-12"></span>
+              <span class="placeholder col-12 bg-primary"></span>
+              <span class="placeholder col-12 bg-secondary"></span>
+              <span class="placeholder col-12 bg-success"></span>
+              <span class="placeholder col-12 bg-danger"></span>
+              <span class="placeholder col-12 bg-warning"></span>
+              <span class="placeholder col-12 bg-info"></span>
+              <span class="placeholder col-12 bg-light"></span>
+              <span class="placeholder col-12 bg-dark"></span>
+              <!-- END Placeholders -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Width</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can change the <code>width</code> through grid column classes, width utilities, or inline styles.</p>
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-body">
+
+              <!-- BEGIN Placeholders -->
+              <span class="placeholder col-6"></span>
+              <span class="placeholder w-75"></span>
+              <span class="placeholder" style="width: 25%;"></span>
+              <!-- END Placeholders -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sizing</h3>
+        </div>
+        <div class="portlet-body">
+          <p>The size of <code>.placeholder</code>s are based on the typographic style of the parent element. Customize them with sizing modifiers: <code>.placeholder-{xs|sm|lg}</code>.</p>
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-body">
+
+              <!-- BEGIN Placeholders -->
+              <span class="placeholder col-12 placeholder-lg"></span>
+              <span class="placeholder col-12"></span>
+              <span class="placeholder col-12 placeholder-sm"></span>
+              <span class="placeholder col-12 placeholder-xs"></span>
+              <!-- END Placeholders -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Animation</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Animate placeholders with <code>.placeholder-glow</code> or <code>.placeholder-wave</code> to better convey the perception of something being <em>actively</em> loaded.</p>
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-body">
+
+              <!-- BEGIN Placeholders -->
+              <div class="placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </div>
+              <div class="placeholder-wave">
+                <span class="placeholder col-12"></span>
+              </div>
+              <!-- END Placeholders -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

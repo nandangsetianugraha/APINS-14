@@ -48,7 +48,8 @@ $(document).ready(function () {
                   	$("#loading").hide();
 					$(".loader").hide();
                     if (html.response === 'true') {
-						toastr["success"]("Login Sukses <br/> Tunggu sebentar.... Anda akan dialihkan ke Halaman Admin")
+						toastr["success"]("Login Sukses <br/> Tunggu sebentar.... Anda akan dialihkan ke Halaman Admin");
+						$("#statusnya").html('<h4 class="mb-2">Login Sukses ✉️</h4><p class="text-start">Login berhasil... Anda akan dialihkan ke Halaman Utama.</p><a class="btn btn-primary w-100 my-3" href="./"> Beranda </a>');
 						setTimeout(function () {
 							location.reload();
 						},1500);

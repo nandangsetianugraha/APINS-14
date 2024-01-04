@@ -1,0 +1,87 @@
+//
+// Base styles
+//
+
+.alert {
+  --#{$variable-prefix}alert-bg: transparent;
+  --#{$variable-prefix}alert-padding-x: #{$alert-padding-x};
+  --#{$variable-prefix}alert-padding-y: #{$alert-padding-y};
+  --#{$variable-prefix}alert-margin-bottom: #{$alert-margin-bottom};
+  --#{$variable-prefix}alert-color: inherit;
+  --#{$variable-prefix}alert-border-color: transparent;
+  --#{$variable-prefix}alert-border-width: #{$alert-border-width};
+  --#{$variable-prefix}alert-border-radius: #{$alert-border-radius};
+  --#{$variable-prefix}alert-icon-dimension: #{$alert-icon-dimension};
+  --#{$variable-prefix}alert-icon-size: #{$alert-icon-size};
+  --#{$variable-prefix}alert-icon-spacer: #{$alert-icon-spacer};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  color: var(--#{$variable-prefix}alert-color);
+  background-color: var(--#{$variable-prefix}alert-bg);
+  padding: var(--#{$variable-prefix}alert-padding-y) var(--#{$variable-prefix}alert-padding-x);
+  margin-bottom: var(--#{$variable-prefix}alert-margin-bottom);
+  border: var(--#{$variable-prefix}alert-border-width) $border-style var(--#{$variable-prefix}alert-border-color);
+  @include border-radius(var(--#{$variable-prefix}alert-border-radius));
+}
+
+// Headings for larger alerts
+.alert-heading {
+  // Specified to prevent conflicts of changing $headings-color
+  color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+  font-weight: $alert-link-font-weight;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--#{$variable-prefix}alert-icon-dimension);
+  height: var(--#{$variable-prefix}alert-icon-dimension);
+  margin-right: var(--#{$variable-prefix}alert-icon-spacer);
+  @include icon-size(var(--#{$variable-prefix}alert-icon-size));
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissible {
+  padding-right: $alert-dismissible-padding-r;
+
+  // Adjust close link position
+  .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: $stretched-link-z-index + 1;
+    padding: $alert-padding-y * 1.25 $alert-padding-x;
+  }
+}
+
+
+// Alternate styles
+// Generate contextual modifier classes for colorizing the alert.
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    @include alert-variant($value, $value, color-contrast($value));
+  }
+
+  .alert-outline-#{$color} {
+    @include alert-variant(transparent, $value, $value);
+  }
+
+  .alert-label-#{$color} {
+    @include alert-variant(rgba($value, 0.1), transparent, $value);
+  }
+}

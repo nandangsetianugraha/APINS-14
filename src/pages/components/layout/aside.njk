@@ -1,0 +1,877 @@
+{% from "components/variables.njk" import defaults %}
+
+<!-- BEGIN Aside -->
+<div class="aside">
+  <div class="aside-header">
+    <h3 class="aside-title">{{ defaults.brand_name }}</h3>
+    <div class="aside-addon">
+      <button class="btn btn-label-primary btn-icon btn-lg" data-toggle="aside">
+        <i class="fa fa-times aside-icon-minimize"></i>
+        <i class="fa fa-thumbtack aside-icon-maximize"></i>
+      </button>
+    </div>
+  </div>
+  <div class="aside-body" data-simplebar data-simplebar-direction="{{ direction }}">
+
+    <!-- BEGIN Menu -->
+		<div class="menu">
+			<div class="menu-item">
+				<a href="{{ 'index.html' | url }}" data-menu-path="/index.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-desktop"></i>
+					</div>
+					<span class="menu-item-text">Dashboard</span>
+					<div class="menu-item-addon">
+            <span class="badge badge-success">New</span>
+          </div>
+				</a>
+			</div>
+
+			<!-- BEGIN Menu Section -->
+			<div class="menu-section">
+				<div class="menu-section-icon">
+          <i class="fa fa-ellipsis-h"></i>
+        </div>
+				<h2 class="menu-section-text">Elements</h2>
+			</div>
+			<!-- END Menu Section -->
+
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-palette"></i>
+					</div>
+					<span class="menu-item-text">Base</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'elements/base/accordion.html' | url }}" data-menu-path="/elements/base/accordion.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Accordion</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/alert.html' | url }}" data-menu-path="/elements/base/alert.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Alert</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/badge.html' | url }}" data-menu-path="/elements/base/badge.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Badge</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/breadcrumb.html' | url }}" data-menu-path="/elements/base/breadcrumb.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Breadcrumb</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/button.html' | url }}" data-menu-path="/elements/base/button.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Button</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/button-group.html' | url }}" data-menu-path="/elements/base/button-group.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Button group</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/card.html' | url }}" data-menu-path="/elements/base/card.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Card</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/color.html' | url }}" data-menu-path="/elements/base/color.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Color</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/dropdown.html' | url }}" data-menu-path="/elements/base/dropdown.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Dropdown</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/list-group.html' | url }}" data-menu-path="/elements/base/list-group.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">List group</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/marker.html' | url }}" data-menu-path="/elements/base/marker.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Marker</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/modal.html' | url }}" data-menu-path="/elements/base/modal.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Modal</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/nav.html' | url }}" data-menu-path="/elements/base/nav.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Navigation</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/offcanvas.html' | url }}" data-menu-path="/elements/base/offcanvas.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Offcanvas</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/pagination.html' | url }}" data-menu-path="/elements/base/pagination.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Pagination</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/placeholder.html' | url }}" data-menu-path="/elements/base/placeholder.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Placeholder</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/popover.html' | url }}" data-menu-path="/elements/base/popover.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Popover</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/progress.html' | url }}" data-menu-path="/elements/base/progress.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Progress</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/spinner.html' | url }}" data-menu-path="/elements/base/spinner.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Spinner</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/tab.html' | url }}" data-menu-path="/elements/base/tab.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Tab</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/table.html' | url }}" data-menu-path="/elements/base/table.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Table</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/tooltip.html' | url }}" data-menu-path="/elements/base/tooltip.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Tooltip</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/base/type.html' | url }}" data-menu-path="/elements/base/type.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Typography</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-adjust"></i>
+					</div>
+					<span class="menu-item-text">Advanced</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/avatar.html' | url }}" data-menu-path="/elements/advanced/avatar.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Avatar</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/block-ui.html' | url }}" data-menu-path="/elements/advanced/block-ui.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Block UI</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/carousel.html' | url }}" data-menu-path="/elements/advanced/carousel.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Carousel</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/chat.html' | url }}" data-menu-path="/elements/advanced/chat.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Chat</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/context-menu.html' | url }}" data-menu-path="/elements/advanced/context-menu.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Context menu</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/grid-nav.html' | url }}" data-menu-path="/elements/advanced/grid-nav.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Grid nav</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/rich-list.html' | url }}" data-menu-path="/elements/advanced/rich-list.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Rich list</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/sortable.html' | url }}" data-menu-path="/elements/advanced/sortable.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Sortable</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/sweet-alert.html' | url }}" data-menu-path="/elements/advanced/sweet-alert.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Sweet alert</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/timeline.html' | url }}" data-menu-path="/elements/advanced/timeline.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Timeline</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/toastr.html' | url }}" data-menu-path="/elements/advanced/toastr.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Toastr</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'elements/advanced/treeview.html' | url }}" data-menu-path="/elements/advanced/treeview.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Treeview</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-icons"></i>
+					</div>
+					<span class="menu-item-text">Icons</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'icons/fontawesome.html' | url }}" data-menu-path="/icons/fontawesome.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Font Awesome</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'icons/feather.html' | url }}" data-menu-path="/icons/feather.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Feather</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-window-restore"></i>
+					</div>
+					<span class="menu-item-text">Portlet</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'portlet/base.html' | url }}" data-menu-path="/portlet/base.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Base</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'portlet/drag.html' | url }}" data-menu-path="/portlet/drag.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Draggable</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'portlet/tab.html' | url }}" data-menu-path="/portlet/tab.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Tab</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'portlet/tool.html' | url }}" data-menu-path="/portlet/tool.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Tool</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-shapes"></i>
+					</div>
+					<span class="menu-item-text">Widget</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'widgets/general.html' | url }}" data-menu-path="/widgets/general.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">General</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'widgets/chart.html' | url }}" data-menu-path="/widgets/chart.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Chart</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+
+			<!-- BEGIN Menu Section -->
+			<div class="menu-section">
+				<div class="menu-section-icon">
+          <i class="fa fa-ellipsis-h"></i>
+        </div>
+				<h2 class="menu-section-text">Data</h2>
+			</div>
+			<!-- END Menu Section -->
+
+			<div class="menu-item">
+				<a href="{{ 'chart/apex-chart.html' | url }}" data-menu-path="/chart/apex-chart.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-chart-pie"></i>
+					</div>
+					<span class="menu-item-text">Charts</span>
+				</a>
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-table"></i>
+					</div>
+					<span class="menu-item-text">Datatable</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<button class="menu-item-link menu-item-toggle">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Basic</span>
+							<div class="menu-item-addon">
+								<i class="menu-item-caret caret"></i>
+							</div>
+						</button>
+
+						<!-- BEGIN Menu Submenu -->
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="{{ 'datatable/basic/base.html' | url }}" data-menu-path="/datatable/basic/base.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Base</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/basic/footer.html' | url }}" data-menu-path="/datatable/basic/footer.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Footer</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/basic/scrollable.html' | url }}" data-menu-path="/datatable/basic/scrollable.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Scrollable</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/basic/pagination.html' | url }}" data-menu-path="/datatable/basic/pagination.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Pagination</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/basic/menu.html' | url }}" data-menu-path="/datatable/basic/menu.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Length menu</span>
+								</a>
+							</div>
+						</div>
+						<!-- END Menu Submenu -->
+
+					</div>
+					<div class="menu-item">
+						<button class="menu-item-link menu-item-toggle">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Advanced</span>
+							<div class="menu-item-addon">
+								<i class="menu-item-caret caret"></i>
+							</div>
+						</button>
+
+						<!-- BEGIN Menu Submenu -->
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="{{ 'datatable/advanced/column-rendering.html' | url }}" data-menu-path="/datatable/advanced/column-rendering.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Column rendering</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/advanced/column-visibility.html' | url }}" data-menu-path="/datatable/advanced/column-visibility.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Column visibility</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/advanced/footer-callback.html' | url }}" data-menu-path="/datatable/advanced/footer-callback.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Footer callback</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/advanced/multiple-controls.html' | url }}" data-menu-path="/datatable/advanced/multiple-controls.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Multiple controls</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/advanced/row-callback.html' | url }}" data-menu-path="/datatable/advanced/row-callback.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Row callback</span>
+								</a>
+							</div>
+						</div>
+						<!-- END Menu Submenu -->
+
+					</div>
+					<div class="menu-item">
+						<button class="menu-item-link menu-item-toggle">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Source</span>
+							<div class="menu-item-addon">
+								<i class="menu-item-caret caret"></i>
+							</div>
+						</button>
+
+						<!-- BEGIN Menu Submenu -->
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="{{ 'datatable/source/html.html' | url }}" data-menu-path="/datatable/source/html.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">HTML</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/source/javascript.html' | url }}" data-menu-path="/datatable/source/javascript.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Javascript</span>
+								</a>
+							</div>
+						</div>
+						<!-- END Menu Submenu -->
+
+					</div>
+					<div class="menu-item">
+						<button class="menu-item-link menu-item-toggle">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Extension</span>
+							<div class="menu-item-addon">
+								<i class="menu-item-caret caret"></i>
+							</div>
+						</button>
+
+						<!-- BEGIN Menu Submenu -->
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/autofill.html' | url }}" data-menu-path="/datatable/extension/autofill.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Auto fill</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/buttons.html' | url }}" data-menu-path="/datatable/extension/buttons.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Buttons</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/column-reorder.html' | url }}" data-menu-path="/datatable/extension/column-reorder.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Column reorder</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/fixed-header.html' | url }}" data-menu-path="/datatable/extension/fixed-header.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Fixed header</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/fixed-column.html' | url }}" data-menu-path="/datatable/extension/fixed-column.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Fixed column</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/key-table.html' | url }}" data-menu-path="/datatable/extension/key-table.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Key table</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/row-group.html' | url }}" data-menu-path="/datatable/extension/row-group.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Row group</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/row-reorder.html' | url }}" data-menu-path="/datatable/extension/row-reorder.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Row reorder</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/scroller.html' | url }}" data-menu-path="/datatable/extension/scroller.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Scroller</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/search-panes.html' | url }}" data-menu-path="/datatable/extension/search-panes.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Search panes</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="{{ 'datatable/extension/select.html' | url }}" data-menu-path="/datatable/extension/select.html" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Select</span>
+								</a>
+							</div>
+						</div>
+						<!-- END Menu Submenu -->
+
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+
+			<!-- BEGIN Menu Section -->
+			<div class="menu-section">
+				<div class="menu-section-icon">
+          <i class="fa fa-ellipsis-h"></i>
+        </div>
+				<h2 class="menu-section-text">Form</h2>
+			</div>
+			<!-- END Menu Section -->
+
+			<div class="menu-item">
+				<a href="{{ 'form/base.html' | url }}" data-menu-path="/form/base.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-dice"></i>
+					</div>
+					<span class="menu-item-text">Base</span>
+				</a>
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-fill-drip"></i>
+					</div>
+					<span class="menu-item-text">Advanced</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/autosize.html' | url }}" data-menu-path="/form/advanced/autosize.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Autosize</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/bs-maxlength.html' | url }}" data-menu-path="/form/advanced/bs-maxlength.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Bootstrap maxlength</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/clipboard.html' | url }}" data-menu-path="/form/advanced/clipboard.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Clipboard</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/datepicker.html' | url }}" data-menu-path="/form/advanced/datepicker.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Date picker</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/datetimepicker.html' | url }}" data-menu-path="/form/advanced/datetimepicker.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Date time picker</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/daterangepicker.html' | url }}" data-menu-path="/form/advanced/daterangepicker.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Date range picker</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/inputmask.html' | url }}" data-menu-path="/form/advanced/inputmask.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Input mask</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/select2.html' | url }}" data-menu-path="/form/advanced/select2.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Select2</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/slider.html' | url }}" data-menu-path="/form/advanced/slider.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Slider</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/touchspin.html' | url }}" data-menu-path="/form/advanced/touchspin.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Touchspin</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'form/advanced/typeahead.html' | url }}" data-menu-path="/form/advanced/typeahead.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Typeahead</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-pencil-ruler"></i>
+					</div>
+					<span class="menu-item-text">Editor</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'editor/basic.html' | url }}" data-menu-path="/editor/basic.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Basic</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'editor/bubble.html' | url }}" data-menu-path="/editor/bubble.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Bubble</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'editor/complex.html' | url }}" data-menu-path="/editor/complex.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Complex</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<a href="{{ 'form/group.html' | url }}" data-menu-path="/form/group.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-th-list"></i>
+					</div>
+					<span class="menu-item-text">Group</span>
+				</a>
+			</div>
+			<div class="menu-item">
+				<a href="{{ 'form/layout.html' | url }}" data-menu-path="/form/layout.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-ruler-combined"></i>
+					</div>
+					<span class="menu-item-text">Layout</span>
+				</a>
+			</div>
+			<div class="menu-item">
+				<a href="{{ 'form/validation.html' | url }}" data-menu-path="/form/validation.html" class="menu-item-link">
+					<div class="menu-item-icon">
+						<i class="fa fa-check"></i>
+					</div>
+					<span class="menu-item-text">Validation</span>
+				</a>
+			</div>
+
+			<!-- BEGIN Menu Section -->
+			<div class="menu-section">
+				<div class="menu-section-icon">
+          <i class="fa fa-ellipsis-h"></i>
+        </div>
+				<h2 class="menu-section-text">Pages</h2>
+			</div>
+			<!-- END Menu Section -->
+
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					<span class="menu-item-text">Login</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'pages/login/login-1.html' | url }}" data-menu-path="/pages/login/login-1.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Login 1</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'pages/login/login-2.html' | url }}" data-menu-path="/pages/login/login-2.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Login 2</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-user-plus"></i>
+					</div>
+					<span class="menu-item-text">Register</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'pages/register/register-1.html' | url }}" data-menu-path="/pages/register/register-1.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Register 1</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'pages/register/register-2.html' | url }}" data-menu-path="/pages/register/register-2.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Register 2</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+			<div class="menu-item">
+				<button class="menu-item-link menu-item-toggle">
+					<div class="menu-item-icon">
+						<i class="fa fa-unlink"></i>
+					</div>
+					<span class="menu-item-text">Error</span>
+					<div class="menu-item-addon">
+						<i class="menu-item-caret caret"></i>
+					</div>
+				</button>
+
+				<!-- BEGIN Menu Submenu -->
+				<div class="menu-submenu">
+					<div class="menu-item">
+						<a href="{{ 'pages/error/error-1.html' | url }}" data-menu-path="/pages/error/error-1.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Error 1</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="{{ 'pages/error/error-2.html' | url }}" data-menu-path="/pages/error/error-2.html" class="menu-item-link">
+							<i class="menu-item-bullet"></i>
+							<span class="menu-item-text">Error 2</span>
+						</a>
+					</div>
+				</div>
+				<!-- END Menu Submenu -->
+
+			</div>
+		</div>
+		<!-- END Menu -->
+
+  </div>
+</div>
+<!-- END Aside -->

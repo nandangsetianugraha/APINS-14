@@ -1,0 +1,139 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Date Picker" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Date Picker", link: "form/advanced/datepicker.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/datepicker.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Date picker</h3>
+        </div>
+        <div class="portlet-body">
+          <p>A datepicker for Bootstrap, for more info please visit the plugin's <a href="http://uxsolutions.github.io/bootstrap-datepicker" target="_blank">demo page</a> or <a href="http://github.com/uxsolutions/bootstrap-datepicker" target="_blank">Github repository</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datepicker-1">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Today highlight</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datepicker-2">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Helper buttons</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datepicker-3">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Multiple</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" placeholder="Select date" id="datepicker-4">
+                </div>
+                <p class="mb-0">You can select multiple date</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Week disabled and highlighted</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datepicker-5">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Range picker</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                
+                  <!-- BEGIN Input Group -->
+                  <div class="input-group input-daterange">
+                    <input type="text" class="form-control" placeholder="From">
+                    <span class="input-group-text">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="To">
+                  </div>
+                  <!-- END Input Group -->
+                
+                </div>
+                <p class="mb-0">Linked pickers for date range selection</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Week calendar</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" placeholder="Select date" id="datepicker-6">
+                </div>
+                <p class="mb-0">Show week numbers on the calendar</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Locale</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datepicker-7">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Inline</label>
+              <div class="col-sm-5 col-lg-4">
+                <div id="datepicker-8"></div>
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

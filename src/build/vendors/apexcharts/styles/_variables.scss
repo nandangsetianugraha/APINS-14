@@ -1,0 +1,71 @@
+$apexchart-scrollbar-width:           .45rem !default;
+$apexchart-scrollbar-color:           $gray-400 !default;
+$apexchart-scrollbar-opacity:         .65 !default;
+$apexchart-scrollbar-border-radius:   $apexchart-scrollbar-width !default;
+
+$apexchart-toolbar-padding-y:         $spacer * .25 !default;
+$apexchart-toolbar-padding-x:         $spacer * .5 !default;
+
+$apexchart-icon-dimension:            2rem !default;
+$apexchart-icon-padding:              $spacer * .125 !default;
+$apexchart-icon-color:                $gray-400 !default;
+$apexchart-icon-hover-color:          $text-level-1 !default;
+$apexchart-icon-active-color:         $primary !default;
+
+$apexchart-menu-bg:                   $dropdown-bg !default;
+$apexchart-menu-min-width:            10rem !default;
+$apexchart-menu-max-width:            25rem !default;
+$apexchart-menu-padding-y:            $dropdown-padding-y !default;
+$apexchart-menu-border-width:         $dropdown-border-width !default;
+$apexchart-menu-border-color:         $dropdown-border-color !default;
+$apexchart-menu-border-radius:        $dropdown-border-radius !default;
+$apexchart-menu-transition:           $transition-base !default;
+
+$apexchart-menu-item-color:           $dropdown-item-color !default;
+$apexchart-menu-item-hover-bg:        $dropdown-item-hover-bg !default;
+$apexchart-menu-item-hover-color:     $dropdown-item-hover-color !default;
+$apexchart-menu-item-font-size:       $dropdown-item-font-size !default;
+$apexchart-menu-item-font-weight:     $dropdown-item-font-weight !default;
+$apexchart-menu-item-padding-y:       $dropdown-item-padding-y !default;
+$apexchart-menu-item-padding-x:       $dropdown-item-padding-x !default;
+
+$apexchart-tooltip-bg:                $tooltip-bg !default;
+$apexchart-tooltip-color:             $tooltip-color !default;
+$apexchart-tooltip-font-size:         $font-size-base !default;
+$apexchart-tooltip-offset:            5rem !default;
+$apexchart-tooltip-border-radius:     $tooltip-border-radius !default;
+$apexchart-tooltip-border-width:      $tooltip-border-width !default;
+$apexchart-tooltip-border-color:      $tooltip-border-color !default;
+$apexchart-tooltip-padding-y:         $tooltip-padding-y !default;
+$apexchart-tooltip-padding-x:         $tooltip-padding-x !default;
+$apexchart-tooltip-transition:        $transition-base !default;
+
+$apexchart-tooltip-header-bg:         $popover-header-bg !default;
+$apexchart-tooltip-header-color:      $popover-header-color !default;
+$apexchart-tooltip-header-font-size:  $popover-header-font-size !default;
+$apexchart-tooltip-header-font-weight:$font-weight-bold !default;
+$apexchart-tooltip-header-padding-y:  $popover-header-padding-y !default;
+$apexchart-tooltip-header-padding-x:  $popover-header-padding-x !default;
+
+$apexchart-tooltip-arrow-height:      $tooltip-arrow-height !default;
+$apexchart-tooltip-arrow-color:       $tooltip-bg !default;
+$apexchart-tooltip-arrow-outer-color: $tooltip-border-color !default;
+
+$apexchart-tooltip-marker-dimension:  .75rem !default;
+$apexchart-tooltip-marker-spacer:     $spacer * .5 !default;
+
+$apexchart-tooltip-category-color:    $text-level-3 !default;
+
+$apexchart-tooltip-group-padding-y:   $spacer * .5 !default;
+$apexchart-tooltip-group-padding-x:   $spacer * .75 !default;
+
+$apexchart-tooltip-value-font-size:   $font-size-base !default;
+$apexchart-tooltip-value-font-weight: $font-weight-bold !default;
+$apexchart-tooltip-value-spacer:      $spacer * .5 !default;
+
+$apexchart-crosshair-transition:      $transition-base !default;
+
+$apexchart-marker-color:              $gray-400 !default;
+$apexchart-marker-transition:         $transition-base !default;
+
+$apexchart-select-point-color:        $gray-400 !default;

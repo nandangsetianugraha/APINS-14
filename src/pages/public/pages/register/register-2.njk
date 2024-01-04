@@ -1,0 +1,141 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Register 2" %}
+{% set enable_container_fluid = true %}
+{% set enable_aside = false %}
+{% set enable_header = false %}
+{% set enable_footer = false %}
+{% set js_links = [
+  "assets/app/pages/pages/register.js" | url
+] %}
+
+{% block content %}
+  <div class="row g-0 align-items-center justify-content-center h-100">
+    <div class="col-lg-8 col-xl-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet overflow-hidden">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <div class="portlet-body d-flex flex-column justify-content-center align-items-start h-100 bg-primary text-white">
+              <h2>Welcome back!</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, temporibus, repudiandae. Voluptate tempore, expedita placeat rem labore iste eveniet ratione.</p>
+              <a href="{{ 'pages/login/login-2.html' | url }}" class="btn btn-outline-light btn-lg btn-widest rounded-pill">Login</a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="portlet-body h-100">
+
+              <!-- BEGIN Flex -->
+              <div class="d-flex justify-content-center mb-4">
+                <button class="btn btn-label-primary rounded-pill">
+                  <i class="fab fa-facebook me-2"></i>
+                  Facebook
+                </button>
+                <button class="btn btn-label-info rounded-pill mx-2">
+                  <i class="fab fa-google me-2"></i>
+                  Google
+                </button>
+                <button class="btn btn-label-danger rounded-pill">
+                  <i class="fab fa-pinterest me-2"></i>
+                  Pinterest
+                </button>
+              </div>
+              <!-- END Flex -->
+
+              <!-- BEGIN Form -->
+              <form class="d-grid gap-3" id="register-form">
+
+                <!-- BEGIN Row -->
+                <div class="row g-3">
+                  <div class="col-sm-6 validation-container">
+
+                    <!-- BEGIN Form Floating -->
+                    <div class="form-floating">
+                      <input class="form-control form-control-lg" type="text" id="first-name" name="firstName" placeholder="Please insert your first name">
+                      <label for="first-name">First name</label>
+                    </div>
+                    <!-- END Form Floating -->
+
+                  </div>
+                  <div class="col-sm-6 validation-container">
+
+                    <!-- BEGIN Form Floating -->
+                    <div class="form-floating">
+                      <input class="form-control form-control-lg" type="text" id="last-name" name="lastName" placeholder="Please insert your last name">
+                      <label for="last-name">Last name</label>
+                    </div>
+                    <!-- END Form Floating -->
+
+                  </div>
+                </div>
+                <!-- END Row -->
+
+                <!-- BEGIN Validation Container -->
+                <div class="validation-container">
+                  
+                  <!-- BEGIN Form Floating -->
+                  <div class="form-floating">
+                    <input class="form-control form-control-lg" type="email" id="email" name="email" placeholder="Please insert your email">
+                    <label for="email">Email</label>
+                  </div>
+                  <!-- END Form Floating -->
+                
+                </div>
+                <!-- END Validation Container -->
+                
+                <!-- BEGIN Validation Container -->
+                <div class="validation-container">
+                  
+                  <!-- BEGIN Form Floating -->
+                  <div class="form-floating">
+                    <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="Please provide your password">
+                    <label for="password">Password</label>
+                  </div>
+                  <!-- END Form Floating -->
+                
+                </div>
+                <!-- END Validation Container -->
+                
+                <!-- BEGIN Validation Container -->
+                <div class="validation-container">
+
+                  <!-- BEGIN Form Floating -->
+                  <div class="form-floating">
+                    <input class="form-control form-control-lg" type="password" id="password-confirm" name="passwordConfirm" placeholder="Repeat your password">
+                    <label for="password-confirm">Confirm password</label>
+                  </div>
+                  <!-- END Form Floating -->
+
+                </div>
+                <!-- END Validation Container -->
+                
+                <!-- BEGIN Flex -->
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="validation-container">
+
+                    <!-- BEGIN Form Check -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="agreement" name="agreement">
+                      <label class="form-check-label" for="agreement">Accept agreement</label>
+                    </div>
+                    <!-- END Form Check -->
+
+                  </div>
+                  <a href="#">Forgot password?</a>
+                </div>
+                <!-- END Flex -->
+
+                <button type="submit" class="btn btn-label-primary btn-lg rounded-pill">Register</button>
+              </form>
+              <!-- END Form -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

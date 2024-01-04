@@ -1,0 +1,74 @@
+// Button styles
+.bootstrap-touchspin-down,
+.bootstrap-touchspin-up {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $touchspin-btn-dimension;
+  @include font-size($touchspin-btn-font-size);
+  font-weight: $touchspin-btn-font-weight;
+  @include icon-size($touchspin-btn-font-size);
+  @include icon-style {
+    line-height: 0;
+  }
+}
+
+// Vertical button group
+.bootstrap-touchspin .input-group-btn-vertical {
+  display: flex;
+  flex-direction: column;
+
+  > .btn {
+    flex: 1;
+    line-height: 0;
+  }
+  // Correct button border radius
+  .bootstrap-touchspin-up {
+    @include border-bottom-radius(0);
+    @include border-top-start-radius(0);
+    @include border-top-end-radius($touchspin-btn-border-radius);
+  }
+
+  .bootstrap-touchspin-down {
+    @include border-top-radius(0);
+    @include border-bottom-start-radius(0);
+    @include border-bottom-end-radius($touchspin-btn-border-radius);
+  }
+}
+
+// Sizing
+.bootstrap-touchspin.input-group-sm {
+  .bootstrap-touchspin-down,
+  .bootstrap-touchspin-up {
+    width: $touchspin-btn-dimension-sm;
+    @include icon-size($touchspin-btn-font-size-sm);
+  }
+
+  .input-group-btn-vertical {
+    .bootstrap-touchspin-up {
+      @include border-top-end-radius($touchspin-btn-border-radius-sm);
+    }
+
+    .bootstrap-touchspin-down {
+      @include border-bottom-end-radius($touchspin-btn-border-radius-sm);
+    }
+  }
+}
+
+.bootstrap-touchspin.input-group-lg {
+  .bootstrap-touchspin-down,
+  .bootstrap-touchspin-up {
+    width: $touchspin-btn-dimension-lg;
+    @include icon-size($touchspin-btn-font-size-lg);
+  }
+
+  .input-group-btn-vertical {
+    .bootstrap-touchspin-up {
+      @include border-top-end-radius($touchspin-btn-border-radius-lg);
+    }
+
+    .bootstrap-touchspin-down {
+      @include border-bottom-end-radius($touchspin-btn-border-radius-lg);
+    }
+  }
+}

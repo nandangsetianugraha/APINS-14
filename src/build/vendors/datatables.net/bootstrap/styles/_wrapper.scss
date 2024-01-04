@@ -1,0 +1,89 @@
+// Outer containment for all datatable components
+.dataTables_wrapper {
+  
+  // Length menu containment
+  .dataTables_length {
+    margin-bottom: $datatable-input-spacer;
+
+    label {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    // Total row per page option element
+    select {
+      width: auto;
+      display: inline-block;
+      margin: 0 $datatable-input-spacer;
+    }
+  }
+
+  // Search input containment
+  .dataTables_filter {
+    text-align: right;
+    margin-bottom: $datatable-input-spacer;
+
+    label {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    // Search input element
+    input {
+      width: auto;
+      display: inline-block;
+      margin-left: $datatable-input-spacer;
+    }
+  }
+
+  // Display information of row number
+  .dataTables_info {
+    padding-top: $datatable-info-spacer;
+    white-space: nowrap;
+  }
+
+  // Table pagination containment
+  .dataTables_paginate {
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+    // Styling pagination
+    .pagination {
+      white-space: nowrap;
+      justify-content: flex-end;
+      margin: $datatable-spacer 0;
+    }
+  }
+
+  .dt-row {
+    position: relative;
+  }
+
+  .table-responsive > & > .row {
+    margin: 0;
+
+    > [class^=col-]:first-child {
+      padding-left: 0;
+    }
+    > [class^=col-]:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+// Align control elements to center for small devices
+@include media-breakpoint-down("sm") {
+  .dataTables_wrapper {
+    .dataTables_length,
+    .dataTables_filter,
+    .dataTables_info,
+    .dataTables_paginate {
+      text-align: center;
+    }
+
+    .dataTables_paginate .pagination {
+      justify-content: center;
+      margin-top: $datatable-input-spacer;
+    }
+  }
+}

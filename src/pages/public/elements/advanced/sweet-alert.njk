@@ -1,0 +1,138 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Sweet Alert" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Sweet Alert", link: "elements/advanced/sweet-alert.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/sweet-alert.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sweet alert examples</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Sweet alert</strong> is a beautiful, responsive, customizable, accessible replacement for javascripts's popup boxes with zero dependencies. Check <a href="http://sweetalert2.github.io" target="_blank">Sweet Alert's page</a> for more info.</p>
+          <hr>
+
+          <!-- BEGIN Row -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic example</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-1">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Subtitle</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-2">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">More content</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-3">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom HTML</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-4">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">More buttons</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-5">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom position</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-6">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Confirm function</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-7">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Image</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-8">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Close timer</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-9">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">AJAX request</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-10">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Toast</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="swal-11">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Row -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

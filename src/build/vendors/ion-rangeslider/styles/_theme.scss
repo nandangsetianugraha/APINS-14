@@ -1,0 +1,95 @@
+.irs--flat {
+  height: $irs-height;
+
+  &.irs-with-grid {
+    height: $irs-height + $irs-grid-height;
+  }
+  // Slider line
+  .irs-bar,
+  .irs-line {
+    top: $irs-line-top;
+  }
+
+  .irs-line {
+    height: $irs-line-height;
+    background: $irs-line-color;
+    @include border-radius($irs-line-border-radius);
+  }
+
+  .irs-bar {
+    height: $irs-line-height;
+    background: $irs-line-active-color;
+  }
+
+  .irs-bar--single {
+    @include border-radius($irs-line-border-radius);
+  }
+  // Slider handle styles
+  .irs-handle {
+    width: $irs-handle-dimension;
+    height: $irs-handle-dimension;
+    background: $irs-handle-color;
+    top: calc($irs-line-top - (($irs-handle-dimension - $irs-line-height) / 2));
+    @include border-radius($irs-handle-border-radius);
+
+    &.state_hover,
+    &:hover {
+      background: $irs-handle-active-color;
+    }
+  }
+  // Tooltip label styles
+  .irs-from,
+  .irs-max,
+  .irs-min,
+  .irs-single,
+  .irs-to {
+    @include font-size($irs-tooltip-font-size);
+    font-weight: $irs-tooltip-font-weight;
+    line-height: 1;
+    padding: $irs-tooltip-padding-y $irs-tooltip-padding-x;
+    @include border-radius($irs-tooltip-border-radius);
+  }
+
+  .irs-max,
+  .irs-min {
+    top: 0;
+    color: $irs-minmax-color;
+    background: $irs-minmax-bg;
+  }
+
+  .irs-from,
+  .irs-single,
+  .irs-to {
+    color: $irs-label-color;
+    background: $irs-label-bg;
+    // Arrow below label tooltip
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border: $irs-tooltip-arrow-width solid transparent;
+      border-top-color: $irs-tooltip-arrow-color;
+      bottom: -#{$irs-tooltip-arrow-width * 2};
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+    }
+  }
+  // Grid elements styles
+  .irs-grid {
+    height: $irs-grid-height;
+  }
+
+  .irs-grid-pol {
+    background: $irs-grid-pol-color;
+  }
+
+  .irs-grid-text {
+    top: $irs-grid-text-spacer;
+    color: $irs-grid-text-color;
+    @include font-size($irs-grid-text-font-size);
+    font-weight: $irs-grid-text-font-weight;
+  }
+}

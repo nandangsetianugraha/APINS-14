@@ -1,0 +1,111 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Slider" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Slider", link: "form/advanced/slider.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/slider.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Ion range slider</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Ion Range Slider</strong> is easy to use, flexible and responsive range slider. For more info, you can visit <a href="http://ionden.com/a/plugins/ion.rangeSlider" target="_blank">plugin's page</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+          
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-1">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Min &amp; max</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-2">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Negative value</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-3">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Step</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-4">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Prefixes</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-5">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Fractional range &amp; step</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-6">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Postfixes</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-7">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Labels</label>
+              <div class="col-sm-7 col-lg-6">
+                <input type="text" id="slider-8">
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

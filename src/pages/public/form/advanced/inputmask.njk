@@ -1,0 +1,102 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Input Mask" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Input Mask", link: "form/advanced/inputmask.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/inputmask.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Input mask</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>JQuery Inputmask</strong> is a jQuery plugin which create an input mask. An input mask helps the user with the input by ensuring a predefined format. This can be useful for dates, numerics, phone numbers, etc. Look <a href="http://robinherbots.github.io/Inputmask" target="_blank">plugin's page</a> for more references.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Date format</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-1">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Phone number</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-2">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Expty format</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-3">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Repeating mask</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-4">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Currency</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-5">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">IP address</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-6">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Email address</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="inputmask-7">
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

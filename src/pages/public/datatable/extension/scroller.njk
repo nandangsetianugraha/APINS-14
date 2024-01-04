@@ -1,0 +1,48 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Scroller Extension" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Datatable" },
+  { text: "Extension" },
+  { text: "Scroller", link: "datatable/extension/scroller.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/datatable/extension/scroller.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Datatable scroller extension</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Scroller</strong> is a virtual rendering plug-in for Datatable which allows large datasets to be drawn on screen very quickly. What the virtual rendering means is that only the visible portion of the table (and a bit to either side to make the scrolling smooth) is drawn, while the scrolling container gives the visual impression that the whole table is visible.</p>
+          <p><strong>Scroller</strong> can be initialized on a Datatable by using the <code>scroller</code> option in the Datatable options object.</p>
+          <hr>
+
+          <!-- BEGIN Datatable -->
+          <table id="datatable-1" class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>ZIP / Post code</th>
+                <th>Country</th>
+              </tr>
+            </thead>
+          </table>
+          <!-- END Datatable -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

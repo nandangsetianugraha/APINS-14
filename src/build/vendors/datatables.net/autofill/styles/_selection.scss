@@ -1,0 +1,35 @@
+// Handle button on right bottom of table cell
+// Will show if you hover the cell
+.dt-autofill-handle {
+  position: absolute;
+  height: $datatable-autofill-handle-size;
+  width: $datatable-autofill-handle-size;
+  background-color: $datatable-autofill-handle-color;
+  // Remove default padding
+  padding: 0 !important;
+  cursor: pointer;
+  z-index: 102;
+
+  .dtk-focus-alt & {
+    background-color: $datatable-autofill-handle-focus-color;
+  }
+}
+
+// Border to mark selected area
+.dt-autofill-select {
+  background-color: $datatable-autofill-select-color;
+  position: absolute;
+  z-index: 1001;
+
+  &.bottom, &.top {
+    height: $datatable-autofill-select-width;
+    padding: 0 !important;
+    transform: translateY(-50%);
+  }
+
+  &.left, &.right {
+    width: $datatable-autofill-select-width;
+    padding: 0 !important;
+    transform: translateX(-50%);
+  }
+}

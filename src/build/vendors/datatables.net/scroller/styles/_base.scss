@@ -1,0 +1,44 @@
+.dts {
+  display: block !important;
+  
+  // Disable content wrapping
+  tbody td,
+  tbody th {
+    white-space: nowrap;
+  }
+
+  .dts_loading {
+    z-index: 1;
+  }
+
+  // Scroller loading label
+  .dts_label {
+    display: none;
+    position: absolute;
+    @include font-size($datatable-scroller-label-font-size);
+    padding: $datatable-scroller-label-padding;
+    right: $datatable-scroller-label-offset;
+    color: $datatable-scroller-label-color;
+    background-color: $datatable-scroller-label-bg;
+    border: $datatable-scroller-label-border-width solid $datatable-scroller-label-border-color;
+    z-index: 2;
+    @include border-radius($datatable-scroller-label-border-radius);
+  }
+
+  .dataTables_scrollBody {
+    background: $datatable-fixed-element-bg;
+
+    table {
+      z-index: 2;
+    }
+  }
+  // Hide length menu and pagination
+  .dataTables_length,
+  .dataTables_paginate {
+    display: none;
+  }
+}
+
+.DTS .dataTables_scrollBody table {
+  background: $datatable-fixed-element-bg;
+}

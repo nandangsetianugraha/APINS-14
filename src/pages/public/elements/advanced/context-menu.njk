@@ -1,0 +1,109 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Context Menu" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Context Menu", link: "elements/advanced/context-menu.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/context-menu.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Context menu</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>JQuery Context Menu</strong> was designed for web applications in need of menus on a possibly large amount of objects. Check more details by visiting <a href="http://swisnl.github.io/jQuery-contextMenu" target="_blank">the documentation</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic setup</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="context-menu-1">Right click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom icon</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="context-menu-2">Right click me</button>
+                </div>
+                <p class="mb-0">You can customize the icon with fontawesome</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Accesskeys</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="context-menu-3">Right click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Disabled command</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="context-menu-4">Right click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Keeping context menu open</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="context-menu-5">Right click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Submenu</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="context-menu-6">Right click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom triggers</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="context-menu-7">Click</button>
+                  <button class="btn btn-primary" id="context-menu-8">Hover</button>
+                </div>
+                <p class="mb-0">Reset the trigger by setting <code>trigger</code> property</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

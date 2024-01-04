@@ -1,0 +1,11 @@
+@mixin table-variant($state, $background) {
+  .table-#{$state} {
+    --#{$variable-prefix}table-bg: #{rgba($background, $table-bg-opacity)};
+    --#{$variable-prefix}table-striped-bg: #{rgba($background, $table-striped-opacity)};
+    --#{$variable-prefix}table-active-bg: #{rgba($background, $table-active-opacity)};
+    --#{$variable-prefix}table-hover-bg: #{rgba($background, $table-hover-opacity)};
+    --#{$variable-prefix}table-border-color: #{rgba($background, $table-border-opacity)};
+    --#{$variable-prefix}table-seperator-border-color: #{rgba($background, $table-border-separator-opacity)};
+    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-bg);
+  }
+}

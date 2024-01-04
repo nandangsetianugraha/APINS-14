@@ -1,0 +1,120 @@
+.jstree-icon {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	@include font-size($jstree-icon-size);
+	@include icon($pseudo: after, $weight: 400);
+
+	&,
+	&:empty {
+		display: inline-block;
+		width: $jstree-base-height;
+		height: $jstree-base-height;
+		line-height: $jstree-base-height;
+		margin: 0;
+		padding: 0;
+		vertical-align: top;
+		text-decoration: none;
+		text-align: center;
+	}
+}
+
+.jstree-anchor > .jstree-themeicon-hidden,
+.jstree-no-icons .jstree-themeicon {
+	display: none;
+}
+// Default icons
+.jstree-themeicon:after {
+	content: $jstree-icon-default;
+}
+
+.jstree-themeicon-custom:after {
+	content: '';
+}
+// Tool icons
+.jstree-open > .jstree-ocl:after {
+	content: $jstree-tool-icon-open;
+}
+
+.jstree-closed > .jstree-ocl:after {
+	content: $jstree-tool-icon-close-ltr#{'/*rtl:"#{$jstree-tool-icon-close-rtl}"*/'};
+}
+
+.jstree-loading > .jstree-ocl {
+	z-index: 2;
+	background: $jstree-tool-bg;
+
+	&:before {
+		display: none;
+	}
+	// Spinner
+	&:after {
+		content: '';
+		display: inline-block;
+		width: $jstree-icon-size;
+		height: $jstree-icon-size;
+		vertical-align: text-bottom;
+		border-radius: 50%;
+		animation: spinner-border $spinner-animation-speed linear infinite;
+		border: $jstree-tool-spinner-width solid $jstree-tool-color;
+		border-right-color: transparent;
+	}
+}
+// Checkbox icons
+.jstree-checkbox:after {
+	color: $jstree-tool-color;
+	content: $jstree-tool-icon-uncheck;
+}
+
+.jstree-undetermined:after {
+	color: $jstree-tool-color;
+	content: $jstree-tool-icon-undetermined;
+}
+
+.jstree-checked,
+.jstree-clicked {
+	&:not(.jstree-disabled) {
+		> .jstree-checkbox:after {
+			content: $jstree-tool-icon-check;
+		}
+	}
+}
+// Hide all checkboxes
+.jstree-no-checkboxes {
+	.jstree-checkbox {
+		display: none !important;
+	}
+}
+// Disabled checkbox behavior
+.jstree-checkbox-no-clicked {
+	// Remove clicked anchor appearence
+	.jstree-clicked {
+		color: $jstree-anchor-color;
+		background: $jstree-anchor-bg;
+
+		&.jstree-hovered {
+			color: $jstree-anchor-hover-color;
+			background: $jstree-anchor-hover-bg;
+		}
+	}
+
+	> .jstree-wholerow-ul .jstree-wholerow-clicked {
+		color: $jstree-anchor-color;
+		background: $jstree-anchor-bg;
+
+		&.jstree-wholerow-hovered {
+			color: $jstree-anchor-hover-color;
+			background: $jstree-anchor-hover-bg;
+		}
+	}
+
+	.jstree-checkbox:after,
+	.jstree-ocl:after {
+		color: $jstree-tool-color !important;
+	}
+	// Uncheck all checkboxes
+	.jstree-checkbox:after {
+		content: $jstree-tool-icon-uncheck !important;
+	}
+}

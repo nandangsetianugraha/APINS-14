@@ -1,0 +1,228 @@
+.daterangepicker {
+  position: absolute;
+  display: none;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  @include font-size($datepicker-font-size);
+  color: $datepicker-color;
+  background: $datepicker-bg;
+  border: $dropdown-border-width $border-style $dropdown-border-color;
+  @include border-radius($datepicker-border-radius);
+
+  .drp-calendar {
+    // Hide calendar by default
+    display: none;
+    padding: $datepicker-padding;
+  }
+
+  .calendar-table {
+    table {
+      width: 100%;
+      margin: 0;
+    }
+
+    // Calendar cell base styles
+    td,
+    th {
+      width: $datepicker-cell-dimension;
+      max-width: $datepicker-cell-dimension;
+      height: $datepicker-cell-dimension;
+      line-height: $datepicker-cell-dimension;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
+      cursor: pointer;
+      @include border-radius($datepicker-cell-border-radius);
+    }
+  }
+
+  td,
+  th {
+    // Hoverable effect for all available cell
+    &.available:hover {
+      color: $datepicker-cell-hover-color;
+      background: $datepicker-cell-hover-bg;
+    }
+
+    // Week cell styles
+    &.week {
+      color: $datepicker-week-color;
+      background: $datepicker-week-bg;
+      @include font-size($datepicker-week-font-size);
+    }
+  }
+
+  // Calendar cell states
+  td {
+    &.in-range {
+      color: $datepicker-cell-range-color;
+      background: $datepicker-cell-range-bg;
+      @include border-radius(0);
+    }
+
+    &.start-date {
+      @include border-end-radius(0);
+      @include border-start-radius($datepicker-cell-border-radius);
+    }
+
+    &.end-date {
+      @include border-start-radius(0);
+      @include border-end-radius($datepicker-cell-border-radius);
+    }
+
+    &.start-date.end-date {
+      @include border-radius($datepicker-cell-border-radius);
+    }
+
+    &.disabled {
+      &,
+      &:hover {
+        cursor: default;
+        color: $datepicker-cell-disabled-color;
+        background: $datepicker-cell-disabled-bg;
+      }
+    }
+
+    &.active {
+      &,
+      &:hover {
+        color: $datepicker-cell-active-color;
+        background: $datepicker-cell-active-bg;
+      }
+    }
+
+    &.off {
+      &,
+      &.active,
+      &.end-date,
+      &.in-range,
+      &.start-date,
+      &:hover {
+        color: $datepicker-cell-off-color;
+        background: $datepicker-cell-off-bg;
+      }
+    }
+  }
+
+  // Select elements for additional time information like month, year, hour, etc.
+  select {
+
+    // Add space beetween month and year select input
+    &.monthselect {
+      margin-right: $daterangepicker-input-spacer;
+    }
+
+    &.ampmselect,
+    &.hourselect,
+    &.minuteselect,
+    &.monthselect,
+    &.secondselect,
+    &.yearselect {
+      width: auto;
+    }
+  }
+
+  // Container for select elements
+  .calendar-time {
+    text-align: center;
+    margin-top: $daterangepicker-input-spacer;
+  }
+
+  // Container for button elements
+  .drp-buttons {
+
+    // Hide element by default
+    display: none;
+    text-align: right;
+    padding: $datepicker-padding;
+    clear: both;
+    border-top: $dropdown-border-width $border-style $dropdown-border-color;
+
+    // Add space to button elements
+    .btn {
+      margin-left: $daterangepicker-input-spacer;
+    }
+  }
+
+  .next,
+  .prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span { display: none; }
+  }
+
+  .prev {
+    @include caret(start) {
+      left: 1px;
+    };
+  }
+
+  .next {
+    @include caret(end) {
+      right: 2px;
+    };
+  }
+
+  // Display information about dates are selected
+  .drp-selected {
+    display: none;
+    padding-right: $daterangepicker-input-spacer;
+  }
+
+  // Menu element contain predefined value
+  .ranges {
+    margin: 0;
+    text-align: left;
+
+    ul {
+      width: 100%;
+      padding: $daterangepicker-menu-padding-y 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $daterangepicker-item-color;
+      padding: $daterangepicker-item-padding-y $daterangepicker-item-padding-x;
+      cursor: pointer;
+
+      &:hover {
+        color: $daterangepicker-item-hover-color;
+        background: $daterangepicker-item-hover-bg;
+      }
+
+      &.active,
+      &:active {
+        color: $daterangepicker-item-active-color;
+        background: $daterangepicker-item-active-bg;
+      }
+    }
+  }
+
+  // Styles for single calendar
+  &.single {
+    .drp-selected {
+      display: none;
+    }
+  }
+
+  // Show calendar elements when triggered
+  &.show-calendar {
+    .drp-buttons,
+    .drp-calendar {
+      display: block;
+    }
+  }
+
+  // Hide buttons when auto apply feature is enabled
+  &.auto-apply .drp-buttons {
+    display: none;
+  }
+}

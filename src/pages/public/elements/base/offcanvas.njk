@@ -1,0 +1,190 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Offcanvas" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Offcanvas", link: "elements/base/offcanvas.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Offcanvas examples</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1">Click me</button>
+                </div>
+                <p class="mb-0">Add <code>data-bs-toggle="offcanvas"</code> and set <code>data-bs-target</code> attributes to initialize offcanvas trigger</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Placements</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2">Start</button>
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas3">End</button>
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas4">Top</button>
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas5">Bottom</button>
+                </div>
+                <p class="mb-0">You can add <code>.offcanvas-{start|end|top|bottom}</code> class to <code>.offcanvas</code> element to set the position</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Backdrop</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas6">Enabled</button>
+                  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas7">Disabled</button>
+                </div>
+                <p class="mb-0">Set <code>data-bs-backdrop</code> attribute with <code>true|false</code> value to toggle the backdrop</p>
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block offcanvas %}
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-start" id="offcanvas1">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Basic offcanvas</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-start" id="offcanvas2">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas start</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-end" id="offcanvas3">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas end</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-top" id="offcanvas4">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas top</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-bottom" id="offcanvas5">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas bottom</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-start" id="offcanvas6" data-bs-backdrop="true">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas with backdrop</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+  <!-- BEGIN Offcanvas -->
+  <div class="offcanvas offcanvas-start" id="offcanvas7" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Offcanvas without backdrop</h5>
+      <button class="btn btn-label-danger btn-icon" data-bs-dismiss="offcanvas">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+  </div>
+  <!-- END Offcanvas -->
+
+{% endblock %}

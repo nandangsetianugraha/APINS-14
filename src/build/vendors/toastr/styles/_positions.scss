@@ -1,0 +1,59 @@
+.toast-top-center {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-bottom-center {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-bottom-full-width {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-top-left {
+  top: $toastr-position-offset;
+  left: $toastr-position-offset;
+}
+
+.toast-top-right {
+  top: $toastr-position-offset;
+  right: $toastr-position-offset;
+}
+
+.toast-bottom-right {
+  right: $toastr-position-offset;
+  bottom: $toastr-position-offset;
+}
+
+.toast-bottom-left {
+  bottom: $toastr-position-offset;
+  left: $toastr-position-offset;
+}
+
+#toast-container {
+  &.toast-bottom-center > div,
+  &.toast-top-center > div {
+    width: $toastr-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.toast-bottom-full-width > div,
+  &.toast-top-full-width > div {
+    width: $toastr-fluid-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

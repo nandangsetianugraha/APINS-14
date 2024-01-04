@@ -1,0 +1,110 @@
+.dataTable {
+  clear: both;
+  margin-top: $datatable-spacer !important;
+  margin-bottom: $datatable-spacer !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+
+  th, td {
+    box-sizing: content-box;
+  }
+
+  &.nowrap {
+    th, td { white-space: nowrap; }
+  }
+
+  .dt-left { text-align: left; }
+  .dt-right { text-align: right; }
+  .dt-center, .dataTables_empty { text-align: center; }
+  .dt-justify { text-align: justify; }
+  .dt-nowrap { white-space: nowrap; }
+
+  thead,
+  tfoot {
+    .dt-head-left { text-align: left; }
+    .dt-head-right { text-align: right; }
+    .dt-head-center { text-align: center; }
+    .dt-head-justify { text-align: justify; }
+    .dt-head-nowrap { white-space: nowrap; }
+  }
+
+  tbody {
+    .dt-body-left { text-align: left; }
+    .dt-body-right { text-align: right; }
+    .dt-body-center { text-align: center; }
+    .dt-body-justify { text-align: justify; }
+    .dt-body-nowrap { white-space: nowrap; }
+  }
+
+  thead {
+    > tr > th,
+    > tr > td {
+      &:active {
+        outline: none;
+      }
+
+      &:not(.sorting_disabled) {
+        padding-right: $datatable-sorting-spacer;
+      }
+    }
+
+    // Add space for arrow beside table header
+    .sorting,
+    .sorting_asc,
+    .sorting_desc,
+    .sorting_asc_disabled,
+    .sorting_desc_disabled {
+      cursor: pointer;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .sorting_asc,
+    .sorting_desc,
+    .sorting_asc_disabled,
+    .sorting_desc_disabled {
+      position: relative;
+      cursor: pointer;
+    }
+
+    // Add arrow for table columns sorting
+    .sorting_desc,
+    .sorting_desc_disabled {
+      @include caret(down) {
+        position: absolute;
+        bottom: 45%;
+        color: $datatable-sorting-color;
+        right: $datatable-sorting-offset;
+        transition: none !important;
+      }
+    }
+
+    .sorting_asc,
+    .sorting_asc_disabled {
+      @include caret(up) {
+        position: absolute;
+        top: 45%;
+        color: $datatable-sorting-color;
+        right: $datatable-sorting-offset;
+        transition: none !important;
+      }
+    }
+
+    // Show caret 
+    .sorting_asc,
+    .sorting_desc {
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    // Hide caret 
+    .sorting_asc_disabled,
+    .sorting_desc_disabled {
+      &:after {
+        opacity: 0;
+      }
+    }
+  }
+}

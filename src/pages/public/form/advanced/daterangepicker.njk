@@ -1,0 +1,105 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Date Range Picker" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Date Range Picker", link: "form/advanced/daterangepicker.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/daterangepicker.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Date range picker</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Date Range Picker</strong> is javascript component for choosing date ranges, dates and times. For more info please visit the plugin's <a href="http://www.daterangepicker.com" target="_blank">homepage</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-1" value="02/06/2020 - 02/20/2020">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Date and time picker</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-2" value="02/06/2020 - 02/20/2020">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Single picker</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-3" value="02/15/2020">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Predefined picker</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input class="form-control" type="text" id="daterangepicker-4" value="02/06/2020 - 02/20/2020">
+                </div>
+                <p class="mb-0">Replace default calendar with predefined time list</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Disabled date</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-5" autocomplete="off">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Complex form</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-6" value="02/06/2020 - 02/20/2020">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Locale</label>
+              <div class="col-sm-5 col-lg-4">
+                <input class="form-control" type="text" id="daterangepicker-7" value="02/06/2020 - 02/20/2020">
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

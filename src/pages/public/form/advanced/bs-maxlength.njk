@@ -1,0 +1,102 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Bootstrap Maxlength" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Bootstrap Maxlength", link: "form/advanced/bs-maxlength.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/bs-maxlength.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Bootstrap maxlength</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Bootstrap Maxlength</strong> a visual feedback indicator for the maxlength attribute. <strong>Bootstrap Maxlength</strong> uses a Bootstrap's badge to show a visual feedback to the user about the maximum length of the field where the user is inserting text. Visit <a href="http://mimo84.github.io/bootstrap-maxlength" target="_blank">Bootstrap Maxlength's page</a> to look more examples and references.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" id="maxlength-1" maxlength="5" placeholder="Type here...">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Threshold</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" id="maxlength-2" maxlength="8" placeholder="Type here...">
+                </div>
+                <p class="mb-0">Use the <code>threshold</code> option to show up badge when there are some chars</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Always show</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" id="maxlength-3" maxlength="8" placeholder="Type here...">
+                </div>
+                <p class="mb-0">If the <code>alwaysShow</code> option is enabled, the <code>threshold</code> option is ignored.</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom text</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" id="maxlength-4" maxlength="8" placeholder="Type here...">
+                </div>
+                <p class="mb-0">Set and combine <code>separator</code>, <code>preText</code> and <code>postText</code> classes to set custom message to the badge.</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Positions</label>
+              <div class="col-sm-5 col-lg-4">
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid gap-3">
+                  <input type="text" class="form-control" id="maxlength-5" maxlength="8" placeholder="Top right">
+                  <input type="text" class="form-control" id="maxlength-6" maxlength="8" placeholder="Bottom right">
+                  <input type="text" class="form-control" id="maxlength-7" maxlength="8" placeholder="Top left">
+                  <input type="text" class="form-control" id="maxlength-8" maxlength="8" placeholder="Bottom left">
+                </div>
+                <!-- END Grid -->
+
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

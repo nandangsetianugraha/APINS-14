@@ -1,0 +1,47 @@
+.widget3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget3-display {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: $widget3-spacer 0;
+}
+
+.widget3-title {
+  color: $widget3-title-color;
+  @include font-size($widget3-title-font-size);
+  font-weight: $widget3-title-font-weight;
+  padding: 0;
+  margin: 0;
+}
+
+.widget3-subtitle {
+  color: $widget3-subtitle-color;
+  @include font-size($widget3-subtitle-font-size);
+  font-weight: $widget3-subtitle-font-weight;
+  bottom: 0;
+}
+
+.widget3-sm {
+  .widget3-title {
+    @include font-size($widget3-title-font-size-sm);
+  }
+
+  .widget3-subtitle {
+    @include font-size($widget3-subtitle-font-size-sm);
+  }
+}
+
+@include media-breakpoint-down("sm") {
+  .widget3-title {
+    @include font-size($widget3-title-font-size-sm);
+  }
+
+  .widget3-subtitle {
+    @include font-size($widget3-subtitle-font-size-sm);
+  }
+}

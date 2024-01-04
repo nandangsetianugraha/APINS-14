@@ -1,0 +1,58 @@
+// Tool group on the top right of chart
+.apexcharts-toolbar {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  padding: $apexchart-toolbar-padding-y $apexchart-toolbar-padding-x;
+  z-index: 11;
+  max-width: $apexchart-menu-max-width;
+  @include border-radius($apexchart-menu-border-radius);
+}
+
+// Tool dropdown menu
+.apexcharts-menu {
+  position: absolute;
+  min-width: $apexchart-menu-min-width;
+  padding: $apexchart-menu-padding-y 0;
+  background: $apexchart-menu-bg;
+  border: $apexchart-menu-border-width $border-style $apexchart-menu-border-color;
+  opacity: 0;
+  pointer-events: none;
+  /* rtl:begin:ignore */
+  top: 100%;
+  right: 0;
+  /* rtl:end:ignore */
+  @include border-radius($apexchart-menu-border-radius);
+  @include transition($apexchart-menu-transition);
+
+  &.apexcharts-menu-open {
+    opacity: 1;
+    pointer-events: all;
+    @include transition($apexchart-menu-transition);
+  }
+}
+
+// Dropdown menu options
+.apexcharts-menu-item {
+  display: flex;
+  align-items: center;
+  color: $apexchart-menu-item-color;
+  @include font-size($apexchart-menu-item-font-size);
+  font-weight: $apexchart-menu-item-font-weight;
+  padding: $apexchart-menu-item-padding-y $apexchart-menu-item-padding-x;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    color: $apexchart-menu-item-hover-color;
+    background: $apexchart-menu-item-hover-bg;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}

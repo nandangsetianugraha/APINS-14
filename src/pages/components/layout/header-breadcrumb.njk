@@ -1,0 +1,19 @@
+<!-- BEGIN Breadcrumb -->
+<div class="breadcrumb breadcrumb-transparent mb-0">
+  {% for data in breadcrumb %}
+    {% if data.link %}
+      {% set link = data.link %}
+    {% else %}
+      {% set link = "#" %}
+    {% endif %}
+    <a href="{{ link }}" class="breadcrumb-item">
+      {% if data.icon %}
+        <div class="breadcrumb-icon">
+          {{ data.icon | safe }}
+        </div>
+      {% endif %}
+      <span class="breadcrumb-text">{{ data.text }}</span>
+    </a>
+  {% endfor %}
+</div>
+<!-- END Breadcrumb -->

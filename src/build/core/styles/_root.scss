@@ -1,0 +1,102 @@
+:root {
+  // Note: Custom variable values only support SassScript inside `#{}`.
+
+  // Colors
+  //
+  // Generate palettes for full colors, grays, and theme colors.
+
+  @each $color, $value in $colors {
+    --#{$variable-prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $grays {
+    --#{$variable-prefix}gray-#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors {
+    --#{$variable-prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-rgb {
+    --#{$variable-prefix}#{$color}-rgb: #{$value};
+  }
+
+  --#{$variable-prefix}white-rgb: #{to-rgb($white)};
+  --#{$variable-prefix}black-rgb: #{to-rgb($black)};
+  --#{$variable-prefix}body-color-rgb: #{$body-color};
+  --#{$variable-prefix}body-bg-rgb: #{$body-bg};
+
+  // Fonts
+
+  // Note: Use `inspect` for lists so that quoted items keep the quotes.
+  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+  --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
+  --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
+  --#{$variable-prefix}gradient: #{$gradient};
+
+  // Root and body
+  @if $font-size-root != null {
+    --#{$variable-prefix}root-font-size: #{$font-size-root};
+  }
+  --#{$variable-prefix}body-font-family: #{$font-family-base};
+  @include rfs($font-size-base, --#{$variable-prefix}body-font-size);
+  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
+  --#{$variable-prefix}body-line-height: #{$line-height-base};
+  --#{$variable-prefix}body-color: #{$body-color};
+  @if $body-text-align != null {
+    --#{$variable-prefix}body-text-align: #{$body-text-align};
+  }
+  --#{$variable-prefix}body-bg: #{$body-bg};
+
+  --#{$variable-prefix}border-width: #{$border-width};
+  --#{$variable-prefix}border-style: #{$border-style};
+  --#{$variable-prefix}border-color: #{$border-color};
+  --#{$variable-prefix}border-color-translucent: #{$border-color-translucent};
+
+  --#{$variable-prefix}border-radius: #{$border-radius};
+  --#{$variable-prefix}border-radius-sm: #{$border-radius-sm};
+  --#{$variable-prefix}border-radius-lg: #{$border-radius-lg};
+  --#{$variable-prefix}border-radius-xl: #{$border-radius-xl};
+  --#{$variable-prefix}border-radius-2xl: #{$border-radius-2xl};
+  --#{$variable-prefix}border-radius-pill: #{$border-radius-pill};
+
+  --#{$variable-prefix}link-color: #{$link-color};
+  --#{$variable-prefix}link-hover-color: #{$link-hover-color};
+
+  --#{$variable-prefix}code-color: #{$code-color};
+  --#{$variable-prefix}code-bg: #{$code-bg};
+
+  --#{$variable-prefix}highlight-bg: #{$mark-bg};
+}
+
+[data-theme="light"] {
+  --#{$variable-prefix}body-bg: #{$body-bg-light};
+
+  --#{$variable-prefix}text-level-1: #{$text-level-1-light};
+  --#{$variable-prefix}text-level-2: #{$text-level-2-light};
+  --#{$variable-prefix}text-level-3: #{$text-level-3-light};
+  --#{$variable-prefix}text-level-4: #{$text-level-4-light};
+
+  --#{$variable-prefix}bg-level-1: #{$bg-level-1-light};
+  --#{$variable-prefix}bg-level-2: #{$bg-level-2-light};
+  --#{$variable-prefix}bg-level-3: #{$bg-level-3-light};
+  --#{$variable-prefix}bg-level-4: #{$bg-level-4-light};
+  
+  --#{$variable-prefix}border-color: #{$border-color-light};
+}
+
+[data-theme="dark"] {
+  --#{$variable-prefix}body-bg: #{$body-bg-dark};
+
+  --#{$variable-prefix}text-level-1: #{$text-level-1-dark};
+  --#{$variable-prefix}text-level-2: #{$text-level-2-dark};
+  --#{$variable-prefix}text-level-3: #{$text-level-3-dark};
+  --#{$variable-prefix}text-level-4: #{$text-level-4-dark};
+
+  --#{$variable-prefix}bg-level-1: #{$bg-level-1-dark};
+  --#{$variable-prefix}bg-level-2: #{$bg-level-2-dark};
+  --#{$variable-prefix}bg-level-3: #{$bg-level-3-dark};
+  --#{$variable-prefix}bg-level-4: #{$bg-level-4-dark};
+
+  --#{$variable-prefix}border-color: #{$border-color-dark};
+}

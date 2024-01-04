@@ -1,0 +1,340 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Button Group" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Button Group", link: "elements/base/button-group.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group">
+            <button class="btn btn-primary">Left</button>
+            <button class="btn btn-primary">Middle</button>
+            <button class="btn btn-primary">Right</button>
+          </div>
+          <!-- END Button Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Toolbar</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-2">
+          
+            <!-- BEGIN Button Toolbar -->
+            <div class="btn-toolbar">
+              <div class="btn-group me-2">
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-primary">2</button>
+                <button class="btn btn-primary">3</button>
+                <button class="btn btn-primary">4</button>
+              </div>
+              <div class="btn-group me-2">
+                <button class="btn btn-primary">5</button>
+                <button class="btn btn-primary">6</button>
+                <button class="btn btn-primary">7</button>
+              </div>
+              <div class="btn-group">
+                <button class="btn btn-primary">8</button>
+              </div>
+            </div>
+            <!-- END Button Toolbar -->
+
+            <!-- BEGIN Button Toolbar -->
+            <div class="btn-toolbar">
+              <div class="btn-group me-2">
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-primary">2</button>
+                <button class="btn btn-primary">3</button>
+                <button class="btn btn-primary">4</button>
+              </div>
+
+              <!-- BEGIN Input Group -->
+              <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Input group example">
+              </div>
+              <!-- END Input Group -->
+
+            </div>
+            <!-- END Button Toolbar -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Nesting</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group">
+            <button class="btn btn-primary">1</button>
+            <button class="btn btn-primary">2</button>
+
+            <!-- BEGIN Dropdown -->
+            <div class="btn-group">
+              <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>
+              <div class="dropdown-menu dropdown-menu-start">
+                <a class="dropdown-item" href="#">Link</a>
+                <a class="dropdown-item" href="#">Link</a>
+              </div>
+            </div>
+            <!-- END Dropdown -->
+
+          </div>
+          <!-- END Button Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Vertical</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Make a set of buttons appear vertically stacked rather than horizontally</p>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group-vertical me-2">
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+          </div>
+          <!-- END Button Group -->
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group-vertical">
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+
+            <!-- BEGIN Dropdown -->
+            <div class="btn-group">
+              <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>
+              <div class="dropdown-menu dropdown-menu-start">
+                <a class="dropdown-item" href="#">Link</a>
+                <a class="dropdown-item" href="#">Link</a>
+              </div>
+            </div>
+            <!-- END Dropdown -->
+
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+            <button class="btn btn-primary">Button</button>
+          </div>
+          <!-- END Button Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sizing</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-{sm|lg}</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group btn-group-lg mb-2">
+            <button class="btn btn-primary">Left</button>
+            <button class="btn btn-primary">Middle</button>
+            <button class="btn btn-primary">Right</button>
+          </div>
+          <!-- END Button Group -->
+
+          <br>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group mb-2">
+            <button class="btn btn-primary">Left</button>
+            <button class="btn btn-primary">Middle</button>
+            <button class="btn btn-primary">Right</button>
+          </div>
+          <!-- END Button Group -->
+
+          <br>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-primary">Left</button>
+            <button class="btn btn-primary">Middle</button>
+            <button class="btn btn-primary">Right</button>
+          </div>
+          <!-- END Button Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Split button</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of <code>.dropdown-toggle-split</code> for proper spacing around the dropdown caret.</p>
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group me-2">
+            <button class="btn btn-primary">Dropdown</button>
+            <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Action</a>
+              <a href="#" class="dropdown-item">Another action</a>
+              <a href="#" class="dropdown-item">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Separated link</a>
+            </div>
+          </div>
+          <!-- END Button Group -->
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group dropup me-2">
+            <button class="btn btn-primary">Dropup</button>
+            <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Action</a>
+              <a href="#" class="dropdown-item">Another action</a>
+              <a href="#" class="dropdown-item">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Separated link</a>
+            </div>
+          </div>
+          <!-- END Button Group -->
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group dropend me-2">
+            <button class="btn btn-primary">Dropend</button>
+            <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Action</a>
+              <a href="#" class="dropdown-item">Another action</a>
+              <a href="#" class="dropdown-item">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Separated link</a>
+            </div>
+          </div>
+          <!-- END Button Group -->
+
+          <!-- BEGIN Button Group -->
+          <div class="btn-group">
+            <div class="btn-group dropstart">
+              <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Action</a>
+                <a href="#" class="dropdown-item">Another action</a>
+                <a href="#" class="dropdown-item">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Separated link</a>
+              </div>
+            </div>
+            <button class="btn btn-primary">Dropstart</button>
+          </div>
+          <!-- END Button Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Checkbox and radio button</h3>
+        </div>
+        <div class="portlet-body pb-0">
+          <p>Combine button-like checkbox and radio toggle buttons into a seamless looking button group.</p>
+          
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">Radio</h3>
+            </div>
+            <div class="portlet-body">
+
+              <!-- BEGIN Button Group -->
+              <div class="btn-group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+              </div>
+              <!-- END Button Group -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">Checkbox</h3>
+            </div>
+            <div class="portlet-body">
+
+              <!-- BEGIN Button Group -->
+              <div class="btn-group">
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+              </div>
+              <!-- END Button Group -->
+
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

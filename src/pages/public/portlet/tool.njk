@@ -1,0 +1,115 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Portlet Tool" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Portlet" },
+  { text: "Tool", link: "portlet/tool.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/portlet/tool.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Remove portlet</h3>
+          <div class="portlet-addon">
+            <button class="btn btn-text-danger btn-icon" data-toggle="portlet" data-target="parent" data-behavior="destroy">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">With footer</h3>
+          <div class="portlet-addon">
+            <button class="btn btn-label-info btn-icon" data-toggle="portlet" data-target="parent" data-behavior="toggleCollapse">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Collapsible portlet</h3>
+          <div class="portlet-addon">
+            <button class="btn btn-label-info btn-icon" data-toggle="portlet" data-target="parent" data-behavior="toggleCollapse">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet portlet-collapsed">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Collapsed portlet</h3>
+          <div class="portlet-addon">
+            <button class="btn btn-label-info btn-icon" data-toggle="portlet" data-target="parent" data-behavior="toggleCollapse">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Group of tool</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Button Group -->
+            <div class="btn-group">
+              <button class="btn btn-flat-primary btn-icon" data-toggle="portlet" data-target="parent" data-behavior="toggleCollapse">
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <button class="btn btn-flat-primary btn-icon" data-toggle="portlet" data-target="parent" data-behavior="destroy">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+            <!-- END Button Group -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

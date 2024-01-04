@@ -130,13 +130,14 @@ $querys = $connect->query("select * from penempatan where rombel='$kelas' and ta
       $cell[$i][4]="";
       $i++;
     }
-
+	
 
    //$pdf = new PDF('P','cm',array(21.5,33));
    $pdf = new PDF('P','cm','A4');
    $pdf->AliasNbPages();
    $pdf->AddPage();
    //$pdf->SetFont('Arial','','9');
+   
    $pdf->SetTextColor(0,0,0);
    $pdf->SetTitle("Daftar Hadir Peserta ~ APINS");
    $pdf->SetAuthor("APINS");
@@ -172,7 +173,34 @@ if($jumlahpeserta<20){
    //$ket2 = F_GetKeterangan2();
    //$ket3 = F_GetKeterangan3();
    //$proktor = F_GetNamaPengawas1();
-   
+   $pdf->Ln(0.7);
+   $pdf->SetFont('Times','','12');
+   $pdf->Cell(13,0.5,'',0,0,'L');
+   $pdf->Cell(4,0.5,'Wali Kelas '.$kelas,0,0,'C');
+   $pdf->Ln(0.1);
+   $pdf->MultiCell(13.5,0.5,'',0,'J',0);
+   $pdf->Ln(0.1);
+   $pdf->Cell(0.5,0.5,'',0,0,'L');
+   $pdf->MultiCell(11,0.5,'',0,'J',0);
+   $pdf->Ln(0.1);
+   $pdf->Cell(0.5,0.5,'',0,0,'L');
+   $pdf->MultiCell(11,0.5,'',0,'J',0);
+   $pdf->Ln(0.1);
+   $pdf->Cell(0.5,0.5,'',0,0,'L');
+   $pdf->MultiCell(11,0.5,'',0,'J',0);
+   //$pdf->Cell(13,0.5,'Tembusan :',0,0,'L');
+   $pdf->Ln(0.2);
+   $pdf->Cell(13);
+   $pdf->SetFont('Times','B','12');
+   $nwalas = $connect->query("select * from rombel where nama_rombel='$kelas' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
+   $idwl=$nwalas['wali_kelas'];
+   $nptk = $connect->query("select * from ptk where ptk_id='$idwl'")->fetch_assoc();
+   if(empty($nptk['gelar']) or $nptk['gelar']==''){
+	   $namawl=$nptk['nama'];
+   }else{
+	   $namawl=$nptk['nama'].', '.$nptk['gelar'];
+   };
+   $pdf->Cell(4,0.5,$namawl,0,0,'C');
 
 
    

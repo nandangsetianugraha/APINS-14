@@ -1,0 +1,64 @@
+.widget10 {
+  display: flex;
+  flex-direction: row;
+}
+
+.widget10-item {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $widget10-item-padding;
+
+  + .widget10-item {
+    border-left: $widget10-border-width $border-style $widget10-border-color;
+  }
+}
+
+.widget10-content {
+  flex: 1;
+}
+
+.widget10-subtitle,
+.widget10-title {
+  padding: $widget10-content-spacer 0;
+  margin: 0;
+}
+
+.widget10-title {
+  color: $widget10-title-color;
+  @include font-size($widget10-title-font-size);
+  font-weight: $widget10-title-font-weight;
+}
+
+.widget10-subtitle {
+  color: $widget10-subtitle-color;
+  @include font-size($widget10-subtitle-font-size);
+  font-weight: $widget10-subtitle-font-weight;
+}
+
+.widget10-addon {
+  white-space: nowrap;
+  margin-left: $widget10-addon-spacer;
+}
+
+.widget10-avatar {
+  margin: 0 !important;
+  @include font-size($widget10-avatar-font-size);
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  .widget10-vertical#{$infix} {
+    @include media-breakpoint-down($breakpoint) {
+      flex-direction: column;
+
+      .widget10-item + .widget10-item {
+        border-left: 0;
+        border-top: $widget10-border-width $border-style $widget10-border-color;
+      }
+    }
+  }
+}

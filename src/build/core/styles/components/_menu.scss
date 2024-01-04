@@ -1,0 +1,184 @@
+// Base styles
+
+.menu {
+  --#{$variable-prefix}menu-link-height: #{$menu-link-height};
+  --#{$variable-prefix}menu-link-padding-x: #{$menu-link-padding-x};
+  --#{$variable-prefix}menu-link-bg: #{$menu-link-bg};
+  --#{$variable-prefix}menu-link-color: #{$menu-link-color};
+  --#{$variable-prefix}menu-link-hover-color: #{$menu-link-color};
+
+  [data-theme="light"] & {
+    --#{$variable-prefix}menu-link-hover-bg: #{$menu-link-hover-bg-light};
+  }
+  
+  [data-theme="dark"] & {
+    --#{$variable-prefix}menu-link-hover-bg: #{$menu-link-hover-bg-dark};
+  }
+
+  --#{$variable-prefix}menu-link-active-bg: #{$menu-link-active-bg};
+  --#{$variable-prefix}menu-link-active-color: #{$menu-link-active-color};
+  @include rfs($menu-link-font-size, --#{$variable-prefix}menu-link-font-size);
+  --#{$variable-prefix}menu-link-font-weight: #{$menu-link-font-weight};
+  --#{$variable-prefix}menu-link-icon-dimension: #{$menu-link-icon-dimension};
+  --#{$variable-prefix}menu-link-icon-size: #{$menu-link-icon-size};
+  --#{$variable-prefix}menu-link-text-spacer: #{$menu-link-text-spacer};
+  --#{$variable-prefix}menu-link-addon-spacer: #{$menu-link-addon-spacer};
+  --#{$variable-prefix}menu-link-caret-spacer: #{$menu-link-caret-spacer};
+
+  [data-theme="light"] & {
+    --#{$variable-prefix}menu-submenu-bg: #{$menu-submenu-bg-light};
+  }
+  
+  [data-theme="dark"] & {
+    --#{$variable-prefix}menu-submenu-bg: #{$menu-submenu-bg-dark};
+  }
+
+  --#{$variable-prefix}menu-submenu-transition: #{$menu-submenu-transition};
+  --#{$variable-prefix}menu-section-height: #{$menu-section-height};
+  --#{$variable-prefix}menu-section-spacer: #{$menu-section-spacer};
+  --#{$variable-prefix}menu-section-text-spacer: #{$menu-section-text-spacer};
+  --#{$variable-prefix}menu-section-color: #{$menu-section-color};
+  @include rfs($menu-section-font-size, --#{$variable-prefix}menu-section-font-size);
+  --#{$variable-prefix}menu-section-font-weight: #{$menu-section-font-weight};
+
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu-item-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--#{$variable-prefix}menu-link-height);
+  max-height: var(--#{$variable-prefix}menu-link-height);
+  color: var(--#{$variable-prefix}menu-link-color);
+  background: var(--#{$variable-prefix}menu-link-bg);
+  padding: 0 var(--#{$variable-prefix}menu-link-padding-x);
+  text-align: left;
+  text-decoration: none;
+  border: 0;
+  outline: 0 !important;
+
+  // Hover state
+  &:hover {
+    color: var(--#{$variable-prefix}menu-link-hover-color);
+    background-color: var(--#{$variable-prefix}menu-link-hover-bg);
+  }
+
+  // Active and focus state
+  &.active,
+  &:not(.menu-item-toggle):focus {
+    color: var(--#{$variable-prefix}menu-link-active-color) !important;
+    background-color: var(--#{$variable-prefix}menu-link-active-bg) !important;
+
+    // Rotate caret
+    .menu-item-caret {
+      @include caret-transform(down);
+    }
+  }
+}
+
+.menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--#{$variable-prefix}menu-link-icon-dimension);
+  min-width: var(--#{$variable-prefix}menu-link-icon-dimension);
+  height: var(--#{$variable-prefix}menu-link-icon-dimension);
+  @include icon-size(var(--#{$variable-prefix}menu-link-icon-size));
+}
+
+.menu-item-bullet {
+  position: relative;
+  width: var(--#{$variable-prefix}menu-link-icon-dimension);
+  min-width: var(--#{$variable-prefix}menu-link-icon-dimension);
+  height: var(--#{$variable-prefix}menu-link-icon-dimension);
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: $menu-bullet-dimension;
+    height: $menu-bullet-dimension;
+    background: currentColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+}
+
+.menu-item-text {
+  width: 100%;
+  color: inherit;
+  @include font-size(var(--#{$variable-prefix}menu-link-font-size));
+  font-weight: var(--#{$variable-prefix}menu-link-font-weight);
+  margin: 0 var(--#{$variable-prefix}menu-link-text-spacer);
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item-addon {
+  white-space: nowrap;
+  margin: 0 var(--#{$variable-prefix}menu-link-addon-spacer);
+}
+
+.menu-item-caret {
+  margin: 0 var(--#{$variable-prefix}menu-link-caret-spacer);
+}
+// Section styles
+
+.menu-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: var(--#{$variable-prefix}menu-section-height);
+  padding-left: var(--#{$variable-prefix}menu-section-spacer);
+}
+
+.menu-section-text {
+  color: var(--#{$variable-prefix}menu-section-color);
+  @include font-size(var(--#{$variable-prefix}menu-section-font-size));
+  font-weight: var(--#{$variable-prefix}menu-section-font-weight);
+  padding: 0 var(--#{$variable-prefix}menu-section-text-spacer);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// Nesting submenu styles for 3 level
+
+.menu-submenu {
+  overflow: hidden;
+  background-color: var(--#{$variable-prefix}menu-submenu-bg);
+  @include transition(var(--#{$variable-prefix}menu-submenu-transition));
+
+  & {
+    .menu-item-link {
+      padding-left: calc(2 * var(--#{$variable-prefix}menu-link-padding-x));
+    }
+  }
+
+  #{&} {
+    .menu-item-link {
+      padding-left: calc(3 * var(--#{$variable-prefix}menu-link-padding-x));
+    }
+  }
+
+  #{&} #{&} {
+    .menu-item-link {
+      padding-left: calc(4 * var(--#{$variable-prefix}menu-link-padding-x));
+    }
+  }
+}

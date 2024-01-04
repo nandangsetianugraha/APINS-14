@@ -1,0 +1,64 @@
+// Main canvas container
+
+@keyframes opaque {
+  0% { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes resizeanim {
+  0%, to { opacity: 0 }
+}
+
+.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+
+  /* scrollbar is not visible by default for legend, hence forcing the visibility */
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: $apexchart-scrollbar-width;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $apexchart-scrollbar-color;
+    opacity: $apexchart-scrollbar-opacity;
+    @include border-radius($apexchart-scrollbar-border-radius);
+  }
+}
+
+.legend-mouseover-inactive {
+  opacity: .2;
+}
+
+.apexcharts-legend-text {
+  padding-left: 15px;
+  margin-left: -15px;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.svg_select_points {
+  fill: $apexchart-select-point-color;
+  stroke: $apexchart-select-point-color;
+  rx: 2;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+
+  + g .svg_select_boundingRect,
+  + g .svg_select_points_rot {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  + g .svg_select_points_l,
+  + g .svg_select_points_r {
+    cursor: ew-resize;
+    opacity: 1;
+    visibility: visible;
+    fill: $apexchart-select-point-color;
+  }
+}

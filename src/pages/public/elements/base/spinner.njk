@@ -1,0 +1,179 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Spinner" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Spinner", link: "elements/base/spinner.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Spinners</strong> can be used to show the loading state in your projects. You can customize the color with text color utilities</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+
+              <!-- BEGIN Portlet -->
+              <div class="portlet mb-0">
+                <div class="portlet-header portlet-header-bordered">
+                  <h3 class="portlet-title">Border spinner</h3>
+                </div>
+                <div class="portlet-body">
+
+                  <!-- BEGIN Spinners -->
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-border text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <!-- END Spinners -->
+
+                </div>
+              </div>
+              <!-- END Portlet -->
+
+            </div>
+            <div class="col-md-6">
+
+              <!-- BEGIN Portlet -->
+              <div class="portlet mb-0">
+                <div class="portlet-header portlet-header-bordered">
+                  <h3 class="portlet-title">Growing spinner</h3>
+                </div>
+                <div class="portlet-body">
+
+                  <!-- BEGIN Spinners -->
+                  <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <!-- END Spinners -->
+
+                </div>
+              </div>
+              <!-- END Portlet -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sizing</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Add <code>.spinner-border-sm</code> and <code>.spinner-grow-sm</code> to make a smaller spinner or, use custom CSS or inline styles to change the dimensions as needed.</p>
+
+          <!-- BEGIN Spinners -->
+          <div class="spinner-border spinner-border-sm" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow spinner-grow-sm" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <!-- END Spinners -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Buttons</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Use spinners within buttons to indicate an action is currently processing or taking place</p>
+
+          <!-- BEGIN Button with spinner -->
+          <button class="btn btn-primary" type="button" disabled="disabled">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+          </button>
+          <button class="btn btn-primary" type="button" disabled="disabled">
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
+          <button class="btn btn-primary" type="button" disabled="disabled">
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+          </button>
+          <button class="btn btn-primary" type="button" disabled="disabled">
+            <span class="spinner-grow spinner-grow-sm me-2" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
+          <!-- END Button with spinner -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

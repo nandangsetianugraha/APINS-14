@@ -1,0 +1,157 @@
+// Base class
+.tooltip {
+  --#{$variable-prefix}tooltip-zindex: #{$zindex-tooltip};
+  --#{$variable-prefix}tooltip-max-width: #{$tooltip-max-width};
+  --#{$variable-prefix}tooltip-padding-x: #{$tooltip-padding-x};
+  --#{$variable-prefix}tooltip-padding-y: #{$tooltip-padding-y};
+  --#{$variable-prefix}tooltip-margin: #{$tooltip-margin};
+  @include rfs($tooltip-font-size, --#{$variable-prefix}tooltip-font-size);
+  --#{$variable-prefix}tooltip-color: #{$tooltip-color};
+  --#{$variable-prefix}tooltip-bg: #{$tooltip-bg};
+  --#{$variable-prefix}tooltip-border-width: #{$tooltip-border-width};
+  --#{$variable-prefix}tooltip-border-color: #{$tooltip-border-color};
+  --#{$variable-prefix}tooltip-border-radius: #{$tooltip-border-radius};
+  --#{$variable-prefix}tooltip-opacity: #{$tooltip-opacity};
+  --#{$variable-prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
+  --#{$variable-prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+
+  z-index: var(--#{$variable-prefix}tooltip-zindex);
+  display: block;
+  padding: var(--#{$variable-prefix}tooltip-arrow-height);
+  margin: var(--#{$variable-prefix}tooltip-margin);
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  @include font-size(var(--#{$variable-prefix}tooltip-font-size));
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+  opacity: 0;
+
+  &.show { opacity: var(--#{$variable-prefix}tooltip-opacity); }
+
+  .tooltip-arrow {
+    display: block;
+    width: var(--#{$variable-prefix}tooltip-arrow-width);
+    height: var(--#{$variable-prefix}tooltip-arrow-height);
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      border-color: transparent;
+      border-style: $border-style;
+    }
+  }
+}
+
+.bs-tooltip-top .tooltip-arrow {
+  bottom: 0;
+
+  &::after,
+  &::before {
+    border-width: var(--#{$variable-prefix}tooltip-arrow-height) calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+  }
+  
+  &::before {
+    top: 0;
+    border-top-color: var(--#{$variable-prefix}tooltip-border-color);
+  }
+  
+  &::after {
+    top: -1px;
+    border-top-color: var(--#{$variable-prefix}tooltip-bg);
+  }
+}
+
+/* rtl:begin:ignore */
+.bs-tooltip-end .tooltip-arrow {
+  left: 0;
+  width: var(--#{$variable-prefix}tooltip-arrow-height);
+  height: var(--#{$variable-prefix}tooltip-arrow-width);
+
+  &::after,
+  &::before {
+    border-width: calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height) calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+  }
+
+  &::before {
+    right: 0;
+    border-right-color: var(--#{$variable-prefix}tooltip-border-color);
+  }
+
+  &::after {
+    right: -1px;
+    border-right-color: var(--#{$variable-prefix}tooltip-bg);
+  }
+}
+
+/* rtl:end:ignore */
+
+.bs-tooltip-bottom .tooltip-arrow {
+  top: 0;
+
+  &::after,
+  &::before {
+    border-width: 0 calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+  }
+
+  &::before {
+    bottom: 0;
+    border-bottom-color: var(--#{$variable-prefix}tooltip-border-color);
+  }
+
+  &::after {
+    bottom: -1px;
+    border-bottom-color: var(--#{$variable-prefix}tooltip-bg);
+  }
+}
+
+/* rtl:begin:ignore */
+.bs-tooltip-start .tooltip-arrow {
+  right: 0;
+  width: var(--#{$variable-prefix}tooltip-arrow-height);
+  height: var(--#{$variable-prefix}tooltip-arrow-width);
+
+  &::after,
+  &::before {
+    border-width: calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0 calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--#{$variable-prefix}tooltip-border-color);
+  }
+
+  &::after {
+    left: -1px;
+    border-left-color: var(--#{$variable-prefix}tooltip-bg);
+  }
+}
+
+/* rtl:end:ignore */
+
+.bs-tooltip-auto {
+  &[data-popper-placement^="top"] {
+    @extend .bs-tooltip-top;
+  }
+  &[data-popper-placement^="right"] {
+    @extend .bs-tooltip-end;
+  }
+  &[data-popper-placement^="bottom"] {
+    @extend .bs-tooltip-bottom;
+  }
+  &[data-popper-placement^="left"] {
+    @extend .bs-tooltip-start;
+  }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: var(--#{$variable-prefix}tooltip-max-width);
+  padding: var(--#{$variable-prefix}tooltip-padding-y) var(--#{$variable-prefix}tooltip-padding-x);
+  color: var(--#{$variable-prefix}tooltip-color);
+  text-align: center;
+  background-color: var(--#{$variable-prefix}tooltip-bg);
+  border: var(--#{$variable-prefix}tooltip-border-width) $border-style var(--#{$variable-prefix}tooltip-border-color);
+  @include border-radius(var(--#{$variable-prefix}tooltip-border-radius));
+}

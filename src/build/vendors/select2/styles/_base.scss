@@ -1,0 +1,94 @@
+.select2 {
+  width: 100% !important;
+}
+// Toggle element
+.select2-selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: $select2-height;
+  color: $select2-color;
+  background: $select2-bg;
+  border: $select2-border-width solid $select2-border-color;
+  outline: 0;
+  user-select: none;
+  cursor: pointer;
+  @include border-radius($select2-border-radius);
+}
+// Toggle content element
+.select2-selection__rendered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: $select2-padding-y $select2-padding-x;
+  margin: 0;
+  list-style: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// Outer container
+.select2-container {
+  position: relative;
+  display: inline-block;
+}
+// Search input element
+.select2-search__field {
+  border-color: $select2-border-color !important;
+
+  // Search input inside toggle element
+  .select2-search--inline & {
+    height: auto;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  // Remove default clear button at input search on result container
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+// Clear button to instead default
+.select2-selection__clear {
+  position: absolute;
+  color: $select2-clear-color;
+  @include font-size($select2-icon-size);
+  transform: translateY(-50%);
+  top: 50%;
+  cursor: pointer;
+
+  &:hover {
+    color: $select2-clear-hover-color;
+  }
+}
+// Opened state class
+.select2-container--open {
+  .select2-selection {
+    border-color: $select2-active-border-color;
+  }
+  // Input style when dropdown orientation is top
+  &.select2-container--above .select2-selection {
+    @include border-top-radius(0)
+  }
+  // Input style when dropdown orientation is bottom
+  &.select2-container--below .select2-selection {
+    @include border-bottom-radius(0)
+  }
+}
+// Disabled state class
+.select2-container--disabled {
+  .select2-selection {
+    color: $select2-disabled-color;
+    background: $select2-disabled-bg;
+    border-color: $select2-disabled-border-color;
+    opacity: $select2-disabled-opacity;
+    cursor: default;
+  }
+}
+// Class to hide default select element
+.select2-hidden-accessible {
+  display: none !important;
+}

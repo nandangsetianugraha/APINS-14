@@ -1,0 +1,18 @@
+.sortable {
+  display: flex;
+  flex-direction: column;
+
+  .sortable {
+    padding-left: $sortable-menu-spacer;
+  }
+}
+
+.sortable-handle {
+  cursor: move;
+  padding: $sortable-handle-padding;
+  @include icon-size($sortable-handle-icon-size)
+}
+
+.sortable-ghost {
+  opacity: $sortable-drag-opacity;
+}

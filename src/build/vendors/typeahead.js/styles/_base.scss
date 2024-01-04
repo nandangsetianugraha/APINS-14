@@ -1,0 +1,159 @@
+
+.twitter-typeahead {
+  width: 100%;
+}
+// Input hint styles
+.tt-hint {
+  direction: ltr;
+  color: $typeahead-hint-color;
+  background: transparent !important;
+}
+// Suggestion menu container
+.tt-menu {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  background: $typeahead-menu-bg;
+  border: $typeahead-menu-border-width solid $typeahead-menu-border-color;
+  border-top-color: $typeahead-menu-active-border-color;
+  @include border-bottom-radius($typeahead-menu-border-radius);
+}
+
+.tt-menu-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+  color: $typeahead-menu-item-color;
+  padding: $typeahead-menu-item-padding-y $typeahead-menu-item-padding-x;
+  margin: 0;
+  cursor: default;
+
+  // Reset <a> tag styles
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    background: $typeahead-menu-item-hover-bg;
+
+    .tt-menu-title {
+      color: $typeahead-menu-item-hover-color;
+    }
+  }
+
+  &.active,
+  &:active {
+    background: $typeahead-menu-item-active-bg;
+
+    .tt-menu-title {
+      color: $typeahead-menu-item-active-color;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    background: $typeahead-menu-item-disabled-bg;
+    opacity: $typeahead-menu-item-disabled-opacity;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.tt-menu-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tt-menu-subtitle,
+.tt-menu-title {
+  margin: 0;
+  padding: 0;
+  @include font-size($typeahead-menu-content-font-size);
+  line-height: $typeahead-menu-content-line-height;
+  text-align: left;
+}
+
+.tt-menu-title {
+  color: $typeahead-menu-title-color;
+  font-weight: $typeahead-menu-title-font-weight;
+}
+
+.tt-menu-subtitle {
+  color: $typeahead-menu-subtitle-color;
+  font-weight: $typeahead-menu-subtitle-font-weight;
+}
+
+.tt-menu-append,
+.tt-menu-prepend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  // Remove default avatar margin
+  > .avatar {
+    margin: 0;
+  }
+}
+
+.tt-menu-prepend {
+  margin-right: $typeahead-menu-addon-spacer;
+}
+
+.tt-menu-append {
+  margin-left: $typeahead-menu-addon-spacer;
+}
+// Suggestion item
+.tt-suggestion {
+  color: $typeahead-menu-item-color;
+  @include font-size($typeahead-menu-item-font-size);
+  font-weight: $typeahead-menu-item-font-weight;
+  padding: $typeahead-menu-item-padding-y;
+
+  &:hover {
+    color: $typeahead-menu-item-hover-color;
+    background: $typeahead-menu-item-hover-bg;
+  }
+}
+// Highlighted suggestion styles
+.tt-highlight {
+  color: $typeahead-menu-highlight-color !important;
+  font-size: inherit;
+  font-weight: inherit;
+}
+// Empty message
+.tt-empty-message {
+  color: $typeahead-menu-empty-color;
+  @include font-size($typeahead-menu-empty-font-size);
+  font-weight: $typeahead-menu-empty-font-weight;
+  padding: $typeahead-menu-item-padding-y $typeahead-menu-item-padding-x;
+}
+// Header for group of suggestions
+.tt-header {
+  color: $typeahead-menu-header-color;
+  @include font-size($typeahead-menu-header-font-size);
+  font-weight: $typeahead-menu-header-font-weight;
+  padding: $typeahead-menu-item-padding-y $typeahead-menu-item-padding-x;
+  margin: 0;
+
+  ~ .tt-suggestion {
+    padding-left: $typeahead-menu-item-child-spacer;
+  }
+}
+// Sizing
+.tt-input {
+  direction: ltr;
+
+  &.form-control ~ .tt-menu {
+    top: calc(100% - #{$input-border-radius}) !important;
+  }
+
+  &.form-control-lg ~ .tt-menu {
+    top: calc(100% - #{$input-border-radius-lg}) !important;
+  }
+
+  &.form-control-sm ~ .tt-menu {
+    top: calc(100% - #{$input-border-radius-sm}) !important;
+  }
+}

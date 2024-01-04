@@ -1,0 +1,320 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Treeview" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Treeview", link: "elements/advanced/treeview.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/treeview.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-body">
+          <p class="mb-0"><strong>JSTree</strong> is jQuery plugin, that provides interactive trees. JSTree is easily extendable and configurable, it supports HTML &amp; JSON data sources and AJAX loading. Check more API references from <a href="http://www.jstree.com" target="_blank">JSTree's homepage</a>.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">HTML data</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-1">
+            <ul>
+              <li>
+                Root node 1
+                <ul>
+                  <li data-jstree='{ "selected" : true }'>
+                    <a href="javascript:;">Initially selected</a>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-briefcase" }'>Custom icon</li>
+                  <li data-jstree='{ "opened" : true }'>
+                    Initially open
+                    <ul>
+                      <li data-jstree='{ "disabled" : true }'>Disabled Node</li>
+                      <li data-jstree='{ "type" : "file" }'>Another node</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Sub nodes
+                    <ul>
+                      <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                      <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                      <li>
+                        Sub nodes
+                        <ul>
+                          <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                          <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                        </ul>
+                      </li>
+                      <li data-jstree='{ "type" : "file" }'>Item 3</li>
+                    </ul>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-star text-success" }'>Custom color icon</li>
+                </ul>
+              </li>
+              <li data-jstree='{ "icon" : "fa fa-link text-info" }'>
+                <a href="http://google.com" target="_blank">Clickable link node</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Drag and drop</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-4">
+            <ul>
+              <li>
+                Root node 1
+                <ul>
+                  <li data-jstree='{ "selected" : true }'>
+                    <a href="javascript:;">Initially selected</a>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-briefcase" }'>Custom icon</li>
+                  <li data-jstree='{ "opened" : true }'>
+                    Initially open
+                    <ul>
+                      <li data-jstree='{ "disabled" : true }'>Disabled Node</li>
+                      <li data-jstree='{ "type" : "file" }'>Another node</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Sub nodes
+                    <ul>
+                      <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                      <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                      <li>
+                        Sub nodes
+                        <ul>
+                          <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                          <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                        </ul>
+                      </li>
+                      <li data-jstree='{ "type" : "file" }'>Item 3</li>
+                    </ul>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-star text-success" }'>Custom color icon</li>
+                </ul>
+              </li>
+              <li data-jstree='{ "icon" : "fa fa-link text-info" }'>
+                <a href="http://google.com" target="_blank">Clickable link node</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Javascript data</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-2"></div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Context Menu</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-5">
+            <ul>
+              <li>
+                Root node 1
+                <ul>
+                  <li data-jstree='{ "selected" : true }'>
+                    <a href="javascript:;">Initially selected</a>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-briefcase" }'>Custom icon</li>
+                  <li data-jstree='{ "opened" : true }'>
+                    Initially open
+                    <ul>
+                      <li data-jstree='{ "disabled" : true }'>Disabled Node</li>
+                      <li data-jstree='{ "type" : "file" }'>Another node</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Sub nodes
+                    <ul>
+                      <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                      <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                      <li>
+                        Sub nodes
+                        <ul>
+                          <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                          <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                        </ul>
+                      </li>
+                      <li data-jstree='{ "type" : "file" }'>Item 3</li>
+                    </ul>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-star text-success" }'>Custom color icon</li>
+                </ul>
+              </li>
+              <li data-jstree='{ "icon" : "fa fa-link text-info" }'>
+                <a href="http://google.com" target="_blank">Clickable link node</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Checkbox</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-3">
+            <ul>
+              <li>
+                Root node 1
+                <ul>
+                  <li data-jstree='{ "selected" : true }'>
+                    <a href="javascript:;">Initially selected</a>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-briefcase" }'>Custom icon</li>
+                  <li data-jstree='{ "opened" : true }'>
+                    Initially open
+                    <ul>
+                      <li data-jstree='{ "disabled" : true }'>Disabled Node</li>
+                      <li data-jstree='{ "type" : "file" }'>Another node</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Sub nodes
+                    <ul>
+                      <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                      <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                      <li>
+                        Sub nodes
+                        <ul>
+                          <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                          <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                        </ul>
+                      </li>
+                      <li data-jstree='{ "type" : "file" }'>Item 3</li>
+                    </ul>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-star text-success" }'>Custom color icon</li>
+                </ul>
+              </li>
+              <li data-jstree='{ "icon" : "fa fa-link text-info" }'>
+                <a href="http://google.com" target="_blank">Clickable link node</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Search</h3>
+        </div>
+        <div class="portlet-body">
+          <input type="text" class="form-control mb-3" id="jstree-6-input" placeholder="Search here...">
+
+          <!-- BEGIN Treeview -->
+          <div id="jstree-6">
+            <ul>
+              <li>
+                Root node 1
+                <ul>
+                  <li data-jstree='{ "selected" : true }'>
+                    <a href="javascript:;">Initially selected</a>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-briefcase" }'>Custom icon</li>
+                  <li data-jstree='{ "opened" : true }'>
+                    Initially open
+                    <ul>
+                      <li data-jstree='{ "disabled" : true }'>Disabled Node</li>
+                      <li data-jstree='{ "type" : "file" }'>Another node</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Sub nodes
+                    <ul>
+                      <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                      <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                      <li>
+                        Sub nodes
+                        <ul>
+                          <li data-jstree='{ "type" : "file" }'>Item 1</li>
+                          <li data-jstree='{ "type" : "file" }'>Item 2</li>
+                        </ul>
+                      </li>
+                      <li data-jstree='{ "type" : "file" }'>Item 3</li>
+                    </ul>
+                  </li>
+                  <li data-jstree='{ "icon" : "fa fa-star text-success" }'>Custom color icon</li>
+                </ul>
+              </li>
+              <li data-jstree='{ "icon" : "fa fa-link text-info" }'>
+                <a href="http://google.com" target="_blank">Clickable link node</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END Treeview -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+$slick-nav-icon-size:             $btn-icon-font-size !default;
+$slick-nav-offset:                .75rem !default;
+
+$slick-nav2-height:               3.75rem !default;
+$slick-nav3-dimension:            $btn-icon-dimension !default;
+$slick-nav3-spacer:               .75rem !default;
+
+$slick-dot-dimension:             65% !default;
+$slick-dot-bg:                    $component-bg !default;
+$slick-dot-offset:                $slick-nav-offset !default;
+$slick-dot-padding:               .5rem !default;
+$slick-dot-border-radius:         2rem !default;
+$slick-dot-transition:            $transition-base !default;
+
+$slick-dot-item-dimension:        1.25rem !default;
+$slick-dot-item-spacer:           .5rem !default;
+$slick-dot-item-bg:               $bg-level-3 !default;
+$slick-dot-item-hover-bg:         $gray-400 !default;
+$slick-dot-item-active-bg:        $component-active-bg !default;

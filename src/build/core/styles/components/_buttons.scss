@@ -1,0 +1,240 @@
+//
+// Base styles
+//
+
+.btn {
+  --#{$variable-prefix}btn-padding-x: #{$btn-padding-x};
+  --#{$variable-prefix}btn-padding-y: #{$btn-padding-y};
+  --#{$variable-prefix}btn-font-family: #{$btn-font-family};
+  @include rfs($btn-font-size, --#{$variable-prefix}btn-font-size);
+  --#{$variable-prefix}btn-font-weight: #{$btn-font-weight};
+  --#{$variable-prefix}btn-line-height: #{$btn-line-height};
+  --#{$variable-prefix}btn-color: #{$body-color};
+  --#{$variable-prefix}btn-bg: transparent;
+  --#{$variable-prefix}btn-border-width: #{$btn-border-width};
+  --#{$variable-prefix}btn-border-color: transparent;
+  --#{$variable-prefix}btn-border-radius: #{$btn-border-radius};
+  --#{$variable-prefix}btn-hover-border-color: transparent;
+  --#{$variable-prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+  --#{$variable-prefix}btn-icon-dimension: #{$btn-icon-dimension};
+  --#{$variable-prefix}btn-icon-font-size: #{$btn-icon-font-size};
+
+  position: relative;
+  display: inline-block;
+  padding: var(--#{$variable-prefix}btn-padding-y) var(--#{$variable-prefix}btn-padding-x);
+  font-family: var(--#{$variable-prefix}btn-font-family);
+  @include font-size(var(--#{$variable-prefix}btn-font-size));
+  font-weight: var(--#{$variable-prefix}btn-font-weight);
+  line-height: var(--#{$variable-prefix}btn-line-height);
+  color: var(--#{$variable-prefix}btn-color);
+  background-color: var(--#{$variable-prefix}btn-bg);
+  text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
+  white-space: $btn-white-space;
+  vertical-align: middle;
+  cursor: if($enable-button-pointers, pointer, null);
+  user-select: none;
+  border: var(--#{$variable-prefix}btn-border-width) solid var(--#{$variable-prefix}btn-border-color);
+  @include border-radius(var(--#{$variable-prefix}btn-border-radius));
+  @include transition($btn-transition);
+
+  &:hover {
+    color: var(--#{$variable-prefix}btn-hover-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+    background-color: var(--#{$variable-prefix}btn-hover-bg);
+    border-color: var(--#{$variable-prefix}btn-hover-border-color);
+  }
+
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    color: var(--#{$variable-prefix}btn-color);
+    background-color: var(--#{$variable-prefix}btn-bg);
+    border-color: var(--#{$variable-prefix}btn-border-color);
+  }
+
+  &:focus-visible {
+    color: var(--#{$variable-prefix}btn-hover-color);
+    background-color: var(--#{$variable-prefix}btn-hover-bg);
+    border-color: var(--#{$variable-prefix}btn-hover-border-color);
+    outline: 0;
+  }
+
+  .btn-check:focus-visible + & {
+    border-color: var(--#{$variable-prefix}btn-hover-border-color);
+    outline: 0;
+  }
+
+  .btn-check:checked + &,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
+  &.active,
+  &.show {
+    color: var(--#{$variable-prefix}btn-active-color);
+    background-color: var(--#{$variable-prefix}btn-active-bg);
+    // Remove CSS gradients if they're enabled
+    border-color: var(--#{$variable-prefix}btn-active-border-color);
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    color: var(--#{$variable-prefix}btn-disabled-color);
+    pointer-events: none;
+    background-color: var(--#{$variable-prefix}btn-disabled-bg);
+    border-color: var(--#{$variable-prefix}btn-disabled-border-color);
+    opacity: var(--#{$variable-prefix}btn-disabled-opacity);
+  }
+}
+
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-flat-#{$color} {
+    @include button-flat-variant($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-label-#{$color} {
+    @include button-label-variant($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-text-#{$color} {
+    @include button-text-variant($value);
+  }
+}
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  --#{$variable-prefix}btn-font-weight: #{$font-weight-normal};
+  --#{$variable-prefix}btn-color: #{$btn-link-color};
+  --#{$variable-prefix}btn-bg: transparent;
+  --#{$variable-prefix}btn-border-color: transparent;
+  --#{$variable-prefix}btn-hover-color: #{$btn-link-hover-color};
+  --#{$variable-prefix}btn-hover-border-color: transparent;
+  --#{$variable-prefix}btn-active-color: #{$btn-link-hover-color};
+  --#{$variable-prefix}btn-active-border-color: transparent;
+  --#{$variable-prefix}btn-disabled-color: #{$btn-link-disabled-color};
+  --#{$variable-prefix}btn-disabled-border-color: transparent;
+
+  text-decoration: $link-decoration;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus-visible {
+    color: var(--#{$variable-prefix}btn-color);
+  }
+
+  &:hover {
+    color: var(--#{$variable-prefix}btn-hover-color);
+  }
+
+  // No need for an active state here
+}
+
+//
+// Button with icon inside
+//
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--#{$variable-prefix}btn-icon-dimension);
+  width: var(--#{$variable-prefix}btn-icon-dimension);
+  padding: 0;
+  @include icon-size(var(--#{$variable-prefix}btn-icon-font-size));
+
+  // Circle buttons
+  &.btn-circle {
+    border-radius: 50% !important;
+  }
+
+  &.btn-sm {
+    --#{$variable-prefix}btn-icon-dimension: #{$btn-icon-dimension-sm};
+    --#{$variable-prefix}btn-border-radius: #{$btn-border-radius-sm};
+    --#{$variable-prefix}btn-icon-font-size: #{$btn-icon-font-size-sm};
+  }
+
+  &.btn-lg {
+    --#{$variable-prefix}btn-icon-dimension: #{$btn-icon-dimension-lg};
+    --#{$variable-prefix}btn-border-radius: #{$btn-border-radius-lg};
+    --#{$variable-prefix}btn-icon-font-size: #{$btn-icon-font-size-lg};
+  }
+}
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+}
+
+// Button wide sizes
+.btn-wide {
+  @include button-wide-size($btn-wide-padding-x);
+}
+
+.btn-wider {
+  @include button-wide-size($btn-wider-padding-x);
+}
+
+.btn-widest {
+  @include button-wide-size($btn-widest-padding-x);
+}
+
+// Button tall sizes
+.btn-tall {
+  @include button-tall-size($btn-tall-padding-y);
+}
+
+.btn-taller {
+  @include button-tall-size($btn-taller-padding-y);
+}
+
+.btn-tallest {
+  @include button-tall-size($btn-tallest-padding-y);
+}
+
+.btn-marker {
+  display: block;
+  position: absolute !important;
+  z-index: 1;
+  top: -$btn-marker-offset !important;
+  right: -$btn-marker-offset !important;
+}
+
+// Add outline to .badge class
+.btn-counter {
+  box-shadow: 0 0 0 $marker-outline-width $marker-outline-color;
+}

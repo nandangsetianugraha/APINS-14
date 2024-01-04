@@ -1,0 +1,50 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Datatable Javascript Source" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Datatable" },
+  { text: "Source" },
+  { text: "Javascript", link: "datatable/extension/javascript.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/datatable/source/javascript.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Datatable javascript source</h3>
+        </div>
+        <div class="portlet-body">
+          <p>At times you will wish to be able to create a table from dynamic information passed directly to Datatable, rather than having it read from the document. This is achieved using the <code>data</code> option in the initialisation object, passing in an array of data to be used.</p>
+          <hr>
+
+          <!-- BEGIN Datatable -->
+          <table id="datatable-1" class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Card ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+          </table>
+          <!-- END Datatable -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

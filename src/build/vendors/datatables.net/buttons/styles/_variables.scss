@@ -1,0 +1,58 @@
+$zindex-datatable-btn-collection:                   $zindex-dropdown !default;
+$zindex-datatable-btn-info:                         $zindex-modal !default;
+
+$datatable-btn-collection-bg:                       $dropdown-bg !default;
+$datatable-btn-collection-border-width:             $dropdown-border-width !default;
+$datatable-btn-collection-border-color:             $dropdown-border-color !default;
+$datatable-btn-collection-border-radius:            $dropdown-border-radius !default;
+$datatable-btn-collection-padding-y:                $spacer * .5 !default;
+$datatable-btn-collection-padding-x:                0 !default;
+
+$datatable-btn-collection-col-gap:                  $spacer * .75 !default;
+$datatable-btn-collection-2col-width:               25rem !default;
+$datatable-btn-collection-3col-width:               30rem !default;
+$datatable-btn-collection-4col-width:               35rem !default;
+
+$datatable-btn-collection-spinner-color:            $text-level-1 !default;
+$datatable-btn-collection-spinner-dimension:        1.25rem !default;
+$datatable-btn-collection-spinner-border-width:     2px !default;
+$datatable-btn-collection-spinner-border-color:     $primary !default;
+$datatable-btn-collection-spinner-animation:        dtb-spinner 1.25s infinite linear !default;
+
+$datatable-btn-collection-title-padding-y:          $spacer * .75 !default;
+$datatable-btn-collection-title-padding-x:          $spacer !default;
+$datatable-btn-collection-title-color:              $text-level-3 !default;
+$datatable-btn-collection-title-font-size:          $font-size-base !default;
+$datatable-btn-collection-title-font-weight:        $font-weight-bold !default;
+
+$datatable-btn-info-width:                          30rem !default;
+$datatable-btn-info-bg:                             $modal-content-bg !default;
+$datatable-btn-info-border-width:                   $modal-content-border-width !default;
+$datatable-btn-info-border-color:                   $modal-content-border-color !default;
+$datatable-btn-info-border-radius:                  $modal-content-border-radius !default;
+
+$datatable-btn-info-content-padding-y:              $spacer * .75 !default;
+$datatable-btn-info-content-padding-x:              $spacer * .5 !default;
+
+$datatable-btn-info-title-color:                    $text-level-3 !default;
+$datatable-btn-info-title-font-size:                $font-size-xl !default;
+$datatable-btn-info-title-font-weight:              $font-weight-normal !default;
+
+$datatable-btn-info-body-color:                     $text-level-1 !default;
+$datatable-btn-info-body-font-size:                 $font-size-base !default;
+$datatable-btn-info-body-font-weight:               $font-weight-normal !default;
+
+$datatable-btn-divider-font-size:                   $font-size-base !default;
+$datatable-btn-divider-spacer:                      $spacer * .5 !default;
+$datatable-btn-divider-width:                       $border-width !default;
+$datatable-btn-divider-color:                       $border-color !default;
+
+$datatable-close-spacer:                            $spacer * .75 !default;
+$datatable-close-dimension:                         2rem !default;
+$datatable-close-color:                             $btn-flat-color !default;
+$datatable-close-bg:                                $btn-flat-bg !default;
+$datatable-close-font-family:                       $font-family-monospace !default;
+$datatable-close-font-size:                         1.2rem !default;
+$datatable-close-font-weight:                       $font-weight-bolder !default;
+$datatable-close-line-height:                       1rem !default;
+$datatable-close-border-radius:                     $border-radius-sm !default;

@@ -1,0 +1,71 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Breadcrumb" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Breadcrumb", link: "elements/base/breadcrumb.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Breadcrumb</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Use an ordered or unordered list with linked list items to create a minimally styled breadcrumb. Use our utilities to add additional styles as desired.</p>
+
+          <!-- BEGIN Breadcrumb -->
+          <div class="breadcrumb">
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-icon">
+                <i data-feather="home"></i>
+              </span>
+              <span class="breadcrumb-text">Home</span>
+            </a>
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-icon">
+                <i data-feather="bookmark"></i>
+              </span>
+              <span class="breadcrumb-text">Library</span>
+            </a>
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-text">Data</span>
+            </a>
+          </div>
+          <!-- END Breadcrumb -->
+
+          <p>You can add <code>.breadcrumb-transparent</code> to remove background and remove x-axis padding on the breadcrumb.</p>
+
+          <!-- BEGIN Breadcrumb -->
+          <div class="breadcrumb breadcrumb-transparent">
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-icon">
+                <i data-feather="home"></i>
+              </span>
+              <span class="breadcrumb-text">Home</span>
+            </a>
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-icon">
+                <i data-feather="bookmark"></i>
+              </span>
+              <span class="breadcrumb-text">Library</span>
+            </a>
+            <a class="breadcrumb-item" href="#">
+              <span class="breadcrumb-text">Data</span>
+            </a>
+          </div>
+          <!-- END Breadcrumb -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

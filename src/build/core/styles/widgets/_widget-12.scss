@@ -1,0 +1,7 @@
+.widget12 {
+  @include font-size($widget12-font-size);
+}
+
+.widget12-sm {
+  @include font-size($widget12-font-size-sm);
+}

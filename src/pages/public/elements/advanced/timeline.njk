@@ -1,0 +1,263 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Timeline" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Timeline", link: "elements/advanced/timeline.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Timeline</strong> can be used for listing agenda. Use <a href="{{ 'elements/base/marker.html' | url }}">marker</a> as the timeline pin. Put your content into <code>.timeline-content</code>.</p>
+
+          <!-- BEGIN Timeline -->
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-dot text-primary"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-dot text-success"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-dot text-danger"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p>
+              </div>
+            </div>
+          </div>
+          <!-- END Timeline -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">More content</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Use your creativity to make a more complex timeline. In the example below, we use <a href="{{ 'elements/advanced/rich-list.html' | url }}">rich list</a> to appear bordered and clickable timeline content.</p>
+
+          <!-- BEGIN Timeline -->
+          <div class="timeline rich-list-bordered rich-list-action">
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-primary"></i>
+              </div>
+              <div class="timeline-content">
+
+                <!-- BEGIN Rich List -->
+                <div class="rich-list-item">
+                  <div class="rich-list-prepend">
+
+                    <!-- BEGIN Avatar -->
+                    <div class="avatar">
+                      <div class="avatar-display">
+                        <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                    <!-- END Avatar -->
+
+                  </div>
+                  <div class="rich-list-content">
+                    <h4 class="rich-list-title">Consectetur</h4>
+                    <span class="rich-list-subtitle">Dapibus ac facilisis in</span>
+                  </div>
+                  <div class="rich-list-append">
+                    <span class="badge badge-success">9+</span>
+                  </div>
+                </div>
+                <!-- END Rich List -->
+
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-success"></i>
+              </div>
+              <div class="timeline-content">
+
+                <!-- BEGIN Rich List -->
+                <div class="rich-list-item">
+                  <div class="rich-list-prepend">
+
+                    <!-- BEGIN Avatar -->
+                    <div class="avatar">
+                      <div class="avatar-display">
+                        <i class="fa fa-rocket"></i>
+                      </div>
+                    </div>
+                    <!-- END Avatar -->
+
+                  </div>
+                  <div class="rich-list-content">
+                    <h4 class="rich-list-title">Porta</h4>
+                    <p class="rich-list-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <span class="rich-list-subtitle">Cras justo odio</span>
+                  </div>
+                </div>
+                <!-- END Rich List -->
+
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-danger"></i>
+              </div>
+              <div class="timeline-content">
+
+                <!-- BEGIN Rich List -->
+                <div class="rich-list-item">
+                  <div class="rich-list-prepend">
+
+                    <!-- BEGIN Avatar -->
+                    <div class="avatar">
+                      <div class="avatar-display">
+                        <i class="fa fa-cog"></i>
+                      </div>
+                    </div>
+                    <!-- END Avatar -->
+
+                  </div>
+                  <div class="rich-list-content">
+                    <h4 class="rich-list-title">Vestibulum</h4>
+                    <span class="rich-list-subtitle">Morbi leo risus</span>
+                  </div>
+                  <div class="rich-list-append">
+                    <span class="badge badge-info">new</span>
+                  </div>
+                </div>
+                <!-- END Rich List -->
+
+              </div>
+            </div>
+          </div>
+          <!-- END Timeline -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Time</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Add time information to your timeline by adding text inside <code>.timeline-time</code> before <code>.timeline-pin</code> and you must extend <code>.timeline</code> element with <code>.timeline-timed</code> class.</p>
+
+          <!-- BEGIN Timeline -->
+          <div class="timeline timeline-timed">
+            <div class="timeline-item">
+              <span class="timeline-time">12.20</span>
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-primary"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">13.00</span>
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-success"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">14.05</span>
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-danger"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p>
+              </div>
+            </div>
+          </div>
+          <!-- END Timeline -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Zigzag</h3>
+        </div>
+        <div class="portlet-body">
+          <p>We have one more timeline version, you just need to add <code>.timeline-zigzag</code> class to default timeline elements to appear like below.</p>
+
+          <!-- BEGIN Timeline -->
+          <div class="timeline timeline-zigzag">
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-primary"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-success"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-danger"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-pin">
+                <i class="marker marker-circle text-info"></i>
+              </div>
+              <div class="timeline-content">
+                <p class="mb-0">Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna</p>
+              </div>
+            </div>
+          </div>
+          <!-- END Timeline -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

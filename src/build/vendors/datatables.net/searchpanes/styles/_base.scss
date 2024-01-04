@@ -1,0 +1,128 @@
+// Panel header containment for title and clear button
+.dtsp-titleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $datatable-pane-spacer;
+
+  > .btn {
+    margin-left: $datatable-pane-button-spacer;
+  }
+}
+
+// Panel title
+.dtsp-title {
+  flex: 1;
+  color: $datatable-pane-title-color;
+  @include font-size($datatable-pane-title-font-size);
+  font-weight: $datatable-pane-title-font-weight;
+}
+
+// Panel containment where contain search input and helper buttons
+.dtsp-topRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin-bottom: $datatable-pane-spacer;
+  
+  .dtsp-subRow1 {
+    flex: 1;
+    margin-right: $datatable-pane-spacer;
+  }
+
+  .dtsp-subRow2 {
+    white-space: nowrap;
+  }
+}
+
+.dtsp-collapseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  .dtsp-caret {
+    @include caret(up) {
+      bottom: 0;
+      transition: none;
+    };
+  }
+
+  &.dtsp-rotated .dtsp-caret {
+    @include caret-transform(down);
+  }
+}
+
+.dtsp-searchIcon {
+  @include border-start-radius(0);
+}
+
+// Outer panel containment
+.dtsp-panes {
+  @include font-size($datatable-pane-font-size);
+  padding: $datatable-pane-padding-y $datatable-pane-padding-x;
+  margin-bottom: $datatable-pane-spacer;
+  border: $datatable-pane-border-width $border-style $datatable-pane-border-color;
+  @include border-radius($datatable-pane-border-radius);
+}
+
+// Search panel group
+.dtsp-searchPanes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -#{$datatable-pane-spacer * .5};
+}
+
+// Individual search panel
+.dtsp-searchPane {
+  flex: 1;
+  margin: #{$datatable-pane-spacer * .5};
+
+  .dataTables_scrollBody {
+    border: $datatable-pane-body-border-width solid $datatable-pane-body-border-color  !important;
+    @include border-radius($datatable-pane-body-border-radius);
+    
+    &:hover {
+      border-color: $datatable-pane-body-active-border-color !important;
+    }
+
+    // Panel content
+    table tbody {
+      tr {
+        cursor: pointer;
+
+        .badge {
+          min-width: $datatable-pane-badge-min-width;
+          float: right;
+        }
+
+        .dtsp-nameCont {
+          padding: $datatable-pane-item-padding-y $datatable-pane-item-padding-x;
+        }
+
+        .dtsp-countColumn {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  // Hide all unused elements
+  thead,
+  .dataTables_filter,
+  .dataTables_scrollHead { display: none; }
+}
+
+// Class to hide individual search pane
+.dtsp-hidden { display: none !important; }
+
+// Change panels alignment direction for mobile device
+@include media-breakpoint-down("md") {
+  .dtsp-searchPanes {
+    flex-direction: column;
+  }
+}

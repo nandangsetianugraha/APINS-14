@@ -1,0 +1,39 @@
+.blockui {
+  // Backdrop overlay
+  &.blockui-overlay {
+    background: $blockui-backdrop-bg;
+    opacity: $blockui-backdrop-opacity;
+  }
+  
+  // Message box
+  &.blockui-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $blockui-message-color;
+    background: $blockui-message-bg;
+    @include font-size($blockui-message-font-size);
+    font-weight: $blockui-message-font-weight;
+    padding: $blockui-message-padding-y $blockui-message-padding-x;
+    @include border-radius($blockui-message-border-radius);
+
+    .blockui-title {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    [class*="spinner"] {
+      margin-right: $blockui-spinner-spacer; // Add space between spinner and message
+    }
+
+    // Position message to center of page
+    &.blockui-block-page {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

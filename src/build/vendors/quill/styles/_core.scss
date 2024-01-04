@@ -1,0 +1,598 @@
+@function resets($start) {
+  $buffer-list: ();
+  @for $num from $start through $quill-list-max-indent {
+    $buffer-list: append($buffer-list, unquote("list-" + $num));
+  }
+  @return $buffer-list;
+}
+
+.quill {
+  display: flex;
+  flex-direction: column;
+}
+
+// Outer editor Container
+.ql-container {
+  flex: 1;
+  position: relative;
+  font-family: $quill-font-family;
+  font-size: $quill-font-size;
+  margin: 0;
+  border: $quill-editor-border-width solid $quill-editor-border-color;
+  @include border-radius($quill-editor-border-radius);
+
+  a {
+    color: $quill-link-color;
+  }
+
+  &.ql-disabled {
+    // Hide tooltip when disabled
+    .ql-tooltip {
+      visibility: hidden;
+    }
+
+    .ql-editor {
+      ul[data-checked] > li::before {
+        pointer-events: none;
+      }
+    }
+  }
+}
+// Editor container
+.ql-editor {
+  height: 100%;
+  line-height: $quill-editor-line-height;
+  padding: $quill-editor-padding-y $quill-editor-padding-x;
+  outline: 0;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  tab-size: $quill-editor-tab-size;
+  -moz-tab-size: $quill-editor-tab-size;
+  counter-reset: list-0;
+  // Set text cursor for all elements inside editor
+  > * {
+    cursor: text;
+  }
+  // Base styles for type elements
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ol,
+  p,
+  pre {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    counter-reset: resets(0);
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td {
+    padding: $quill-table-cell-padding;
+    border: $quill-table-border-width solid $quill-table-border-color;
+    @include border-radius($quill-editor-border-radius);
+  }
+
+  ol,
+  ul {
+    padding-left: $quill-list-spacer;
+  }
+
+  li {
+    position: relative;
+    padding-left: $quill-list-outer-width;
+    list-style-type: none;
+    // List bullet
+    > .ql-ui:before {
+      display: inline-block;
+      width: $quill-list-width;
+      margin-left: -1 * $quill-list-outer-width;
+      margin-right: $quill-list-margin;
+      text-align: right;
+      white-space: nowrap;
+      color: $quill-list-bullet-color;
+    }
+  }
+
+  ul > li::before {
+    content: '\2022';
+  }
+
+  ul[data-checked=false],
+  ul[data-checked=true] {
+    pointer-events: none;
+
+    > li * {
+      pointer-events: all;
+    }
+
+    > li::before {
+      cursor: pointer;
+      pointer-events: all;
+    }
+  }
+
+  ul[data-checked=true] > li::before {
+    content: '\2611';
+  }
+
+  ul[data-checked=false] > li::before {
+    content: '\2610';
+  }
+
+  li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: $quill-list-width;
+  }
+
+  li:not(.ql-direction-rtl)::before {
+    margin-left: -1 * $quill-list-spacer;
+    margin-right: $quill-list-margin;
+    text-align: right;
+  }
+
+  li.ql-direction-rtl::before {
+    margin-left: $quill-list-margin;
+    margin-right: -1 * $quill-list-spacer;
+  }
+
+  ol,
+  ul {
+    li:not(.ql-direction-rtl) {
+      padding-left: $quill-list-spacer;
+    }
+
+    li.ql-direction-rtl {
+      padding-right: $quill-list-spacer;
+    }
+  }
+
+  ol {
+    li {
+      counter-reset: resets(1);
+      counter-increment: list-0;
+
+      &:before {
+        content: unquote('counter(list-0, ' + nth($quill-list-styles, 1) + ')') '. ';
+      }
+    }
+    // List indentation
+    @for $num from 1 through $quill-list-max-indent {
+      li.ql-indent-#{$num} {
+        counter-increment: unquote('list-' + $num);
+
+        &:before {
+          content: unquote('counter(list-' + $num + ', ' + nth($quill-list-styles, $num % length($quill-list-styles) + 1) + ')') '. ';
+        }
+      }
+      @if $num < $quill-list-max-indent {
+        li.ql-indent-#{$num} {
+          counter-reset: resets($num + 1);
+        }
+      }
+    }
+  }
+  // List Spacing
+  @for $num from 1 through $quill-list-max-indent {
+    .ql-indent-#{$num}:not(.ql-direction-rtl) {
+      padding-left: 3 * $num * 1em;
+    }
+
+    li.ql-indent-#{$num}:not(.ql-direction-rtl) {
+      padding-left: 3 * $num + $quill-list-outer-width;
+    }
+
+    .ql-indent-#{$num}.ql-direction-rtl.ql-align-right {
+      padding-right: 3 * $num * 1em;
+    }
+
+    li.ql-indent-#{$num}.ql-direction-rtl.ql-align-right {
+      padding-right: 3 * $num + $quill-list-outer-width;
+    }
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+
+    td {
+      outline: none;
+    }
+  }
+
+  h1 {
+    font-size: $h1-font-size;
+  }
+
+  h2 {
+    font-size: $h2-font-size;
+  }
+
+  h3 {
+    font-size: $h3-font-size;
+  }
+
+  h4 {
+    font-size: $h4-font-size;
+  }
+
+  h5 {
+    font-size: $h5-font-size;
+  }
+
+  h6 {
+    font-size: $h6-font-size;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  blockquote {
+    border-left: $quill-blockquote-border-width solid $quill-blockquote-border-color;
+    padding-left: $quill-blockquote-padding-left;
+    margin-bottom: $quill-blockquote-margin-y;
+    margin-top: $quill-blockquote-margin-y;
+  }
+  // Code block
+  .ql-code-block-container {
+    position: relative;
+    font-family: $quill-font-family-monospace;
+    background: $quill-code-block-bg;
+    padding: $quill-code-block-padding-y $quill-code-block-padding-x;
+    margin-bottom: $quill-code-block-margin-y;
+    margin-top: $quill-code-block-margin-y;
+    overflow: visible;
+    @include border-radius($quill-code-block-border-radius);
+    // Code block addon
+    .ql-ui {
+      right: $quill-code-block-addon-offset;
+      top: $quill-code-block-addon-offset;
+    }
+  }
+
+  .ql-video {
+    display: block;
+    max-width: 100%;
+
+    &.ql-align-center {
+      margin: 0 auto;
+    }
+
+    &.ql-align-right {
+      margin: 0 0 0 auto;
+    }
+  }
+  // Color and background classes
+  .ql-bg-black {
+    background: $black;
+  }
+
+  .ql-bg-red {
+    background: $red;
+  }
+
+  .ql-bg-orange {
+    background: $orange;
+  }
+
+  .ql-bg-yellow {
+    background: $yellow;
+  }
+
+  .ql-bg-green {
+    background: $green;
+  }
+
+  .ql-bg-blue {
+    background: $blue;
+  }
+
+  .ql-bg-purple {
+    background: $purple;
+  }
+
+  .ql-color-white {
+    color: $white;
+  }
+
+  .ql-color-red {
+    color: $red;
+  }
+
+  .ql-color-orange {
+    color: $orange;
+  }
+
+  .ql-color-yellow {
+    color: $yellow;
+  }
+
+  .ql-color-green {
+    color: $green;
+  }
+
+  .ql-color-blue {
+    color: $blue;
+  }
+
+  .ql-color-purple {
+    color: $purple;
+  }
+
+  .ql-font-serif {
+    font-family: $font-family-sans-serif;
+  }
+
+  .ql-font-monospace {
+    font-family: $font-family-monospace;
+  }
+
+  .ql-size-small {
+    font-size: $quill-font-size-sm;
+  }
+
+  .ql-size-large {
+    font-size: $quill-font-size-lg;
+  }
+
+  .ql-size-huge {
+    font-size: $quill-font-size-xl;
+  }
+
+  .ql-align-center {
+    text-align: center;
+  }
+
+  .ql-align-justify {
+    text-align: justify;
+  }
+
+  .ql-align-right {
+    text-align: right;
+  }
+
+  .ql-ui {
+    position: absolute;
+  }
+  // Editor placeholder
+  &.ql-blank::before {
+    content: attr(data-placeholder);
+    position: absolute;
+    left: $quill-editor-padding-x;
+    right: $quill-editor-padding-x;
+    pointer-events: none;
+    color: $quill-placeholder-color;
+  }
+}
+
+.ql-picker {
+  &.ql-font,
+  &.ql-header,
+  &.ql-size {
+    // Get content from HTML data
+    .ql-picker-label[data-label]:not([data-label=""]),
+    .ql-picker-item[data-label]:not([data-label=""]) {
+      &::before {
+        content: attr(data-label);
+      }
+    }
+  }
+
+  &.ql-header {
+    width: $quill-control-wide-width;
+    // Default content
+    .ql-picker-item::before,
+    .ql-picker-label::before {
+      content: 'Normal';
+    }
+    // Heading content
+    @for $num from 1 through 6 {
+      .ql-picker-label[data-value="#{$num}"]::before,
+      .ql-picker-item[data-value="#{$num}"]::before {
+        content: 'Heading ' + $num;
+      }
+    }
+
+    .ql-picker-item[data-value="1"]::before {
+      font-size: $h1-font-size;
+    }
+
+    .ql-picker-item[data-value="2"]::before {
+      font-size: $h2-font-size;
+    }
+
+    .ql-picker-item[data-value="3"]::before {
+      font-size: $h3-font-size;
+    }
+
+    .ql-picker-item[data-value="4"]::before {
+      font-size: $h4-font-size;
+    }
+
+    .ql-picker-item[data-value="5"]::before {
+      font-size: $h5-font-size;
+    }
+
+    .ql-picker-item[data-value="6"]::before {
+      font-size: $h6-font-size;
+    }
+  }
+
+  &.ql-font {
+    width: $quill-control-wide-width;
+    // Default content
+    .ql-picker-item::before,
+    .ql-picker-label::before {
+      content: 'Sans Serif';
+    }
+
+    .ql-picker-item[data-value="serif"]::before,
+    .ql-picker-label[data-value="serif"]::before {
+      content: 'Serif';
+    }
+
+    .ql-picker-item[data-value="monospace"]::before,
+    .ql-picker-label[data-value="monospace"]::before {
+      content: 'Monospace';
+    }
+
+    .ql-picker-item[data-value="poppins"]::before,
+    .ql-picker-label[data-value="poppins"]::before {
+      content: 'Poppins';
+    }
+
+    .ql-picker-item[data-value="roboto mono"]::before,
+    .ql-picker-label[data-value="roboto mono"]::before {
+      content: 'Roboto Mono';
+    }
+
+    .ql-picker-item[data-value="sans serif"]::before {
+      font-family: $quill-font-family-sans-serif;
+    }
+
+    .ql-picker-item[data-value="monospace"]::before {
+      font-family: $quill-font-family-monospace;
+    }
+
+    .ql-picker-item[data-value="poppins"]::before {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .ql-picker-item[data-value="roboto mono"]::before {
+      font-family: 'Roboto Mono', monospace;
+    }
+  }
+
+  &.ql-size {
+    width: $quill-control-wide-width;
+    // Default content
+    .ql-picker-item::before,
+    .ql-picker-label::before {
+      content: 'Normal';
+    }
+
+    .ql-picker-item[data-value="small"]::before,
+    .ql-picker-label[data-value="small"]::before {
+      content: 'Small';
+    }
+
+    .ql-picker-item[data-value="large"]::before,
+    .ql-picker-label[data-value="large"]::before {
+      content: 'Large';
+    }
+
+    .ql-picker-item[data-value="huge"]::before,
+    .ql-picker-label[data-value="huge"]::before {
+      content: 'Huge';
+    }
+
+    .ql-picker-item[data-value="small"]::before {
+      font-size: $quill-font-size-sm;
+    }
+
+    .ql-picker-item[data-value="large"]::before {
+      font-size: $quill-font-size-lg;
+    }
+
+    .ql-picker-item[data-value="huge"]::before {
+      font-size: $quill-font-size-xl;
+    }
+  }
+}
+// SVG icon styles
+
+.ql-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.ql-stroke-miter {
+  fill: none;
+  stroke: currentColor;
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+.ql-fill {
+  fill: currentColor;
+}
+
+.ql-empty {
+  fill: none;
+}
+
+.ql-even {
+  fill-rule: evenodd;
+}
+
+.ql-thin {
+  stroke-width: 1;
+}
+
+.ql-transparent {
+  opacity: 0.4;
+}
+
+.ql-direction {
+  svg:last-child {
+    display: none;
+  }
+
+  &.ql-active {
+    svg:last-child {
+      display: inline;
+    }
+
+    svg:first-child {
+      display: none;
+    }
+  }
+}
+
+.ql-hidden {
+  display: none !important;
+}
+
+.ql-out-bottom,
+.ql-out-top {
+  visibility: hidden;
+}
+
+.ql-clipboard {
+  position: absolute;
+  height: 1px;
+  overflow-y: hidden;
+  top: 50%;
+  left: -100000px;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -1,0 +1,35 @@
+.holder {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	@include transition($wrapper-transition);
+}
+
+.content {
+	flex: 1;
+	padding-top: $grid-gutter-width;
+
+	> [class*="container"] {
+		height: 100%;
+	}
+}
+
+body {
+	&.fullscreen-active {
+		.fullscreen-icon-expand { display: none; }
+		.fullscreen-icon-compress { display: block; }
+	}
+
+	&:not(.fullscreen-active) {
+		.fullscreen-icon-expand { display: block; }
+		.fullscreen-icon-compress { display: none; }
+	}
+}

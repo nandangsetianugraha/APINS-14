@@ -1,0 +1,20 @@
+.dataTable {
+  // Floating header classes
+  &.fixedHeader-floating,
+  &.fixedHeader-locked {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    background: $datatable-fixed-element-bg;
+  }
+
+  &.fixedHeader-locked {
+    position: absolute !important;
+  }
+}
+
+// Hide floating header in print view
+@media print {
+  .fixedHeader-floating {
+    display: none;
+  }
+}

@@ -1,0 +1,145 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Apex Chart" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Chart" },
+  { text: "Apex Chart", link: "chart/apex-chart.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/chart/apex-chart.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-body">
+          <p class="mb-0"><strong>Apex Charts</strong> is a modern charting library that helps developers to create beautiful and interactive visualizations for web pages. Check more examples and references on <a href="http://apexcharts.com" target="_blank">Apex Chart's page</a>.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Line chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-1"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Column chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-3"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Mix chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-5"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Candlestick chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-7"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Bubble chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-9"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Area chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-2"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Bar chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-4"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Timeline chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-6"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Pie chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-8"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Radar chart</h3>
+        </div>
+        <div class="portlet-body">
+          <div id="apexchart-10"></div>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

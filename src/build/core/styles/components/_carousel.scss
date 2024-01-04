@@ -1,0 +1,19 @@
+.carousel {
+  --#{$variable-prefix}carousel-gutter: #{$carousel-gutter};
+
+  display: flex;
+  flex-direction: row;
+  width: calc(2 * var(--#{$variable-prefix}carousel-gutter) + 100%);
+  margin-right: calc(-1 * var(--#{$variable-prefix}carousel-gutter));
+  margin-left: calc(-1 * var(--#{$variable-prefix}carousel-gutter));
+
+  &.carousel-center {
+    padding: 0 var(--#{$variable-prefix}carousel-gutter);
+  }
+}
+
+.carousel-item {
+  width: 100%;
+  padding-left: var(--#{$variable-prefix}carousel-gutter);
+  padding-right: var(--#{$variable-prefix}carousel-gutter);
+}

@@ -1,0 +1,37 @@
+$datatable-autofill-handle-color:                   $primary !default;
+$datatable-autofill-handle-focus-color:             $danger !default;
+$datatable-autofill-handle-size:                    .75rem !default;
+
+$datatable-autofill-select-color:                   $datatable-autofill-handle-color !default;
+$datatable-autofill-select-width:                   2px !default;
+
+$datatable-autofill-input-spacer:                   $spacer * .5 !default;
+$datatable-autofill-input-width:                    5rem !default;
+
+$datatable-autofill-close-dimension:                1.5rem !default;
+$datatable-autofill-close-spacer:                   1rem !default;
+$datatable-autofill-close-color:                    $btn-close-color !default;
+$datatable-autofill-close-font-family:              $font-family-monospace !default;
+$datatable-autofill-close-font-size:                1.6rem !default;
+$datatable-autofill-close-font-weight:              $font-weight-bolder !default;
+$datatable-autofill-close-line-height:              1.4rem !default;
+$datatable-autofill-close-padding-y:                $btn-close-padding-y !default;
+$datatable-autofill-close-padding-x:                $btn-close-padding-x !default;
+
+$datatable-autofill-list-width:                     45rem !default;
+$datatable-autofill-list-bg:                        $modal-content-bg !default;
+$datatable-autofill-list-padding:                   $modal-inner-padding !default;
+$datatable-autofill-list-border-width:              $modal-content-border-width !default;
+$datatable-autofill-list-border-color:              $modal-content-border-color !default;
+$datatable-autofill-list-border-radius:             $modal-content-border-radius !default;
+$datatable-autofill-list-backdrop-bg:               $modal-backdrop-bg !default;
+$datatable-autofill-list-backdrop-opacity:          $modal-backdrop-opacity !default;
+
+$datatable-autofill-list-item-color:                $text-level-1 !default;
+$datatable-autofill-list-item-hover-bg:             $bg-level-2 !default;
+$datatable-autofill-list-item-font-size:            $font-size-base !default;
+$datatable-autofill-list-item-font-weight:          $font-weight-bold !default;
+$datatable-autofill-list-item-padding-x:            $spacer !default;
+$datatable-autofill-list-item-padding-y:            $spacer * .5 !default;
+$datatable-autofill-list-item-border-width:         $border-width !default;
+$datatable-autofill-list-item-border-color:         $border-color !default;

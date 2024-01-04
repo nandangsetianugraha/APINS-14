@@ -1,0 +1,36 @@
+.dataTable {
+  .dtrg-group {
+    // Reset group styling
+    th {
+      text-align: left;
+      box-shadow: none !important;
+    }
+
+    // Styling root group
+    &.dtrg-level-0 th {
+      background-color: $datatable-group-bg-root;
+      @include font-size($datatable-group-font-size);
+      font-weight: $datatable-group-font-weight;
+    }
+
+    // Styling child group
+    &.dtrg-level-1 th,
+    &.dtrg-level-2 th,
+    &.dtrg-level-3 th,
+    &.dtrg-level-4 th,
+    &.dtrg-level-5 th {
+      background-color: $datatable-group-bg;
+      padding-bottom: $datatable-group-padding-y-sm;
+      padding-top: $datatable-group-padding-y-sm;
+      @include font-size($datatable-group-font-size-sm);
+      font-weight: $datatable-group-font-weight-sm;
+    }
+
+    // Calculate spacer on child group
+    @for $i from 1 through 5 {
+      &.dtrg-level-#{$i} th {
+        padding-left: $datatable-group-spacer + ($datatable-group-spacer-scale * $i);
+      }
+    }
+  }
+}

@@ -1,0 +1,372 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Carousel" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Carousel", link: "elements/advanced/carousel.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/carousel.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p>These carousels are powered by <a href="http://kenwheeler.github.io/slick" target="_blank">slick.js</a>. The example below is a basic initialization. Put your content or any elements into <code>.carousel-item</code> and wrap those in <code>.carousel</code> class</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-1">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Center mode</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Centered carousel, you can enable this feature by setting <code>centerMode: true</code>. You have to extend <code>.carousel</code> class with <code>.carousel-center</code> for supporting this feature.</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel carousel-center" id="slick-3">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sync</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Sync your carousels and make one of them as navigation, look the example.</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-7-for">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel carousel-center mt-4" id="slick-7-nav">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Number of slides</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Set number of slides to show for carousel by setting <code>slidesToShow</code> property.</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-2">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Alternative navigation</h3>
+        </div>
+        <div class="portlet-body">
+          <p>We provide custom navigation that you can use like example below</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-4">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Autoplay</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Set <code>autoplay: true</code> to enabled autoplay features and set <code>autoplaySpeed</code> property for autoplay speed.</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-5">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/560x400.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Dot indicator</h3>
+        </div>
+        <div class="portlet-body">
+          <p>To enable dot indicator, you can set <code>dots: true</code>. The dots have navigation functionality, you can click those to change slides.</p>
+
+          <!-- BEGIN Carousel -->
+          <div class="carousel" id="slick-6">
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="carousel-item">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Carousel -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

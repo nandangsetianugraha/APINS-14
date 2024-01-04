@@ -1,0 +1,20 @@
+.widget13 {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	padding: $widget13-padding;
+	overflow: hidden;
+}
+
+.widget13-text {
+	padding: 0 $widget13-text-spacer;
+}
+
+.widget13-avatar {
+	margin: 0;
+	@include font-size($widget13-avatar-font-size);
+
+	> .avatar-display {
+		line-height: initial;
+	}
+}

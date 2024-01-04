@@ -1,0 +1,37 @@
+.widget14 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $widget14-padding-y $widget14-padding-x;
+}
+
+.widget14-avatar {
+  @include font-size($widget14-avatar-font-size);
+  margin-bottom: $widget14-avatar-spacer;
+}
+
+.widget14-subtitle,
+.widget14-title {
+  padding: $widget14-content-spacer 0;
+  margin: 0;
+  text-align: center;
+}
+
+.widget14-title {
+  color: $widget14-title-color;
+  @include font-size($widget14-title-font-size);
+  font-weight: $widget14-title-font-weight;
+}
+
+.widget14-subtitle {
+  color: $widget14-subtitle-color;
+  @include font-size($widget14-subtitle-font-size);
+  font-weight: $widget14-subtitle-font-weight;
+}
+
+.widget14-addon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

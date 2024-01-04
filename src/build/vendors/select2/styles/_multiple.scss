@@ -1,0 +1,40 @@
+.select2-selection--multiple {
+  height: auto;
+  min-height: $select2-height;
+  // Choice item element
+  .select2-selection__choice {
+    @include font-size($select2-choice-font-size);
+    font-weight: $select2-choice-font-weight;
+    padding: $select2-choice-padding-y $select2-choice-padding-x;
+    margin-top: $select2-choice-spacer-y;
+    margin-bottom: $select2-choice-spacer-y;
+    margin-right: $select2-choice-spacer-x;
+    cursor: default;
+    color: $select2-choice-color;
+    background: $select2-choice-bg;
+    border: $select2-choice-border-width solid $select2-choice-border-color;
+    @include border-radius($select2-border-radius);
+  }
+  // Choice remove button
+  .select2-selection__choice__remove {
+    display: inline-block;
+    color: $select2-clear-color;
+    margin-right: $select2-choice-icon-spacer;
+    cursor: pointer;
+
+    &:hover {
+      color: $select2-clear-hover-color;
+    }
+  }
+  // Clear button style
+  .select2-selection__clear {
+    right: $select2-icon-spacer;
+  }
+}
+// Disabled state class
+.select2-container--disabled {
+  // Remove choice remove button
+  .select2-selection__choice__remove {
+    display: none;
+  }
+}

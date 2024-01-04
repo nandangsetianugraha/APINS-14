@@ -1,0 +1,49 @@
+$context-menu-bg:                       $dropdown-bg !default;
+$context-menu-padding-y:                $dropdown-padding-y !default;
+$context-menu-min-width:                12.5rem !default;
+$context-menu-max-width:                $context-menu-min-width * 2 !default;
+$context-menu-border-width:             $dropdown-border-width !default;
+$context-menu-border-color:             $dropdown-border-color !default;
+$context-menu-border-radius:            $dropdown-border-radius !default;
+$context-menu-animation-offset:         $dropdown-animation-offset !default;
+$context-menu-animation-duration:       .25s !default;
+
+$context-menu-item-font-size:           $dropdown-item-font-size !default;
+$context-menu-item-font-weight:         $font-weight-normal !default;
+$context-menu-item-line-height:         $line-height-base !default;
+$context-menu-item-padding-y:           $dropdown-item-padding-y !default;
+$context-menu-item-padding-x:           $dropdown-item-padding-x !default;
+$context-menu-item-color:               $dropdown-item-color !default;
+$context-menu-item-hover-bg:            $dropdown-item-hover-bg !default;
+$context-menu-item-hover-color:         $dropdown-item-hover-color !default;
+$context-menu-item-disabled-bg:         $dropdown-item-disabled-bg !default;
+$context-menu-item-disabled-color:      $dropdown-item-disabled-color !default;
+$context-menu-item-disabled-opacity:    $dropdown-item-disabled-opacity !default;
+
+$context-menu-icon-dimension:           $dropdown-icon-dimension !default;
+$context-menu-icon-size:                $dropdown-icon-size !default;
+$context-menu-icon-spacer:              $spacer * .5 !default;
+$context-menu-icon-loading-duration:    .75s !default;
+
+$context-menu-divider-width:            $border-width !default;
+$context-menu-divider-color:            $dropdown-divider-bg !default;
+$context-menu-divider-spacer:           $dropdown-divider-margin-y !default;
+
+$context-menu-input-color:              $context-menu-item-color !default;
+$context-menu-input-switch-dimension:   1.25rem !default;
+$context-menu-input-switch-top:         $spacer * .25 !default;
+$context-menu-input-switch-spacer:      $spacer * .5 !default;
+$context-menu-input-textarea-height:    7rem !default;
+
+$context-menu-access-text-decoration:   underline !default;
+
+$context-menu-icons: (
+  add:      "\f067",
+  copy:     "\f0c5",
+  cut:      "\f0c4",
+  delete:   "\f55a",
+  edit:     "\f044",
+  loading:  "\f1ce",
+  paste:    "\f0ea",
+  quit:     "\f2f5",
+) !default;

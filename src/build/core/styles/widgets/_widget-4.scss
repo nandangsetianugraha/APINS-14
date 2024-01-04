@@ -1,0 +1,39 @@
+.widget4 {
+  display: block;
+}
+
+.widget4-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: $widget4-group-spacer 0;
+}
+
+.widget4-display {
+  flex: 1;
+}
+
+.widget4-highlight,
+.widget4-subtitle,
+.widget4-title {
+  margin: 0;
+  padding: $widget4-content-spacer 0;
+}
+
+.widget4-title {
+  color: $widget4-title-color;
+  @include font-size($widget4-title-font-size);
+  font-weight: $widget4-title-font-weight;
+}
+
+.widget4-subtitle {
+  color: $widget4-subtitle-color;
+  @include font-size($widget4-subtitle-font-size);
+  font-weight: $widget4-subtitle-font-weight;
+}
+
+.widget4-highlight {
+  color: $widget4-highlight-color;
+  @include font-size($widget4-highlight-font-size);
+  font-weight: $widget4-highlight-font-weight;
+}

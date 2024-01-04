@@ -1,0 +1,32 @@
+.widget6 {
+  display: block;
+  text-align: center;
+  padding: $widget6-padding-y $widget6-padding-x;
+  background: $widget6-bg;
+  border: $widget6-border-width $border-style $widget6-border-color;
+  cursor: pointer;
+  @include border-radius($widget6-border-radius);
+
+  &:hover {
+    background: $widget6-hover-bg;
+    border-color: $widget6-hover-border-color;
+  }
+}
+
+.widget6-subtitle,
+.widget6-title {
+  margin: 0;
+  padding: $widget6-content-spacer 0;
+}
+
+.widget6-title {
+  color: $widget6-title-color;
+  @include font-size($widget6-title-font-size);
+  font-weight: $widget6-title-font-weight;
+}
+
+.widget6-subtitle {
+  color: $widget6-subtitle-color;
+  @include font-size($widget6-subtitle-font-size);
+  font-weight: $widget6-subtitle-font-weight;
+}

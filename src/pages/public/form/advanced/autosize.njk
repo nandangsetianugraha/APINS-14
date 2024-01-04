@@ -1,0 +1,46 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Autosize" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Autosize", link: "form/advanced/autosize.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/autosize.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Autosize</strong> will automatically resize your textarea to fit the content. You must initialize autosize via javascript: <code>autosize($('.autosize'))</code>. Check more API on <a href="http://www.jacklmoore.com/autosize" target="_blank">Autosize's page</a>.</p>
+          <textarea class="form-control autosize" placeholder="Type Something..."></textarea>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Predefined value</h3>
+        </div>
+        <div class="portlet-body">
+          <textarea class="form-control autosize" placeholder="Type Something...">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

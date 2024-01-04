@@ -1,0 +1,51 @@
+.widget16 {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget16-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget16-content {
+  flex: 1;
+}
+
+.widget16-title {
+  color: $widget16-title-color;
+  @include font-size($widget16-title-font-size);
+  font-weight: $widget16-title-font-weight;
+}
+
+.widget16-subtitle {
+  color: $widget16-subtitle-color;
+  @include font-size($widget16-subtitle-font-size);
+  font-weight: $widget16-subtitle-font-weight;
+}
+
+.widget16-list {
+  display: flex;
+  flex-direction: column;
+  margin: $widget16-list-spacer 0;
+}
+
+.widget16-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: $widget16-list-item-spacer 0;
+}
+
+.widget16-list-data {
+  color: $widget16-list-data-color;
+  @include font-size($widget16-list-data-font-size);
+  font-weight: $widget16-list-data-font-weight;
+}
+
+.widget16-list-value {
+  color: $widget16-list-value-color;
+  @include font-size($widget16-list-value-font-size);
+  font-weight: $widget16-list-value-font-weight;
+}

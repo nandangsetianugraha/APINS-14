@@ -1,0 +1,31 @@
+// Reset table styling
+.dt-rowReorder-float {
+  opacity: $datatable-order-drag-opacity;
+  outline: $datatable-order-pointer-width solid $datatable-order-pointer-color;
+  outline-offset: -$datatable-order-pointer-width;
+}
+
+// Draggable element
+.dt-rowReorder-float-parent {
+  table-layout: fixed;
+  z-index: 2001;
+  position: absolute !important;
+  overflow: hidden;
+}
+
+// Row marker for positioning
+.dt-rowReorder-moving {
+  outline: $datatable-order-pointer-width solid $datatable-order-pointer-color;
+  outline-offset: -$datatable-order-pointer-width;
+}
+
+// Hide x-axis main scrollbar
+body.dt-rowReorder-noOverflow {
+  overflow-x: hidden;
+}
+
+// Drag handle
+.dataTable .reorder {
+  text-align: center;
+  cursor: move;
+}

@@ -1,0 +1,128 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant(
+  $background,
+  $border,
+  $color: color-contrast($background),
+  $hover-background: if($color == $color-contrast-light, shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)),
+  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)),
+  $hover-color: color-contrast($hover-background),
+  $active-background: if($color == $color-contrast-light, shade-color($background, $btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)),
+  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)),
+  $active-color: color-contrast($active-background),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background)
+) {
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-bg: #{$background};
+  --#{$variable-prefix}btn-border-color: #{$border};
+  --#{$variable-prefix}btn-hover-color: #{$hover-color};
+  --#{$variable-prefix}btn-hover-bg: #{$hover-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$hover-border};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-border};
+  --#{$variable-prefix}btn-disabled-color: #{$disabled-color};
+  --#{$variable-prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$variable-prefix}btn-disabled-border-color: #{$disabled-border};
+}
+
+@mixin button-outline-variant(
+  $color,
+  $color-hover: color-contrast($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-contrast($active-background)
+) {
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-border-color: #{$color};
+  --#{$variable-prefix}btn-hover-color: #{$color-hover};
+  --#{$variable-prefix}btn-hover-bg: #{$active-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$active-border};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-border};
+  --#{$variable-prefix}btn-disabled-color: #{$color};
+  --#{$variable-prefix}btn-disabled-bg: transparent;
+  --#{$variable-prefix}btn-disabled-border-color: #{$color};
+}
+
+@mixin button-flat-variant(
+  $color,
+  $active-background: $color,
+  $active-color: color-contrast($active-background)
+) {
+  --#{$variable-prefix}btn-color: #{$btn-flat-color};
+  --#{$variable-prefix}btn-bg: #{$btn-flat-bg};
+  --#{$variable-prefix}btn-border-color: transparent;
+  --#{$variable-prefix}btn-hover-color: #{$active-color};
+  --#{$variable-prefix}btn-hover-bg: #{$active-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$active-background};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-background};
+  --#{$variable-prefix}btn-disabled-color: #{$btn-flat-color};
+  --#{$variable-prefix}btn-disabled-bg: #{$btn-flat-bg};
+  --#{$variable-prefix}btn-disabled-border-color: #{$btn-flat-bg};
+}
+
+@mixin button-label-variant(
+  $color,
+  $background: rgba($color, .1),
+  $active-background: $color,
+  $active-color: color-contrast($active-background)
+) {
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-bg: #{$background};
+  --#{$variable-prefix}btn-border-color: transparent;
+  --#{$variable-prefix}btn-hover-color: #{$active-color};
+  --#{$variable-prefix}btn-hover-bg: #{$active-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$active-background};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-background};
+  --#{$variable-prefix}btn-disabled-color: #{$color};
+  --#{$variable-prefix}btn-disabled-bg: #{$background};
+  --#{$variable-prefix}btn-disabled-border-color: #{$background};
+}
+
+@mixin button-text-variant(
+  $color,
+  $background-hover: rgba($color, .1),
+  $active-background: $color,
+  $active-color: color-contrast($active-background)
+) {
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-bg: transparent;
+  --#{$variable-prefix}btn-border-color: transparent;
+  --#{$variable-prefix}btn-hover-color: #{$color};
+  --#{$variable-prefix}btn-hover-bg: #{$background-hover};
+  --#{$variable-prefix}btn-hover-border-color: #{$background-hover};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-background};
+  --#{$variable-prefix}btn-disabled-color: #{$color};
+  --#{$variable-prefix}btn-disabled-bg: transparent;
+  --#{$variable-prefix}btn-disabled-border-color: transparent;
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  --#{$variable-prefix}btn-padding-y: #{$padding-y};
+  --#{$variable-prefix}btn-padding-x: #{$padding-x};
+  @include rfs($font-size, --#{$variable-prefix}btn-font-size);
+  --#{$variable-prefix}btn-border-radius: #{$border-radius};
+}
+
+// Button wide size
+@mixin button-wide-size($padding-x) {
+  --#{$variable-prefix}btn-padding-x: #{$padding-x};
+}
+
+// Button tall size
+@mixin button-tall-size($padding-y) {
+  --#{$variable-prefix}btn-padding-y: #{$padding-y};
+}

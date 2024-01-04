@@ -1,0 +1,107 @@
+// Base styles
+
+.toast {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: $toastr-width;
+  padding: $toastr-padding-y calc(#{$btn-icon-dimension-sm} + #{$toastr-padding-x}) $toastr-padding-y $toastr-icon-dimension + $toastr-padding-x;
+  margin-bottom: $toastr-spacer;
+  opacity: $toastr-opacity;
+  overflow: hidden;
+  cursor: pointer;
+  @include border-radius($toastr-border-radius);
+
+  &:hover {
+    opacity: $toastr-hover-opacity;
+  }
+}
+
+.toast-title {
+  @include font-size($toastr-title-font-size);
+  font-weight: $toastr-title-font-weight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast-message {
+  @include font-size($toastr-message-font-size);
+  font-weight: $toastr-message-font-weight;
+  word-break: break-word;
+
+  a {
+    font-weight: $toastr-link-font-weight;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.toast-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: $toastr-progress-height;
+  background-color: $toastr-progress-color;
+  opacity: $toastr-progress-opacity;
+}
+
+.toast-close-button {
+  position: absolute;
+  top: $toastr-close-offset;
+  right: $toastr-close-offset;
+  width: $toastr-close-dimension;
+  height: $toastr-close-dimension;
+  @include font-size($toastr-close-font-size);
+  font-weight: $toastr-close-font-weight;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+// Contextual color variants
+.toast {
+  @include toastr-variant($primary);
+}
+@each $color, $value in $toastr-colors {
+  .toast-#{$color} {
+    @include toastr-variant($value);
+  }
+}
+// Icon variants
+.toast {
+  @include icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    @include font-size($toastr-icon-size);
+    width: $toastr-icon-dimension;
+    min-width: $toastr-icon-dimension;
+    left: $toastr-padding-x;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}
+
+@each $name, $icon in $toastr-icons {
+  .toast-#{$name}:before {
+    content: $icon;
+  }
+}
+
+#toast-container {
+  position: fixed;
+  z-index: 2000;
+}

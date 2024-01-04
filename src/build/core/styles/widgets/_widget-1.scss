@@ -1,0 +1,84 @@
+.widget1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget1-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: $widget1-display-height;
+  padding: $widget1-content-padding;
+  @include border-radius($widget1-border-radius);
+
+  &.widget1-display-top {
+    @include border-bottom-radius(0);
+  }
+
+  &.widget1-display-bottom {
+    @include border-top-radius(0);
+  }
+
+  &.widget1-display-lg {
+    min-height: $widget1-display-height-lg;
+  }
+
+  &.widget1-display-sm {
+    min-height: $widget1-display-height-sm;
+  }
+}
+
+.widget1-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget1-title {
+  flex: 1;
+  color: inherit;
+  @include font-size($widget1-title-font-size);
+  font-weight: $widget1-title-font-weight;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.widget1-addon {
+  white-space: nowrap;
+}
+
+.widget1-offset {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.widget1-dialog {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget1-dialog-content {
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.widget1-body {
+  padding: $widget1-content-padding;
+  z-index: 1;
+  @include border-bottom-radius($widget1-border-radius);
+
+  &.widget1-body-offset {
+    margin-top: -$widget1-body-offset;
+  }
+}

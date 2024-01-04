@@ -1,0 +1,42 @@
+.jstree-wholerow-ul {
+	position: relative;
+	display: inline-block;
+	min-width: 100%;
+
+	.jstree-leaf > .jstree-ocl {
+		cursor: pointer;
+	}
+
+	.jstree-anchor,
+	.jstree-icon {
+		position: relative;
+	}
+	// Remove default anchor background
+	.jstree-clicked,
+	.jstree-hovered {
+		background: transparent;
+	}
+
+	.jstree-wholerow {
+		position: absolute;
+		height: $jstree-base-height;
+		width: 100%;
+		left: 0;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	.jstree-wholerow-hovered {
+		color: $jstree-anchor-hover-color;
+		background: $jstree-anchor-hover-bg;
+	}
+
+	.jstree-wholerow-clicked {
+		color: $jstree-anchor-active-color;
+		background: $jstree-anchor-active-bg;
+		// Change expand tool color
+		+ .jstree-ocl:after {
+			color: $jstree-anchor-active-color;
+		}
+	}
+}

@@ -1,0 +1,6 @@
+// Badges
+@mixin badge-variant($bg, $color, $border-color) {
+  --#{$variable-prefix}badge-color: #{$color};
+  --#{$variable-prefix}badge-bg: #{$bg};
+  --#{$variable-prefix}badge-border-color: #{$border-color};
+}

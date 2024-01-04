@@ -1,0 +1,171 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Marker" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Marker", link: "elements/base/marker.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Marker</strong> is component that you can use for marking something with shape and color, you can combine it with many components. Marker by default has 3 different shapes, like the examples below. Change marker color by applying text color utility (e.q <code>.text-{color}</code>).</p>
+
+          <!-- BEGIN Row -->
+          <div class="row g-3">
+            <div class="col-md-4">
+
+              <!-- BEGIN Portlet -->
+              <div class="portlet mb-0">
+                <div class="portlet-header portlet-header-bordered">
+                  <h3 class="portlet-title">Dot</h3>
+                </div>
+                <div class="portlet-body">
+                  <p>Apply <code>.marker-dot</code> class for this shape</p>
+
+                  <!-- BEGIN Markers -->
+                  <i class="marker marker-dot text-primary"></i>
+                  <i class="marker marker-dot text-secondary"></i>
+                  <i class="marker marker-dot text-info"></i>
+                  <i class="marker marker-dot text-success"></i>
+                  <i class="marker marker-dot text-warning"></i>
+                  <i class="marker marker-dot text-danger"></i>
+                  <i class="marker marker-dot text-dark"></i>
+                  <i class="marker marker-dot text-light"></i>
+                  <!-- END Markers -->
+
+                </div>
+              </div>
+              <!-- END Portlet -->
+
+            </div>
+            <div class="col-md-4">
+
+              <!-- BEGIN Portlet -->
+              <div class="portlet mb-0">
+                <div class="portlet-header portlet-header-bordered">
+                  <h3 class="portlet-title">Circle</h3>
+                </div>
+                <div class="portlet-body">
+                  <p>Apply <code>.marker-circle</code> class for this shape</p>
+
+                  <!-- BEGIN Markers -->
+                  <i class="marker marker-circle text-primary"></i>
+                  <i class="marker marker-circle text-secondary"></i>
+                  <i class="marker marker-circle text-info"></i>
+                  <i class="marker marker-circle text-success"></i>
+                  <i class="marker marker-circle text-warning"></i>
+                  <i class="marker marker-circle text-danger"></i>
+                  <i class="marker marker-circle text-dark"></i>
+                  <i class="marker marker-circle text-light"></i>
+                  <!-- END Markers -->
+
+                </div>
+              </div>
+              <!-- END Portlet -->
+
+            </div>
+            <div class="col-md-4">
+
+              <!-- BEGIN Portlet -->
+              <div class="portlet mb-0">
+                <div class="portlet-header portlet-header-bordered">
+                  <h3 class="portlet-title">Pill</h3>
+                </div>
+                <div class="portlet-body">
+                  <p>Apply <code>.marker-pill</code> class for this shape</p>
+
+                  <!-- BEGIN Markers -->
+                  <i class="marker marker-pill text-primary"></i>
+                  <i class="marker marker-pill text-secondary"></i>
+                  <i class="marker marker-pill text-info"></i>
+                  <i class="marker marker-pill text-success"></i>
+                  <i class="marker marker-pill text-warning"></i>
+                  <i class="marker marker-pill text-danger"></i>
+                  <i class="marker marker-pill text-dark"></i>
+                  <i class="marker marker-pill text-light"></i>
+                  <!-- END Markers -->
+
+                </div>
+              </div>
+              <!-- END Portlet -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Sizing</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Change marker size to smaller or larger with <code>.marker-{sm|lg}</code> classes.</p>
+
+          <!-- BEGIN Markers -->
+          <i class="marker marker-dot marker-sm text-primary"></i>
+          <i class="marker marker-dot text-success"></i>
+          <i class="marker marker-dot marker-lg text-danger"></i>
+          <i class="marker marker-circle marker-sm text-primary"></i>
+          <i class="marker marker-circle text-success"></i>
+          <i class="marker marker-circle marker-lg text-danger"></i>
+          <i class="marker marker-pill marker-sm text-primary"></i>
+          <i class="marker marker-pill text-success"></i>
+          <i class="marker marker-pill marker-lg text-danger"></i>
+          <!-- END Markers -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Usage</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can use marker with several elements together.</p>
+
+          <!-- BEGIN Buttons -->
+          <button class="btn btn-primary">
+            Button
+            <div class="btn-marker">
+              <i class="marker marker-dot text-success"></i>
+            </div>
+          </button>
+          <button class="btn btn-primary btn-icon">
+            <i class="fa fa-star"></i>
+            <div class="btn-marker">
+              <i class="marker marker-dot text-success"></i>
+            </div>
+          </button>
+          <!-- END Buttons -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

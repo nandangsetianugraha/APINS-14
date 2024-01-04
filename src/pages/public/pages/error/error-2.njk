@@ -1,0 +1,19 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Error 2" %}
+{% set enable_container_fluid = true %}
+{% set enable_aside = false %}
+{% set enable_header = false %}
+{% set enable_footer = false %}
+{% set content_wrapper_class = "bg-primary" %}
+
+{% block content %}
+  <div class="row g-0 align-items-center justify-content-center h-100">
+    <div class="col-12 text-white">
+      <h1 class="display-1 fw-bold">404</h1>
+      <h3>How did you get here</h3>
+      <h6>Sorry we can't seem to find the page you're looking for.</h6>
+      <p>There may be amisspelling in the URL entered, or the page you are looking for may no longer exist.</p>
+    </div>
+  </div>
+{% endblock %}

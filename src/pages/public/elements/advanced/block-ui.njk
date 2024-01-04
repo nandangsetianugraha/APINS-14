@@ -1,0 +1,134 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Block UI" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Block UI", link: "elements/advanced/block-ui.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/block-ui.js" | url
+] %}
+
+{% block content %}
+  <div class="row flex-row-reverse">
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet overflow-hidden" id="blockui-target">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Samples</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-8">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Block UI</h3>
+        </div>
+        <div class="portlet-body">
+          <p>The <strong>jQuery BlockUI</strong> lets you simulate synchronous behavior when using AJAX, without locking the browser. BlockUI adds elements to the DOM to give it both the appearance and behavior of blocking user interaction. For more info, you can visit <a href="http://jquery.malsup.com/block" target="_blank">Block UI's page</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="blockui-trigger-1">Block</button>
+                  <button class="btn btn-primary" id="blockui-trigger-2">Unblock</button>
+                </div>
+                <p class="mb-0">Use <code>$('#element').block()</code> to block target element and <code>$('#element').unblock()</code> for unblocking.</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Time Out</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="blockui-trigger-3">Click me</button>
+                </div>
+                <p class="mb-0">Set timeout before unblocked by setting <code>timeout</code> property.</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom text</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="blockui-trigger-4">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom element</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="blockui-trigger-5">Click me</button>
+                </div>
+                <p class="mb-0">You can put html elements into <code>message</code> property</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom style</label>
+              <div class="col-sm-8 col-lg-9">
+                <button class="btn btn-primary" id="blockui-trigger-6">Click me</button>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Block page</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="blockui-trigger-7">Click me</button>
+                </div>
+                <p class="mb-0">Use <code>$.blockUI()</code> to block the page</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Spinner</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" id="blockui-trigger-8">Border</button>
+                  <button class="btn btn-primary" id="blockui-trigger-9">Grow</button>
+                  <button class="btn btn-primary" id="blockui-trigger-10">Spinner only</button>
+                </div>
+                <p class="mb-0">Mix block message with spinner</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,120 @@
+$quill-font-family-monospace:               $font-family-monospace !default;
+$quill-font-family-sans-serif:              $font-family-sans-serif !default;
+$quill-font-family:                         $font-family-base !default;
+$quill-font-size:                           $font-size-base !default;
+$quill-font-size-sm:                        .8rem !default;
+$quill-font-size-lg:                        1.6rem !default;
+$quill-font-size-xl:                        2.4rem !default;
+
+$quill-link-color:                          $link-color !default;
+$quill-placeholder-color:                   $input-placeholder-color !default;
+
+$quill-table-border-width:                  $table-border-width !default;
+$quill-table-border-color:                  $table-border-color !default;
+$quill-table-cell-padding:                  $table-cell-padding-y $table-cell-padding-x !default;
+
+$quill-list-spacer:                         1.5em !default;
+$quill-list-margin:                         .25em !default;
+$quill-list-width:                          1.25em !default;
+$quill-list-outer-width:                    $quill-list-width + $quill-list-margin !default;
+$quill-list-max-indent:                     9 !default;
+$quill-list-bullet-color:                   $text-level-1 !default;
+
+$quill-list-styles: (
+  decimal,
+  lower-alpha,
+  lower-roman
+) !default;
+
+$quill-blockquote-margin-y:                 $spacer * .5 !default;
+$quill-blockquote-padding-left:             $spacer * .75 !default;
+$quill-blockquote-border-width:             $spacer * .25 !default;
+$quill-blockquote-border-color:             $gray-400 !default;
+
+$quill-code-block-bg:                       $gray-900 !default;
+$quill-code-block-padding-y:                $spacer * .25 !default;
+$quill-code-block-padding-x:                $spacer * .5 !default;
+$quill-code-block-margin-y:                 $spacer * .5 !default;
+$quill-code-block-border-radius:            $border-radius !default;
+$quill-code-block-addon-offset:             $spacer * .5 !default;
+
+$quill-editor-line-height:                  $line-height-base !default;
+$quill-editor-padding-y:                    $spacer !default;
+$quill-editor-padding-x:                    $spacer * 1.25 !default;
+$quill-editor-tab-size:                     4 !default;
+$quill-editor-border-width:                 $border-width !default;
+$quill-editor-border-color:                 $border-color !default;
+$quill-editor-border-radius:                $border-radius-lg !default;
+
+$quill-control-dimension:                   $btn-icon-dimension !default;
+$quill-control-wide-width:                  8rem !default;
+$quill-control-padding-x:                   $spacer * .5 !default;
+$quill-control-bg:                          transparent !default;
+$quill-control-color:                       $text-level-1 !default;
+$quill-control-hover-bg:                    $component-hover-bg !default;
+$quill-control-hover-color:                 $component-hover-color !default;
+$quill-control-active-bg:                   $component-active-bg !default;
+$quill-control-active-color:                $component-active-color !default;
+$quill-control-font-size:                   $btn-font-size !default;
+$quill-control-font-weight:                 $btn-font-weight !default;
+$quill-control-border-radius:               $btn-border-radius !default;
+$quill-control-spacer:                      $spacer * .125 !default;
+
+$quill-control-color-margin:                $spacer * .25 !default;
+$quill-control-color-dimension:             1.25rem !default;
+$quill-control-color-num-per-row:           8 !default;
+
+$quill-control-group-spacer:                $spacer * .5 !default;
+
+$quill-icon-size:                           60% !default;
+
+$quill-dropdown-bg:                         $dropdown-bg !default;
+$quill-dropdown-padding-x:                  $spacer * .5 !default;
+$quill-dropdown-padding-y:                  $dropdown-padding-y !default;
+$quill-dropdown-border-width:               $dropdown-border-width !default;
+$quill-dropdown-border-color:               $dropdown-border-color !default;
+$quill-dropdown-border-radius:              $dropdown-border-radius !default;
+
+$quill-dropdown-item-color:                 $dropdown-item-color !default;
+$quill-dropdown-item-hover-bg:              $dropdown-item-hover-bg !default;
+$quill-dropdown-item-hover-color:           $dropdown-item-hover-color !default;
+$quill-dropdown-item-padding-y:             $dropdown-item-padding-y !default;
+$quill-dropdown-item-padding-x:             $dropdown-item-padding-x !default;
+
+$quill-tooltip-bg:                          $tooltip-bg !default;
+$quill-tooltip-color:                       $tooltip-color !default;
+$quill-tooltip-content-spacer:              $spacer * .5 !default;
+$quill-tooltip-padding-y:                   $spacer * .5 !default;
+$quill-tooltip-padding-x:                   $spacer * .75 !default;
+$quill-tooltip-border-width:                $tooltip-border-width !default;
+$quill-tooltip-border-color:                $tooltip-border-color !default;
+$quill-tooltip-border-radius:               $tooltip-border-radius !default;
+$quill-tooltip-preview-width:               20rem !default;
+$quill-tooltip-offset:                      $spacer !default;
+
+$quill-tooltip-arrow-width:                 6px !default;
+$quill-tooltip-arrow-color:                 $bg-level-2 !default;
+
+$quill-input-width:                         15rem !default;
+$quill-input-height:                        $input-height !default;
+$quill-input-padding-y:                     $input-padding-y !default;
+$quill-input-padding-x:                     $input-padding-x !default;
+$quill-input-bg:                            $input-bg !default;
+$quill-input-color:                         $input-color !default;
+$quill-input-focus-border-color:            $input-focus-border-color !default;
+$quill-input-placeholder-color:             $input-placeholder-color !default;
+$quill-input-font-size:                     $input-font-size !default;
+$quill-input-border-width:                  $input-border-width !default;
+$quill-input-border-color:                  $input-border-color !default;
+$quill-input-border-radius:                 $input-border-radius !default;
+
+$quill-snow-toolbar-padding-y:              $spacer * .5 !default;
+$quill-snow-toolbar-padding-x:              $spacer * .5 !default;
+$quill-snow-toolbar-border-width:           $border-width !default;
+$quill-snow-toolbar-border-color:           $border-color !default;
+$quill-snow-toolbar-border-radius:          $border-radius-lg !default;
+
+$quill-bubble-link-tooltip-font-size:       $font-size-base !default;
+$quill-bubble-link-tooltip-font-weight:     $font-weight-normal !default;
+$quill-bubble-link-tooltip-arrow-width:     $spacer * .5 !default;
+$quill-bubble-link-tooltip-arrow-color:     $quill-tooltip-arrow-color !default;

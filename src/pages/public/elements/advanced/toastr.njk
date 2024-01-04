@@ -1,0 +1,230 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Toastr" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Toastr", link: "elements/advanced/toastr.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/elements/toastr.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Toastr builder</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Row -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-4">
+
+              <!-- BEGIN Grid -->
+              <div class="d-grid gap-3">
+                <input class="form-control" id="title" type="text" placeholder="Enter a title ...">
+                <textarea class="form-control" id="message" rows="3" placeholder="Enter a message ..."></textarea>
+                
+                <!-- BEGIN Grid -->
+                <div class="d-grid">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="closeButton">
+                    <label class="form-label" for="closeButton" class="form-check-label">Close Button</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="addBehaviorOnToastClick">
+                    <label class="form-label" for="addBehaviorOnToastClick" class="form-check-label">Add behavior on toast click</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="debugInfo">
+                    <label class="form-label" for="debugInfo" class="form-check-label">Debug</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="progressBar">
+                    <label class="form-label" for="progressBar" class="form-check-label">Progress Bar</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="preventDuplicates">
+                    <label class="form-label" for="preventDuplicates" class="form-check-label">Prevent Duplicates</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="addClear">
+                    <label class="form-label" for="addClear" class="form-check-label">Add button to force clearing a toast, ignoring focus</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="newestOnTop">
+                    <label class="form-label" for="newestOnTop" class="form-check-label">Newest on top</label>
+                  </div>
+                </div>
+                <!-- END Grid -->
+              
+              </div>
+              <!-- END Grid -->
+            
+            </div>
+            <div class="col-md-2">
+              
+              <!-- BEGIN Grid -->
+              <div class="d-grid gap-3">
+                <h6 class="mb-0">Toast Type</h6>
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid" id="toastTypeGroup">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="toasts" value="success" id="success" checked="checked">
+                    <label class="form-label" for="success" class="form-check-label">Success</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="toasts" value="info" id="info">
+                    <label class="form-label" for="info" class="form-check-label">Info</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="toasts" value="warning" id="warning">
+                    <label class="form-label" for="warning" class="form-check-label">Warning</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="toasts" value="error" id="error">
+                    <label class="form-label" for="error" class="form-check-label">Error</label>
+                  </div>
+                </div>
+                <!-- END Grid -->
+
+                <h6 class="mb-0">Positions</h6>
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid" id="positionGroup">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-top-right" id="toast-top-right" checked="checked">
+                    <label class="form-label" for="toast-top-right" class="form-check-label">Top Right</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-bottom-right" id="toast-bottom-right">
+                    <label class="form-label" for="toast-bottom-right" class="form-check-label">Bottom Right</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-bottom-left" id="toast-bottom-left">
+                    <label class="form-label" for="toast-bottom-left" class="form-check-label">Bottom left</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-top-left" id="toast-top-left">
+                    <label class="form-label" for="toast-top-left" class="form-check-label">Top left</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-top-full-width" id="toast-top-full-width">
+                    <label class="form-label" for="toast-top-full-width" class="form-check-label">Top Full Width</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-bottom-full-width" id="toast-bottom-full-width">
+                    <label class="form-label" for="toast-bottom-full-width" class="form-check-label">Bottom Full Width</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-top-center" id="toast-top-center">
+                    <label class="form-label" for="toast-top-center" class="form-check-label">Top Center</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="positions" value="toast-bottom-center" id="toast-bottom-center">
+                    <label class="form-label" for="toast-bottom-center" class="form-check-label">Bottom Center</label>
+                  </div>
+                </div>
+                <!-- END Grid -->
+              
+              </div>
+              <!-- END Grid -->
+
+            </div>
+            <div class="col-md-3">
+
+              <!-- BEGIN Grid -->
+              <div class="d-grid gap-3">
+                <div>
+                  <label class="form-label" for="showEasing">Show Easing</label>
+                  <select class="form-select" id="showEasing">
+                    <option value="swing" selected>swing</option>
+                    <option value="linear">linear</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" for="hideEasing">Hide Easing</label>
+                  <select class="form-select" id="hideEasing">
+                    <option value="swing">swing</option>
+                    <option value="linear" selected>linear</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" for="showMethod">Show Method</label>
+                  <select class="form-select" id="showMethod">
+                    <option value="show">show</option>
+                    <option value="fadeIn" selected>fadeIn</option>
+                    <option value="slideDown">slideDown</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" for="hideMethod">Hide Method</label>
+                  <select class="form-select" id="hideMethod">
+                    <option value="hide">hide</option>
+                    <option value="fadeOut" selected>fadeOut</option>
+                    <option value="slideUp">slideUp</option>
+                  </select>
+                </div>
+              </div>
+              <!-- END Grid -->
+
+            </div>
+            <div class="col-md-3">
+
+              <!-- BEGIN Grid -->
+              <div class="d-grid gap-3">
+                <div>
+                  <label class="form-label" for="showDuration">Show Duration</label>
+                  <input id="showDuration" type="number" class="form-control" placeholder="ms" value="300" min="1">
+                </div>
+                <div>
+                  <label class="form-label" for="hideDuration">Hide Duration</label>
+                  <input id="hideDuration" type="number" class="form-control" placeholder="ms" value="1000" min="1">
+                </div>
+                <div>
+                  <label class="form-label" for="timeOut">Time out</label>
+                  <input id="timeOut" type="number" class="form-control" placeholder="ms" value="5000" min="1">
+                </div>
+                <div>
+                  <label class="form-label" for="extendedTimeOut">Extended time out</label>
+                  <input id="extendedTimeOut" type="number" class="form-control" placeholder="ms" value="1000" min="1">
+                </div>
+              </div>
+              <!-- END Grid -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+          <!-- BEGIN Row -->
+          <div class="row mb-3">
+            <div class="col-12">
+              <button type="button" class="btn btn-label-primary me-2" id="showtoast">Show</button>
+              <button type="button" class="btn btn-label-primary me-2" id="cleartoasts">Clear</button>
+              <button type="button" class="btn btn-label-primary" id="clearlasttoast">Clear Last</button>
+            </div>
+          </div>
+          <!-- END Row -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-body">
+              <pre id="toastrOptions">output</pre>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

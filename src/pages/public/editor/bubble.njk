@@ -1,0 +1,56 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Bubble Editor" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Editor" },
+  { text: "Bubble", link: "editor/bubble.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/editor/bubble.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Bubble editor</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Editor -->
+          <div class="quill" id="quill">
+            <h1 class="ql-align-center">Quill Rich Text Editor</h1>
+            <br>
+            <p>Quill is a free, <a href="http://github.com/quilljs/quill" target="_blank">open source</a> WYSIWYG editor built for the modern web. With its <a href="http://quilljs.com/docs/modules" target="_blank">modular architecture</a> and expressive <a href="http://quilljs.com/docs/api" target="_blank">API</a>, it is completely customizable to fit any need.</p>
+            <p>
+              <ol>
+                <li>Cillum dolore eu fugiat nulla pariatur</li>
+                <li>Duis aute irure dolor in</li>
+                <li>Tempor incididunt ut labore</li>
+                <li>
+                  <ol>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Ommodo consequat</li>
+                    <li>Duis aute irure dolor in</li>
+                  </ol>
+                </li>
+                <li>Laboris nisi ut aliquip ex ea</li>
+                <li>Excepteur sint occaecat</li>
+              </ol>
+            </p>
+            <br>
+            <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <!-- END Editor -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+// Remove margin on the table for scrollable header
+.dataTables_scrollHead {
+  .dataTable {
+    margin-bottom: 0 !important;
+  }
+
+  .table-bordered {
+    border-bottom-width: 0;
+  }
+}
+
+// Scrollable table body
+.dataTables_scrollBody > table {
+  border-top: none;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  // Hide caret on scrollable body
+  thead {
+    .sorting,
+    .sorting_asc,
+    .sorting_desc {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  tbody tr:first-child {
+    td, th {
+      border-top: none;
+    }
+  }
+}
+
+// Scrollable table footer
+.dataTables_scrollFoot > .dataTables_scrollFootInner {
+  box-sizing: content-box;
+
+  > table {
+    margin-top: 0 !important;
+    border-top: none;
+  }
+}

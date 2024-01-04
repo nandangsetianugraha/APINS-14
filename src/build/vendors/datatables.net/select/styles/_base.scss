@@ -1,0 +1,19 @@
+.dataTable {
+  tbody {
+    // Selected state class
+    .selected {
+      &, td, th {
+        background: $datatable-selected-bg !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+// Selected row information
+.dataTables_wrapper {
+  .select-info,
+  .select-item {
+    margin-left: $datatable-info-spacer;
+  }
+}

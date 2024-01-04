@@ -1,0 +1,51 @@
+$zindex-datepicker:               1110 !default;
+
+$datepicker-bg:                   $component-bg !default;
+$datepicker-color:                $text-level-2 !default;
+$datepicker-font-size:            $font-size-base !default;
+$datepicker-min-width:            17.5rem !default;
+$datepicker-padding:              $spacer * .5 !default;
+$datepicker-border-width:         $input-border-width !default;
+$datepicker-border-color:         $input-border-color !default;
+$datepicker-border-radius:        $input-border-radius-lg !default;
+
+$datepicker-pick-width:           8px !default;
+$datepicker-pick-offset:          2px !default;
+
+$datepicker-cell-dimension:       2.5rem !default;
+$datepicker-cell-border-radius:   $border-radius !default;
+$datepicker-cell-hover-bg:        $component-hover-bg !default;
+$datepicker-cell-hover-color:     $component-hover-color !default;
+$datepicker-cell-highlight-bg:    $bg-level-2 !default;
+$datepicker-cell-highlight-color: $datepicker-color !default;
+$datepicker-cell-today-bg:        rgba($primary, .1) !default;
+$datepicker-cell-today-color:     $primary !default;
+$datepicker-cell-range-bg:        $bg-level-3 !default;
+$datepicker-cell-range-color:     $datepicker-color !default;
+$datepicker-cell-off-bg:          transparent !default;
+$datepicker-cell-off-color:       $gray-400 !default;
+$datepicker-cell-disabled-bg:     transparent !default;
+$datepicker-cell-disabled-color:  $bg-level-4 !default;
+$datepicker-cell-active-bg:       $component-active-bg !default;
+$datepicker-cell-active-color:    $component-active-color !default;
+
+$datepicker-block-height:         4rem !default;
+$datepicker-block-col:            4 !default;
+$datepicker-block-col-margin:     1% !default;
+$datepicker-block-hover-bg:       $datepicker-cell-hover-bg !default;
+$datepicker-block-hover-color:    $datepicker-cell-hover-color !default;
+$datepicker-block-disabled-bg:    $bg-level-2 !default;
+$datepicker-block-disabled-color: $datepicker-cell-disabled-color !default;
+$datepicker-block-active-bg:      $datepicker-cell-active-bg !default;
+$datepicker-block-active-color:   $datepicker-cell-active-color !default;
+$datepicker-block-off-bg:         $datepicker-cell-off-bg !default;
+$datepicker-block-off-color:      $datepicker-cell-off-color !default;
+
+$datepicker-nav-dimension:        $datepicker-cell-dimension !default;
+$datepicker-nav-hover-bg:         $datepicker-cell-hover-bg !default;
+$datepicker-nav-hover-color:      $datepicker-cell-hover-color !default;
+$datepicker-switch-width:         $datepicker-min-width - ($datepicker-cell-dimension * 2) !default;
+
+$datepicker-week-bg:              transparent !default;
+$datepicker-week-color:           $gray-400 !default;
+$datepicker-week-font-size:       $font-size-sm !default;

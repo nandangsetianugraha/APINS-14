@@ -1,0 +1,85 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Tooltip" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Tooltip", link: "elements/base/tooltip.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Tooltip examples</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic tooltip</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" title="Tooltip content">Hover me</button>
+                </div>
+                <p class="mb-0">Add <code>data-bs-toggle="tooltip"</code> attribute to initialize tooltip and put the content in <code>title</code> attribute</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Placements</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top tooltip">Top</button>
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bottom tooltip">Bottom</button>
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Right tooltip">Right</button>
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="left" title="Left tooltip">Left</button>
+                </div>
+                <p class="mb-0">Set <code>data-bs-placement</code> attribute with <code>top|bottom|right|left</code> to change tooltip placement</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">HTML Content</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" title="content <b>bold</b> and <em>italic</em>">Hover me</button>
+                </div>
+                <p class="mb-0">Enable html content on tooltip by setting <code>data-bs-html="true"</code></p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Trigger on click</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-trigger="focus" data-bs-toggle="tooltip" title="Tooltip content">Click me</button>
+                </div>
+                <p class="mb-0">Change tooltip trigger to focus</p>
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

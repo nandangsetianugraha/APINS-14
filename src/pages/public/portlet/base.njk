@@ -1,0 +1,314 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Portlet" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Portlet" },
+  { text: "Base", link: "portlet/base.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Bordered</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet portlet-scroll">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Scrollable</h3>
+        </div>
+        <div class="portlet-body" data-simplebar data-simplebar-direction="{{ direction }}">
+          <h5>Scroll me</h5>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p class="mb-0">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-icon">
+            <i class="fa fa-calendar-alt"></i>
+          </div>
+          <h3 class="portlet-title">Extended header</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-primary rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-icon">
+            <i class="fa fa-cog"></i>
+          </div>
+          <h3 class="portlet-title">More portlet</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-primary rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-icon">
+            <i class="fa fa-map-marker-alt"></i>
+          </div>
+          <h3 class="portlet-title">Dropdown</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-text-secondary btn-icon" type="button" data-bs-toggle="dropdown">
+                <i class="fa fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-rocket"></i>
+                  </div>
+                  <span class="dropdown-content">Action</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <span class="dropdown-content">Another action</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-paper-plane"></i>
+                  </div>
+                  <span class="dropdown-content">Something else here</span>
+                </a>
+              </div>
+            </div>
+            <!-- END Dropdown -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header">
+          <h3 class="portlet-title">Footer</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header">
+          <h3 class="portlet-title">Footer alignments</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header">
+              <h3 class="portlet-title">Left</h3>
+            </div>
+            <div class="portlet-body">
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="portlet-footer portlet-footer-bordered text-start">
+              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-outline-secondary">Cancel</button>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header">
+              <h3 class="portlet-title">Center</h3>
+            </div>
+            <div class="portlet-body">
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="portlet-footer portlet-footer-bordered text-center">
+              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-outline-secondary">Cancel</button>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-header">
+              <h3 class="portlet-title">Right</h3>
+            </div>
+            <div class="portlet-body">
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="portlet-footer portlet-footer-bordered text-end">
+              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-outline-secondary">Cancel</button>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header">
+          <h3 class="portlet-title">Nested</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">Without footer</h3>
+            </div>
+            <div class="portlet-body">
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+          <!-- BEGIN Portlet -->
+          <div class="portlet mb-0">
+            <div class="portlet-header portlet-header-bordered">
+              <h3 class="portlet-title">With footer</h3>
+            </div>
+            <div class="portlet-body">
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="portlet-footer portlet-footer-bordered">
+              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-outline-secondary">Cancel</button>
+            </div>
+          </div>
+          <!-- END Portlet -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet portlet-primary">
+        <div class="portlet-header">
+          <div class="portlet-icon">
+            <i class="fa fa-rocket"></i>
+          </div>
+          <h3 class="portlet-title">Portlet color</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-warning rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-success">Submit</button>
+          <button class="btn btn-text-light">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet portlet-success">
+        <div class="portlet-header">
+          <div class="portlet-icon">
+            <i class="fa fa-rocket"></i>
+          </div>
+          <h3 class="portlet-title">More portlet color</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-danger rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-text-light">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

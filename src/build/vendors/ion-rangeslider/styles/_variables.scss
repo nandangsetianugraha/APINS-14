@@ -1,0 +1,38 @@
+$irs-height:                      4rem !default;
+$irs-disabled-opacity:            .35 !default;
+
+$irs-line-top:                    3rem !default;
+$irs-line-height:                 $form-range-track-height !default;
+$irs-line-color:                  $form-range-track-bg !default;
+$irs-line-active-color:           $primary !default;
+$irs-line-border-radius:          $form-range-track-border-radius !default;
+
+$irs-handle-dimension:            $form-range-thumb-width !default;
+$irs-handle-color:                $form-range-thumb-bg !default;
+$irs-handle-active-color:         $form-range-thumb-active-bg !default;
+$irs-handle-border-radius:        $form-range-thumb-border-radius !default;
+
+$irs-tooltip-font-size:           $tooltip-font-size !default;
+$irs-tooltip-font-weight:         $font-weight-bold !default;
+$irs-tooltip-padding-y:           $tooltip-padding-y !default;
+$irs-tooltip-padding-x:           $tooltip-padding-x !default;
+$irs-tooltip-border-radius:       $tooltip-border-radius !default;
+
+$irs-tooltip-arrow-width:         .4rem !default;
+$irs-tooltip-arrow-color:         $primary !default;
+
+$irs-minmax-bg:                   $bg-level-3 !default;
+$irs-minmax-color:                $text-level-1 !default;
+
+$irs-label-bg:                    $primary !default;
+$irs-label-color:                 color-contrast($irs-label-bg) !default;
+
+$irs-grid-height:                 2rem !default;
+$irs-grid-pol-width:              $border-width !default;
+$irs-grid-pol-height-lg:          .75rem !default;
+$irs-grid-pol-height-sm:          .5rem !default;
+$irs-grid-pol-color:              $bg-level-3 !default;
+$irs-grid-text-color:             $text-level-1 !default;
+$irs-grid-text-font-size:         $font-size-base !default;
+$irs-grid-text-font-weight:       $font-weight-normal !default;
+$irs-grid-text-spacer:            $spacer * .75 !default;

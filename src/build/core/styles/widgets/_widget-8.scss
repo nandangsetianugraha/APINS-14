@@ -1,0 +1,64 @@
+.widget8 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.widget8-content {
+  padding: $widget8-content-y $widget8-content-x;
+}
+
+.widget8-avatar {
+  margin-bottom: $widget8-avatar-spacer;
+  @include font-size($widget8-avatar-font-size);
+}
+
+.widget8-highlight,
+.widget8-subtitle,
+.widget8-title {
+  display: block;
+  padding: $widget8-content-spacer 0;
+  margin: 0;
+}
+
+.widget8-highlight {
+  color: $widget8-highlight-color;
+  @include font-size($widget8-highlight-font-size);
+  font-weight: $widget8-highlight-font-weight;
+
+  &.widget8-highlight-lg {
+    @include font-size($widget8-highlight-font-size-lg);
+  }
+}
+
+.widget8-title {
+  color: $widget8-title-color;
+  @include font-size($widget8-title-font-size);
+  font-weight: $widget8-title-font-weight;
+}
+
+.widget8-subtitle {
+  color: $widget8-subtitle-color;
+  @include font-size($widget8-subtitle-font-size);
+  font-weight: $widget8-subtitle-font-weight;
+  margin-top: $widget8-subtitle-spacer;
+}
+
+.widget8-addon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $widget8-icon-color;
+  padding: $widget8-addon-padding-y $widget8-addon-padding-x;
+  top: 0;
+  left: 0;
+  @include icon-size($widget8-icon-size);
+
+  &:hover {
+    color: $widget8-icon-hover-color;
+  }
+}

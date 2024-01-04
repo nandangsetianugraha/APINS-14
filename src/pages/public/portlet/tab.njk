@@ -1,0 +1,309 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Portlet Tab" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Portlet" },
+  { text: "Tab", link: "portlet/tab.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Line</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-lines portlet-nav" id="portlet1-tab">
+              <a class="nav-item nav-link active" id="portlet1-home-tab" data-bs-toggle="tab" href="#portlet1-home">Home</a>
+              <a class="nav-item nav-link" id="portlet1-profile-tab" data-bs-toggle="tab" href="#portlet1-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet1-contact-tab" data-bs-toggle="tab" href="#portlet1-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet1-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet1-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet1-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Pill</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-pills portlet-nav" id="portlet2-tab">
+              <a class="nav-item nav-link active" id="portlet2-home-tab" data-bs-toggle="tab" href="#portlet2-home">Home</a>
+              <a class="nav-item nav-link" id="portlet2-profile-tab" data-bs-toggle="tab" href="#portlet2-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet2-contact-tab" data-bs-toggle="tab" href="#portlet2-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="portlet2-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet2-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet2-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-4">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Tab</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-tabs portlet-nav" id="portlet3-tab">
+              <a class="nav-item nav-link active" id="portlet3-home-tab" data-bs-toggle="tab" href="#portlet3-home">Home</a>
+              <a class="nav-item nav-link" id="portlet3-profile-tab" data-bs-toggle="tab" href="#portlet3-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet3-contact-tab" data-bs-toggle="tab" href="#portlet3-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet3-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet3-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet3-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-icon">
+            <i class="fa fa-map-marker-alt"></i>
+          </div>
+          <h3 class="portlet-title">Icon</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-lines portlet-nav" id="portlet4-tab">
+              <a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Home</a>
+              <a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet4-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet4-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet4-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Dropdown</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-pills portlet-nav" id="portlet5-tab">
+              <a class="nav-item nav-link active" id="portlet5-home-tab" data-bs-toggle="tab" href="#portlet5-home">Home</a>
+              <a class="nav-item nav-link" id="portlet5-profile-tab" data-bs-toggle="tab" href="#portlet5-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet5-contact-tab" data-bs-toggle="tab" href="#portlet5-contact">Contact</a>
+
+              <!-- BEGIN Dropdown -->
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>
+              <!-- END Dropdown -->
+
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="portlet5-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet5-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet5-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+        <div class="portlet-footer portlet-footer-bordered text-end">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-icon">
+            <i class="fa fa-layer-group"></i>
+          </div>
+          <h3 class="portlet-title">Footer</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-pills portlet-nav" id="portlet6-tab">
+              <a class="nav-item nav-link active" id="portlet6-home-tab" data-bs-toggle="tab" href="#portlet6-home">Home</a>
+              <a class="nav-item nav-link" id="portlet6-profile-tab" data-bs-toggle="tab" href="#portlet6-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet6-contact-tab" data-bs-toggle="tab" href="#portlet6-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="portlet6-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet6-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet6-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+        <div class="portlet-footer portlet-footer-bordered text-end">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-lines portlet-nav" id="portlet7-tab">
+              <a class="nav-item nav-link active" id="portlet7-home-tab" data-bs-toggle="tab" href="#portlet7-home">Home</a>
+              <a class="nav-item nav-link" id="portlet7-profile-tab" data-bs-toggle="tab" href="#portlet7-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet7-contact-tab" data-bs-toggle="tab" href="#portlet7-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet7-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet7-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet7-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

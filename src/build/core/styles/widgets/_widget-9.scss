@@ -1,0 +1,92 @@
+.widget9-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include font-size($widget9-display-font-size);
+  padding: $widget9-display-padding-y 0;
+
+  &.widget9-display-sm {
+    @include font-size($widget9-display-font-size-sm);
+    padding: 0;
+  }
+}
+
+.widget9-icon {
+  color: $widget9-icon-color;
+  padding: 0 $widget9-content-spacer;
+  @include icon-size($widget9-icon-size)
+}
+
+.widget9-text {
+  color: $widget9-text-color;
+  @include font-size($widget9-text-font-size);
+  padding: 0 $widget9-content-spacer;
+  margin: 0;
+}
+
+.widget9-degree {
+  @include font-size($widget9-degree-font-size);
+}
+
+.widget9-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: $widget9-group-padding-y $widget9-group-padding-x;
+}
+
+.widget9-grid-item {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.widget9-grid-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $widget9-grid-icon-dimension;
+  height: $widget9-grid-icon-dimension;
+  color: $widget9-grid-icon-color;
+  margin-right: $widget9-grid-icon-spacer;
+  @include icon-size($widget9-grid-icon-size);
+}
+
+.widget9-grid-item-text {
+  color: $widget9-grid-text-color;
+  @include font-size($widget9-grid-text-font-size);
+  font-weight: $widget9-grid-text-font-weight;
+  padding: 0;
+  margin: 0;
+}
+
+.widget9-list {
+  display: flex;
+  flex-direction: column;
+  padding: $widget9-group-padding-y $widget9-group-padding-x;
+}
+
+.widget9-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: $widget9-list-item-spacer 0;
+}
+
+.widget9-list-item-text {
+  flex: 1;
+  color: $widget9-list-text-color;
+  @include font-size($widget9-list-text-font-size);
+  font-weight: $widget9-list-text-font-weight;
+  padding: 0;
+  margin: 0;
+}
+
+.widget9-list-item-addon {
+  white-space: nowrap;
+}

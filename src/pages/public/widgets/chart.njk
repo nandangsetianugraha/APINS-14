@@ -1,0 +1,58 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Chart Widget" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Widgets" },
+  { text: "Chart", link: "widgets/chart.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/widgets/charts.js" | url
+] %}
+
+{% block content %}
+  <div class="row portlet-row-fill-xl">
+    <div class="col-xl-4">
+      {% include "components/widgets/widget-22.njk" %}
+    </div>
+    <div class="col-xl-4">
+      {% include "components/widgets/widget-23.njk" %}
+    </div>
+    <div class="col-xl-4">
+      {% include "components/widgets/widget-24.njk" %}
+    </div>
+  </div>
+  <div class="row portlet-row-fill-xl">
+    <div class="col-xl-6">
+      {% include "components/widgets/widget-25.njk" %}
+    </div>
+    <div class="col-xl-6">
+      {% include "components/widgets/widget-26.njk" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4">
+      {% include "components/widgets/widget-27.njk" %}
+    </div>
+    <div class="col-xl-8">
+      <div class="row">
+        <div class="col-md-6">
+          {% include "components/widgets/widget-28.njk" %}
+          {% include "components/widgets/widget-29.njk" %}
+        </div>
+        <div class="col-md-6">
+          {% include "components/widgets/widget-30.njk" %}
+
+          <div class="row portlet-row-fill-sm">
+            <div class="col-sm-6">
+              {% include "components/widgets/widget-31.njk" %}
+            </div>
+            <div class="col-sm-6">
+              {% include "components/widgets/widget-32.njk" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

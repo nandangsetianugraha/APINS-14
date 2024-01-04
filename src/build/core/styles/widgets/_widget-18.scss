@@ -1,0 +1,19 @@
+.widget18 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $widget18-padding-y $widget18-padding-x;
+}
+
+.widget18-icon {
+  text-align: center;
+  width: $widget18-icon-dimension;
+  margin-right: $widget18-icon-spacer;
+  @include icon-size($widget18-icon-size);
+}
+
+.widget18-text {
+  color: $widget18-text-color;
+  @include font-size($widget18-text-font-size);
+  font-weight: $widget18-text-font-weight;
+}

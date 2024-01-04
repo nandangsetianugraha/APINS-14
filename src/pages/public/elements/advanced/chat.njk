@@ -1,0 +1,285 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Chat" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Advanced" },
+  { text: "Chat", link: "elements/advanced/chat.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Chat</strong> elements as the name suggests can be used for messaging. To make chat bubbles use <code>.chat-bubble</code> class with <code>{{ "<p>" }}</code> tag. Wrap your chat bubbles into <code>.chat-content</code>. You must set chat items alignment by extend <code>.chat-item</code> class with <code>.chat-item-{start|end}</code> modifier classes.</p>
+
+          <!-- BEGIN Chat -->
+          <div class="chat">
+            <div class="chat-item chat-item-end">
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <p class="chat-bubble">consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                <p class="chat-bubble">Lorem ipsum dolor sit amet.</p>
+                <span class="chat-time">1 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-item chat-item-start">
+              <div class="chat-content">
+                <span class="chat-author">Charlie</span>
+                <p class="chat-bubble">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+                <span class="chat-time">2 hrs ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- END Chat -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Avatar</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can put your <a href="{{ 'elements/advanced/avatar.html' | url }}">avatar</a> into the chat elements. Wrap your avatar into <code>.chat-avatar</code> class.</p>
+
+          <!-- BEGIN Chat -->
+          <div class="chat">
+            <div class="chat-item chat-item-end">
+              <div class="chat-avatar">
+
+                <!-- BEGIN Avatar -->
+                <div class="avatar avatar-circle">
+                  <div class="avatar avatar-circle">
+                    <div class="avatar-display">
+                      <i class="fa fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Avatar -->
+
+              </div>
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <p class="chat-bubble">consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                <p class="chat-bubble">Lorem ipsum dolor sit amet.</p>
+                <span class="chat-time">1 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-item chat-item-start">
+              <div class="chat-avatar">
+
+                <!-- BEGIN Avatar -->
+                <div class="avatar avatar-circle">
+                  <div class="avatar-display">
+                    <img src="{{ 'assets/images/avatar/blank.webp' | url }}" alt="Avatar image">
+                  </div>
+                </div>
+                <!-- END Avatar -->
+
+              </div>
+              <div class="chat-content">
+                <span class="chat-author">Charlie</span>
+                <p class="chat-bubble">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <span class="chat-time">2 hrs ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- END Chat -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Section</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Chat section is an element that can be used for marking time section, look the example.</p>
+
+          <!-- BEGIN Chat -->
+          <div class="chat">
+            <div class="chat-item chat-item-end">
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <p class="chat-bubble">consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                <p class="chat-bubble">Lorem ipsum dolor sit amet.</p>
+                <span class="chat-time">1 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-section">
+              <span class="chat-section-text">17 August</span>
+            </div>
+            <div class="chat-item chat-item-start">
+              <div class="chat-content">
+                <span class="chat-author">Charlie</span>
+                <p class="chat-bubble">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <span class="chat-time">2 hrs ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- END Chat -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Colors</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Change the bubble color with <code>.chat-bubble-{color}</code> modifier classes to differentiate each chat bubbles.</p>
+
+          <!-- BEGIN Chat -->
+          <div class="chat">
+            <div class="chat-item chat-item-end">
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <p class="chat-bubble chat-bubble-primary">consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                <p class="chat-bubble chat-bubble-primary">Lorem ipsum dolor sit amet.</p>
+                <span class="chat-time">1 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-item chat-item-start">
+              <div class="chat-content">
+                <span class="chat-author">Charlie</span>
+                <p class="chat-bubble chat-bubble-success">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+                <span class="chat-time">2 hrs ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- END Chat -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">More content</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can put chat bubble into another bubble to make mentioned message. Insert images or any elements to make more rich messages.</p>
+
+          <!-- BEGIN Chat -->
+          <div class="chat">
+            <div class="chat-item chat-item-end">
+              <div class="chat-avatar">
+
+                <!-- BEGIN Avatar -->
+                <div class="avatar avatar-circle">
+                  <div class="avatar avatar-circle">
+                    <div class="avatar-display">
+                      <i class="fa fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Avatar -->
+
+              </div>
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <div class="chat-bubble chat-bubble-primary">
+                  <img src="{{ 'assets/images/banner/400x240.webp' | url }}" class="chat-image" alt="Avatar image">
+                  <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                </div>
+                <p class="chat-bubble chat-bubble-primary">Duis aute irure dolor in</p>
+                <span class="chat-time">1 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-item chat-item-start">
+              <div class="chat-avatar">
+
+                <!-- BEGIN Avatar -->
+                <div class="avatar avatar-circle">
+                  <div class="avatar-display">
+                    <img src="{{ 'assets/images/avatar/blank.webp' | url }}" alt="Avatar image">
+                  </div>
+                </div>
+                <!-- END Avatar -->
+
+              </div>
+              <div class="chat-content">
+                <span class="chat-author">Charlie</span>
+                <div class="chat-bubble chat-bubble-success">
+                  <p class="chat-bubble chat-bubble-primary">Duis aute irure dolor in</p>
+                  <p class="mb-0">Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+                </div>
+                <span class="chat-time">2 hrs ago</span>
+              </div>
+            </div>
+            <div class="chat-item chat-item-end">
+              <div class="chat-avatar">
+
+                <!-- BEGIN Avatar -->
+                <div class="avatar avatar-circle">
+                  <div class="avatar avatar-circle">
+                    <div class="avatar-display">
+                      <i class="fa fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Avatar -->
+
+              </div>
+              <div class="chat-content">
+                <span class="chat-author">Me</span>
+                <div class="chat-bubble chat-bubble-primary">
+                  <div class="chat-bubble chat-bubble-primary">
+
+                    <!-- BEGIN Rich List -->
+                    <div class="rich-list-item p-0">
+                      <div class="rich-list-prepend">
+
+                        <!-- BEGIN Avatar -->
+                        <div class="avatar avatar-label-primary">
+                          <div class="avatar-display">
+                            <i class="far fa-file"></i>
+                          </div>
+                        </div>
+                        <!-- END Avatar -->
+
+                      </div>
+                      <div class="rich-list-content">
+                        <h4 class="rich-list-title">Porta.zip</h4>
+                        <span class="rich-list-subtitle">Cras justo odio</span>
+                      </div>
+                    </div>
+                    <!-- END Rich List -->
+
+                  </div>
+                  <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                </div>
+                <p class="chat-bubble chat-bubble-primary">Duis aute irure dolor in</p>
+                <span class="chat-time">3 hrs ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- END Chat -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+.widget20 {
+  color: $widget20-color;
+  @include font-size($widget20-font-size);
+  font-weight: $widget20-font-weight;
+  margin-bottom: 0;
+}

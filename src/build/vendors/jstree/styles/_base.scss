@@ -1,0 +1,183 @@
+.jstree-children,
+.jstree-container-ul,
+.jstree-node {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.jstree-container-ul > .jstree-node {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.jstree-anchor,
+.jstree-animated,
+.jstree-wholerow {
+	@include transition($jstree-transition);
+}
+
+.jstree-node {
+	position: relative;
+	min-height: $jstree-base-height;
+	line-height: $jstree-base-height;
+	margin-left: $jstree-base-height;
+	white-space: nowrap;
+	// Tree node vertical line
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: $jstree-line-width;
+		background: $jstree-line-color;
+		top: 0;
+		left: $jstree-base-height * .5;
+		transform: translateX(-50%);
+		z-index: 1;
+	}
+}
+
+.jstree-anchor {
+	display: inline-block;
+	height: $jstree-base-height;
+	color: $jstree-anchor-color;
+	background: $jstree-anchor-bg;
+	line-height: $jstree-base-height;
+	padding-right: $jstree-anchor-padding-x;
+	margin: 0;
+	white-space: nowrap;
+	vertical-align: top;
+	@include border-radius($jstree-border-radius);
+
+	a#{&} {
+		color: $jstree-anchor-color;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&,
+	&:active,
+	&:hover,
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+}
+
+.jstree-ocl {
+	z-index: 1;
+	cursor: pointer;
+	// Tree leaf horizontal line
+	.jstree-node.jstree-leaf > &:before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 50%;
+		height: $jstree-line-width;
+		background: $jstree-line-color;
+		left: 50%;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1;
+	}
+
+	&:after {
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		color: $jstree-tool-color;
+		background: $jstree-tool-bg;
+	}
+}
+
+.jstree {
+	background: $jstree-bg;
+
+	.jstree-closed,
+	.jstree-leaf {
+		> .jstree-children {
+			display: none;
+		}
+	}
+
+	.jstree-leaf > .jstree-ocl {
+		cursor: default;
+	}
+
+	.jstree-open > .jstree-children {
+		display: block;
+	}
+}
+
+.jstree-hovered:not(.jstree-clicked):not(.jstree-disabled) {
+	color: $jstree-anchor-hover-color;
+	background: $jstree-anchor-hover-bg;
+}
+
+.jstree-clicked {
+	color: $jstree-anchor-active-color !important;
+	background: $jstree-anchor-active-bg !important;
+	
+	a#{&} {
+		color: $jstree-anchor-active-color !important;
+	}
+
+	.jstree-checkbox:after {
+		color: $jstree-anchor-active-color !important;
+	}
+}
+
+.jstree-disabled {
+	cursor: default;
+	color: $jstree-anchor-disabled-color !important;
+	background: $jstree-anchor-disabled-bg !important;
+	opacity: $jstree-anchor-disabled-opacity !important;
+}
+// Make striped background
+.jstree-striped {
+	background-image: $jstree-stripe-bg;
+	background-size: auto ($jstree-base-height * 2);
+}
+// Styling search result
+.jstree-search {
+	font-style: $jstree-search-font-style;
+	font-weight: $jstree-search-font-weight;
+}
+// Hide treeview line
+.jstree-no-dots {
+	.jstree-node {
+		position: static;
+	}
+
+	.jstree-node:before,
+	.jstree-ocl:before {
+		display: none !important;
+	}
+
+	.jstree-ocl:after {
+		background: transparent;
+	}
+}
+// Cut long content and add ellipsis
+.jstree-ellipsis {
+	max-width: 100%;
+	overflow: hidden;
+
+	.jstree-anchor {
+		max-width: calc(100% - #{$jstree-base-height});
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+.jstree-hidden {
+	&,
+	&.jstree-node {
+		display: none;
+	}
+}

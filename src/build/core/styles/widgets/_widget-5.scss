@@ -1,0 +1,41 @@
+.widget5 {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget5-title {
+  color: $widget5-title-color;
+  @include font-size($widget5-title-font-size);
+  font-weight: $widget5-title-font-weight;
+  margin-bottom: $widget5-title-spacer;
+}
+
+.widget5-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget5-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget5-info,
+.widget5-value {
+  padding: 0;
+  margin: 0;
+}
+
+.widget5-info {
+  color: $widget5-info-color;
+  @include font-size($widget5-info-font-size);
+  font-weight: $widget5-info-font-weight;
+}
+
+.widget5-value {
+  color: $widget5-value-color;
+  @include font-size($widget5-value-font-size);
+  font-weight: $widget5-value-font-weight;
+}

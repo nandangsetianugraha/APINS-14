@@ -1,0 +1,199 @@
+// Base styles
+
+.portlet {
+  --#{$variable-prefix}portlet-max-height: #{$portlet-max-height};
+  --#{$variable-prefix}portlet-spacer: #{$portlet-spacer};
+  --#{$variable-prefix}portlet-bg: #{$portlet-bg};
+  --#{$variable-prefix}portlet-color: null;
+  --#{$variable-prefix}portlet-border-width: #{$portlet-border-width};
+  --#{$variable-prefix}portlet-border-color: #{$portlet-border-color};
+  --#{$variable-prefix}portlet-border-radius: #{$portlet-border-radius};
+  --#{$variable-prefix}portlet-component-padding: #{$portlet-component-padding};
+  --#{$variable-prefix}portlet-component-min-height: #{$portlet-component-min-height};
+  --#{$variable-prefix}portlet-addon-spacer: #{$portlet-addon-spacer};
+  --#{$variable-prefix}portlet-body-color: #{$portlet-body-color};
+  --#{$variable-prefix}portlet-icon-dimension: #{$portlet-icon-dimension};
+  --#{$variable-prefix}portlet-icon-size: #{$portlet-icon-size};
+  --#{$variable-prefix}portlet-icon-color: #{$portlet-icon-color};
+  --#{$variable-prefix}portlet-title-color: #{$portlet-title-color};
+  @include rfs($portlet-title-font-size, --#{$variable-prefix}portlet-title-font-size);
+  --#{$variable-prefix}portlet-title-font-weight: #{$portlet-title-font-weight};
+  
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin-bottom: var(--#{$variable-prefix}portlet-spacer);
+  color: var(--#{$variable-prefix}portlet-color);
+  background-color: var(--#{$variable-prefix}portlet-bg);
+  border: var(--#{$variable-prefix}portlet-border-width) $border-style var(--#{$variable-prefix}portlet-border-color);
+  @include border-radius(var(--#{$variable-prefix}portlet-border-radius));
+
+  // Set border radius to first and last child elements
+  > .portlet-body,
+  > .portlet-header,
+  > .portlet-footer {
+    &:first-child {
+      @include border-top-radius(var(--#{$variable-prefix}portlet-border-radius));
+    }
+    
+    &:last-child {
+      @include border-bottom-radius(var(--#{$variable-prefix}portlet-border-radius));
+    }
+  }
+
+  // Adjust nested portlet spacer
+  .portlet {
+    --#{$variable-prefix}portlet-spacer: #{$portlet-spacer-sm};
+  }
+
+  // Add maximum height to .portlet-body for the scroll
+  &.portlet-scroll {
+    > .portlet-body {
+      max-height: var(--#{$variable-prefix}portlet-max-height);
+      overflow-y: auto;
+
+      @include media-breakpoint-up("lg") {
+        --#{$variable-prefix}portlet-max-height: #{$portlet-max-height-lg};
+      }
+      @include media-breakpoint-up("xl") {
+        --#{$variable-prefix}portlet-max-height: #{$portlet-max-height-xl};
+      }
+    }
+  }
+}
+
+.portlet-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: var(--#{$variable-prefix}portlet-component-min-height);
+  padding: var(--#{$variable-prefix}portlet-component-padding);
+
+  &.portlet-header-bordered {
+    border-bottom: var(--#{$variable-prefix}portlet-border-width) $border-style var(--#{$variable-prefix}portlet-border-color);
+
+    // Add padding to .portlet-body
+    + .portlet-body {
+      padding-top: var(--#{$variable-prefix}portlet-component-padding);
+    }
+  }
+
+  &.portlet-header-handle {
+    cursor: move;
+  }
+}
+
+.portlet-body {
+  height: 100%;
+  padding: 0 var(--#{$variable-prefix}portlet-component-padding) var(--#{$variable-prefix}portlet-component-padding);
+  color: var(--#{$variable-prefix}portlet-body-color);
+
+  &:first-child {
+    padding-top: var(--#{$variable-prefix}portlet-component-padding);
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.portlet-footer {
+  padding: var(--#{$variable-prefix}portlet-component-padding);
+
+  &.portlet-footer-bordered {
+    border-top: var(--#{$variable-prefix}portlet-border-width) $border-style var(--#{$variable-prefix}portlet-border-color);
+  }
+}
+
+.portlet-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--#{$variable-prefix}portlet-icon-dimension);
+  height: var(--#{$variable-prefix}portlet-icon-dimension);
+  margin-right: var(--#{$variable-prefix}portlet-addon-spacer);
+  color: var(--#{$variable-prefix}portlet-icon-color);
+  @include icon-size(var(--#{$variable-prefix}portlet-icon-size));
+}
+
+.portlet-title {
+  flex: 1;
+  @include font-size(var(--#{$variable-prefix}portlet-title-font-size));
+  font-weight: var(--#{$variable-prefix}portlet-title-font-weight);
+  color: var(--#{$variable-prefix}portlet-title-color);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portlet-addon {
+  white-space: nowrap;
+
+  &:last-child {
+    margin-left: var(--#{$variable-prefix}portlet-addon-spacer);
+  }
+
+  &:first-child {
+    margin-right: var(--#{$variable-prefix}portlet-addon-spacer);
+  }
+}
+
+// Contextual portlet colors
+@each $color, $value in $theme-colors {
+  .portlet-#{$color} {
+    @include portlet-variant($value);
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    // Override .col-* class to fill spaces with portlet
+    .portlet-row-fill#{$infix} {
+      > [class*="col"] {
+        display: flex;
+        flex-direction: column;
+
+        > .portlet {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+// Fixing some problem when portlet collapsed
+.portlet-collapsed {
+  > .portlet-footer {
+    margin-top: -$portlet-border-width;
+
+    &:not(.portlet-footer-bordered) {
+      padding-top: $portlet-component-padding;
+    }
+  }
+}
+// Fixing .nav element position inside .portlet-header
+.portlet-nav {
+  margin: 0 !important;
+
+  &.nav-lines,
+  &.nav-tabs {
+    margin-bottom: calc((#{$portlet-component-padding} + #{$portlet-border-width}) * -1) !important;
+
+    .nav-link {
+      padding-bottom: calc(#{$portlet-component-padding} + #{$portlet-border-width}) !important;
+      border-width: $portlet-border-width !important;
+    }
+  }
+}
+// Decrese scrollable portlet max-height inside dropdown menu
+.dropdown-menu {
+  .portlet {
+    margin-bottom: 0;
+  }
+
+  .portlet-scroll > .portlet-body {
+    max-height: $portlet-max-height-sm;
+  }
+}

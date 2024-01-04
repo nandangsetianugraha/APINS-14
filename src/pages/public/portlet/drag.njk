@@ -1,0 +1,258 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Draggable Portlet" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Portlet" },
+  { text: "Draggable", link: "portlet/drag.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/portlet/drag.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 portlet-drag-container">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-map-marker-alt"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-calendar-alt"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-primary rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-layer-group"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-pills" id="portlet3-tab">
+              <a class="nav-item nav-link active" id="portlet3-home-tab" data-bs-toggle="tab" href="#portlet3-home">Home</a>
+              <a class="nav-item nav-link" id="portlet3-profile-tab" data-bs-toggle="tab" href="#portlet3-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet3-contact-tab" data-bs-toggle="tab" href="#portlet3-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="portlet3-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet3-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet3-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+        <div class="portlet-footer portlet-footer-bordered text-end">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-lines portlet-nav" id="portlet2-tab">
+              <a class="nav-item nav-link active" id="portlet2-home-tab" data-bs-toggle="tab" href="#portlet2-home">Home</a>
+              <a class="nav-item nav-link" id="portlet2-profile-tab" data-bs-toggle="tab" href="#portlet2-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet2-contact-tab" data-bs-toggle="tab" href="#portlet2-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet2-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet2-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet2-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6 portlet-drag-container">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-moon"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-text-secondary btn-icon" type="button" data-bs-toggle="dropdown">
+                <i class="fa fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-rocket"></i>
+                  </div>
+                  <span class="dropdown-content">Action</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <span class="dropdown-content">Another action</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <div class="dropdown-icon">
+                    <i class="fa fa-paper-plane"></i>
+                  </div>
+                  <span class="dropdown-content">Something else here</span>
+                </a>
+              </div>
+            </div>
+            <!-- END Dropdown -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer portlet-footer-bordered">
+          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-star"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-cog"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+          <div class="portlet-addon">
+
+            <!-- BEGIN Nav -->
+            <div class="nav nav-lines portlet-nav" id="portlet1-tab">
+              <a class="nav-item nav-link active" id="portlet1-home-tab" data-bs-toggle="tab" href="#portlet1-home">Home</a>
+              <a class="nav-item nav-link" id="portlet1-profile-tab" data-bs-toggle="tab" href="#portlet1-profile">Profile</a>
+              <a class="nav-item nav-link" id="portlet1-contact-tab" data-bs-toggle="tab" href="#portlet1-contact">Contact</a>
+            </div>
+            <!-- END Nav -->
+
+          </div>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Tab -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="portlet1-home">
+              <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="tab-pane fade" id="portlet1-profile">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div class="tab-pane fade" id="portlet1-contact">
+              <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+          </div>
+          <!-- END Tab -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet portlet-primary">
+        <div class="portlet-header portlet-header-handle">
+          <div class="portlet-icon">
+            <i class="fa fa-rocket"></i>
+          </div>
+          <h3 class="portlet-title">Portlet</h3>
+          <div class="portlet-addon">
+            <span class="badge badge-warning rounded-pill">9+</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="portlet-footer">
+          <button class="btn btn-success">Submit</button>
+          <button class="btn btn-text-light">Cancel</button>
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

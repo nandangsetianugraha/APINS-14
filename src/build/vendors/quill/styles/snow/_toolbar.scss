@@ -1,0 +1,179 @@
+.ql-toolbar.ql-snow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: $quill-snow-toolbar-padding-y $quill-snow-toolbar-padding-x;
+  border: $quill-snow-toolbar-border-width solid $quill-snow-toolbar-border-color;
+  @include border-top-radius($quill-snow-toolbar-border-radius);
+
+  // Button styles
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $quill-control-dimension;
+    width: $quill-control-dimension;
+    color: $quill-control-color;
+    background: $quill-control-bg;
+    margin: $quill-control-spacer;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    @include border-radius($quill-control-border-radius);
+
+    &:focus,
+    &:hover {
+      color: $quill-control-hover-color;
+      background: $quill-control-hover-bg;
+    }
+
+    &.ql-active {
+      color: $quill-control-active-color;
+      background: $quill-control-active-bg;
+    }
+  }
+  // Icon styles
+  svg {
+    height: $quill-icon-size;
+    color: inherit;
+  }
+  // Button group in toolbar
+  .ql-formats {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: $quill-control-group-spacer;
+  }
+  // Tool dropdown
+  .ql-picker {
+    position: relative;
+    display: inline-block;
+    width: $quill-control-dimension;
+    height: $quill-control-dimension;
+    margin: 0 $quill-control-spacer;
+    // Opened state
+    &.ql-expanded {
+      .ql-picker-label {
+        z-index: 2;
+        color: $quill-control-active-color;
+        background: $quill-control-active-bg;
+      }
+
+      .ql-picker-options {
+        display: block;
+        top: 100%;
+        z-index: 1;
+      }
+    }
+
+    &.ql-font,
+    &.ql-header,
+    &.ql-size {
+      width: $quill-control-wide-width;
+    }
+  }
+  // Tool dropdown toggle
+  .ql-picker-label {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    color: $quill-control-color;
+    background: $quill-control-bg;
+    @include font-size($quill-control-font-size);
+    font-weight: $quill-control-font-weight;
+    padding: 0 $quill-control-padding-x;
+    outline: 0;
+    cursor: pointer;
+    @include border-radius($quill-control-border-radius);
+
+    &:hover {
+      color: $quill-control-hover-color;
+      background: $quill-control-hover-bg;
+    }
+  }
+  // Tool dropdown menu
+  .ql-picker-options {
+    position: absolute;
+    display: none;
+    min-width: 100%;
+    padding: $quill-dropdown-padding-y 0;
+    white-space: nowrap;
+    background: $quill-dropdown-bg;
+    border: $quill-dropdown-border-width solid $quill-dropdown-border-color;
+    @include border-radius($quill-dropdown-border-radius);
+  }
+  // Tool dropdown item
+  .ql-picker-item {
+    display: flex;
+    align-items: center;
+    color: $quill-dropdown-item-color;
+    padding: $quill-dropdown-item-padding-y $quill-dropdown-item-padding-x;
+    outline: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: $quill-dropdown-item-hover-color;
+      background: $quill-dropdown-item-hover-bg;
+    }
+  }
+  // Icon only Dropdown toggle
+  .ql-color-picker,
+  .ql-icon-picker {
+    .ql-picker-label {
+      justify-content: center;
+      padding: 0;
+    }
+  }
+  // Restyles dropdown item for only icon content
+  .ql-icon-picker {
+    .ql-picker-item {
+      justify-content: center;
+      height: $quill-control-dimension;
+      width: $quill-control-dimension;
+      padding: 0;
+    }
+  }
+  // Restyles dropdown for color picker
+  .ql-color-picker {
+    .ql-picker-options {
+      padding: $quill-dropdown-padding-y $quill-dropdown-padding-x;
+      width: ($quill-control-color-dimension + 2 * $quill-control-color-margin) * $quill-control-color-num-per-row + 2 * $quill-control-padding-x + 2;
+    }
+
+    .ql-picker-item {
+      height: $quill-control-color-dimension;
+      width: $quill-control-color-dimension;
+      margin: $quill-control-color-margin;
+      padding: 0;
+      float: left;
+    }
+
+    &.ql-background {
+      .ql-picker-item {
+        background: $white;
+      }
+    }
+
+    &.ql-color {
+      .ql-picker-item {
+        background: $black;
+      }
+    }
+  }
+  // Remove border-top on editor
+  + .ql-container {
+    border-top: 0;
+    @include border-top-radius(0);
+  }
+  // Hide default file input in toolbar
+  input.ql-image[type=file] {
+    display: none;
+  }
+}

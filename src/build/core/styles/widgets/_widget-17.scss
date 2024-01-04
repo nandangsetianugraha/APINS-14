@@ -1,0 +1,19 @@
+.widget17 {
+  background: transparent;
+  border: $widget17-border-width dashed $widget17-border-color;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    background: $widget17-hover-bg;
+  }
+
+  > .portlet-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: $widget17-padding;
+  }
+}

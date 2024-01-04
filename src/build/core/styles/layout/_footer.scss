@@ -1,0 +1,8 @@
+.footer {
+	width: 100%;
+	color: $footer-color;
+	background: $footer-bg;
+	border-top: $footer-border-width $border-style $footer-border-color;
+	padding: $footer-padding-y 0;
+	@include transition($footer-transition);
+}

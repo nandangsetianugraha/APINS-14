@@ -1,0 +1,14 @@
+@mixin floating-label-sizing($input-font-size, $input-height-half, $input-padding-x) {
+  + label {
+    @include font-size($input-font-size);
+    left: $input-padding-x;
+    top: $input-height-half;
+  }
+
+  &:focus,
+  &:not(:placeholder-shown) {
+    + label {
+      @include font-size($input-font-size * $form-floating-label-font-size-scale);
+    }
+  }
+}

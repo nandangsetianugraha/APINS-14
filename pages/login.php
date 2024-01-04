@@ -129,9 +129,10 @@
         <!-- /Left Section -->
 
         <!-- Login -->
+		
         <div
           class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4" id="log-in">
-          <div class="w-px-400 mx-auto pt-5 pt-lg-0">
+          <div class="w-px-400 mx-auto pt-5 pt-lg-0" id="statusnya">
             <h4 class="mb-2"><?=$apps['nama'];?> v<?=$apps['versi'];?></h4>
             <?php if($maintenis==1){ ?>
                 <div class="alert alert-solid-danger d-flex align-items-center" role="alert">

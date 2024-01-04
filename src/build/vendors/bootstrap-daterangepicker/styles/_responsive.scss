@@ -1,0 +1,22 @@
+// Desktop breakpoint
+@include media-breakpoint-up("lg") {
+  .daterangepicker {
+    // Show information about dates are selected
+    .drp-selected {
+      display: inline-block;
+    }
+    // Add border between range menu and calendar
+    &.show-ranges .drp-calendar.left {
+      border-left: $datepicker-border-width $border-style $datepicker-border-color;
+    }
+    // Decrease ranges menu width
+    .ranges ul {
+      width: $daterangepicker-menu-width;
+    }
+    // Make calendar and range menu inline
+    .drp-calendar,
+    .ranges {
+      float: left;
+    }
+  }
+}

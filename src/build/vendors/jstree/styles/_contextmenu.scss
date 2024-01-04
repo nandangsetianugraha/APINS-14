@@ -1,0 +1,95 @@
+.jstree-contextmenu {
+	.jstree-anchor {
+		// Disable selection/Copy of UIWebView
+		-webkit-user-select: none;
+		// Disable the IOS popup when long-press on a link
+		-webkit-touch-callout: none;
+	}
+}
+
+.vakata-context {
+	z-index: 10;
+	display: none;
+
+	&,
+	ul {
+		position: absolute;
+		width: $jstree-menu-min-width;
+		padding: $jstree-menu-padding-y 0;
+		margin: 0;
+		background: $jstree-menu-bg;
+		border: $jstree-menu-border-width $border-style $jstree-menu-border-color;
+		@include border-radius($jstree-menu-border-radius);
+	}
+	// Submenu elements
+	ul {
+		list-style: none;
+		left: 100%;
+		margin-top: -$jstree-menu-submenu-offset-y;
+	}
+
+	.vakata-context-right ul {
+		left: auto;
+		right: 100%;
+	}
+
+	li {
+		list-style: none;
+		// Context menu item element styles
+		> a {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			color: $jstree-menu-item-color;
+			padding: $jstree-menu-item-padding-y $jstree-menu-item-padding-x;
+			text-decoration: none;
+			white-space: nowrap;
+  		position: relative;
+			@include icon-size($jstree-menu-icon-size);
+			@include icon-style {
+				display: inline-block;
+				width: $jstree-menu-icon-dimension;
+				margin-right: $jstree-menu-icon-spacer;
+				text-align: center;
+				vertical-align: top;
+			}
+			// Add caret when the element has parent
+			&.vakata-context-parent {
+				@include caret(end) {
+					top: calc(50% - #{$caret-size * .5});
+					right: $jstree-menu-caret-spacer;
+					position: absolute;
+				}
+			}
+
+			&:focus {
+				outline: 0;
+			}
+
+			.vakata-contextmenu-sep {
+				display: none;
+			}
+		}
+	}
+
+	.vakata-context-separator {
+		height: 0;
+		padding: 0;
+		border-bottom: $jstree-menu-separator-width $border-style $jstree-menu-separator-color;
+	}
+
+	.vakata-context-hover > a {
+		color: $jstree-menu-item-hover-color;
+		background: $jstree-menu-item-hover-bg;
+	}
+
+	.vakata-contextmenu-disabled {
+		a,
+		a:hover {
+			color: $jstree-menu-item-disabled-color;
+			background: $jstree-menu-item-disabled-bg;
+			opacity: $jstree-menu-item-disabled-opacity;
+			cursor: default;
+		}
+	}
+}

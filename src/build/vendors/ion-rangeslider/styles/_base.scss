@@ -1,0 +1,134 @@
+.irs {
+  display: block;
+  position: relative;
+  user-select: none;
+  -webkit-touch-callout: none;
+  // Modifier class to show grid
+  &.irs-with-grid .irs-grid {
+    display: block;
+  }
+  // Disabled state
+  &.irs-disabled {
+    opacity: $irs-disabled-opacity;
+  }
+}
+// Slider line
+.irs-line {
+  position: relative;
+  display: block;
+  outline: 0;
+  overflow: hidden;
+}
+// Slider bar
+// Overlaying slider line to track slider values
+/* rtl:begin:ignore */
+.irs-bar {
+  position: absolute;
+  display: block;
+  width: 0;
+  left: 0;
+}
+/* rtl:end:ignore */
+
+// Slider handle
+.irs-handle {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  cursor: pointer;
+
+  &.type_last {
+    z-index: 2;
+  }
+}
+/* rtl:begin:ignore */
+// Popup to display min and max data
+.irs-max,
+.irs-min {
+  position: absolute;
+  display: block;
+  cursor: default;
+}
+.irs-min {
+  left: 0;
+}
+
+.irs-max {
+  right: 0;
+}
+// Popup for displaying slider values above slider handle
+.irs-from,
+.irs-single,
+.irs-to {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  cursor: default;
+}
+// Grid elements below slider line
+.irs-grid {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  // Vertical line to divide line ranges
+  .irs-grid-pol {
+    position: absolute;
+    width: $irs-grid-pol-width;
+    height: $irs-grid-pol-height-lg;
+    top: 0;
+    left: 0;
+    // Smaller version
+    &.small {
+      height: $irs-grid-pol-height-sm;
+    }
+  }
+  // Text where display divided ranges in grid elements
+  .irs-grid-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+// Overlaying slider to disable behavior
+.irs-disable-mask {
+  position: absolute;
+  display: block;
+  width: 102%;
+  height: 100%;
+  background: transparent;
+  top: 0;
+  left: -1%;
+  z-index: 2;
+  cursor: default;
+}
+// Class to hide default input form
+.irs-hidden-input {
+  position: absolute !important;
+  display: block !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+  outline: none !important;
+  z-index: -9999 !important;
+  background: none !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+}
+/* rtl:end:ignore */
+
+// Unused elements
+.irs-shadow {
+  display: none;
+}

@@ -1,0 +1,142 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Touchspin" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Touchspin", link: "form/advanced/touchspin.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/touchspin.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Touchspin</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Bootstrap Touchspin</strong> is mobile and touch friendly input spinner component for Bootstrap. It supports the mousewheel and the up/down keys. Visit <a href="http://www.virtuosoft.eu/code/bootstrap-touchspin" target="_blank">plugin's page</a> for examples.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-1" type="text" value="55">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Steps</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-2" type="text" value="55">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Decimal</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-3" type="text" value="55">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Postfix</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-4" type="text" value="55">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Prefix</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-5" type="text" value="20">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Vertical</label>
+              <div class="col-sm-3 col-lg-2">
+                <input class="form-control" id="touchspin-6" type="text" value="55">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom button class</label>
+              <div class="col-sm-3 col-lg-2">
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid gap-3">
+                  <input class="form-control" id="touchspin-7" type="text" value="55">
+                  <input class="form-control" id="touchspin-8" type="text" value="55">
+                </div>
+                <!-- END Grid -->
+
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Custom icons</label>
+              <div class="col-sm-3 col-lg-2">
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid gap-3">
+                  <input class="form-control" id="touchspin-9" type="text" value="55">
+                  <input class="form-control" id="touchspin-10" type="text" value="55">
+                </div>
+                <!-- END Grid -->
+
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Sizing</label>
+              <div class="col-sm-3 col-lg-2">
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid gap-3">
+                  <input class="form-control input-sm touchspin-11" type="text" value="55">
+                  <input class="form-control touchspin-11" type="text" value="55">
+                  <input class="form-control input-lg touchspin-11" type="text" value="55">
+                </div>
+                <!-- END Grid -->
+
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

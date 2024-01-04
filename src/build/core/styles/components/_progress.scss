@@ -1,0 +1,56 @@
+// Disable animation if transitions are disabled
+
+@if $enable-transitions {
+  @keyframes progress-bar-stripes {
+    0% { background-position-x: $progress-height; }
+  }
+}
+
+.progress {
+  --#{$variable-prefix}progress-height: #{$progress-height};
+  @include rfs($progress-font-size, --#{$variable-prefix}progress-font-size);
+  --#{$variable-prefix}progress-bg: #{$progress-bg};
+  --#{$variable-prefix}progress-border-radius: #{$progress-border-radius};
+  --#{$variable-prefix}progress-bar-color: #{$progress-bar-color};
+  --#{$variable-prefix}progress-bar-bg: #{$progress-bar-bg};
+  --#{$variable-prefix}progress-bar-transition: #{$progress-bar-transition};
+
+  display: flex;
+  height: var(--#{$variable-prefix}progress-height);
+  overflow: hidden; // force rounded corners by cropping it
+  @include font-size(var(--#{$variable-prefix}progress-font-size));
+  background-color: var(--#{$variable-prefix}progress-bg);
+  @include border-radius(var(--#{$variable-prefix}progress-border-radius));
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--#{$variable-prefix}progress-bar-color);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--#{$variable-prefix}progress-bar-bg);
+  @include transition(var(--#{$variable-prefix}progress-bar-transition));
+}
+
+.progress-bar-striped {
+  @include gradient-striped();
+  background-size: var(--#{$variable-prefix}progress-height) var(--#{$variable-prefix}progress-height);
+}
+
+@if $enable-transitions {
+  .progress-bar-animated {
+    animation: $progress-bar-animation-timing progress-bar-stripes;
+
+    @if $enable-reduced-motion {
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+  }
+}
+
+.progress-sm { height: $progress-height-sm; }
+.progress-lg { height: $progress-height-lg; }

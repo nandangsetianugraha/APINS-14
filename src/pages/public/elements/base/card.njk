@@ -1,0 +1,589 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Card" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Card", link: "elements/base/card.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Basic</h3>
+        </div>
+        <div class="portlet-body">
+          <p><strong>Card</strong> is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
+          <p>Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what’s supported.</p>
+
+          <!-- BEGIN Row -->
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="col">
+              
+              <!-- BEGIN Card -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">List group</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.</p>
+          
+          <!-- BEGIN Row -->
+          <div class="row g-3">
+            <div class="col-sm-6">
+
+              <!-- BEGIN Grid -->
+              <div class="d-grid gap-3">
+              
+                <!-- BEGIN Card -->
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                  </ul>
+                </div>
+                <!-- END Card -->
+
+                <!-- BEGIN Card -->
+                <div class="card">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                  </ul>
+                </div>
+                <!-- END Card -->
+
+                <!-- BEGIN Card -->
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                  </ul>
+                  <div class="card-footer">
+                    Card footer
+                  </div>
+                </div>
+                <!-- END Card -->
+              
+              </div>
+              <!-- END Grid -->
+
+            </div>
+            <div class="col-sm-6">
+
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Navigation</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Add some navigation to a card’s header (or block) with <a href="{{ 'elements/base/nav.html' | url }}">nav</a>.</p>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+          
+            <!-- BEGIN Card -->
+            <div class="card text-center">
+              <div class="card-header">
+
+                <!-- BEGIN Nav -->
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+                <!-- END Nav -->
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card text-center">
+              <div class="card-header">
+
+                <!-- BEGIN Nav -->
+                <ul class="nav nav-pills card-header-pills">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+                <!-- END Nav -->
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card text-center">
+              <div class="card-header">
+
+                <!-- BEGIN Nav -->
+                <ul class="nav nav-lines card-header-lines">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+                <!-- END Nav -->
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Horizontal</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with <code>.g-0</code> and use <code>.col-md-*</code> classes to make the card horizontal at the <code>md</code> breakpoint. Further adjustments may be needed depending on your card content.</p>
+
+          <!-- BEGIN Card -->
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="img-fluid rounded-start" alt="Card image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END Card -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+    <div class="col-md-6">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Image</h3>
+        </div>
+        <div class="portlet-body">
+          <p><code>.card-img-top</code> places an image to the top of the card. With <code>.card-text</code>, text can be added to the card. Text within <code>.card-text</code> can also be styled with the standard HTML tags.</p>
+          <p>Similar to headers and footers, cards can include top and bottom “image caps”—images at the top or bottom of a card.</p>
+
+          <!-- BEGIN Row -->
+          <div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+            <div class="col">
+            
+              <!-- BEGIN Card -->
+              <div class="card">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="col">
+            
+              <!-- BEGIN Card -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-bottom" alt="Card image">
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+          <p>Turn an image into a card background and overlay your card’s text. Depending on the image, you may or may not need additional styles or utilities.</p>
+
+          <!-- BEGIN Card -->
+          <div class="card">
+            <img src="{{ 'assets/images/banner/1120x480.webp' | url }}" class="card-img" alt="Card image">
+            <div class="card-img-overlay">
+              <h5 class="card-title text-white">Card title</h5>
+              <p class="card-text text-white">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text text-white">Last updated 3 mins ago</p>
+            </div>
+          </div>
+          <!-- END Card -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Header and footer</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Add an optional header and/or footer within a card. Card header can be contain title, icon, or other elements.</p>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Header</h3>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Cards -->
+
+            <!-- BEGIN Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fa fa-cog"></i>
+                </div>
+                <h3 class="card-title">Header</h3>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
+              </div>
+            </div>
+            <!-- END Cards -->
+
+            <!-- BEGIN Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fa fa-star"></i>
+                </div>
+                <h3 class="card-title">Header</h3>
+                <div class="card-addon">
+                  <span class="badge badge-warning rounded-pill">9+</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
+              </div>
+            </div>
+            <!-- END Cards -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Alignment</h3>
+        </div>
+        <div class="portlet-body">
+          <p>You can quickly change the text alignment of any card—in its entirety or specific parts—with our <strong>text align classes</strong>.</p>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Card -->
+            <div class="card text-start">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card text-end">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <!-- END Card -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Card groups</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use <code>display: flex;</code> to become attached with uniform dimensions starting at the <code>sm</code> breakpoint.</p>
+
+          <!-- BEGIN Card Group -->
+          <div class="card-group">
+
+            <!-- BEGIN Card -->
+            <div class="card">
+              <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card">
+              <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <!-- END Card -->
+
+            <!-- BEGIN Card -->
+            <div class="card">
+              <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <!-- END Card -->
+
+          </div>
+          <!-- END Card Group -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Card grid</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Use the Bootstrap grid system and its <code>.row-cols</code> classes to control how many grid columns (wrapped around your cards) you show per row. For example, here’s <code>.row-cols-1</code> laying out the cards on one column, and <code>.row-cols-md-2</code> splitting four cards to equal width across multiple rows, from the medium breakpoint up.</p>
+
+          <!-- BEGIN Row -->
+          <div class="row row-cols-1 row-cols-md-3 g-3">
+            <div class="col">
+            
+              <!-- BEGIN Card -->
+              <div class="card h-100">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="col">
+              
+              <!-- BEGIN Card -->
+              <div class="card h-100">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+            <div class="col">
+            
+              <!-- BEGIN Card -->
+              <div class="card h-100">
+                <img src="{{ 'assets/images/banner/760x480.webp' | url }}" class="card-img-top" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+              <!-- END Card -->
+
+            </div>
+          </div>
+          <!-- END Row -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

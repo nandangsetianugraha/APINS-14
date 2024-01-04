@@ -1,0 +1,157 @@
+{% from "components/variables.njk" import defaults %}
+
+<!-- BEGIN Header -->
+<div class="header">
+
+  <!-- BEGIN Desktop Sticky Header -->
+  <div class="sticky-header" id="sticky-header-desktop">
+
+    <!-- BEGIN Header Holder -->
+    <div class="header-holder header-holder-desktop">
+      <div class="header-container {{ container_class }}">
+        <div class="header-wrap header-wrap-block justify-content-start">
+          {% include "./header-nav.njk" %}
+        </div>
+        <div class="header-wrap hstack gap-2">
+          
+          <!-- BEGIN Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-flat-primary btn-icon" data-bs-toggle="dropdown">
+              <i class="far fa-bell"></i>
+              <div class="btn-marker">
+                <i class="marker marker-dot text-primary"></i>
+              </div>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-wide dropdown-menu-animated overflow-hidden py-0">
+              {% include "./header-notification.njk" %}
+            </div>
+          </div>
+          <!-- END Dropdown -->
+
+          <!-- BEGIN Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-flat-primary btn-icon" data-bs-toggle="dropdown">
+              <i class="far fa-comments"></i>
+              <div class="btn-marker">
+                <i class="marker marker-dot text-primary"></i>
+              </div>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-wide dropdown-menu-animated overflow-hidden py-0">
+              {% include "./header-chat.njk" %}
+            </div>
+          </div>
+          <!-- END Dropdown -->
+
+          <button class="btn btn-flat-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-settings">
+            <i class="far fa-list-alt"></i>
+          </button>
+          <button class="btn btn-flat-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-todo">
+            <i class="far fa-calendar-alt"></i>
+          </button>
+
+          <!-- BEGIN Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-flat-primary widget13" data-bs-toggle="dropdown">
+              <div class="widget13-text">
+                Hi <strong>User</strong>
+              </div>
+
+              <!-- BEGIN Avatar -->
+              <div class="avatar avatar-info widget13-avatar">
+                <div class="avatar-display">
+                  <i class="fa fa-user-alt"></i>
+                </div>
+              </div>
+              <!-- END Avatar -->
+
+            </button>
+            <div class="dropdown-menu dropdown-menu-wide dropdown-menu-end dropdown-menu-animated overflow-hidden py-0">
+              {% include "./header-user.njk" %}
+            </div>
+          </div>
+          <!-- END Dropdown -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END Header Holder -->
+  
+  </div>
+  <!-- END Desktop Sticky Header -->
+
+  <!-- BEGIN Header Holder -->
+  <div class="header-holder header-holder-desktop">
+    <div class="header-container {{ container_class }}">
+      <h4 class="header-title">{{ page_title }}</h4>
+      <i class="header-divider"></i>
+      <div class="header-wrap header-wrap-block justify-content-start">
+        {% include "./header-breadcrumb.njk" %}
+      </div>
+      <div class="header-wrap">
+        {% include "./header-action.njk" %}
+      </div>
+    </div>
+  </div>
+  <!-- END Header Holder -->
+
+  <!-- BEGIN Mobile Sticky Header -->
+  <div class="sticky-header" id="sticky-header-mobile">
+  
+    <!-- BEGIN Header Holder -->
+    <div class="header-holder header-holder-mobile">
+      <div class="header-container {{ container_class }}">
+        <div class="header-wrap">
+          <button class="btn btn-flat-primary btn-icon" data-toggle="aside">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <div class="header-wrap header-wrap-block justify-content-start px-3">
+          <h4 class="header-brand">{{ defaults.brand_name }}</h4>
+        </div>
+        <div class="header-wrap hstack gap-2">
+          <button class="btn btn-flat-primary btn-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-todo">
+            <i class="far fa-calendar-alt"></i>
+          </button>
+          
+          <!-- BEGIN Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-flat-primary widget13" data-bs-toggle="dropdown">
+              <div class="widget13-text">
+                Hi <strong>User</strong>
+              </div>
+
+              <!-- BEGIN Avatar -->
+              <div class="avatar avatar-info widget13-avatar">
+                <div class="avatar-display">
+                  <i class="fa fa-user-alt"></i>
+                </div>
+              </div>
+              <!-- END Avatar -->
+
+            </button>
+            <div class="dropdown-menu dropdown-menu-wide dropdown-menu-end dropdown-menu-animated overflow-hidden py-0">
+              {% include "./header-user.njk" %}
+            </div>
+          </div>
+          <!-- END Dropdown -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END Header Holder -->
+  
+  </div>
+  <!-- END Mobile Sticky Header -->
+
+  <!-- BEGIN Header Holder -->
+  <div class="header-holder header-holder-mobile">
+    <div class="header-container {{ container_class }}">
+      <div class="header-wrap header-wrap-block justify-content-start w-100">
+        {% include "./header-breadcrumb.njk" %}
+      </div>
+    </div>
+  </div>
+  <!-- END Header Holder -->
+
+</div>
+<!-- END Header -->

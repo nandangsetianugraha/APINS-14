@@ -1,0 +1,32 @@
+.dataTable .dt-control {
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:before {
+    display: inline-block;
+    content: $datatable-control-content-closed;
+    width: $datatable-control-dimension;
+    height: $datatable-control-dimension;
+    line-height: $datatable-control-line-height;
+    text-align: center;
+    font-family: $datatable-control-font-family;
+    font-size: $datatable-control-font-size;
+    font-weight: $datatable-control-font-weight;
+    margin-right: $datatable-control-spacer;
+    @include border-radius($datatable-control-border-radius);
+  }
+  
+  [data-theme="light"] &:before {
+    color: $datatable-control-color-light;
+    background-color: $datatable-control-bg-light;
+  }
+
+  [data-theme="dark"] &:before {
+    color: $datatable-control-color-dark;
+    background-color: $datatable-control-bg-dark;
+  }
+
+  .dt-hasChild &:before {
+    content: $datatable-control-content-opened;
+  }
+}

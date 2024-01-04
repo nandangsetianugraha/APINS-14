@@ -1,0 +1,106 @@
+// Base styles
+
+.timeline {
+  --#{$variable-prefix}timeline-time-padding: #{$timeline-time-padding};
+  --#{$variable-prefix}timeline-time-color: #{$timeline-time-color};
+  @include rfs($timeline-time-font-size, --#{$variable-prefix}timeline-time-font-size);
+  --#{$variable-prefix}timeline-time-font-weight: #{$timeline-time-font-weight};
+  --#{$variable-prefix}timeline-content-color: #{$timeline-content-color};
+  --#{$variable-prefix}timeline-content-padding: #{$timeline-content-padding};
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding-left: $timeline-pin-width;
+
+  // Timeline line
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: $timeline-line-width;
+    background: $timeline-line-color;
+    top: 0;
+    left: $timeline-pin-width * .5;
+    transform: translateX(-50%);
+    @include border-radius($timeline-line-border-radius);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  width: 100%;
+}
+
+.timeline-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $timeline-pin-width;
+  height: $timeline-pin-width;
+  left: -$timeline-pin-width;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-content {
+  width: 100%;
+  color: var(--#{$variable-prefix}timeline-content-color);
+  padding: var(--#{$variable-prefix}timeline-content-padding);
+}
+
+// Appear timeline for zigzag content
+.timeline-zigzag {
+  padding-left: 0;
+
+  &:before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    width: calc(50% - #{$timeline-pin-width * .5});
+  }
+
+  .timeline-item:nth-child(odd) {
+    align-self: flex-start;
+
+    .timeline-pin {
+      left: auto;
+      right: -$timeline-pin-width;
+    }
+
+    .timeline-content {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+
+  .timeline-item:nth-child(even) {
+    align-self: flex-end;
+  }
+}
+
+// Add time to timeline
+.timeline-timed {
+  padding-left: $timeline-time-width + $timeline-pin-width;
+
+  &:before {
+    left: calc(#{$timeline-time-width + $timeline-pin-width} * .5 + #{($timeline-time-width) * .5});
+  }
+
+  .timeline-time {
+    position: absolute;
+    width: $timeline-time-width;
+    left: -#{$timeline-time-width + $timeline-pin-width};
+    @include font-size(var(--#{$variable-prefix}timeline-time-font-size));
+    font-weight: var(--#{$variable-prefix}timeline-time-font-weight);
+    color: var(--#{$variable-prefix}timeline-time-color);
+    padding: var(--#{$variable-prefix}timeline-time-padding);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

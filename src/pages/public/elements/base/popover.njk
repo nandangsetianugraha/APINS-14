@@ -1,0 +1,85 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Popover" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Elements" },
+  { text: "Base" },
+  { text: "Popover", link: "elements/base/popover.html" | url }
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Popover examples</h3>
+        </div>
+        <div class="portlet-body">
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic popover</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click me</button>
+                </div>
+                <p class="mb-0">Add <code>data-bs-toggle="popover"</code> attribute to initialize popover and put the content in <code>title</code> and <code>data-bs-content</code> attributes</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Positions</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
+                  <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right</button>
+                  <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Bottom</button>
+                  <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left</button>
+                </div>
+                <p class="mb-0">Change popover placement by setting <code>data-bs-placement</code> attribute with <code>top|bottom|right|left</code></p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Dismiss on next click</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button class="btn btn-primary" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+                </div>
+                <p class="mb-0">Use the <code>data-bs-trigger="focus"</code> attribute to dismiss popovers on the user’s next click of a different element than the toggle element</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">HTML content</label>
+              <div class="col-sm-8 col-lg-9">
+                <div class="mb-2">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-html="true" title="Popover title" data-bs-content="And here's some amazing <b>HTML</b> content. It's very <code>engaging</code>. Right?">Click me</button>
+                </div>
+                <p class="mb-0">Enable popover html content by setting <code>data-bs-html="true"</code></p>
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

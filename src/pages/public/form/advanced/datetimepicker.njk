@@ -1,0 +1,121 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Date Time Picker" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' },
+  { text: "Form" },
+  { text: "Advanced" },
+  { text: "Date Time Picker", link: "form/advanced/datetimepicker.html" | url }
+] %}
+{% set js_links = [
+  "assets/app/pages/form/datetimepicker.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+
+      <!-- BEGIN Portlet -->
+      <div class="portlet">
+        <div class="portlet-header portlet-header-bordered">
+          <h3 class="portlet-title">Date time picker</h3>
+        </div>
+        <div class="portlet-body">
+          <p>Bootstrap form component to handle date and time data. For more info please visit the plugin's <a href="http://www.malot.fr/bootstrap-datetimepicker/demo.php" target="_blank">demo page</a> or <a href="http://github.com/smalot/bootstrap-datetimepicker" target="_blank">Github repository</a>.</p>
+          <hr>
+
+          <!-- BEGIN Grid -->
+          <div class="d-grid gap-3">
+            
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Basic demo</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-1">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Helper buttons</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-2">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Meridian format</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-3">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Week disabled</label>
+              <div class="col-sm-5 col-lg-4">
+                <div class="mb-2">
+                  <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-4">
+                </div>
+                <p class="mb-0">Disable selected week columns</p>
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Date only</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-5">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Time only</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-6">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Locale</label>
+              <div class="col-sm-5 col-lg-4">
+                <input type="text" class="form-control" placeholder="Select date" id="datetimepicker-7">
+              </div>
+            </div>
+            <!-- END Row -->
+
+            <!-- BEGIN Row -->
+            <div class="row">
+              <label class="col-sm-4 col-lg-3 col-form-label text-sm-end">Inline</label>
+              <div class="col-sm-5 col-lg-4">
+
+                <!-- BEGIN Grid -->
+                <div class="d-grid gap-3">
+                  <div id="datetimepicker-8"></div>
+                  <div id="datetimepicker-9"></div>
+                </div>
+                <!-- END Grid -->
+
+              </div>
+            </div>
+            <!-- END Row -->
+          
+          </div>
+          <!-- END Grid -->
+
+        </div>
+      </div>
+      <!-- END Portlet -->
+
+    </div>
+  </div>
+{% endblock %}

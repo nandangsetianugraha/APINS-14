@@ -1,0 +1,78 @@
+{% extends "components/template.njk" %}
+
+{% set page_title = "Dashboard" %}
+{% set breadcrumb = [
+  { text: "Dashboard", link: "index.html" | url, icon: '<i data-feather="home"></i>' }
+] %}
+{% set js_links = [
+  "assets/app/pages/home.js" | url
+] %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      {% include "components/widgets/widget-33.njk" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="row portlet-row-fill-md h-100">
+        <div class="col-md-7 col-xl-12">
+          {% include "components/widgets/widget-22.njk" %}
+        </div>
+        <div class="col-md-5 col-xl-12">
+          {% include "components/widgets/widget-10.njk" %}
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4">
+      <div class="row portlet-row-fill-md h-100">
+        <div class="col-md-4 col-xl-12">
+          {% include "components/widgets/widget-28.njk" %}
+        </div>
+        <div class="col-md-4 col-xl-12">
+          {% include "components/widgets/widget-29.njk" %}
+        </div>
+        <div class="col-md-4 col-xl-12">
+          {% include "components/widgets/widget-34.njk" %}
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4">
+      <div class="row portlet-row-fill-md h-100">
+        <div class="col-md-6 col-xl-12">
+          {% include "components/widgets/widget-3.njk" %}
+        </div>
+        <div class="col-md-6 col-xl-12">
+          <div class="row portlet-row-fill-sm">
+            <div class="col-sm-6">
+              {% include "components/widgets/widget-21.njk" %}
+              {% include "components/widgets/widget-16.njk" %}
+            </div>
+            <div class="col-sm-6">
+              {% include "components/widgets/widget-35.njk" %}
+              {% include "components/widgets/widget-18.njk" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row portlet-row-fill-xl">
+    <div class="col-xl-4">
+      {% include "components/widgets/widget-27.njk" %}
+    </div>
+    <div class="col-xl-8">
+      <div class="row portlet-row-fill-md">
+        <div class="col-md-6">
+          {% include "components/widgets/widget-13.njk" %}
+          {% include "components/widgets/widget-14.njk" %}
+        </div>
+        <div class="col-md-6">
+          {% include "components/widgets/widget-7.njk" %}
+          {% include "components/widgets/widget-15.njk" %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

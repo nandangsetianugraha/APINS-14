@@ -1,0 +1,61 @@
+$zindex-select2:                      $zindex-select-dropdown !default;
+
+$select2-height:                      $input-height !default;
+$select2-padding-x:                   $form-select-padding-x !default;
+$select2-padding-y:                   $form-select-padding-y !default;
+$select2-bg:                          $form-select-bg !default;
+$select2-color:                       $form-select-color !default;
+$select2-disabled-bg:                 $form-select-disabled-bg !default;
+$select2-disabled-color:              $form-select-disabled-color !default;
+$select2-disabled-opacity:            $btn-disabled-opacity !default;
+$select2-placeholder-color:           $input-placeholder-color !default;
+$select2-border-width:                $form-select-border-width !default;
+$select2-border-color:                $input-border-color !default;
+$select2-active-border-color:         $form-select-focus-border-color !default;
+$select2-disabled-border-color:       $select2-disabled-bg !default;
+$select2-border-radius:               $form-select-border-radius !default;
+
+$select2-dropdown-bg:                 $dropdown-bg !default;
+$select2-dropdown-border-width:       $select2-border-width !default;
+$select2-dropdown-border-color:       $select2-border-color !default;
+$select2-dropdown-max-height:         15rem !default;
+$select2-dropdown-input-padding:      $spacer * .75 !default;
+
+$select2-group-bg:                    $select2-dropdown-bg !default;
+$select2-group-color:                 $text-level-3 !default;
+$select2-group-font-size:             $font-size-base !default;
+$select2-group-font-weight:           $font-weight-bold !default;
+
+$select2-item-font-size:              $font-size-base !default;
+$select2-item-font-weight:            $font-weight-normal !default;
+$select2-item-padding-y:              $dropdown-item-padding-y !default;
+$select2-item-padding-x:              $dropdown-item-padding-x !default;
+$select2-item-child-spacer:           $select2-item-padding-x + .5rem !default;
+$select2-item-bg:                     $select2-dropdown-bg !default;
+$select2-item-color:                  $text-level-1 !default;
+$select2-item-hover-bg:               $dropdown-item-hover-bg !default;
+$select2-item-hover-color:            $dropdown-item-hover-color !default;
+$select2-item-active-bg:              $dropdown-item-active-bg !default;
+$select2-item-active-color:           $dropdown-item-active-color !default;
+$select2-item-disabled-bg:            $component-disabled-bg !default;
+$select2-item-disabled-color:         $component-disabled-color !default;
+$select2-item-disabled-opacity:       $btn-disabled-opacity !default;
+
+$select2-choice-bg:                   $bg-level-2 !default;
+$select2-choice-color:                $text-level-1 !default;
+$select2-choice-font-size:            $font-size-base !default;
+$select2-choice-font-weight:          $font-weight-normal !default;
+$select2-choice-padding-x:            $spacer * .5 !default;
+$select2-choice-padding-y:            $spacer * .25 !default;
+$select2-choice-border-width:         $select2-border-width !default;
+$select2-choice-border-color:         $select2-border-color !default;
+$select2-choice-spacer-x:             $spacer * .5 !default;
+$select2-choice-spacer-y:             $spacer * .25 !default;
+$select2-choice-icon-spacer:          $spacer * .25 !default;
+
+$select2-icon-width:                  2rem !default;
+$select2-icon-size:                   $font-size-base !default;
+$select2-icon-spacer:                 $spacer * .75 !default;
+
+$select2-clear-color:                 $text-level-1 !default;
+$select2-clear-hover-color:           $text-level-3 !default;

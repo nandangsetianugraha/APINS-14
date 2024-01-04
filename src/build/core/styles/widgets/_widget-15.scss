@@ -1,0 +1,28 @@
+.widget15-map {
+  height: $widget15-map-height !important;
+}
+
+.widget15-list {
+  > .portlet-body {
+    max-height: $widget15-list-height;
+    overflow: auto;
+  }
+}
+
+@include media-breakpoint-down("md") {
+  .widget15-map {
+    height: $widget15-map-height-md !important;
+  }
+
+  .widget15-list {
+    > .portlet-body {
+      max-height: $widget15-list-height-md;
+    }
+  }
+}
+
+@include media-breakpoint-down("sm") {
+  .widget15-map {
+    height: $widget15-map-height-sm !important;
+  }
+}

@@ -1,0 +1,214 @@
+$zindex-swal2:                              1140 !default;
+$swal2-container-padding:                   $spacer * .75 !default;
+
+$swal2-width:                               32rem !default;
+$swal2-padding:                             $spacer !default;
+$swal2-bg:                                  $component-bg !default;
+$swal2-color:                               $text-level-2 !default;
+$swal2-font-family:                         $font-family-base !default;
+$swal2-font-size:                           $font-size-base !default;
+$swal2-border-width:                        $modal-content-border-width !default;
+$swal2-border-color:                        $modal-content-border-color !default;
+$swal2-border-radius:                       $modal-content-border-radius !default;
+
+$swal2-show-animation:                      swal2-show .2s !default;
+$swal2-hide-animation:                      swal2-hide .2s forwards !default;
+
+$swal2-backdrop-bg:                         $modal-backdrop-bg !default;
+$swal2-backdrop-opacity:                    $modal-backdrop-opacity !default;
+$swal2-backdrop-transition:                 background-color .1s linear !default;
+
+$swal2-icon-size:                           5rem !default;
+$swal2-icon-animations:                     true !default;
+$swal2-icon-margin:                         $spacer * 1.25 auto $spacer * 1.75 !default;
+$swal2-icon-font-family:                    inherit !default;
+$swal2-icon-font-size:                      3.6rem !default;
+$swal2-icon-border-color:                   $border-color !default;
+$swal2-icon-zoom:                           null !default;
+$swal2-success:                             $success !default;
+$swal2-success-border-color:                rgba($swal2-success, .3) !default;
+$swal2-error:                               $danger !default;
+$swal2-warning:                             $warning !default;
+$swal2-info:                                $info !default;
+$swal2-question:                            $primary !default;
+
+$swal2-image-margin:                        $spacer * 1.25 auto !default;
+
+$swal2-title-position:                      relative !default;
+$swal2-title-max-width:                     100% !default;
+$swal2-title-margin:                        0 !default;
+$swal2-title-padding:                       $spacer * .75 $spacer 0 !default;
+$swal2-title-color:                         $text-level-3 !default;
+$swal2-title-font-size:                     1.8rem !default;
+$swal2-title-font-weight:                   $font-weight-bolder !default;
+$swal2-title-text-align:                    center !default;
+
+$swal2-html-container-justify-content:      center !default;
+$swal2-html-container-margin:               $spacer $spacer * 1.5 $spacer * .25 !default;
+$swal2-html-container-padding:              0 !default;
+$swal2-html-container-overflow:             auto !default;
+$swal2-html-container-color:                inherit !default;
+$swal2-html-container-font-size:            $font-size-base !default;
+$swal2-html-container-font-weight:          normal !default;
+$swal2-html-container-line-height:          normal !default;
+$swal2-html-container-text-align:           center !default;
+$swal2-html-container-word-wrap:            break-word !default;
+$swal2-html-container-word-break:           break-word !default;
+
+$swal2-input-bg:                            $input-bg !default;
+$swal2-input-color:                         $input-color !default;
+$swal2-input-placeholder-color:             $input-placeholder-color !default;
+$swal2-input-width:                         100% !default;
+$swal2-input-height:                        $input-height !default;
+$swal2-input-margin:                        $spacer auto !default;
+$swal2-input-padding:                       $input-padding-y-lg $input-padding-x-lg !default;
+$swal2-input-font-size:                     $input-font-size-lg !default;
+$swal2-input-border-width:                  $input-border-width !default;
+$swal2-input-border-color:                  $input-border-color !default;
+$swal2-input-border-radius:                 $input-border-radius-lg !default;
+$swal2-input-focus-border-color:            $input-focus-border-color !default;
+$swal2-input-transition:                    $input-transition !default;
+
+$swal2-textarea-height:                     6.75em !default;
+$swal2-textarea-padding-y:                  $input-padding-y !default;
+$swal2-textarea-padding-x:                  $input-padding-x !default;
+
+$swal2-input-label-margin:                  $spacer auto 0 !default;
+$swal2-input-label-justify-content:         center !default;
+
+$swal2-validation-message-align-items:      center !default;
+$swal2-validation-message-justify-content:  center !default;
+$swal2-validation-message-margin:           $spacer 0 0 !default;
+$swal2-validation-message-padding:          $spacer * .5 !default;
+$swal2-validation-message-background:       $bg-level-2 !default;
+$swal2-validation-message-color:            $text-level-3 !default;
+$swal2-validation-message-font-size:        $font-size-base !default;
+$swal2-validation-message-font-weight:      $font-weight-normal !default;
+$swal2-validation-message-icon-bg:          $danger !default;
+$swal2-validation-message-icon-color:       color-contrast($swal2-validation-message-icon-bg) !default;
+$swal2-validation-message-icon-zoom:        null !default;
+
+$swal2-progress-steps-flex-wrap:            wrap !default;
+$swal2-progress-steps-align-items:          center !default;
+$swal2-progress-steps-max-width:            100% !default;
+$swal2-progress-steps-background:           inherit !default;
+$swal2-progress-steps-margin:               $spacer * 1.25 auto !default;
+$swal2-progress-steps-padding:              0 !default;
+$swal2-progress-steps-font-weight:          $font-weight-bolder !default;
+$swal2-progress-steps-distance:             2.5em !default;
+$swal2-progress-step-width:                 2em;
+$swal2-progress-step-height:                $swal2-progress-step-width;
+$swal2-progress-step-border-radius:         $swal2-progress-step-width;
+$swal2-progress-step-bg:                    rgba($primary, .1) !default;
+$swal2-progress-step-color:                 $primary !default;
+$swal2-active-step-bg:                      $primary !default;
+$swal2-active-step-color:                   color-contrast($swal2-active-step-bg) !default;
+
+$swal2-footer-font-size:                    $font-size-base !default;
+$swal2-footer-color:                        $text-level-1 !default;
+$swal2-footer-margin:                       $spacer * 1.25 0 0 !default;
+$swal2-footer-padding:                      $spacer 0 0 !default;
+$swal2-footer-border-width:                 $border-width !default;
+$swal2-footer-border-color:                 $border-color !default;
+
+$swal2-timer-progress-bar-height:           .25rem;
+$swal2-timer-progress-bar-bg:               $progress-bg !default;
+
+$swal2-close-button-justify-self:           end !default;
+$swal2-close-button-align-items:            center !default;
+$swal2-close-button-justify-content:        center !default;
+$swal2-close-button-width:                  $btn-icon-dimension-lg !default;
+$swal2-close-button-height:                 $btn-icon-dimension-lg !default;
+$swal2-close-button-position:               absolute !default;
+$swal2-close-button-gap:                    0 !default;
+$swal2-close-button-padding:                0 !default;
+$swal2-close-button-transition:             color 0.1s ease-out !default;
+$swal2-close-button-border:                 none !default;
+$swal2-close-button-border-radius:          $swal2-border-radius !default;
+$swal2-close-button-outline:                null !default;
+$swal2-close-button-bg:                     transparent !default;
+$swal2-close-button-color:                  $gray-400 !default;
+$swal2-close-button-font-family:            inherit !default;
+$swal2-close-button-font-size:              2.4rem !default;
+
+$swal2-close-button-hover-bg:               transparent !default;
+$swal2-close-button-hover-color:            $danger !default;
+$swal2-close-button-hover-transform:        none !default;
+
+$swal2-actions-flex-wrap:                   wrap !default;
+$swal2-actions-align-items:                 center !default;
+$swal2-actions-justify-content:             center !default;
+$swal2-actions-width:                       100% !default;
+$swal2-actions-margin:                      $spacer * 1.75 auto 0 !default;
+$swal2-actions-padding:                     0 !default;
+
+$swal2-button-margin:                       $spacer * .25 !default;
+$swal2-button-padding:                      $input-btn-padding-y $input-btn-padding-x !default;
+$swal2-button-transition:                   $btn-transition !default;
+$swal2-button-font-weight:                  $btn-font-weight !default;
+$swal2-button-darken-hover:                 shade-color($primary, $btn-hover-bg-shade-amount) !default;
+$swal2-button-darken-active:                shade-color($primary, $btn-active-bg-shade-amount) !default;
+$swal2-button-focus-outline:                none !default;
+
+$swal2-confirm-button-order:                null !default;
+$swal2-confirm-button-border:               0 !default;
+$swal2-confirm-button-border-radius:        $btn-border-radius !default;
+$swal2-confirm-button-bg:                   $primary !default;
+$swal2-confirm-button-color:                color-contrast($swal2-confirm-button-bg) !default;
+$swal2-confirm-button-font-size:            $btn-font-size !default;
+
+$swal2-deny-button-order:                   null !default;
+$swal2-deny-button-border:                  0 !default;
+$swal2-deny-button-border-radius:           $btn-border-radius !default;
+$swal2-deny-button-bg:                      $danger !default;
+$swal2-deny-button-color:                   color-contrast($swal2-deny-button-bg) !default;
+$swal2-deny-button-font-size:               $btn-font-size !default;
+
+$swal2-cancel-button-order:                 null !default;
+$swal2-cancel-button-border:                0 !default;
+$swal2-cancel-button-border-radius:         $btn-border-radius !default;
+$swal2-cancel-button-bg:                    $secondary !default;
+$swal2-cancel-button-color:                 color-contrast($swal2-cancel-button-bg) !default;
+$swal2-cancel-button-font-size:             $btn-font-size !default;
+
+$swal2-loader-align-items:                  center !default;
+$swal2-loader-justify-content:              center !default;
+$swal2-loader-width:                        $spinner-width !default;
+$swal2-loader-height:                       $spinner-width !default;
+$swal2-loader-margin:                       0 $spacer * 1.75 !default;
+$swal2-loader-animation:                    swal2-rotate-loading $spinner-animation-speed linear 0s infinite normal !default;
+$swal2-loader-border-width:                 $spinner-border-width !default;
+$swal2-loader-border-style:                 solid !default;
+$swal2-loader-border-radius:                100% !default;
+$swal2-loader-border-color:                 $primary $primary $primary transparent !default;
+
+$swal2-toast-show-animation:                swal2-toast-show 0.5s !default;
+$swal2-toast-hide-animation:                swal2-toast-hide 0.2s forwards !default;
+
+$swal2-toast-bg:                            $component-bg !default;
+$swal2-toast-width:                         20rem !default;
+$swal2-toast-close-button-width:            .8rem !default;
+$swal2-toast-close-button-height:           .8rem !default;
+$swal2-toast-close-button-margin:           0 !default;
+$swal2-toast-close-button-font-size:        2em !default;
+$swal2-toast-padding:                       $spacer * .75 !default;
+
+$swal2-toast-title-margin:                  $spacer * .75 !default;
+$swal2-toast-title-padding:                 0 !default;
+$swal2-toast-title-font-size:               $font-size-base !default;
+
+$swal2-toast-icon-font-size:                1.8rem !default;
+
+$swal2-toast-html-container-margin:         $spacer * .5 $spacer !default;
+$swal2-toast-html-container-padding:        0 !default;
+$swal2-toast-html-container-font-size:      $font-size-base !default;
+
+$swal2-toast-input-font-size:               $input-font-size !default;
+$swal2-toast-input-height:                  $input-height !default;
+$swal2-toast-input-margin:                  $spacer * .5 !default;
+
+$swal2-toast-validation-font-size:          $font-size-base !default;
+$swal2-toast-buttons-font-size:             $font-size-base !default;
+
+$swal2-toast-footer-margin:                 $spacer * .5 0 0 !default;
+$swal2-toast-footer-font-size:              $font-size-sm !default;

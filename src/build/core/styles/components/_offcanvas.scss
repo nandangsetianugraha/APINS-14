@@ -1,0 +1,153 @@
+// stylelint-disable function-disallowed-list
+
+%offcanvas-css-vars {
+  --#{$variable-prefix}offcanvas-zindex: #{$zindex-offcanvas};
+  --#{$variable-prefix}offcanvas-width: #{$offcanvas-horizontal-width};
+  --#{$variable-prefix}offcanvas-height: #{$offcanvas-vertical-height};
+  --#{$variable-prefix}offcanvas-padding-x: #{$offcanvas-padding-x};
+  --#{$variable-prefix}offcanvas-padding-y: #{$offcanvas-padding-y};
+  --#{$variable-prefix}offcanvas-color: #{$offcanvas-color};
+  --#{$variable-prefix}offcanvas-bg: #{$offcanvas-bg};
+  --#{$variable-prefix}offcanvas-border-width: #{$offcanvas-border-width};
+  --#{$variable-prefix}offcanvas-border-color: #{$offcanvas-border-color};
+  --#{$variable-prefix}offcanvas-title-color: #{$offcanvas-title-color};
+  @include rfs($offcanvas-title-font-size, --#{$variable-prefix}offcanvas-title-font-size);
+  --#{$variable-prefix}offcanvas-title-font-weight: #{$offcanvas-title-font-weight};
+  --#{$variable-prefix}offcanvas-title-line-height: #{$offcanvas-title-line-height};
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  .offcanvas#{$infix} {
+    @extend %offcanvas-css-vars;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  .offcanvas#{$infix} {
+    @include media-breakpoint-down($next) {
+      position: fixed;
+      bottom: 0;
+      z-index: var(--#{$variable-prefix}offcanvas-zindex);
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      color: var(--#{$variable-prefix}offcanvas-color);
+      visibility: hidden;
+      background-color: var(--#{$variable-prefix}offcanvas-bg);
+      background-clip: padding-box;
+      outline: 0;
+      @include transition(transform $offcanvas-transition-duration ease-in-out);
+
+      &.offcanvas-start {
+        top: 0;
+        left: 0;
+        width: var(--#{$variable-prefix}offcanvas-width);
+        border-right: var(--#{$variable-prefix}offcanvas-border-width) $border-style var(--#{$variable-prefix}offcanvas-border-color);
+        transform: translateX(-100%);
+      }
+
+      &.offcanvas-end {
+        top: 0;
+        right: 0;
+        width: var(--#{$variable-prefix}offcanvas-width);
+        border-left: var(--#{$variable-prefix}offcanvas-border-width) $border-style var(--#{$variable-prefix}offcanvas-border-color);
+        transform: translateX(100%);
+      }
+
+      &.offcanvas-top {
+        top: 0;
+        right: 0;
+        left: 0;
+        height: var(--#{$variable-prefix}offcanvas-height);
+        max-height: 100%;
+        border-bottom: var(--#{$variable-prefix}offcanvas-border-width) $border-style var(--#{$variable-prefix}offcanvas-border-color);
+        transform: translateY(-100%);
+      }
+
+      &.offcanvas-bottom {
+        right: 0;
+        left: 0;
+        height: var(--#{$variable-prefix}offcanvas-height);
+        max-height: 100%;
+        border-top: var(--#{$variable-prefix}offcanvas-border-width) $border-style var(--#{$variable-prefix}offcanvas-border-color);
+        transform: translateY(100%);
+      }
+
+      &.showing,
+      &.show:not(.hiding) {
+        transform: none;
+      }
+
+      &.showing,
+      &.hiding,
+      &.show {
+        visibility: visible;
+      }
+    }
+
+    @if not ($infix == "") {
+      @include media-breakpoint-up($next) {
+        --#{$variable-prefix}offcanvas-height: auto;
+        --#{$variable-prefix}offcanvas-border-width: 0;
+        background-color: transparent !important; // stylelint-disable-line declaration-no-important
+
+        .offcanvas-header {
+          display: none;
+        }
+
+        .offcanvas-body {
+          display: flex;
+          flex-grow: 0;
+          padding: 0;
+          overflow-y: visible;
+          // Reset `background-color` in case `.bg-*` classes are used in offcanvas
+          background-color: transparent !important; // stylelint-disable-line declaration-no-important
+        }
+      }
+    }
+  }
+}
+
+.offcanvas-backdrop {
+  @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--#{$variable-prefix}offcanvas-padding-y) var(--#{$variable-prefix}offcanvas-padding-x);
+
+  .btn-close {
+    padding: calc(var(--#{$variable-prefix}offcanvas-padding-y) * .5) calc(var(--#{$variable-prefix}offcanvas-padding-x) * .5);
+    margin-top: calc(-.5 * var(--#{$variable-prefix}offcanvas-padding-y));
+    margin-right: calc(-.5 * var(--#{$variable-prefix}offcanvas-padding-x));
+    margin-bottom: calc(-.5 * var(--#{$variable-prefix}offcanvas-padding-y));
+  }
+}
+
+.offcanvas-title {
+  color: var(--#{$variable-prefix}offcanvas-title-color);
+  @include font-size(var(--#{$variable-prefix}offcanvas-title-font-size));
+  font-weight: var(--#{$variable-prefix}offcanvas-title-font-weight);
+  line-height: var(--#{$variable-prefix}offcanvas-title-line-height);
+  margin-bottom: 0;
+}
+
+.offcanvas-body {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  padding: var(--#{$variable-prefix}offcanvas-padding-y) var(--#{$variable-prefix}offcanvas-padding-x);
+  overflow-y: auto;
+
+  .offcanvas-header + & {
+    padding-top: 0;
+  }
+}

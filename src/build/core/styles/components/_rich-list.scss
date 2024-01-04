@@ -1,0 +1,134 @@
+// Base styles
+
+.rich-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rich-list-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+  padding: $richlist-item-padding;
+  margin: 0;
+  cursor: default;
+  text-decoration: none !important;
+}
+
+.rich-list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rich-list-paragraph,
+.rich-list-subtitle,
+.rich-list-title {
+  margin: 0;
+  padding: 0;
+  @include font-size($richlist-content-font-size);
+  line-height: $richlist-content-line-height;
+  text-align: left;
+}
+
+.rich-list-title {
+  color: $richlist-title-color;
+  font-weight: $richlist-title-font-weight;
+}
+
+.rich-list-subtitle {
+  color: $richlist-subtitle-color;
+  font-weight: $richlist-subtitle-font-weight;
+}
+
+.rich-list-paragraph {
+  color: $richlist-paragraph-color;
+  font-weight: $richlist-paragraph-font-weight;
+}
+
+.rich-list-append,
+.rich-list-prepend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: $richlist-item-color;
+
+  // Remove default avatar margin
+  > .avatar { margin: 0; }
+}
+
+.rich-list-prepend { margin-right: $richlist-addon-spacer; }
+.rich-list-append { margin-left: $richlist-addon-spacer; }
+
+// Border variations
+.rich-list-flush {
+  .rich-list-item {
+    + .rich-list-item {
+      border-top: $richlist-border-width $border-style $richlist-border-color;
+    }
+  }
+}
+
+.rich-list-bordered {
+  .rich-list-item {
+    border: $richlist-border-width $border-style $richlist-border-color;
+    @include border-radius($richlist-border-radius);
+
+    + .rich-list-item {
+      margin-top: $richlist-item-spacer;
+    }
+  }
+}
+// Add hover, active and disabled behavior
+.rich-list-action {
+  .rich-list-item {
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+      background: $richlist-item-hover-bg;
+
+      .rich-list-title {
+        color: $richlist-item-hover-color;
+      }
+    }
+
+    &.active,
+    &:active {
+      background: $richlist-item-active-bg;
+
+      .rich-list-title {
+        color: $richlist-item-active-color;
+      }
+    }
+
+    &.disabled,
+    &:disabled {
+      background: $richlist-item-disabled-bg;
+      opacity: $richlist-item-disabled-opacity;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+// SortableJS support
+.sortable.rich-list-bordered {
+  .sortable,
+  .sortable-item:not(:first-of-type) {
+    margin-top: $richlist-item-spacer;
+  }
+}
+
+.sortable.rich-list-flush {
+  .sortable,
+  .sortable-item:not(:first-of-type) {
+    border-top: $richlist-border-width $border-style $richlist-border-color;
+  }
+}

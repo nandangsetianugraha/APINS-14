@@ -1,0 +1,95 @@
+.select2-dropdown {
+  position: absolute;
+  display: block;
+  width: 100%;
+  z-index: $zindex-select2;
+  background: $select2-dropdown-bg;
+  border: $select2-dropdown-border-width solid $select2-dropdown-border-color;
+  @include border-radius($select2-border-radius);
+}
+// Result container
+.select2-results {
+  display: block;
+
+  > .select2-results__options {
+    max-height: $select2-dropdown-max-height;
+    overflow-y: auto;
+  }
+}
+// Option container
+.select2-results__options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+// Option element style
+.select2-results__option {
+  color: $select2-item-color;
+  background: $select2-item-bg;
+  @include font-size($select2-item-font-size);
+  font-weight: $select2-item-font-weight;
+  padding: $select2-item-padding-y $select2-item-padding-x;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+
+  &[role=group] {
+    padding: 0;
+  }
+  // Hover effect
+  &.select2-results__option--highlighted {
+    color: $select2-item-hover-color;
+    background: $select2-item-hover-bg;
+  }
+  // Active state
+  &[aria-selected=true] {
+    color: $select2-item-active-color;
+    background: $select2-item-active-bg;
+  }
+  // Disabled state
+  &[aria-disabled=true] {
+    color: $select2-item-disabled-color;
+    background: $select2-item-disabled-bg;
+    opacity: $select2-item-disabled-opacity;
+  }
+  // Multi level option styles
+  .select2-results__option {
+    padding-left: $select2-item-child-spacer;
+
+    .select2-results__group {
+      padding-left: 0;
+    }
+  }
+}
+// Group header element
+.select2-results__group {
+  color: $select2-group-color;
+  background: $select2-group-bg;
+  @include font-size($select2-group-font-size);
+  font-weight: $select2-group-font-weight;
+  padding: $select2-item-padding-y $select2-item-padding-x;
+  cursor: default;
+}
+// Search input in result container
+.select2-search--dropdown {
+  display: block;
+  padding: $select2-dropdown-input-padding;
+
+  &.select2-search--hide {
+    display: none;
+  }
+}
+// Opened state class
+.select2-container--open {
+  // Dropdown style when orientation is top
+  .select2-dropdown--above {
+    border-bottom: none;
+    @include border-bottom-radius(0);
+  }
+  // Dropdown style when orientation is bottom
+  .select2-dropdown--below {
+    border-top: none;
+    @include border-top-radius(0);
+  }
+}

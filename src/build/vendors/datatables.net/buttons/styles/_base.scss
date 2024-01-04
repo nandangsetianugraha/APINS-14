@@ -1,0 +1,289 @@
+@keyframes dtb-spinner {
+  100% { transform: rotate(360deg); }
+}
+
+// Popup info after button action
+.dt-button-info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: $zindex-datatable-btn-info;
+  width: $datatable-btn-info-width;
+  background-color: $datatable-btn-info-bg;
+  border: $datatable-btn-info-border-width $border-style $datatable-btn-info-border-color;
+  @include border-radius($datatable-btn-info-border-radius);
+
+  h2, > div {
+    padding: $datatable-btn-info-content-padding-y $datatable-btn-info-content-padding-x;
+    margin: 0;
+  }
+
+  h2 {
+    color: $datatable-btn-info-title-color;
+    @include font-size($datatable-btn-info-title-font-size);
+    font-weight: $datatable-btn-info-title-font-weight;
+    border-bottom: $datatable-btn-info-border-width $border-style $datatable-btn-info-border-color;
+  }
+
+  > div {
+    color: $datatable-btn-info-body-color;
+    @include font-size($datatable-btn-info-body-font-size);
+    font-weight: $datatable-btn-info-body-font-weight;
+  }
+}
+
+.dtb-popover-close {
+  position: absolute;
+  top: $datatable-close-spacer;
+  right: $datatable-close-spacer;
+  width: $datatable-close-dimension;
+  height: $datatable-close-dimension;
+  color: $datatable-close-color;
+  background-color: $datatable-close-bg;
+  font-family: $datatable-close-font-family;
+  @include font-size($datatable-close-font-size);
+  font-weight: $datatable-close-font-weight;
+  text-align: center;
+  cursor: pointer;
+  z-index: 2003;
+  @include border-radius($datatable-close-border-radius);
+}
+
+.dtb-hide-drop { display: none !important; }
+
+// Button divider spacer
+.dt-button-spacer {
+  display: inline-block;
+  margin: $datatable-btn-divider-spacer;
+  white-space: nowrap;
+
+  &.bar {
+    vertical-align: middle;
+    border-left: $datatable-btn-divider-width solid $datatable-btn-divider-color;
+    padding-left: $datatable-btn-divider-spacer;
+
+    &:empty {
+      height: $datatable-btn-divider-font-size;
+      width: $datatable-btn-divider-width ;
+      padding-left: 0;
+    }
+  }
+}
+
+// Button group
+.dt-button-collection {
+  position: absolute;
+  left: 0 !important;
+  right: auto !important;
+  padding: $datatable-btn-collection-padding-y $datatable-btn-collection-padding-x;
+  z-index: $zindex-datatable-btn-collection;
+  background-color: $datatable-btn-collection-bg;
+  border: $datatable-btn-collection-border-width $border-style $datatable-btn-collection-border-color;
+  @include border-radius($datatable-btn-collection-border-radius);
+
+  .dt-button { border-radius: 0; }
+
+  .dt-btn-split-wrapper { width: 100%; }
+
+  .btn-group {
+    @include border-radius($datatable-btn-collection-border-radius);
+
+    button {
+      &,
+      &:last-child:first-child {
+        @include border-radius($datatable-btn-collection-border-radius);
+      }
+
+      &:last-child { @include border-start-radius(0); }
+      &:first-child { @include border-end-radius(0); }
+    }
+
+    .dt-btn-split-drop:last-child {
+      border: $datatable-btn-collection-border-width solid $datatable-btn-collection-border-color;
+    }
+
+    .dt-btn-split-wrapper {
+      border: none;
+    }
+  }
+
+  // Button divider spacer
+  .dt-button-spacer {
+    width: 100%;
+    text-align: center;
+    @include font-size($datatable-btn-divider-font-size);
+    margin: $datatable-btn-divider-spacer 0;
+
+    &:empty {
+      height: 0;
+      width: 100%;
+    }
+
+    &.bar {
+      border-left: none;
+      border-bottom: $datatable-btn-divider-width solid $datatable-btn-divider-color;
+      padding-left: 0;
+    }
+  }
+
+  // Reset default dropdown menu drom bootstrap
+  .dropdown-menu {
+    position: static;
+    display: block !important;
+    min-width: 100%;
+    background: transparent;
+    margin: 0;
+    padding: 0 !important;
+    border: 0 !important;
+    z-index: $zindex-datatable-btn-collection + 1;
+
+    .btn-group {
+      width: 100%;
+    }
+  }
+
+  // Modifier class to position dropdown to center of page
+  &.fixed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: none;
+    transform: translate(-50%, -50%);
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    &.two-column { margin-left: -$datatable-btn-collection-2col-width; }
+    &.three-column { margin-left: -$datatable-btn-collection-3col-width; }
+    &.four-column { margin-left: -$datatable-btn-collection-4col-width; }
+  }
+  
+  > :last-child {
+    display: block !important;
+    column-gap: $datatable-btn-collection-col-gap;
+
+    > * {
+      break-inside: avoid;
+    }
+  }
+
+  // Number of collumns classes
+  &.two-column {
+    width: $datatable-btn-collection-2col-width;
+
+    > :last-child {
+      column-count: 2;
+    }
+  }
+
+  &.three-column {
+    width: $datatable-btn-collection-3col-width;
+
+    > :last-child {
+      column-count: 3;
+    }
+  }
+
+  &.four-column {
+    width: $datatable-btn-collection-4col-width;
+
+    > :last-child {
+      column-count: 4;
+    }
+  }
+}
+
+// Button group title
+.dt-button-collection-title {
+  color: $datatable-btn-collection-title-color;
+  @include font-size($datatable-btn-collection-title-font-size);
+  font-weight: $datatable-btn-collection-title-font-weight;
+  padding: $datatable-btn-collection-title-padding-y $datatable-btn-collection-title-padding-x;
+  text-align: center;
+
+  &:empty {
+    display: none;
+  }
+}
+
+// Backdrop for fixed button group
+.dt-button-background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: $zindex-datatable-btn-collection - 1;
+}
+
+.dt-buttons {
+  .btn-group >.btn {
+    @if $enable-rounded {
+      border-top-right-radius: $btn-border-radius !important;
+      border-bottom-right-radius: $btn-border-radius !important;
+    }
+  }
+
+  // Loading state for button
+  .btn.processing {
+    position: relative;
+    color: $datatable-btn-collection-spinner-color;
+
+    // Spinner inside the button
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: $datatable-btn-collection-spinner-dimension;
+      height: $datatable-btn-collection-spinner-dimension;
+      margin-left: -#{$datatable-btn-collection-spinner-dimension * .5};
+      margin-top: -#{$datatable-btn-collection-spinner-dimension * .5};
+      border: $datatable-btn-collection-spinner-border-width solid $datatable-btn-collection-spinner-border-color;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      animation: $datatable-btn-collection-spinner-animation;
+    }
+  }
+}
+
+.dt-btn-split-wrapper {
+  .dt-btn-split-drop {
+    @if $enable-rounded {
+      border-top-right-radius: $btn-border-radius !important;
+      border-bottom-right-radius: $btn-border-radius !important;
+    }
+  }
+}
+
+.dataTables_wrapper {
+  position: relative;
+
+  .dt-buttons.btn-group {
+    .btn-group {
+      &,
+      &:last-child:first-child {
+        @include border-radius($datatable-btn-collection-border-radius);
+      }
+  
+      &:last-child { @include border-start-radius(0); }
+      &:first-child { @include border-end-radius(0); }
+
+      .dt-btn-split-wrapper { border: none; }
+    }
+
+    .dt-btn-split-drop:last-child {
+      border: $datatable-btn-collection-border-width solid $datatable-btn-collection-border-color;
+    }
+  }
+}
+
+.dt-button-spacer.bar:empty {
+  height: inherit;
+}
