@@ -247,8 +247,8 @@ $row = $querys->fetch_assoc();
 															<?php
 															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
 															?>
-															<form class="d-grid gap-3" action="modul/setting/update-sekolah.php" autocomplete="off" method="POST" id="ubahForm" autocomplete="off">
-                                                                <div class="row">
+															<form class="d-grid gap-3" id="form" action="assets/update-sekolah.php" autocomplete="off" method="post" enctype="multipart/form-data">
+																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Sekolah</label>
                                                                     <div class="col-sm-4">
                                                                         <input type="text" class="form-control" id="nama_sekolah" name="nama_sekolah" value="<?=$nsek['nama_sekolah'];?>">
@@ -265,12 +265,12 @@ $row = $querys->fetch_assoc();
 																	<div class="col-sm-2">
 																		<div class="avatar">
 																			<div class="avatar-display">
-																				<img src="<?=base_url();?>images/<?=$nsek['image_login'];?>" alt="Logo">
+																				<div id="preview"><img src="<?=base_url();?>assets/<?=$nsek['image_login'];?>" alt="Logo"></div>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="col-sm-4">
-                                                                        <input class="form-control" type="file" id="gambar" name="gambar">
+                                                                        <input id="uploadImage" type="file" accept="image/*" name="image" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -423,6 +423,42 @@ $row = $querys->fetch_assoc();
 		autoclose: true,
 		orientation: direction, 
 		todayHighlight: true 
+	});
+	$(document).ready(function (e) {
+	 $("#form").on('submit',(function(e) {
+	  e.preventDefault();
+	  $.ajax({
+			 url: "assets/update-sekolah.php",
+	   type: "POST",
+	   data:  new FormData(this),
+	   contentType: false,
+			 cache: false,
+	   processData:false,
+	   beforeSend : function()
+	   {
+		//$("#preview").fadeOut();
+		$("#err").fadeOut();
+	   },
+	   success: function(data)
+		  {
+		if(data=='invalid')
+		{
+		 // invalid file format.
+		 toastr.error('Invalid File!');
+		}
+		else
+		{
+		 // view uploaded file.
+		 $("#preview").html(data).fadeIn();
+		 $("#form")[0].reset(); 
+		}
+		  },
+		 error: function(e) 
+		  {
+		toastr.success(e);
+		  }          
+		});
+	 }));
 	});
 	
 	$('#tambahProv').on('show.bs.modal', function (e) {

@@ -1,6 +1,6 @@
 <?php $data="Kalendar Pendidikan";?>
 <?php include "layout/head.php"; ?>
-<link rel="stylesheet" href="https://sdi-aljannah.web.id/apins/ikm/assets/js/plugins/fullcalendar/lib/main.css">
+<link rel="stylesheet" href="<?=base_url();?>assets/js/fullcalendar/lib/main.css">
 </head>
 
 <body class="preload-active aside-active aside-mobile-minimized aside-desktop-maximized">
@@ -56,7 +56,7 @@
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
-	<script src="ikm/assets/js/plugins/fullcalendar/lib/main.js"></script>
+	<script src="<?=base_url();?>assets/js/fullcalendar/lib/main.js"></script>
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');

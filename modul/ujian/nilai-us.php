@@ -13,7 +13,7 @@ if($tapel_aktif==$tapel and $smt_aktif==$smt){
 };
 **/
 $output = array('data' => array());
-$ckkur=$connect->query("select * from rombel where nama_rombel like '%6%' and tapel='$tapel'")->fetch_assoc();
+$ckkur=$connect->query("select * from rombel where nama_rombel like '%6%' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
 $nkur=$ckkur['kurikulum'];
 $idkur=$connect->query("select * from kurikulum where nama_kurikulum='$nkur'")->fetch_assoc();
 $idk=$idkur['id_kurikulum'];

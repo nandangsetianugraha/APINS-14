@@ -3,7 +3,7 @@
 				<h3 class="aside-title">
 					<div class="avatar">
 						<div class="avatar-display" id="uploaded_image2">
-							<img src="<?=base_url();?>assets/images/aljannah.png" alt="Avatar image">
+							<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
 						</div>
 					</div>
 					<?=$apps['nama'];?>
@@ -243,6 +243,8 @@
 						</div>
 						<!-- END Menu Submenu -->
 					</div>
+					
+					<?php if($level==11 or (($level==98 or $level==97) and ($ab>1 and $ab<6))) { ?>
                     <div class="menu-section">
 						<div class="menu-section-icon">
 							<i class="fa fa-ellipsis-h"></i>
@@ -324,6 +326,7 @@
 							</div>
                         </div>
                     </div>
+					<?php } ?>
 					<?php } ?>
                     
 					<?php if($kurikulum=="Kurikulum 2013"){ ?>
