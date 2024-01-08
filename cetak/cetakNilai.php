@@ -4,24 +4,8 @@
  include 'easyTable.php';
  include "phpqrcode/qrlib.php";
  include '../config/db_connect.php';
- function TanggalIndo($tanggal)
-{
-	$bulan = array ('Januari',
-				'Februari',
-				'Maret',
-				'April',
-				'Mei',
-				'Juni',
-				'Juli',
-				'Agustus',
-				'September',
-				'Oktober',
-				'November',
-				'Desember'
-			);
-	$split = explode('-', $tanggal);
-	return $split[2] . ' ' . $bulan[ (int)$split[1]-1 ] . ' ' . $split[0];
-};
+ include '../config/config.php';
+ 
 $idp=$_GET['idp'];
 $kelas=$_GET['kelas'];
 $smt=$_GET['smt'];
@@ -380,7 +364,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Nama Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('SD ISLAM AL-JANNAH');
+ $table3->easyCell($cfg['nama_sekolah']);
  $table3->easyCell('Tahun Pelajaran');
  $table3->easyCell(':');
  $table3->easyCell($tapel);
@@ -388,7 +372,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Alamat Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('Jl. Raya Gabuswetan No. 1 Gabuswetan Indramayu','colspan:4');
+ $table3->easyCell($cfg['alamat_sekolah'],'colspan:4');
  $table3->printRow();
  $table3->endTable(10);
  

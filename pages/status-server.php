@@ -222,6 +222,24 @@ $row = $querys->fetch_assoc();
                                                                     </div>
                                                                 </div>
 																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Ekstrakurikuler</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="ekskul" name="ekskul">
+                                                                            <?php 
+                                                                            $sql46 = "select * from ekskul order by id_ekskul asc";
+                                                                            $query46 = $connect->query($sql46);
+                                                                            while($nk6=$query46->fetch_assoc()){
+                                                                                echo '<option data-nilai="'.$nk6['nama_ekskul'].'" value="'.$nk6['id_ekskul'].'" >'.$nk6['nama_ekskul'].'</option>';
+                                                                            }	
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahEkskul"><i class="fa fa-plus"></i></button>
+                                                                        <button class="btn btn-danger" type="button" id="hapusEkskul"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Jenis Pekerjaan</label>
                                                                     <div class="col-sm-4">
                                                                         <select class="form-select" id="pekj" name="pekj">
@@ -344,6 +362,15 @@ $row = $querys->fetch_assoc();
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form class="form-horizontal" action="modul/setting/tambah-mapel.php" autocomplete="off" method="POST" id="buatmapeldta">
+				<div class="fetched-data"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="tambahEkskul">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/setting/tambah-ekskul.php" autocomplete="off" method="POST" id="buatekskul">
 				<div class="fetched-data"></div>
 				</form>
 			</div>
@@ -959,6 +986,60 @@ $row = $querys->fetch_assoc();
 		}); // ajax subit 				
 		return false;
 	}); // /submit form for create member
+	$('#tambahEkskul').on('show.bs.modal', function (e) {
+            //menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/setting/m_ekskul.php',
+				data :  'jns=1',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+	$("#buatekskul").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+					$("#tambahEkskul").modal('hide');
+					const jns = 'dta';
+					$.ajax({
+						type : 'GET',
+						url : 'modul/setting/daftar-ekskul.php',
+						data :  'jns=' + jns,
+						dataType : 'HTML',
+						beforeSend: function()
+						{	
+							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+						},
+						success: function (data) {
+							//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+							$("#ekskul").html(data);
+							$('#status').unblock();
+							// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+						}
+					});
+
+					//$("#createTemaForm")[0].reset();
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
 	
 	$("#ubahForm").unbind('submit').bind('submit', function() {
 		var form = $(this);
@@ -1113,6 +1194,14 @@ $row = $querys->fetch_assoc();
 				Swal.fire("Kesalahan",'Pilih Mapel Dahulu',"error");
 			}else{
 				removeMapeldta(mapel);
+			}
+		});
+		$( "#hapusEkskul" ).click(function() {
+			var ekskul = $('#ekskul').val();
+			if(ekskul == 0){
+				Swal.fire("Kesalahan",'Pilih Ekskul Dahulu',"error");
+			}else{
+				removeEkskul(ekskul);
 			}
 		});
 		$( "#hapusPekerjaan" ).click(function() {
@@ -1312,6 +1401,59 @@ $row = $querys->fetch_assoc();
 										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
 										$("#mapeldta").html(data);
 										$('#status').unblock();
+										// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	function removeEkskul(id = null) {
+		if(id) {
+			// click on remove button
+			const ekskul = $('#ekskul option:selected').data('nilai');
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Ekstrakurikuler "+ekskul+"?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/setting/hapus-ekskul.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								toastr.success(response.messages);
+								$.ajax({
+									type : 'GET',
+									url : 'modul/setting/daftar-ekskul.php',
+									data :  'jns=1',
+									dataType : 'HTML',
+									beforeSend: function()
+									{	
+										$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+									},
+									success: function (data) {
+										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+										//Swal.fire("Sukses",data.messages,"success");
+										$("#ekskul").html(data);
+										$('#status').unblock();
+										
 										// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
 									}
 								});

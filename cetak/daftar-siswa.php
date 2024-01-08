@@ -1,58 +1,18 @@
 <?php
 require_once('fpdf/fpdf.php');
+require_once('../config/config.php');
 require_once('../config/db_connect.php');
-function namahari($tanggal){
-    
-		//fungsi mencari namahari
-		//format $tgl YYYY-MM-DD
-		//harviacode.com
-		
-		$tgl=substr($tanggal,8,2);
-		$bln=substr($tanggal,5,2);
-		$thn=substr($tanggal,0,4);
-
-		$info=date('w', mktime(0,0,0,$bln,$tgl,$thn));
-		
-		switch($info){
-			case '0': return "Minggu"; break;
-			case '1': return "Senin"; break;
-			case '2': return "Selasa"; break;
-			case '3': return "Rabu"; break;
-			case '4': return "Kamis"; break;
-			case '5': return "Jumat"; break;
-			case '6': return "Sabtu"; break;
-		};
-		
-	}
-function TanggalIndo($tanggal)
-	{
-		$bulan = array ('Januari',
-					'Februari',
-					'Maret',
-					'April',
-					'Mei',
-					'Juni',
-					'Juli',
-					'Agustus',
-					'September',
-					'Oktober',
-					'November',
-					'Desember'
-				);
-		$split = explode('-', $tanggal);
-		return $split[2] . ' ' . $bulan[ (int)$split[1]-1 ] . ' ' . $split[0];
-	}
-
 class PDF extends FPDF{
 function Header(){
    global $connect;
 	$kelas=$_GET['kelas'];
 	$tapel=$_GET['tapel'];
 	$smt=$_GET['smt'];
+	$cfg=$connect->query("select * from konfigurasi where id_conf='1'")->fetch_assoc();
    $this->SetTextColor(0,0,0);
    $this->SetFont('Arial','B','12');
    $this->Ln(0);
-   $this->Cell(16,0.5, $this->Image('logo.jpg', $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
+   $this->Cell(16,0.5, $this->Image('../assets/'.$cfg['image_login'], $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
     $this->Cell(0.3,0.5,'',0,0,'L',0);
     //$this->Cell(1.4,0.5, $this->Image($gambar2, $this->GetX(), $this->GetY(),2.2,1.7,0,0),0, 0, 'R', false );
     $this->Ln(0);
@@ -60,7 +20,7 @@ function Header(){
 	$this->Ln(0.5);
    $this->Ln(0.5);
 
-   $this->Cell(19,0,'SD ISLAM AL-JANNAH',0,0,'C');
+   $this->Cell(19,0,$cfg['nama_sekolah'],0,0,'C');
    $this->Ln(0.5);
    $this->Cell(19,0,'TAHUN PELAJARAN '.$tapel,0,0,'C');
    $this->Ln(1);
