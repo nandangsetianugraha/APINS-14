@@ -6,7 +6,7 @@ require_once 'DataSource.php';
 require_once '../config/db_connect.php';
 $db = new DataSource();
 $conn = $db->getConnection();
-require_once ('../PhpSpreadsheet/vendor/autoload.php');
+require_once ('../assets/vendor/PhpSpreadsheet/vendor/autoload.php');
 
 if (isset($_POST["import"])) {
 	$tapel=$_POST['tapel'];
