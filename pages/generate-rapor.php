@@ -290,6 +290,28 @@
 		});
 		
 	});	
+       $("#ubahproyek").unbind('submit').bind('submit', function() {
+			var form = $(this);
+
+			$.ajax({
+				url: form.attr('action'),
+				type: form.attr('method'),
+				data: form.serialize(),
+				dataType: 'json',
+				success:function(response) {
+					$("#edit-info").modal('hide');
+					if(response.success == true) {
+						toastr.success(response.messages);
+						
+						TabelRombel.ajax.reload(null, false);
+					} else {
+						Swal.fire("Kesalahan","Masih ada TP yang terdaftar pada LM ini!","error");
+					}
+				} // /success
+			}); // /ajax
+			return false;
+		});
+	});
 		
 	</script>
 </body>
