@@ -83,7 +83,7 @@
 	<div class="modal fade" id="tempatkan">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form id="penempatanForm" method="POST" action="modul/siswa/update-rombel.php" class="form">
+				<form id="penempatanForm" method="POST" action="modul/siswa/add-rombel.php" class="form">
 				<div class="tempatkan-data"></div>
 				</form>
 			</div>

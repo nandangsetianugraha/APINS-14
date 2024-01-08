@@ -2,7 +2,7 @@
 require_once '../../config/config.php';
 require_once '../../config/db_connect.php';
 $output = array('success' => false, 'messages' => array());
-$idsw = $_POST['idsw'];
+//$idsw = $_POST['idsw'];
 $siswa = $_POST['siswa'];
 $tapel = $_POST['tapel'];
 $smt = $_POST['smt'];
