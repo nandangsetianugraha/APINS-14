@@ -3,7 +3,7 @@
  include 'exfpdf.php';
  include 'easyTable.php';
  include "../modul/qrcode/phpqrcode/qrlib.php";
- include 'db_connect.php';
+ include '../config/db_connect.php';
  function TanggalIndo($tanggal)
 {
 	$bulan = array ('Januari',
