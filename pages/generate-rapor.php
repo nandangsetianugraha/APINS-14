@@ -140,7 +140,7 @@
 	<div class="modal fade" id="edit-info">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="form-horizontal" action="modul/rapor/update-pengetahuan.php" autocomplete="off" method="POST" id="ubahproyek">
+				<form class="form-horizontal" action="modul/rapor/update-rapor.php" autocomplete="off" method="POST" id="ubahproyek">
 				<div class="fetched-data1"></div>
 				</form>
 			</div>
