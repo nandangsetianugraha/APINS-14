@@ -247,7 +247,7 @@ $row = $querys->fetch_assoc();
 															<?php
 															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
 															?>
-															<form class="d-grid gap-3" id="form" action="assets/update-sekolah.php" autocomplete="off" method="post" enctype="multipart/form-data">
+															<form class="d-grid gap-3" id="image_upload_form" action="assets/update-sekolah.php" autocomplete="off" method="post" enctype="multipart/form-data">
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Sekolah</label>
                                                                     <div class="col-sm-4">
@@ -270,7 +270,7 @@ $row = $querys->fetch_assoc();
 																		</div>
 																	</div>
 																	<div class="col-sm-4">
-                                                                        <input id="uploadImage" type="file" accept="image/*" name="image" />
+                                                                        <input id="photoimg" type="file" accept="image/*" name="photoimg" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -424,42 +424,49 @@ $row = $querys->fetch_assoc();
 		orientation: direction, 
 		todayHighlight: true 
 	});
-	$(document).ready(function (e) {
-	 $("#form").on('submit',(function(e) {
-	  e.preventDefault();
-	  $.ajax({
-			 url: "assets/update-sekolah.php",
-	   type: "POST",
-	   data:  new FormData(this),
-	   contentType: false,
-			 cache: false,
-	   processData:false,
-	   beforeSend : function()
-	   {
-		//$("#preview").fadeOut();
-		$("#err").fadeOut();
-	   },
-	   success: function(data)
-		  {
-		if(data=='invalid')
-		{
-		 // invalid file format.
-		 toastr.error('Invalid File!');
-		}
-		else
-		{
-		 // view uploaded file.
-		 $("#preview").html(data).fadeIn();
-		 $("#form")[0].reset(); 
-		}
-		  },
-		 error: function(e) 
-		  {
-		toastr.success(e);
-		  }          
-		});
-	 }));
-	});
+	
+	jQuery(document).ready(function(){
+    $('#photoimg').on('change', function() {
+        var label = $(this).val().replace(/\\/g, '/').replace(/.*\//, ''),
+         input = $('#input_image_text').val(label);
+         $('.alert').addClass('hide');
+         $('.alert').removeClass('show');
+
+    });
+
+    var frm = $('#image_upload_form');
+
+    frm.submit(function (e) {
+      e.preventDefault();
+      var formData = new FormData();
+        formData.append('photoimg', $('#photoimg')[0].files[0]);
+
+        
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: formData,
+            dataType: "json",
+            processData: false,  // tell jQuery not to process the data
+       contentType: false,  // tell jQuery not to set contentType
+
+            success: function (data) {
+                console.log(data['error']);
+                if(data.error == 1) {
+                  $('.alert-danger').removeClass('hide').addClass('show').html(data['msg']);
+                } else {
+                  $('.alert-success').removeClass('hide').addClass('show').html('Uploaded');
+                console.log(data);
+                }
+                
+            },
+            error: function (data) {
+                console.log(data);
+                $('.alert-danger').removeClass('hide').addClass('show').html(data);
+            },
+        });
+        });  
+    });
 	
 	$('#tambahProv').on('show.bs.modal', function (e) {
             var prov = $('#prov').val();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 06:05 PM
+-- Generation Time: Jan 08, 2024 at 06:07 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -536,7 +536,8 @@ INSERT INTO `desa` (`id`, `id_kecamatan`, `nama`) VALUES
 ('3212200005', '3212200', 'Bongas'),
 ('3212200006', '3212200', 'Cipaat'),
 ('3212200007', '3212200', 'Kertamulya'),
-('3212200008', '3212200', 'Plawangan');
+('3212200008', '3212200', 'Plawangan'),
+('321301001', '321301', 'Babakan');
 
 -- --------------------------------------------------------
 
@@ -1476,7 +1477,11 @@ CREATE TABLE `kabupaten` (
 --
 
 INSERT INTO `kabupaten` (`id`, `id_provinsi`, `nama`) VALUES
-('3212', '32', 'Indramayu');
+('3209', '32', 'Subang'),
+('3210', '32', 'Pangandaran'),
+('3211', '32', 'Ciamis'),
+('3212', '32', 'Indramayu'),
+('3213', '32', 'Cirebon');
 
 -- --------------------------------------------------------
 
@@ -1661,7 +1666,9 @@ INSERT INTO `kecamatan` (`id`, `id_kabupaten`, `nama`) VALUES
 ('3212200', '3212', ' Bongas'),
 ('3212210', '3212', ' Anjatan'),
 ('3212220', '3212', ' Sukra'),
-('3212221', '3212', ' Patrol');
+('3212221', '3212', ' Patrol'),
+('321301', '3213', 'Palimanan'),
+('321302', '3213', 'Trusmi');
 
 -- --------------------------------------------------------
 
@@ -41662,7 +41669,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_conf`, `tapel`, `semester`, `maintenis`, `nama_sekolah`, `alamat_sekolah`, `image_login`, `versi`) VALUES
-(1, '2022/2023', 2, 1, 'SD Islam Al-Jannah', 'Jl. Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu', 'WhatsApp Image 2020-10-15 at 07.12.03 (1).jpeg', '9.0.1');
+(1, '2022/2023', 2, 0, 'SD Islam Al-Jannah', 'Jl. Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu', 'images/logo.png', '14.01.03');
 
 -- --------------------------------------------------------
 
@@ -41806,7 +41813,17 @@ CREATE TABLE `log` (
 INSERT INTO `log` (`id`, `ptk_id`, `logDate`, `activity`) VALUES
 (1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2023-12-16 21:33:00', 'Login ke Sistem'),
 (2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-02 23:54:27', 'Keluar dari Sistem'),
-(3, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-02 23:55:11', 'Login ke Sistem');
+(3, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-02 23:55:11', 'Login ke Sistem'),
+(4, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 01:27:11', 'Keluar dari Sistem'),
+(5, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 01:28:20', 'Login ke Sistem'),
+(6, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 21:04:37', 'Login ke Sistem'),
+(7, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:35:15', 'Keluar dari Sistem'),
+(8, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:48:36', 'Login ke Sistem'),
+(9, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:48:53', 'Keluar dari Sistem'),
+(10, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:49:15', 'Login ke Sistem'),
+(11, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:31', 'Keluar dari Sistem'),
+(12, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:48', 'Login ke Sistem'),
+(13, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-08 23:56:20', 'Login ke Sistem');
 
 -- --------------------------------------------------------
 
@@ -41828,8 +41845,8 @@ CREATE TABLE `loginattempts` (
 
 INSERT INTO `loginattempts` (`IP`, `Attempts`, `LastLogin`, `Username`, `ID`) VALUES
 ('::1', 2, '2023-12-30 00:29:15', 'fakhira', 1),
-('::1', 1, '2024-01-02 23:54:38', 'admin', 2),
-('::1', 3, '2023-12-30 00:29:46', 'faridah', 3);
+('::1', 2, '2024-01-08 23:56:00', 'admin', 2),
+('::1', 1, '2024-01-08 23:56:10', 'faridah', 3);
 
 -- --------------------------------------------------------
 
@@ -43057,11 +43074,12 @@ CREATE TABLE `siswa` (
   `tempat` varchar(50) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nik` varchar(16) DEFAULT NULL,
-  `agama` int(11) NOT NULL,
+  `agama` int(11) NOT NULL DEFAULT 1,
   `pend_sebelum` varchar(100) NOT NULL,
-  `alamat` varchar(100) DEFAULT NULL,
+  `alamat` varchar(350) DEFAULT NULL,
   `nama_ayah` varchar(150) DEFAULT NULL,
   `nama_ibu` varchar(150) DEFAULT NULL,
+  `no_wa` varchar(15) NOT NULL DEFAULT '085798869782',
   `pek_ayah` int(11) NOT NULL,
   `pek_ibu` int(11) NOT NULL,
   `jalan` varchar(100) NOT NULL,
@@ -43390,7 +43408,6 @@ CREATE TABLE `tapel` (
 --
 
 INSERT INTO `tapel` (`id_tapel`, `nama_tapel`) VALUES
-(8, '2014/2015'),
 (9, '2015/2016'),
 (10, '2016/2017'),
 (11, '2017/2018'),
@@ -43399,7 +43416,8 @@ INSERT INTO `tapel` (`id_tapel`, `nama_tapel`) VALUES
 (14, '2020/2021'),
 (15, '2021/2022'),
 (16, '2022/2023'),
-(17, '2023/2024');
+(17, '2023/2024'),
+(18, '2014/2015');
 
 -- --------------------------------------------------------
 
@@ -45160,7 +45178,7 @@ ALTER TABLE `lingkup_materi`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `loginattempts`
@@ -45592,7 +45610,7 @@ ALTER TABLE `tahfidz`
 -- AUTO_INCREMENT for table `tapel`
 --
 ALTER TABLE `tapel`
-  MODIFY `id_tapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_tapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tarif_spp`
