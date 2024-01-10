@@ -65,23 +65,15 @@
 										<div class="alert-content"><button onclick="ExportToExcel('xlsx')">Export table to excel</button></div>
 									</div>
 									<!-- BEGIN Datatable -->
-									<table id="datatable-1" class="table table-bordered table-striped table-hover">
-										<thead>
-											<tr>
-												<th width="30%">Nama</th>
-												<?php 
-													$sql1 = "select * from mata_pelajaran order by id_mapel asc";
-													$query1 = $connect->query($sql1);
-													while ($row1 = $query1->fetch_assoc()) {
-												?>
-												<th><?=$row1['kd_mapel'];?></th>
-												<?php } ?>
-												<th>Jumlah</th>
-												<th>Rerata</th>
-												<th>Rank</th>
-											</tr>
-										</thead>
-									</table>
+									<div id="nilaiHarian">
+											<div class="alert alert-primary">
+												<div class="alert-icon">
+													<i class="fa fa-archive"></i>
+												</div>
+												<div class="alert-content">Silahkan Pilih Rombel</div>
+											</div>
+										</div>
+									
 									<!-- END Datatable -->
 								</div>
 							</div>
@@ -124,53 +116,29 @@
 	<script>
 	var TabelRombel;
 	$(document).ready(function(){
-		var kelas = $('#kelas').val();
-		var tapel = $('#tapel').val();
-		var smt = $('#smt').val();
-		TabelRombel = $("#datatable-1").DataTable({ 
-			"destroy":true,
-            "lengthMenu": [
-                [50, -1],
-                [50, 'All']
-            ],
-			"searching": true,
-			"order": [[12, 'asc']],
-			"ajax": "modul/rapor/rekap-rapor-ikm.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt
-		});
+		
 		$('#caridata').on( 'keyup', function () {
 			TabelRombel.search( this.value ).draw();
 		} );
 		$('#kelas').change(function(){
-				//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
 			var kelas = $('#kelas').val();
 			var tapel = $('#tapel').val();
 			var smt = $('#smt').val();
-			TabelRombel = $("#datatable-1").DataTable({ 
-				"destroy":true,
-                "lengthMenu": [
-                    [50, -1],
-                    [50, 'All']
-                ],
-				"searching": true,
-				"order": [[12, 'asc']],
-				
-				"ajax": "modul/rapor/rekap-rapor-ikm.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt
-			});
 			$.ajax({
 				type : 'GET',
-				url : 'modul/administrasi/mp.php',
-				data :  'kelas='+kelas,
+				url : 'modul/rapor/rekapan-ikm.php',
+				data :  'kelas='+kelas+'&smt='+smt+'&tapel='+tapel,
 				beforeSend: function()
 				{	
-					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+					$("#nilaiHarian").html('<div class="alert alert-primary"><div class="alert-icon"><i class="fa fa-spinner fa-pulse fa-fw"></i></div><div class="alert-content">Loading ...</div></div>');
 				},
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select mp
-					$('#status').unblock();
-					$("#nilaiHarian").html('<div class="alert alert-info alert-dismissible"><h4><i class="icon fa fa-info"></i> Informasi</h4>Silahkan Pilih Mapel</div>');
+					$("#nilaiHarian").html(data);
 				}
-			});
+			});			
 		});
+		
 		
 		$('#info').on('show.bs.modal', function (e) {
             var kelas = $('#kelas').val();

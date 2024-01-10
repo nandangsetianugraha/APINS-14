@@ -28,86 +28,21 @@ $query = $connect->query($sql);
 while ($row = $query->fetch_assoc()) {
 	$idp=$row['peserta_didik_id'];
     $namas = $connect->query("select * from siswa where peserta_didik_id='$idp'")->fetch_assoc();
-	//PAI-BP
-	$ada1=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->num_rows;
-	if($ada1>0){
-		$nh1=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->fetch_assoc();
-		$nilai1=number_format($nh1['nilai'],0);
-	}else{
-		$nilai1="";
-	};
-	
-	//Pend. Pancasila
-	$ada2=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->num_rows;
-	if($ada2>0){
-		$nh2=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->fetch_assoc();
-		$nilai2=number_format($nh2['nilai'],0);
-	}else{
-		$nilai2="";
-	};
-	
-	//Bahasa Indonesia
-	$ada3=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->num_rows;
-	if($ada3>0){
-		$nh3=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->fetch_assoc();
-		$nilai3=number_format($nh3['nilai'],0);
-	}else{
-		$nilai3="";
-	};
-	
-	//Matematika
-	$ada4=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->num_rows;
-	if($ada4>0){
-		$nh4=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->fetch_assoc();
-		$nilai4=number_format($nh4['nilai'],0);
-	}else{
-		$nilai4="";
-	};
-	
-	//IPAS
-	$ada5=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->num_rows;
-	if($ada5>0){
-		$nh5=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->fetch_assoc();
-		$nilai5=number_format($nh5['nilai'],0);
-	}else{
-		$nilai5="";
-	};
-	
-	//PJOK
-	$ada6=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->num_rows;
-	if($ada6>0){
-		$nh6=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->fetch_assoc();
-		$nilai6=number_format($nh6['nilai'],0);
-	}else{
-		$nilai6="";
-	};
-	
-	//Seni Rupa
-	$ada7=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->num_rows;
-	if($ada7>0){
-		$nh7=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->fetch_assoc();
-		$nilai7=number_format($nh7['nilai'],0);
-	}else{
-		$nilai7="";
-	};
-	
-	//Bahasa Inggris
-	$ada8=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->num_rows;
-	if($ada8>0){
-		$nh8=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->fetch_assoc();
-		$nilai8=number_format($nh8['nilai'],0);
-	}else{
-		$nilai8="";
-	};
-	
-	//Bahasa Indramayu
-	$ada9=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->num_rows;
-	if($ada9>0){
-		$nh9=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->fetch_assoc();
-		$nilai9=number_format($nh9['nilai'],0);
-	}else{
-		$nilai9="";
-	};
+	$sql1 = "select * from mata_pelajaran order by id_mapel asc";
+	$query1 = $connect->query($sql1);
+	$nilaimp='';
+	while ($row1 = $query1->fetch_assoc()) {
+		$idm=$row1['id_mapel'];
+		$ada1=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
+		if($ada1>0){
+			$nh1=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
+			$nilai1=number_format($nh1['nilai'],0);
+		}else{
+			$nilai1="";
+		};
+		$nilaimp=$nilaimp+$nilai1+',';
+	}
+	$nilaimpl=substr($nilaimp, 0, -1);
 	
 	//Jumlah
 	$jumlah=$connect->query("select sum(nilai) as jumlah from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel'")->fetch_assoc();
@@ -130,7 +65,7 @@ while ($row = $query->fetch_assoc()) {
 	//$namasis=$pn['nama'];
 	$output['data'][] = array(
 		$namas['nama'],
-		$nilai1,$nilai2,$nilai3,$nilai4,$nilai5,$nilai6,$nilai7,$nilai8,$nilai9,number_format($jumlah['jumlah'],0),number_format($rerata['rerata'],2),$ranking['ranking']
+		$nilaimpl,number_format($jumlah['jumlah'],0),number_format($rerata['rerata'],2),$ranking['ranking']
 	);
 }
 
