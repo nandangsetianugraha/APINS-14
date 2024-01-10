@@ -7,9 +7,13 @@
 ## Installation
 ubah konfigurasi alamat web di config/config.php<br/>
 ubah database di config/db_connect.php<br/>
+Operator<br/>
 username : admin<br/>
-password : 20258088
+password : 20258088<br/>
+Guru<br/>
+username : guru1<br/>
+password : 20258088<br/>
 
 ### Demo
-https://apins.sdi-aljannah.web.id
+https://demos.sdi-aljannah.web.id
 
