@@ -311,7 +311,7 @@
 			}); // /ajax
 			return false;
 		});
-	});
+	
 		
 	</script>
 </body>
