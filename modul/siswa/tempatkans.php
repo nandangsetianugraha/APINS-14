@@ -33,7 +33,7 @@ $rombel=$connect->query("SELECT * FROM penempatan where peserta_didik_id='$idp' 
 			<input type="hidden" class="form-control" name="idsw" value="<?=$ids;?>"/>
 			<input type="hidden" class="form-control" name="nisn" value="<?=$siswa['nisn'];?>" readonly>
 			<?php 
-			$sql = "select * from rombel where tapel='$tapel'";
+			$sql = "select * from rombel where tapel='$tapel' and smt='$smt'";
 			$query = $connect->query($sql);
 			?>
 			<select name="kelas" class="form-select">
