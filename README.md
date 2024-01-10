@@ -5,8 +5,8 @@
 <strong>APINS</strong> adalah aplikasi pengolahan nilai untuk Sekolah Dasar yang memakai Kurikulum 2013 atau Kurikulum Merdeka.
 
 ## Installation
-ubah konfigurasi alamat web di config/config.php
-ubah database di config/db_connect.php
+ubah konfigurasi alamat web di config/config.php<br/>
+ubah database di config/db_connect.php<br/>
 username : admin<br/>
 password : 20258088
 
