@@ -11,10 +11,11 @@ class LoginForm extends DbConn
         $max_attempts = $conf->max_attempts;
         $timeout_minutes = $conf->timeout_minutes;
         $attcheck = checkAttempts($myusername);
-        $curr_attempts = $attcheck['attempts'];
+        $curr_attempts = (empty($attcheck['attempts'])) ? 0 : $attcheck['attempts'];
 
         $datetimeNow = date("Y-m-d H:i:s");
-        $oldTime = strtotime($attcheck['lastlogin']);
+		$lgs = (empty($attcheck['lastlogin'])) ? date("Y-m-d H:i:s") : $attcheck['lastlogin'];
+        $oldTime = strtotime($lgs);
         $newTime = strtotime($datetimeNow);
         $timeDiff = $newTime - $oldTime;
 
@@ -38,7 +39,7 @@ class LoginForm extends DbConn
         // Gets query result
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($curr_attempts >= $max_attempts && $timeDiff < $login_timeout) {
+        if ($curr_attempts >= $max_attempts) {
 
             //Too many failed attempts
 			$success = 'Kesempatan login sudah melebihi 5x...tunggu sekitar '.$timeout_minutes.' menit sebelum melakukan login ulang';
@@ -67,33 +68,6 @@ class LoginForm extends DbConn
 					$stmt2->bindParam(':logDate', $datetimeNow);
 					$stmt2->bindParam(':activitas', $aktivitas);
 					$stmt2->execute();
-					//$query2 = $connect->query("INSERT into log(id,ptk_id,logDate,activity) VALUES('','$idptk','$newTime','Login ke Sistem')");
-					switch ($result['level']) {
-						case 94: //guru Bahasa Inggris
-							$_SESSION['lokasi'] = 'guru';
-							break;
-						case 95: //guru PJOK
-							$_SESSION['lokasi'] = 'guru';
-							break;
-						case 96: //guru PAI
-							$_SESSION['lokasi'] = 'guru';
-							break;
-						case 97: //guru Pendamping
-							$_SESSION['lokasi'] = 'guru';
-							break;
-						case 98: //guru Kelas
-							$_SESSION['lokasi'] = 'guru';
-							break;
-						case 99: //guru Kepsek
-							$_SESSION['lokasi'] = 'kepsek';
-							break;
-						case 5: //guru Tata Usaha
-							$_SESSION['lokasi'] = 'tatausaha';
-							break;
-						default:
-							$_SESSION['lokasi'] = 'operator'; 
-							break;
-					};
 					
 
             } elseif (password_verify($mypassword, $result['password']) && $result['verified'] == '0') {
@@ -123,7 +97,8 @@ class LoginForm extends DbConn
 
             $datetimeNow = date("Y-m-d H:i:s");
             $attcheck = checkAttempts($username);
-            $curr_attempts = $attcheck['attempts'];
+			
+            $curr_attempts = (empty($attcheck['attempts'])) ? 0 : $attcheck['attempts'];
 
             $stmt = $db->conn->prepare("INSERT INTO ".$tbl_attempts." (ip, attempts, lastlogin, username) values(:ip, 1, :lastlogin, :username)");
             $stmt->bindParam(':ip', $ip_address);

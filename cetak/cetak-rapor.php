@@ -78,13 +78,13 @@ $padding = 2;
 QRcode::png($isi_teks,$namafile,QR_ECLEVEL_L,5,2);
 //QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
 $QR = imagecreatefrompng($namafile);
-$logopng = imagecreatefrompng('logo.png');
+$logopng = imagecreatefrompng('../assets/'.$cfg['image_login']);
 $QR_width = imagesx($QR);
 $QR_height = imagesy($QR);
 $logo_width = imagesx($logopng);
 $logo_height = imagesy($logopng);
 			
-list($newwidth, $newheight) = getimagesize('logo.png');
+list($newwidth, $newheight) = getimagesize('../assets/'.$cfg['image_login']);
 $out = imagecreatetruecolor($QR_width, $QR_width);
 imagecopyresampled($out, $QR, 0, 0, 0, 0, $QR_width, $QR_height, $QR_width, $QR_height);
 imagecopyresampled($out, $logopng, $QR_width/2.65, $QR_height/2.65, 0, 0, $QR_width/4, $QR_height/4, $newwidth, $newheight);
@@ -351,7 +351,7 @@ if($ks['gelar']==' '){
  $table3->easyCell('');
  $table3->easyCell('');
  $table3->easyCell('');
- $table3->easyCell("Gabuswetan, ..........................................\nKepala Sekolah\n\n\n\n\n\n<b>UMAR ALI, S.Pd.</b>\nNIP. .........................");
+ $table3->easyCell("................, ..........................................\nKepala Sekolah\n\n\n\n\n\n<b>_________________</b>\nNIP. .........................");
  $table3->printRow();
  $table3->endTable(15);
 
@@ -392,7 +392,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Nama Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('SD ISLAM AL-JANNAH');
+ $table3->easyCell($cfg['nama_sekolah']);
  $table3->easyCell('Semester');
  $table3->easyCell(':');
  $table3->easyCell($smt);
@@ -400,7 +400,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Alamat Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('Jl. Raya Gabuswetan No. 1 Gabuswetan Indramayu');
+ $table3->easyCell($cfg['alamat_sekolah']);
  $table3->easyCell('Tahun Pelajaran');
  $table3->easyCell(':');
  $table3->easyCell($tapel);
@@ -417,206 +417,33 @@ $rapo->easyCell('Muatan Pelajaran','align:C; valign:M');
 $rapo->easyCell('Nilai Akhir','align:C; valign:M');
 $rapo->easyCell('Catatan Kompetensi','align:C; valign:M');
 $rapo->printRow(true);
-//mulai cetak PAI
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
+$sql2 = "select * from mata_pelajaran order by id_mapel asc";
+$query2 = $connect->query($sql2);
+$nourut=1;
+while($sl=$query2->fetch_assoc()) {
+	$idm=$sl['id_mapel'];
+	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
+	if($adape>0){
+		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
+		$nilaipe=number_format($npe['nilai'],0);
+		$data = explode("|" , $npe['deskripsi']);
+		$kelebihan=$data[0];
+		$kelemahan=$data[1];
+		$deskripsi1=$npe['deskripsi'];
+	}else{
+		$nilaipe="";
+		$kelebihan="";
+		$kelemahan="";
+	};
+	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
+	$rapo->rowStyle('font-size:12;min-height:30');
+	$rapo->easyCell($nourut,'align:C; valign:T');
+	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
+	$rapo->easyCell($nilaipe,'align:C; valign:T');
+	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
+	$rapo->printRow();
+	$nourut=$nourut+1;
 };
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='1'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('1','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Pendidikan Pancasila
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='2'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('2','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Bahasa Indonesia
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='3'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('3','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Matematika
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='4'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('4','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-
-	//mulai cetak IPAS
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='5'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('5','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-	
-	//mulai cetak PJOK
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='6'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('6','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-
-	//mulai cetak Seni Rupa
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='7'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('7','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-	//mulai cetak Bahasa Inggris
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='8'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('8','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-	//mulai cetak Bahasa Indramayu
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='9'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('9','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
 
 //akhir tabel rapor
 $rapo->endTable(5);
@@ -947,10 +774,10 @@ if($cektmr>0){
     if($ab===6){
       $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
     }else{
-	  $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
+	  $ttd->easyCell('............., '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
     }
 }else{
-	$ttd->easyCell('Gabuswetan, ........................ 20.....','align:C; border:0;');
+	$ttd->easyCell('............., ........................ 20.....','align:C; border:0;');
 };
 $ttd->easyCell('','align:L; border:0;');
 $ttd->printRow();

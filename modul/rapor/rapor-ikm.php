@@ -30,6 +30,11 @@ if($tapel_aktif==$tapel and $smt_aktif==$smt){
 	$edit=false;
 };
 if($mp==0){
+	$output['data'][] = array(
+		'',
+		'',
+		''
+	);
 }else{
 $sql = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 $query = $connect->query($sql);
