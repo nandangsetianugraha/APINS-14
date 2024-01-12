@@ -1,5 +1,13 @@
 <?php $data="Status Server";?>
 <?php include "layout/head.php"; ?>
+<style>
+		#errorMs {
+			color: #a00;
+		}
+		.gallery img{
+            width: 300px;
+		}
+	</style>
 </head>
 <?php  
 $sql = "SELECT * FROM setting_dokumen";
@@ -37,6 +45,7 @@ $row = $querys->fetch_assoc();
 															<a class="nav-item nav-link active" id="nav3-home-tab" data-bs-toggle="tab" href="#nav3-home">Server</a>
 															<a class="nav-item nav-link" id="nav3-profile-tab" data-bs-toggle="tab" href="#nav3-profile">Konfigurasi Lainnya</a>
 															<a class="nav-item nav-link" id="nav3-contact-tab" data-bs-toggle="tab" href="#nav3-contact">Identitas Sekolah</a>
+															<a class="nav-item nav-link" id="nav3-logo-tab" data-bs-toggle="tab" href="#nav3-logo">Logo Sekolah</a>
 														</div>
 														<!-- END Nav -->
 													</nav>
@@ -265,7 +274,7 @@ $row = $querys->fetch_assoc();
 															<?php
 															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
 															?>
-															<form class="d-grid gap-3" id="image_upload_form" action="assets/update-sekolah.php" autocomplete="off" method="post" enctype="multipart/form-data">
+															<form class="d-grid gap-3" action="modul/setting/update-sekolah.php" autocomplete="off" method="POST" id="ubahSekolah" autocomplete="off">
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Sekolah</label>
                                                                     <div class="col-sm-4">
@@ -280,23 +289,32 @@ $row = $querys->fetch_assoc();
                                                                     </div>
                                                                 </div>
 																<div class="row">
-																	<div class="col-sm-2">
-																		<div class="avatar">
-																			<div class="avatar-display">
-																				<div id="preview"><img src="<?=base_url();?>assets/<?=$nsek['image_login'];?>" alt="Logo"></div>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-sm-4">
-                                                                        <input id="photoimg" type="file" accept="image/*" name="photoimg" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
                                                                     <div class="col-md-12 text-end mt-3">
-                                                                        <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
+                                                                        <button type="submit" class="btn btn-primary">Simpan</button>
                                                                     </div>
                                                                 </div>
                                                             </form>
+														</div>
+														<div class="tab-pane fade" id="nav3-logo">
+															<?php
+															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
+															?>
+															<div class="gallery">
+																<img src="<?=base_url();?>assets/<?=$nsek['image_login'];?>" id="preImg">
+															</div>	
+															<p id="errorMs"></p>
+															<form action="<?=base_url();?>assets/upload.php"
+																  id="form" 
+																  method="post"
+																  enctype="multipart/form-data">
+
+																<input type="file"
+																	   id="myImage">
+
+																<input type="submit" 
+																	   id="submit" 
+																	   value="Simpan">
+															</form>														
 														</div>
 													</div>
 													<!-- END Tab -->
@@ -443,6 +461,67 @@ $row = $querys->fetch_assoc();
 			"showMethod": "fadeIn",
 			"hideMethod": "fadeOut"
 		};
+	$(document).ready(function(){
+      
+      $("#submit").click(function(e){
+      	e.preventDefault();
+
+      	let form_data = new FormData();
+      	let img = $("#myImage")[0].files;
+ 
+        // Check image selected or not
+        if(img.length > 0){
+        	form_data.append('my_image', img[0]);
+
+        	$.ajax({
+        		url: 'assets/upload.php',
+        		type: 'post',
+        		data: form_data,
+        		contentType: false,
+                processData: false,
+                success: function(res){
+                	const data = JSON.parse(res);
+
+                	if (data.error != 1) {
+                       let path = "assets/"+data.src;
+                       $("#preImg").attr("src", path);
+                       $("#preImg").fadeOut(1).fadeIn(1000);
+                       $("#myImage").val('');
+					   location.reload();
+                	}else {
+                		$("#errorMs").text(data.em);
+                	}
+                }
+
+        	});
+         
+        }else {
+           $("#errorMs").text("Please select an image.");
+        }
+      });
+	  $("#ubahSekolah").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	  }); // /submit form for create member
+        
+    });
+	</script>
+	<script>
+	
 	var isRtl = $("html").attr("dir") === "rtl";
 	var direction = isRtl ? "right" : "left";
 	$("#tanggal").datepicker({ 
@@ -460,40 +539,7 @@ $row = $querys->fetch_assoc();
          $('.alert').removeClass('show');
 
     });
-
-    var frm = $('#image_upload_form');
-
-    frm.submit(function (e) {
-      e.preventDefault();
-      var formData = new FormData();
-        formData.append('photoimg', $('#photoimg')[0].files[0]);
-
-        
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: formData,
-            dataType: "json",
-            processData: false,  // tell jQuery not to process the data
-       contentType: false,  // tell jQuery not to set contentType
-
-            success: function (data) {
-                console.log(data['error']);
-                if(data.error == 1) {
-                  $('.alert-danger').removeClass('hide').addClass('show').html(data['msg']);
-                } else {
-                  $('.alert-success').removeClass('hide').addClass('show').html('Uploaded');
-                console.log(data);
-                }
-                
-            },
-            error: function (data) {
-                console.log(data);
-                $('.alert-danger').removeClass('hide').addClass('show').html(data);
-            },
-        });
-        });  
-    });
+	
 	
 	$('#tambahProv').on('show.bs.modal', function (e) {
             var prov = $('#prov').val();
@@ -1052,9 +1098,6 @@ $row = $querys->fetch_assoc();
 			success:function(response) {
 				if(response.success == true) {
 					toastr.success(response.messages);
-					//setTimeout(function () {window.open("./","_self");},1000)
-					//setTimeout(function () {window.open("./","_self");},1000)
-					// reset the form
 				} else {
 					toastr.error(response.messages);
 				}  // /else
@@ -1062,6 +1105,7 @@ $row = $querys->fetch_assoc();
 		}); // ajax subit 				
 		return false;
 	}); // /submit form for create member
+	
 	$("#createTemaForm").unbind('submit').bind('submit', function() {
 		var form = $(this);
 		//submi the form to server
