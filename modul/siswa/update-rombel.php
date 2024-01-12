@@ -13,8 +13,6 @@ $rs = $queryp->fetch_assoc();
 $nama=$rs['nama'];
 $cek = $connect->query("select * from penempatan where peserta_didik_id='$siswa' and tapel='$tapel' and smt='$smt'")->num_rows;
 if($cek>0){
-	$idw = $connect->query("select * from penempatan where peserta_didik_id='$siswa' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
-	$idws=$idw['id_rombel'];
     $sql = "UPDATE penempatan SET rombel='$kelas' WHERE id_rombel='$idsw'";
 }else{
     $sql = "INSERT into penempatan(peserta_didik_id,nama,rombel,tapel,smt) values('$siswa','$nama','$kelas','$tapel','$smt')";

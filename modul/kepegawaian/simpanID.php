@@ -5,7 +5,7 @@ require_once '../../config/db_connect.php';
 if($_POST) {	
 
 	$validator = array('success' => false, 'messages' => array());
-	$idNasabah=$_POST['notema'];
+	$idNasabah=$_POST['idNasabah'];
 	$idsis=$_POST['idsis'];
 	$qry = $connect->query("select * from ptk where ptk_id='$idsis'");
 	$namasiswa=$qry->fetch_assoc();

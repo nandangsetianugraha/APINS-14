@@ -268,7 +268,7 @@
 						
 					
 				</div>
-
+				
 				
 				<script>
 				var idptk = $('#idptks').val();

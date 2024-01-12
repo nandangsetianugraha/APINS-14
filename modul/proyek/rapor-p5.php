@@ -45,7 +45,7 @@ while ($row = $query->fetch_assoc()) {
 		$tombol=' ';
 	}else{
 		if($ceksiswa==$jumfase){
-		$tombol='<button onclick="location.href=\'ikm/cetak/cetak-p5.php?idp='.$idp.'&kelas='.$kelas.'&tapel='.$tapel.'&smt='.$smt.'&proyek='.$idproyek.'\'" class="btn btn-success mb-2"><i class="fa fa-print opacity-50 me-1" data-kelas="'.$kelas.'" data-ids="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"></i> Cetak</button>';
+		$tombol='<button onclick="location.href=\'cetak/cetak-p5.php?idp='.$idp.'&kelas='.$kelas.'&tapel='.$tapel.'&smt='.$smt.'&proyek='.$idproyek.'\'" class="btn btn-success mb-2"><i class="fa fa-print opacity-50 me-1" data-kelas="'.$kelas.'" data-ids="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"></i> Cetak</button>';
 		}else{
 			$tombol='';
 		}
