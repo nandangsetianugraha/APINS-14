@@ -1,16 +1,21 @@
-<?php 
+<?php
+include '../inc/db.php';
 session_start();
-date_default_timezone_set('Asia/Jakarta');
-$request  = $_SERVER['REQUEST_URI'];
-$params     = explode("/", $request);
-$halaman = $params[3];
-$tipe = count($params)>4 ? $params[4] : '';
-$act = count($params)>5 ? $params[5] : '';
-
-	if( file_exists($halaman . '.php') ) {
-		include $halaman . '.php';
+if(!isset($_SESSION['userid'])){
+	header('location:login.html');
+}else{ 
+	if(isset($_SESSION['level'])){
+		if($_SESSION['level']==11){
+			header('location:./operator/');
+		}elseif($_SESSION['level']==5){
+			header('location:./tu/');
+		}elseif($_SESSION['level']==99){
+			header('location:./kepsek/');
+		}else{
+			header('location:./guru/');
+		};		
 	}else{
-		echo $halaman;
+		header('location:./siswa/');
 	}
-
+}; 
 ?>

@@ -43,7 +43,7 @@ function namahari($tanggal){
  include 'fpdf/fpdf.php';
  include 'exfpdf.php';
  include 'easyTable.php';
- include '../config/db_connect.php';
+ include '../inc/db_connect.php';
  $bulan1 = array ('Januari',
 				'Februari',
 				'Maret',
@@ -57,10 +57,12 @@ function namahari($tanggal){
 				'November',
 				'Desember'
 			);
-	$bulan=date($_GET['bulanku']);
-	$tahun=$_GET['tahunku'];
+	$tanggal=$_GET['tanggal'];
+	$bulan=substr($tanggal,5,2);
+	$tahun=substr($tanggal,0,4);
 	$kelas=$_GET['kelas'];
 	$tapel=$_GET['tapel'];
+	$smt=$_GET['smt'];
 	if(empty($bulan) || empty($tahun)){
 	}else{
 		$hari = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
@@ -142,7 +144,7 @@ function namahari($tanggal){
 			$table3->easyCell('A','align:C');
 			$table3->printrow(true);
 		}
-		$skl = "select * from penempatan where rombel='$kelas' and tapel='$tapel' order by nama asc";
+		$skl = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 		$qkl = $connect->query($skl);
 		$ssakit=0;$sijin=0;$salfa=0;
 		while($sis=$qkl->fetch_assoc()){
@@ -164,8 +166,9 @@ function namahari($tanggal){
 			}else{
 				$alfa=$snama['alfa'];
 			};
-			$table3->rowStyle('font-size:10');
-			$table3->easyCell($sw['nama'],'align:L');
+			//$sikap->rowStyle('font-size:12; min-height:35');
+			$table3->rowStyle('font-size:10; min-height:8');
+			$table3->easyCell($sw['nama'],'align:L;valign:M');
 			for ($i=1; $i < $hari+1; $i++) { 
 				if($i>9){
 					$ab=$i;
@@ -182,7 +185,7 @@ function namahari($tanggal){
 					}else{
 						$an=$absen['absensi'];
 					};
-					$table3->easyCell($an,'align:C');
+					$table3->easyCell($an,'align:C;valign:M');
 				};
 				
 			};
@@ -190,10 +193,27 @@ function namahari($tanggal){
 			$ssakit=$ssakit+$jabs['sakit'];
 			$sijin=$sijin+$jabs['ijin'];
 			$salfa=$salfa+$jabs['alfa'];
-			$table3->easyCell($sakit,'align:C');
-			$table3->easyCell($ijin,'align:C');
-			$table3->easyCell($alfa,'align:C');
-			$table3->easyCell($sakit+$ijin+$alfa,'align:C');
+          	if($sakit==0){
+              	$table3->easyCell('','align:C;valign:M');
+            }else{
+            	$table3->easyCell($sakit,'align:C;valign:M');
+            };
+          	if($ijin==0){
+              	$table3->easyCell('','align:C;valign:M');
+            }else{
+              	$table3->easyCell($ijin,'align:C;valign:M');
+            };
+          	if($alfa==0){
+              	$table3->easyCell('','align:C;valign:M');
+            }else{
+              	$table3->easyCell($alfa,'align:C;valign:M');
+            };
+          	$jabs=$sakit+$ijin+$alfa;
+          	if($jabs==0){
+              	$table3->easyCell('','align:C;valign:M');
+            }else{
+              	$table3->easyCell($jabs,'align:C;valign:M');
+            }
 			$table3->printrow();
 		};
 		//selesai isi tabel siswa
@@ -208,7 +228,7 @@ function namahari($tanggal){
 				$ab="0".$i;
 			};
 			$ttt=$tahun."-".$bulan."-".$ab;
-			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' order by nama asc";
+			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 			$qkl1 = $connect->query($skl1);
 				$jsakit=0;
 				$jijin=0;
@@ -225,13 +245,25 @@ function namahari($tanggal){
 			if(namahari($ttt)==="Sabtu" || namahari($ttt)==="Minggu"){
 				$table3->easyCell('','bgcolor:#acaeaf;');
 			}else{
-				$table3->easyCell($jsakit,'align:C');
+              	if($jsakit==0){
+                  	$table3->easyCell('','align:C');
+                }else{
+                  	$table3->easyCell($jsakit,'align:C');
+                };
 			};
 		};
-		$table3->easyCell($ssakit,'align:C');
+      	if($ssakit==0){
+          	$table3->easyCell('','align:C');
+        }else{
+			$table3->easyCell($ssakit,'align:C');
+        };
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($ssakit,'align:C');
+		if($ssakit==0){
+          	$table3->easyCell('','align:C');
+        }else{
+			$table3->easyCell($ssakit,'align:C');
+        };
 		$table3->printrow();
 		
 		//Jumlahkan Ijin
@@ -244,7 +276,7 @@ function namahari($tanggal){
 				$ab="0".$i;
 			};
 			$ttt=$tahun."-".$bulan."-".$ab;
-			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' order by nama asc";
+			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 			$qkl1 = $connect->query($skl1);
 				$jsakit=0;
 				$jijin=0;
@@ -261,13 +293,25 @@ function namahari($tanggal){
 			if(namahari($ttt)==="Sabtu" || namahari($ttt)==="Minggu"){
 				$table3->easyCell('','bgcolor:#acaeaf;');
 			}else{
-				$table3->easyCell($jijin,'align:C');
+              	if($jijin==0){
+                  	$table3->easyCell('','align:C');
+                }else{
+					$table3->easyCell($jijin,'align:C');
+                }
 			};
 		};
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($sijin,'align:C');
+      	if($sijin==0){
+          	$table3->easyCell('','align:C');
+        }else{
+			$table3->easyCell($sijin,'align:C');
+        };
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($sijin,'align:C');
+		if($sijin==0){
+          	$table3->easyCell('','align:C');
+        }else{
+			$table3->easyCell($sijin,'align:C');
+        };
 		$table3->printrow(); 
 		
 		//Jumlahkan ALFA
@@ -280,7 +324,7 @@ function namahari($tanggal){
 				$ab="0".$i;
 			};
 			$ttt=$tahun."-".$bulan."-".$ab;
-			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' order by nama asc";
+			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 			$qkl1 = $connect->query($skl1);
 				$jsakit=0;
 				$jijin=0;
@@ -297,13 +341,22 @@ function namahari($tanggal){
 			if(namahari($ttt)==="Sabtu" || namahari($ttt)==="Minggu"){
 				$table3->easyCell('','bgcolor:#acaeaf;');
 			}else{
-				$table3->easyCell($jalfa,'align:C');
+              	if($jalfa==0){
+                  	$table3->easyCell('','align:C');
+                }else{
+					$table3->easyCell($jalfa,'align:C');
+                }
 			};
 		};
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
 		$table3->easyCell('','align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($salfa,'align:C');
-		$table3->easyCell($salfa,'align:C');
+      	if($salfa==0){
+          	$table3->easyCell('','align:C');
+          	$table3->easyCell('','align:C');
+        }else{
+          	$table3->easyCell($salfa,'align:C');
+          	$table3->easyCell($salfa,'align:C');
+        }
 		$table3->printrow(); 
 		
 		//Jumlahkan TOTAL
@@ -316,7 +369,7 @@ function namahari($tanggal){
 				$ab="0".$i;
 			};
 			$ttt=$tahun."-".$bulan."-".$ab;
-			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' order by nama asc";
+			$skl1 = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
 			$qkl1 = $connect->query($skl1);
 				$jsakit=0;
 				$jijin=0;
@@ -333,18 +386,39 @@ function namahari($tanggal){
 			if(namahari($ttt)==="Sabtu" || namahari($ttt)==="Minggu"){
 				$table3->easyCell('','bgcolor:#acaeaf;');
 			}else{
-				$table3->easyCell($jkeh,'align:C;bgcolor:#acaeaf;');
+              	if($jkeh==0){
+                  	$table3->easyCell('','align:C;bgcolor:#acaeaf;');
+                }else{
+                  	$table3->easyCell($jkeh,'align:C;bgcolor:#acaeaf;');
+                };
 			};
 		};
-		$table3->easyCell($ssakit,'align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($sijin,'align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($salfa,'align:C;bgcolor:#acaeaf;');
-		$table3->easyCell($ssakit+$sijin+$salfa,'align:C;bgcolor:#acaeaf;');
+      	if($ssakit==0){
+          	$table3->easyCell('','align:C;bgcolor:#acaeaf;');
+        }else{
+          	$table3->easyCell($ssakit,'align:C;bgcolor:#acaeaf;');
+        };
+      	if($sijin==0){
+          	$table3->easyCell('','align:C;bgcolor:#acaeaf;');
+        }else{
+          	$table3->easyCell($sijin,'align:C;bgcolor:#acaeaf;');
+        };
+      	if($salfa==0){
+          	$table3->easyCell('','align:C;bgcolor:#acaeaf;');
+        }else{
+          	$table3->easyCell($salfa,'align:C;bgcolor:#acaeaf;');
+        };
+      	$stot=$ssakit+$sijin+$salfa;
+     	if($stot==0){
+          	$table3->easyCell('','align:C;bgcolor:#acaeaf;');
+        }else{
+          	$table3->easyCell($stot,'align:C;bgcolor:#acaeaf;');
+        };
 		$table3->printrow(); 
 		
 		$table3->endTable(5);
 		$tots=$ssakit+$sijin+$salfa;
-		$total=$connect->query("select * from penempatan where rombel='$kelas' and tapel='$tapel'")->num_rows;
+		$total=$connect->query("select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt'")->num_rows;
 		$efek=$connect->query("select * from hari_efektif where bulan='$bulan' and tapel='$tapel'")->fetch_assoc();
 		if($efek['hari']==0){
 			$harim=23;
@@ -408,18 +482,19 @@ function namahari($tanggal){
 		$ttd->easyCell('');
 		$ttd->easyCell('');
 		$ttd->easyCell('');
-		$ttd->easyCell('___________________________','align:C; valign:T');
+		$nromb=$connect->query("select * from rombel where nama_rombel='$kelas' and tapel='$tapel'")->fetch_assoc();
+		$idwks=$nromb['wali_kelas'];
+		$wks=$connect->query("select * from ptk where ptk_id='$idwks'")->fetch_assoc();
+		if($wks['gelar']==''){
+			$namawali=strtoupper($wks['nama']);
+		}else{
+			$namawali=strtoupper($wks['nama']).', '.$wks['gelar'];
+		};
+		$ttd->easyCell($namawali,'align:C; valign:T;border:B');
 		$ttd->printRow();
 		$ttd->endTable();
 		
 			//$pdf->Output();  
-			$pdf->Output('D',$namafilenya);
-		 
-		 
+			$pdf->Output();
 	}
-
-
-
- 
-
 ?>

@@ -5,7 +5,7 @@
  include 'exfpdf.php';
  include 'easyTable.php';
  include "../modul/qrcode/phpqrcode/qrlib.php";
- include '../inc/db_connect.php';
+ include '../config/db_connect.php';
  function TanggalIndo($tanggal)
 {
 	$bulan = array ('Januari',
@@ -90,7 +90,7 @@ $namafile=$rombs['rombel']."-".$siswa['nama'].".pdf";
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Nama Sekolah');
  $table3->easyCell(':');
- $table3->easyCell($cfg['nama_sekolah']);
+ $table3->easyCell('SD ISLAM AL-JANNAH');
  $table3->easyCell('Semester');
  $table3->easyCell(':');
  $table3->easyCell($smt);
@@ -98,7 +98,7 @@ $namafile=$rombs['rombel']."-".$siswa['nama'].".pdf";
  $table3->rowStyle('font-size:11');
  $table3->easyCell('Alamat Sekolah');
  $table3->easyCell(':');
- $table3->easyCell($cfg['alamat_sekolah']);
+ $table3->easyCell('Jl. Raya Gabuswetan No. 1 Gabuswetan Kab. Indramayu 45263');
  $table3->easyCell('Tahun Pelajaran');
  $table3->easyCell(':');
  $table3->easyCell($tapel);
@@ -251,12 +251,12 @@ $cektmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$t
 if($cektmr>0){
 	$tmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$tapel'")->fetch_assoc();
     if($ab===6){
-      $ttd->easyCell('.........., '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
+      $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
     }else{
-	  $ttd->easyCell('.........., '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
+	  $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
     }
 }else{
-	$ttd->easyCell('............, ........................ 20.....','align:C; border:0;');
+	$ttd->easyCell('Gabuswetan, ........................ 20.....','align:C; border:0;');
 };
 $ttd->easyCell('','align:L; border:0;');
 $ttd->printRow();
