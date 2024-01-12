@@ -7,7 +7,6 @@
 	<script type="text/javascript" src="<?=base_url();?>assets/app/utilities/tooltip-popover.js"></script>
 	<script type="text/javascript" src="<?=base_url();?>assets/app/utilities/dropdown-scrollbar.js"></script>
 	<script type="text/javascript" src="<?=base_url();?>assets/app/utilities/fullscreen-trigger.js"></script>
-	<script type="text/javascript" src="<?=base_url();?>assets/jquery.min.js"></script>
 	<script>
     
       function addZero(i) {
