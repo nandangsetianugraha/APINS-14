@@ -3,7 +3,7 @@
  include 'exfpdf.php';
  include 'easyTable.php';
  include "../modul/qrcode/phpqrcode/qrlib.php";
- include '../inc/db_connect.php';
+ include 'db_connect.php';
  function TanggalIndo($tanggal)
 {
 	$bulan = array ('Januari',
@@ -37,8 +37,9 @@ if($smt==1){
 $sqls = "select * from siswa where peserta_didik_id='$idp'";
 $querys = $connect->query($sqls);
 $siswa=$querys->fetch_assoc();
-$rombs=$connect->query("select * from penempatan where peserta_didik_id='$idp' and tapel='$tapel'")->fetch_assoc();
-$namafilenya=$tahun1.$tahun2.$smt."-".$idp.".pdf";
+$rombs=$connect->query("select * from penempatan where peserta_didik_id='$idp' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
+$namafilenya="Raport ".$siswa['nama']." Semester ".$smt." Tahun ".$tahun1."-".$tahun2.".pdf";
+//$namafilenya=$tahun1.$tahun2.$smt."-".$siswa['nama'].".pdf";
  
  $pdf=new exFPDF('P','mm',array(210,297));
  
@@ -69,14 +70,28 @@ $namafilenya=$tahun1.$tahun2.$smt."-".$idp.".pdf";
  if (!file_exists($tempdir)){
 	mkdir($tempdir);
  };
- $isi_teks = "https://sdi-aljannah.web.id/rapor/".$tahun1.$tahun2.$smt."-".$idp.".pdf";
- $namafile = $idp.".png";
- $quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
- $ukuran = 5; //batasan 1 paling kecil, 10 paling besar
- $padding = 2;
- QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
+ $isi_teks = "https://sdi-aljannah.web.id/rapor/ikm/".$tahun1.$tahun2."/".$smt."/".$idp;
+ $namafile = "logo/".$idp.".png";
+$quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
+$ukuran = 5; //batasan 1 paling kecil, 10 paling besar
+$padding = 2;
+QRcode::png($isi_teks,$namafile,QR_ECLEVEL_L,5,2);
+//QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
+$QR = imagecreatefrompng($namafile);
+$logopng = imagecreatefrompng('logo.png');
+$QR_width = imagesx($QR);
+$QR_height = imagesy($QR);
+$logo_width = imagesx($logopng);
+$logo_height = imagesy($logopng);
+			
+list($newwidth, $newheight) = getimagesize('logo.png');
+$out = imagecreatetruecolor($QR_width, $QR_width);
+imagecopyresampled($out, $QR, 0, 0, 0, 0, $QR_width, $QR_height, $QR_width, $QR_height);
+imagecopyresampled($out, $logopng, $QR_width/2.65, $QR_height/2.65, 0, 0, $QR_width/4, $QR_height/4, $newwidth, $newheight);
+imagepng($out,$namafile);
+imagedestroy($out);
  $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('','img:../modul/qrcode/temp/'.$namafile.',w35;align:C');
+ $table2->easyCell('','img:'.$namafile.',w35;align:C');
  $table2->printRow();
  $table2->endTable(60);
  
@@ -490,7 +505,7 @@ $rapo->easyCell($nilaipe,'align:C; valign:T');
 $rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
 $rapo->printRow();
 
-if($ab>1){
+
 	//mulai cetak IPAS
 	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->num_rows;
 	if($adape>0){
@@ -602,100 +617,6 @@ if($ab>1){
 	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
 	$rapo->printRow();
 
-}else{
-
-	//mulai cetak PJOK
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='6'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('5','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-
-	//mulai cetak Seni Rupa
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='7'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('6','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-
-	//mulai cetak Bahasa Inggris
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='8'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('7','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-
-	//mulai cetak Bahasa Indramayu
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='9'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('8','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-};
 
 //akhir tabel rapor
 $rapo->endTable(5);
@@ -1093,7 +1014,7 @@ $ttd->easyCell('','align:L; border:0;');
 $ttd->easyCell('','align:C; border:0;');
 $ttd->easyCell('','align:L; border:0;');
 $ttd->printRow();
-$nromb=$connect->query("select * from rombel where nama_rombel='$kelas' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
+$nromb=$connect->query("select * from rombel where nama_rombel='$kelas' and tapel='$tapel'")->fetch_assoc();
 $idwks=$nromb['wali_kelas'];
 $wks=$connect->query("select * from ptk where ptk_id='$idwks'")->fetch_assoc();
 if($wks['gelar']==''){
@@ -1190,6 +1111,6 @@ $ttd1->printRow();
 $ttd1->endTable();
 
 
- //$pdf->Output('D',$namafilenya);
+ $pdf->Output('D',$namafilenya);
  //$pdf->Output();
- $pdf->Output('F',$namafilenya);
+ //$pdf->Output('F',$namafilenya);

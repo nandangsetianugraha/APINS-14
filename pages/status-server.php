@@ -43,6 +43,7 @@ $row = $querys->fetch_assoc();
 															<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 															<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
 															<a class="nav-item nav-link active" id="nav3-home-tab" data-bs-toggle="tab" href="#nav3-home">Server</a>
+															<a class="nav-item nav-link" id="nav3-home-tab" data-bs-toggle="tab" href="#nav3-titimangsa">Titimangsa Rapor</a>
 															<a class="nav-item nav-link" id="nav3-profile-tab" data-bs-toggle="tab" href="#nav3-profile">Konfigurasi Lainnya</a>
 															<a class="nav-item nav-link" id="nav3-contact-tab" data-bs-toggle="tab" href="#nav3-contact">Identitas Sekolah</a>
 															<a class="nav-item nav-link" id="nav3-logo-tab" data-bs-toggle="tab" href="#nav3-logo">Logo Sekolah</a>
@@ -110,6 +111,39 @@ $row = $querys->fetch_assoc();
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal dan Waktu</label>
                                                                     <div class="col-sm-4">
                                                                         <input type="text" class="form-control" name="twaktu" value="<?=$row['tanggal'];?>"  required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-end mt-3">
+                                                                        <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+														</div>
+														<div class="tab-pane fade show" id="nav3-titimangsa">
+															<?php
+															$ntitimangsa = $connect->query("select * from titimangsa WHERE smt='$smt' and tapel='$tapel'")->fetch_assoc();
+															?>
+															<form class="d-grid gap-3" action="modul/setting/update-titimangsa.php" autocomplete="off" method="POST" id="ubahTitimangsa" autocomplete="off">
+                                                                <div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Tempat</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="hidden" class="form-control" name="smt" value="<?=$smt;?>"  required>
+																		<input type="hidden" class="form-control" name="tapel" value="<?=$tapel;?>"  required>
+																		<input type="text" class="form-control" name="tempat" value="<?=$ntitimangsa['tempat'];?>"  required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kelas 1 - 5</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$ntitimangsa['tanggal'];?>" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kelas 6</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="text" id="tanggal2" name="tanggal2" class="form-control" value="<?=$ntitimangsa['tanggal2'];?>" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -461,6 +495,14 @@ $row = $querys->fetch_assoc();
 			"showMethod": "fadeIn",
 			"hideMethod": "fadeOut"
 		};
+	$('#tanggal').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
+	$('#tanggal2').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
 	$(document).ready(function(){
       
       $("#submit").click(function(e){
@@ -517,10 +559,27 @@ $row = $querys->fetch_assoc();
 		}); // ajax subit 				
 		return false;
 	  }); // /submit form for create member
+	  $("#ubahTitimangsa").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			success:function(response) {
+				if(response.success == true) {
+					toastr.success(response.messages);
+				} else {
+					toastr.error(response.messages);
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	  }); // /submit form for create member
         
-    });
-	</script>
-	<script>
+    
+	
 	
 	var isRtl = $("html").attr("dir") === "rtl";
 	var direction = isRtl ? "right" : "left";
@@ -530,16 +589,6 @@ $row = $querys->fetch_assoc();
 		orientation: direction, 
 		todayHighlight: true 
 	});
-	
-	jQuery(document).ready(function(){
-    $('#photoimg').on('change', function() {
-        var label = $(this).val().replace(/\\/g, '/').replace(/.*\//, ''),
-         input = $('#input_image_text').val(label);
-         $('.alert').addClass('hide');
-         $('.alert').removeClass('show');
-
-    });
-	
 	
 	$('#tambahProv').on('show.bs.modal', function (e) {
             var prov = $('#prov').val();
@@ -1256,7 +1305,7 @@ $row = $querys->fetch_assoc();
 				removePekerjaan(pekj);
 			}
 		});
-	
+	});
 	function removePekerjaan(id = null) {
 		if(id) {
 			// click on remove button
