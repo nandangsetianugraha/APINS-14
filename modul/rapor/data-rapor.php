@@ -37,8 +37,11 @@ while ($row = $query->fetch_assoc()) {
 		$status="disabled";
 	};
 	$aksi='
-	<a href="cetak/cetak-rapor.php?idp='.$idp.'&kelas='.$kelas.'&smt='.$smt.'&tapel='.$tapel.'" type="button" class="btn btn-success mb-2"><i class="fa fa-print opacity-50 me-1" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"></i> Cetak</a>
+	<button class="btn btn-primary" id="previewS" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Sampul</button>
+	<button class="btn btn-primary" id="previewI" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Identitas</button>
+	<button class="btn btn-primary" id="previewR" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Rapor</button>
 	';
+	
 	$sql1 = "select * from mata_pelajaran order by id_mapel asc";
 	$query1 = $connect->query($sql1);
 	$tombol='';

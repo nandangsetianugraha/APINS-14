@@ -3,7 +3,7 @@
  include 'exfpdf.php';
  include 'easyTable.php';
  include "../modul/qrcode/phpqrcode/qrlib.php";
- include 'db_connect.php';
+ include '../config/db_connect.php';
  function TanggalIndo($tanggal)
 {
 	$bulan = array ('Januari',
@@ -43,318 +43,6 @@ $namafilenya="Raport ".$siswa['nama']." Semester ".$smt." Tahun ".$tahun1."-".$t
  
  $pdf=new exFPDF('P','mm',array(210,297));
  
- //Halaman 1
- $pdf->AddPage(); 
- $pdf->SetFont('Arial','',12);
-
- $table2=new easyTable($pdf, 1);
- $table2->rowStyle('font-size:15; font-style:B;');
- $table2->easyCell('','img:tutwuri.jpg,w35;align:C');
- $table2->printRow();
- $table2->endTable(5);
- 
- $table2=new easyTable($pdf, 1);
- $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('RAPOR', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('PESERTA DIDIK', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('SEKOLAH DASAR', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('(SD)', 'align:C;');
- $table2->printRow(10);
- $tempdir = "../modul/qrcode/temp/";
- if (!file_exists($tempdir)){
-	mkdir($tempdir);
- };
- $isi_teks = "https://sdi-aljannah.web.id/rapor/ikm/".$tahun1.$tahun2."/".$smt."/".$idp;
- $namafile = "logo/".$idp.".png";
-$quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
-$ukuran = 5; //batasan 1 paling kecil, 10 paling besar
-$padding = 2;
-QRcode::png($isi_teks,$namafile,QR_ECLEVEL_L,5,2);
-//QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
-$QR = imagecreatefrompng($namafile);
-$logopng = imagecreatefrompng('logo.png');
-$QR_width = imagesx($QR);
-$QR_height = imagesy($QR);
-$logo_width = imagesx($logopng);
-$logo_height = imagesy($logopng);
-			
-list($newwidth, $newheight) = getimagesize('logo.png');
-$out = imagecreatetruecolor($QR_width, $QR_width);
-imagecopyresampled($out, $QR, 0, 0, 0, 0, $QR_width, $QR_height, $QR_width, $QR_height);
-imagecopyresampled($out, $logopng, $QR_width/2.65, $QR_height/2.65, 0, 0, $QR_width/4, $QR_height/4, $newwidth, $newheight);
-imagepng($out,$namafile);
-imagedestroy($out);
- $table2->rowStyle('font-size:20; font-style:B;');
- $table2->easyCell('','img:'.$namafile.',w35;align:C');
- $table2->printRow();
- $table2->endTable(60);
- 
- $table2=new easyTable($pdf, 1);
- $table2->rowStyle('font-size:12');
- $table2->easyCell('Nama Peserta Didik', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:16; font-style:B;border:1');
- $table2->easyCell($siswa['nama'], 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:12');
- $table2->easyCell('NIS', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:16; min-height:10;font-style:B;border:1');
- $table2->easyCell($siswa['nis'], 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:12');
- $table2->easyCell('NISN', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:16; min-height:10;font-style:B;border:1');
- $table2->easyCell($siswa['nisn'], 'align:C;');
- $table2->printRow();
- $table2->endTable(20);
- 
- $table2=new easyTable($pdf, 1);
- $table2->rowStyle('font-size:14; font-style:B;');
- $table2->easyCell('KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN', 'align:C;');
- $table2->printRow();
- $table2->rowStyle('font-size:14; font-style:B;');
- $table2->easyCell('REPUBLIK INDONESIA', 'align:C;');
- $table2->printRow();
- $table2->endTable();
-
-//halaman 2
-$id_prov=$siswa['provinsi'];
-$id_kab=$siswa['kabupaten'];
-$id_kec=$siswa['kecamatan'];
-$id_des=$siswa['kelurahan'];
-$prov=$connect->query("select * from provinsi where id_prov='$id_prov'")->fetch_assoc();
-$kab=$connect->query("select * from kabupaten where id='$id_kab'")->fetch_assoc();
-$kec=$connect->query("select * from kecamatan where id='$id_kec'")->fetch_assoc();
-$nkec=$kec['nama'];
-$des=$connect->query("select * from desa where id='$id_des'")->fetch_assoc();
-$ndes=$des['nama'];
-
- $pdf->AddPage(); 
- $pdf->AddFont('lato','','Lato-Regular.php');
- $pdf->AddFont('FontUTF8','','Arimo-Regular.php'); 
- $pdf->AddFont('FontUTF8','B','Arimo-Bold.php'); 
- $pdf->AddFont('FontUTF8','BI','Arimo-BoldItalic.php'); 
- $pdf->AddFont('FontUTF8','I','Arimo-Italic.php'); 
- $pdf->SetFont('times','',12);
-
- $table2=new easyTable($pdf, 1);
- $table2->rowStyle('font-size:15; font-style:B;');
- $table2->easyCell('IDENTITAS PESERTA DIDIK', 'align:C;');
- $table2->printRow();
- $table2->endTable(10);
- 
- $table3=new easyTable($pdf, '{60, 8, 1, 110}','align:L');
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Nama Peserta Didik');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['nama'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('NIS');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['nis'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('NISN');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['nisn'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Tempat, Tanggal Lahir');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['tempat'].', '.TanggalIndo($siswa['tanggal']),'border:B;font-style:B');
- $table3->printRow();
- 
- if($siswa['jk']==="L"){
-	 $kelam="Laki-laki";
- }else{
-	 $kelam="Perempuan";
- };
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Jenis Kelamin');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($kelam,'border:B;font-style:B');
- $table3->printRow();
- 
- $idag=$siswa['agama'];
- $pag=$connect->query("select * from agama where id_agama='$idag'")->fetch_assoc();
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Agama');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($pag['nama_agama'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Pendidikan Sebelumnya');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['pend_sebelum'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Alamat Peserta Didik');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['alamat'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('.');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('','border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Nama Orang Tua');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Ayah');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['nama_ayah'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Ibu');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['nama_ibu'],'border:B;font-style:B');
- $table3->printRow();
- 
- $idpa=$siswa['pek_ayah'];
- $peka=$connect->query("select * from pekerjaan where id_pekerjaan='$idpa'")->fetch_assoc();
- $idpi=$siswa['pek_ibu'];
- $peki=$connect->query("select * from pekerjaan where id_pekerjaan='$idpi'")->fetch_assoc();
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Pekerjaan Orang Tua');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Ayah');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($peka['nama_pekerjaan'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Ibu');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($peki['nama_pekerjaan'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Alamat Orang Tua');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Jalan');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($siswa['jalan'],'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Kelurahan/Desa');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($ndes,'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Kecamatan');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell($nkec,'border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Kabupaten/Kota');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell('Indramayu','border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Provinsi');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell('Jawa Barat','border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Wali Peserta Didik');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Nama');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell('','border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Pekerjaan');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell('','border:B;font-style:B');
- $table3->printRow();
- 
- $table3->rowStyle('font-size:12');
- $table3->easyCell('Alamat');
- $table3->easyCell(':');
- $table3->easyCell('');
- $table3->easyCell('','border:B;font-style:B');
- $table3->printRow();
- $table3->endTable(15);
- $ks=$connect->query("select * from ptk where jenis_ptk_id='99'")->fetch_assoc();
-if($ks['gelar']==' '){
-	$namaks=strtoupper($ks['nama']);
-}else{
-	$namaks=strtoupper($ks['nama']).', '.$ks['gelar'];
-};
- $table3=new easyTable($pdf, '{10, 30, 20, 8, 1, 110}','align:L');
- $table3->rowStyle('font-size:12;min-height:40');
- $table3->easyCell('');
- $table3->easyCell("Pas Foto\nUkuran\n3x4",'border:1;align:C;valign:M;font-style:B');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell('');
- $table3->easyCell("Gabuswetan, ..........................................\nKepala Sekolah\n\n\n\n\n\n<b>UMAR ALI, S.Pd.</b>\nNIP. .........................");
- $table3->printRow();
- $table3->endTable(15);
-
 //halaman 3
  $pdf->AddPage(); 
  $pdf->SetFont('helvetica','',12);
@@ -392,7 +80,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Nama Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('SD ISLAM AL-JANNAH');
+ $table3->easyCell(strtoupper($cfg['nama_sekolah']));
  $table3->easyCell('Semester');
  $table3->easyCell(':');
  $table3->easyCell($smt);
@@ -400,7 +88,7 @@ if($ks['gelar']==' '){
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Alamat Sekolah');
  $table3->easyCell(':');
- $table3->easyCell('Jl. Raya Gabuswetan No. 1 Gabuswetan Indramayu');
+ $table3->easyCell($cfg['alamat_sekolah']);
  $table3->easyCell('Tahun Pelajaran');
  $table3->easyCell(':');
  $table3->easyCell($tapel);
@@ -417,99 +105,15 @@ $rapo->easyCell('Muatan Pelajaran','align:C; valign:M');
 $rapo->easyCell('Nilai Akhir','align:C; valign:M');
 $rapo->easyCell('Catatan Kompetensi','align:C; valign:M');
 $rapo->printRow(true);
-//mulai cetak PAI
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='1'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='1'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('1','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Pendidikan Pancasila
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='2'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='2'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('2','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Bahasa Indonesia
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='3'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='3'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('3','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-//mulai cetak Matematika
-$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->num_rows;
-if($adape>0){
-	$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='4'")->fetch_assoc();
-	$nilaipe=number_format($npe['nilai'],0);
-	$data = explode("|" , $npe['deskripsi']);
-	$kelebihan=$data[0];
-	$kelemahan=$data[1];
-	$deskripsi1=$npe['deskripsi'];
-}else{
-	$nilaipe="";
-	$kelebihan="";
-	$kelemahan="";
-};
-$mpl=$connect->query("select * from mata_pelajaran where id_mapel='4'")->fetch_assoc();
-$rapo->rowStyle('font-size:12;min-height:30');
-$rapo->easyCell('4','align:C; valign:T');
-$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-$rapo->easyCell($nilaipe,'align:C; valign:T');
-$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-$rapo->printRow();
-
-
-	//mulai cetak IPAS
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->num_rows;
+$sql1 = "select * from mata_pelajaran order by id_mapel asc";
+$query1 = $connect->query($sql1);
+$nilaimp='';
+$nomor=1;
+while ($row1 = $query1->fetch_assoc()) {
+	$idm=$row1['id_mapel'];
+	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
 	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='5'")->fetch_assoc();
+		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
 		$nilaipe=number_format($npe['nilai'],0);
 		$data = explode("|" , $npe['deskripsi']);
 		$kelebihan=$data[0];
@@ -520,103 +124,15 @@ $rapo->printRow();
 		$kelebihan="";
 		$kelemahan="";
 	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='5'")->fetch_assoc();
+	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
 	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('5','align:C; valign:T');
+	$rapo->easyCell($nomor,'align:C; valign:T');
 	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
 	$rapo->easyCell($nilaipe,'align:C; valign:T');
 	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
 	$rapo->printRow();
-	
-	//mulai cetak PJOK
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='6'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='6'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('6','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-
-	//mulai cetak Seni Rupa
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='7'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='7'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('7','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-	//mulai cetak Bahasa Inggris
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='8'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='8'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('8','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
-	//mulai cetak Bahasa Indramayu
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='9'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='9'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell('9','align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-
+	$nomor=$nomor+1;
+}
 
 //akhir tabel rapor
 $rapo->endTable(5);
@@ -687,7 +203,9 @@ $eks->printRow();
 };
 $eks->endTable(5);
 
-$pdf->AddPage(); 
+//Prestasi
+
+
 //Saran
 $adasaran=$connect->query("select * from saran where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
 if($adasaran>0){
@@ -945,12 +463,12 @@ $cektmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$t
 if($cektmr>0){
 	$tmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$tapel'")->fetch_assoc();
     if($ab===6){
-      $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
+      $ttd->easyCell($tmr['tempat'].', '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
     }else{
-	  $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
+	  $ttd->easyCell($tmr['tempat'].', '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
     }
 }else{
-	$ttd->easyCell('Gabuswetan, ........................ 20.....','align:C; border:0;');
+	$ttd->easyCell('............, ........................ 20.....','align:C; border:0;');
 };
 $ttd->easyCell('','align:L; border:0;');
 $ttd->printRow();
@@ -1100,6 +618,12 @@ $ttd1->printRow();
 //Kepala Sekolah
 $ttd1->rowStyle('font-size:12');
 $ttd1->easyCell('','align:L; border:0;');
+$ks=$connect->query("select * from ptk where jenis_ptk_id='99'")->fetch_assoc();
+if($ks['gelar']==' '){
+	$namaks=strtoupper($ks['nama']);
+}else{
+	$namaks=strtoupper($ks['nama']).', '.$ks['gelar'];
+};
 $ttd1->easyCell("<b>".$namaks."</b>",'align:C; border:B;');
 $ttd1->easyCell('','align:L; border:0;');
 $ttd1->printRow();
@@ -1111,6 +635,6 @@ $ttd1->printRow();
 $ttd1->endTable();
 
 
- $pdf->Output('D',$namafilenya);
- //$pdf->Output();
+ //$pdf->Output('D',$namafilenya);
+ $pdf->Output();
  //$pdf->Output('F',$namafilenya);

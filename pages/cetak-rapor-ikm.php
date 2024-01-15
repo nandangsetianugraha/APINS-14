@@ -289,6 +289,34 @@
 			}); // /ajax
 			return false;
 		});
+		$(document).on('click', '#previewR', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			PopupCenter('cetak/cetak-rapor.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Rapor',800,800);
+			
+		});
+		$(document).on('click', '#previewS', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			PopupCenter('cetak/cetak-sampul-rapor.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Sampul Rapor',800,800);
+			
+		});
+		$(document).on('click', '#previewI', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			PopupCenter('cetak/cetak-identitas-rapor.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Identitas Rapor',800,800);
+			
+		});
+		
 	});	
 		
 	
@@ -310,6 +338,7 @@
 				//window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
 			}
 		});
+	
 		
 	</script>
 </body>
