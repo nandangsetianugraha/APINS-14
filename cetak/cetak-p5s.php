@@ -251,12 +251,12 @@ $cektmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$t
 if($cektmr>0){
 	$tmr=$connect->query("select * from titimangsa where smt='$smt' and tapel='$tapel'")->fetch_assoc();
     if($ab===6){
-      $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
+      $ttd->easyCell($tmr['tempat'].', '.TanggalIndo($tmr['tanggal2']),'align:C; border:0;');
     }else{
-	  $ttd->easyCell('Gabuswetan, '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
+	  $ttd->easyCell($tmr['tempat'].', '.TanggalIndo($tmr['tanggal']),'align:C; border:0;');
     }
 }else{
-	$ttd->easyCell('Gabuswetan, ........................ 20.....','align:C; border:0;');
+	$ttd->easyCell('............, ........................ 20.....','align:C; border:0;');
 };
 $ttd->easyCell('','align:L; border:0;');
 $ttd->printRow();
@@ -383,7 +383,7 @@ $ttd1->printRow();
 //Kepala Sekolah
 $ttd1->rowStyle('font-size:12');
 $ttd1->easyCell('','align:L; border:0;');
-$ttd1->easyCell($namaks,'align:C; border:B;');
+$ttd1->easyCell("<b>".$namaks."</b>",'align:C; border:B;');
 $ttd1->easyCell('','align:L; border:0;');
 $ttd1->printRow();
 $ttd1->rowStyle('font-size:12');
@@ -392,6 +392,9 @@ $ttd1->easyCell('NIP. -','align:L; border:0;');
 $ttd1->easyCell('','align:L; border:0;');
 $ttd1->printRow();
 $ttd1->endTable();
+
+
+
 
 
  //$pdf->Output('D',$namafile);
