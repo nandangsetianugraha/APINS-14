@@ -41,6 +41,7 @@ while ($row = $query->fetch_assoc()) {
 	<button class="btn btn-sm btn-outline-success me-1 mb-1" id="previewI" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Identitas</button>
 	<button class="btn btn-sm btn-outline-info me-1 mb-1" id="previewR" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Rapor</button>
 	<button class="btn btn-sm btn-outline-warning me-1 mb-1" id="previewA" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Semuanya</button>
+	<button class="btn btn-sm btn-outline-danger me-1 mb-1" id="previewM" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Mutasi</button>
 	';
 	
 	$sql1 = "select * from mata_pelajaran order by id_mapel asc";
