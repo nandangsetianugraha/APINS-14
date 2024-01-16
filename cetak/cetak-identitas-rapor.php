@@ -52,7 +52,9 @@ $id_kab=$siswa['kabupaten'];
 $id_kec=$siswa['kecamatan'];
 $id_des=$siswa['kelurahan'];
 $prov=$connect->query("select * from provinsi where id_prov='$id_prov'")->fetch_assoc();
+$nprov=$prov['nama'];
 $kab=$connect->query("select * from kabupaten where id='$id_kab'")->fetch_assoc();
+$nkab=$kab['nama'];
 $kec=$connect->query("select * from kecamatan where id='$id_kec'")->fetch_assoc();
 $nkec=$kec['nama'];
 $des=$connect->query("select * from desa where id='$id_des'")->fetch_assoc();
@@ -221,14 +223,14 @@ $ndes=$des['nama'];
  $table3->easyCell('Kabupaten/Kota');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell('Indramayu','border:B;font-style:B');
+ $table3->easyCell($nkab,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Provinsi');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell('Jawa Barat','border:B;font-style:B');
+ $table3->easyCell($nprov,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
