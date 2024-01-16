@@ -316,6 +316,15 @@
 			PopupCenter('cetak/cetak-identitas-rapor.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Identitas Rapor',800,800);
 			
 		});
+		$(document).on('click', '#previewA', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			PopupCenter('cetak/cetak-rapors.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Rapor',800,800);
+			
+		});
 		
 	});	
 		

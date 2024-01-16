@@ -37,9 +37,10 @@ while ($row = $query->fetch_assoc()) {
 		$status="disabled";
 	};
 	$aksi='
-	<button class="btn btn-primary" id="previewS" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Sampul</button>
-	<button class="btn btn-primary" id="previewI" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Identitas</button>
-	<button class="btn btn-primary" id="previewR" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'">Rapor</button>
+	<button class="btn btn-sm btn-outline-primary me-1 mb-1" id="previewS" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Sampul</button>
+	<button class="btn btn-sm btn-outline-success me-1 mb-1" id="previewI" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Identitas</button>
+	<button class="btn btn-sm btn-outline-info me-1 mb-1" id="previewR" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Rapor</button>
+	<button class="btn btn-sm btn-outline-warning me-1 mb-1" id="previewA" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"><i class="fa fa-print"></i> Semuanya</button>
 	';
 	
 	$sql1 = "select * from mata_pelajaran order by id_mapel asc";
@@ -51,39 +52,50 @@ while ($row = $query->fetch_assoc()) {
 		if($ceks>0){
 			$tanda='<i class="fa fa-check"></i>';
 			$btns='btn-primary';
+			$tombol.='<button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
+                  '.$tanda.' '.$row1['kd_mapel'].'
+                </button>';
 		}else{
 			$tanda='<i class="fa fa-times opacity-50 me-1"></i>';
 			$btns='btn-danger';
-		};
-		if($ab=="1" and $idm==5){
-		}else{
-		$tombol.='<button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
-                  '.$tanda.' '.$row1['kd_mapel'].'
-                </button>';
 		};
 	};
 	$cekkes = $connect->query("SELECT * FROM data_kesehatan WHERE peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
 	if($cekkes>0){
 		$tanda='<i class="fa fa-check"></i>';
 		$btns='btn-primary';
+		$tombol.='<br/><button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
+                  '.$tanda.' Data Kesehatan
+                </button>';
 	}else{
 		$tanda='<i class="fa fa-times opacity-50 me-1"></i>';
 		$btns='btn-danger';
 	};
-	$tombol.='<br/><button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
-                  '.$tanda.' Data Kesehatan
+	
+	$cekpres = $connect->query("SELECT * FROM data_prestasi WHERE peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
+	if($cekpres>0){
+		$tanda='<i class="fa fa-check"></i>';
+		$btns='btn-primary';
+		$tombol.='<br/><button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
+                  '.$tanda.' Data Prestasi
                 </button>';
+	}else{
+		$tanda='<i class="fa fa-times opacity-50 me-1"></i>';
+		$btns='btn-danger';
+	};
+	
 	$cekabs = $connect->query("SELECT * FROM data_absensi WHERE peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
 	if($cekabs>0){
 		$tanda='<i class="fa fa-check"></i>';
 		$btns='btn-primary';
+		$tombol.='<button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
+                  '.$tanda.' Data Absensi
+                </button>';
 	}else{
 		$tanda='<i class="fa fa-times opacity-50 me-1"></i>';
 		$btns='btn-danger';
 	};
-	$tombol.='<button type="button" class="btn btn-sm '.$btns.' me-1 mb-1">
-                  '.$tanda.' Data Absensi
-                </button>';
+	
 	
 	//$namasis=$pn['nama'];
 	$output['data'][] = array(
