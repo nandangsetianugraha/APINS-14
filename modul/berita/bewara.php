@@ -57,7 +57,7 @@
 																<!-- BEGIN Avatar -->
 																<div class="avatar">
 																	<div class="avatar-display" id="uploaded_image2">
-																		<img src="assets/images/aljannah.png" alt="Avatar image">
+																		<img src="assets/<?=$cfg['image_login'];?>" alt="Avatar image">
 																	</div>
 																</div>
 																<!-- END Avatar -->
