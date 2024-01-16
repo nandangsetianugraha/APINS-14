@@ -523,6 +523,23 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 																<?php } ?>
 															</select>
 														</div>
+														<div class="col-6">
+															<label for="inputAddress" class="form-label">TMT di sekolah ini</label>
+															<?php if($bioku['tmt']===NULL){ $tmtnya='';}else{$tmtnya=$bioku['tmt'];};?>
+															<input type="text" class="form-control" name="tmt" id="tmt" data-provide="datepicker" value="<?=$tmtnya;?>">
+														</div>
+														<div class="col-6">
+															<label for="inputAddress" class="form-label">Status Perkawinan</label>
+															<select class="form-select" name="status">
+																<?php 
+																$sql2 = "select * from status_perkawinan";
+																$query2 = $connect->query($sql2);
+																while($po=$query2->fetch_assoc()){
+																?>
+																<option value="<?=$po['id_status'];?>" <?php if($po['id_status']===$bioku['status_perkawinan']){ echo "selected";}?>><?=$po['nama_status'];?></option>
+																<?php } ?>
+															</select>
+														</div>
 														<div class="row">
 															<div class="col-md-12 text-end mt-3">
 																<button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
@@ -654,6 +671,10 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 		};
 		var idptk = $('#idptks').val();
 		$('#tanggal').datepicker({
+			format: 'yyyy-mm-dd',
+			autoclose:true
+		});
+		$('#tmt').datepicker({
 			format: 'yyyy-mm-dd',
 			autoclose:true
 		});
