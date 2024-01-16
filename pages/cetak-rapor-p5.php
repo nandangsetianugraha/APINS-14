@@ -155,6 +155,17 @@
 			});
 		});
 		
+		$(document).on('click', '#previewS', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			var proyek = $(this).data('proyek');
+			PopupCenter('cetak/cetak-p5.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel+'&proyek='+proyek, 'Cetak Rapor P5',800,800);
+			
+		});
+		
 		$('#info').on('show.bs.modal', function (e) {
             var kelas = $('#kelas').val();
 			var mapel = $('#mp').val();
@@ -329,7 +340,12 @@
 			Swal.fire("Kesalahan","Error Sistem","error");
 		}
 	}
-		
+	
+	function PopupCenter(pageURL, title,w,h) {
+		var left = (screen.width/2)-(w/2);
+		var top = (screen.height/2)-(h/2);
+		var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+	};	
 	</script>
 </body>
 </html>

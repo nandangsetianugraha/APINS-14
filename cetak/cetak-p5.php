@@ -389,8 +389,8 @@ $ttd1->printRow();
 $ttd1->endTable();
 
 
- $pdf->Output('D',$namafile);
- //$pdf->Output();
+ //$pdf->Output('D',$namafile);
+ $pdf->Output();
  //$pdf->Output('F','rapor-p5.pdf');
  
 ?>
