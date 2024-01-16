@@ -17,7 +17,7 @@ if($level==98 or $level==97){
 $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows;
 ?>
 <?php include "layout/head.php"; ?>
-<script src="<?=base_url();?>ckeditor/ckeditor.js"></script>
+
 <link rel="stylesheet" href="<?=base_url();?>assets/croppie.css" />
 </head>
 
@@ -130,7 +130,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 											<h3 class="portlet-title">Pengumuman</h3>
                                           	<div class="portlet-addon">
                                               	<?php if($level==11){ ?>
-                                                <button class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#addpengumuman"><i class="fas fa-plus"></i></button>
+                                                <a href="<?=base_url();?>tambah-pengumuman" class="btn btn-icon btn-primary"><i class="fas fa-plus"></i></a>
                                               	<?php } ?>
                                             </div>
 										</div>
@@ -141,6 +141,8 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 												<?php 
                                                 $sql22 = "select * from pengumuman order by waktu desc limit 1";
 												$query22 = $connect->query($sql22);
+												$cekss=$query22->num_rows;
+												if($cekss>0){
 												while($jpesan=$query22->fetch_assoc()){
                                                 ?>
 												<div class="rich-list-item flex-column align-items-stretch">
@@ -179,6 +181,31 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 													<p class="text-justify mb-0"><?=$jpesan['berita'];?></p>
                                                     <!-- END Rich List -->
 												</div>
+												<?php }}else{ ?>
+													<div class="rich-list-item flex-column align-items-stretch">
+														<!-- BEGIN Rich List -->
+														
+														<div class="rich-list-item p-0 mb-2">
+															<div class="rich-list-prepend">
+																<!-- BEGIN Avatar -->
+																<div class="avatar">
+																	<div class="avatar-display" id="uploaded_image2">
+																		<img src="assets/images/aljannah.png" alt="Avatar image">
+																	</div>
+																</div>
+																<!-- END Avatar -->
+															</div>
+															<div class="rich-list-content">
+																<h4 class="rich-list-title">Admin</h4>
+																<span class="rich-list-subtitle"><?=TanggalIndo(date('Y-m-d'));?></span>
+															</div>
+															<div class="rich-list-append">
+																
+															</div>
+														</div>
+														<p class="text-justify mb-0">Belum ada Pengumuman</p>
+														<!-- END Rich List -->
+													</div>
 												<?php } ?>
 											</div>
 											<!-- END Rich List -->
@@ -588,50 +615,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="addpengumuman">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form class="p-3" action="modul/berita/simpan-pengumuman.php" autocomplete="off" method="POST" id="tambahpengumuman">
-				<div class="modal-header">
-					<h5 class="modal-title">Tambah Pengumuman</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="form-group col-md-12 border-top-0 pt-0">
-							<label for="inputCity">Tanggal</label>
-							<div class="input-group">
-								<span class="input-group-text">
-									<i class="fas fa-calendar-alt"></i>
-								</span>
-								<input type="text" id="tanggal_awal" name="tanggal_awal" class="form-control" value="<?=date('Y-m-d');?>">
-							</div>
-						</div>
-                      <div class="form-group col-md-12 border-top-0 pt-0">
-							<label for="inputCity">Judul</label>
-							<div class="input-group">
-								<span class="input-group-text">
-									<i class="fas fa-calendar-alt"></i>
-								</span>
-								<input type="text" id="judul" name="judul" class="form-control">
-							</div>
-						</div>
-                                          				
-														<div class="form-group col-md-12">
-															<label for="inputZip">Pengumuman</label>
-															<div id="editor"></div>
-														</div>
-													</div>
-										
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Simpan</button>
-					<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<div class="modal fade" id="lihatpengumuman">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -644,16 +628,13 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
 	<script src="<?=base_url();?>assets/croppie.js"></script>
-    
-	<script>
+	
+    <script>
+		
 	$(document).ready(function(){
         
-        ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
         
+
 		toastr.options = {
 			"closeButton": false,
 			"debug": true,

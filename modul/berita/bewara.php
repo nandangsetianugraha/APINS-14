@@ -8,6 +8,8 @@
 													<?php 
 													$sql22 = "select * from pengumuman order by waktu desc limit 1";
 													$query22 = $connect->query($sql22);
+													$cek=$query22->num_rows;
+													if($cek>0){
 													while($jpesan=$query22->fetch_assoc()){
 													?>
 													<div class="rich-list-item flex-column align-items-stretch">
@@ -44,6 +46,31 @@
 															</div>
 														</div>
 														<p class="text-justify mb-0"><?=$jpesan['berita'];?></p>
+														<!-- END Rich List -->
+													</div>
+													<?php }}else{ ?>
+													<div class="rich-list-item flex-column align-items-stretch">
+														<!-- BEGIN Rich List -->
+														
+														<div class="rich-list-item p-0 mb-2">
+															<div class="rich-list-prepend">
+																<!-- BEGIN Avatar -->
+																<div class="avatar">
+																	<div class="avatar-display" id="uploaded_image2">
+																		<img src="assets/images/aljannah.png" alt="Avatar image">
+																	</div>
+																</div>
+																<!-- END Avatar -->
+															</div>
+															<div class="rich-list-content">
+																<h4 class="rich-list-title">Admin</h4>
+																<span class="rich-list-subtitle"><?=TanggalIndo(date('Y-m-d'));?></span>
+															</div>
+															<div class="rich-list-append">
+																
+															</div>
+														</div>
+														<p class="text-justify mb-0">Belum ada Pengumuman</p>
 														<!-- END Rich List -->
 													</div>
 													<?php } ?>
