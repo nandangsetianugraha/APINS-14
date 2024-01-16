@@ -204,7 +204,58 @@ $eks->printRow();
 $eks->endTable(5);
 
 //Prestasi
-
+$pdf->AddPage(); 
+$table6=new easyTable($pdf, '{8,100}', 'align:L');
+$table6->rowStyle('font-size:12; font-style:B;');
+$table6->easyCell('C.');
+$table6->easyCell('Prestasi');
+$table6->printRow();
+$table6->endTable();
+$eks=new easyTable($pdf, '{20, 100, 200}', 'border:1');
+$eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
+$eks->easyCell('No.','align:C; valign:M');
+$eks->easyCell('Bidang Prestasi','align:C; valign:M');
+$eks->easyCell('Keterangan','align:C; valign:M');
+$eks->printRow(true);
+$ekstra = "select * from data_prestasi where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel' order by id asc";
+$queryed = $connect->query($ekstra);
+$oke = $queryed->num_rows;
+if($oke>0){
+	$nomor=1;
+	$rowed = $queryed->fetch_assoc();
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('1.');
+	$eks->easyCell('Kesenian');
+	$eks->easyCell($rowed['kesenian'],'align:L; valign:T');
+	$eks->printRow();
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('2.');
+	$eks->easyCell('Olahraga');
+	$eks->easyCell($rowed['olahraga'],'align:L; valign:T');
+	$eks->printRow();
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('3.');
+	$eks->easyCell('Akademik');
+	$eks->easyCell($rowed['akademik'],'align:L; valign:T');
+	$eks->printRow();
+}else{
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('1.');
+	$eks->easyCell('Kesenian');
+	$eks->easyCell('');
+	$eks->printRow();
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('2.');
+	$eks->easyCell('Olahraga');
+	$eks->easyCell('');
+	$eks->printRow();
+	$eks->rowStyle('font-size:12; min-height:20');
+	$eks->easyCell('3.');
+	$eks->easyCell('Akademik');
+	$eks->easyCell('');
+	$eks->printRow();
+};
+$eks->endTable(5);
 
 //Saran
 $adasaran=$connect->query("select * from saran where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
@@ -216,7 +267,7 @@ $saranku=$sarane['saran'];
 };
 $table7=new easyTable($pdf, '{8,100}', 'align:L');
 $table7->rowStyle('font-size:12; font-style:B;');
-$table7->easyCell('C.');
+$table7->easyCell('D.');
 $table7->easyCell('Catatan Guru');
 $table7->printRow();
 $table7->endTable();
@@ -283,7 +334,7 @@ $lainnya2=$keslain2['lainnya'];
 $prokes=$connect->query("select * from data_kesehatan where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->fetch_assoc();
 $table8=new easyTable($pdf, '{8,100}', 'align:L');
 $table8->rowStyle('font-size:12; font-style:B;');
-$table8->easyCell('D.');
+$table8->easyCell('E.');
 $table8->easyCell('Tinggi dan Berat Badan');
 $table8->printRow();
 $table8->endTable();
@@ -300,7 +351,7 @@ $tbn->easyCell('2','align:C; valign:M');
 $tbn->printRow(true);
 
 //tinggi badan
-$tbn->rowStyle('font-size:12; min-height:10');
+$tbn->rowStyle('font-size:12; min-height:15');
 $tbn->easyCell('1.','align:L; valign:M');
 $tbn->easyCell('Tinggi Badan','align:L; valign:M');
 if($smt==1){
@@ -315,7 +366,7 @@ $tbn->easyCell($prokes22['tinggi'],'align:C; valign:M');
 $tbn->printRow();
 
 //berat badan
-$tbn->rowStyle('font-size:12; min-height:10');
+$tbn->rowStyle('font-size:12; min-height:15');
 $tbn->easyCell('2.','align:L; valign:M');
 $tbn->easyCell('Berat Badan','align:L; valign:M');
 if($smt==1){
@@ -330,7 +381,7 @@ $tbn->easyCell($prokes22['berat'],'align:C; valign:M');
 $tbn->printRow();
 
 //pendengaran 
-$tbn->rowStyle('font-size:12; min-height:10');
+$tbn->rowStyle('font-size:12; min-height:15');
 $tbn->easyCell('3.','align:L; valign:M');
 $tbn->easyCell('Pendengaran','align:L; valign:M');
 if($smt==1){
@@ -345,7 +396,7 @@ $tbn->easyCell($prokes22['pendengaran'],'align:C; valign:M');
 $tbn->printRow();
 
 //penglihatan 
-$tbn->rowStyle('font-size:12; min-height:10');
+$tbn->rowStyle('font-size:12; min-height:15');
 $tbn->easyCell('4.','align:L; valign:M');
 $tbn->easyCell('Penglihatan','align:L; valign:M');
 if($smt==1){
@@ -360,7 +411,7 @@ $tbn->easyCell($prokes22['penglihatan'],'align:C; valign:M');
 $tbn->printRow();
 
 //Gigi
-$tbn->rowStyle('font-size:12; min-height:10');
+$tbn->rowStyle('font-size:12; min-height:15');
 $tbn->easyCell('5.','align:L; valign:M');
 $tbn->easyCell('Gigi','align:L; valign:M');
 if($smt==1){
@@ -376,6 +427,7 @@ $tbn->printRow();
 $tbn->endTable(5);
 
 //absensi
+$pdf->AddPage();
 $adaabsen=$connect->query("select * from data_absensi where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->num_rows;
 if($adaabsen>0){
 	$absensi=$connect->query("select * from data_absensi where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel'")->fetch_assoc();
@@ -391,7 +443,7 @@ if($smt==1){
 	//Absensi
 	$table11=new easyTable($pdf, '{8,100}', 'align:L');
 	$table11->rowStyle('font-size:12; font-style:B;');
-	$table11->easyCell('E.');
+	$table11->easyCell('F.');
 	$table11->easyCell('Ketidakhadiran');
 	$table11->printRow();
 	$table11->endTable();
