@@ -66,177 +66,271 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 										</div>
 										<div class="col-md-9">
 											<div class="portlet" id="portlet1-profile">
+												<div class="portlet-header portlet-header-bordered">
+													<div class="portlet-addon">
+														<!-- BEGIN Nav -->
+														<div class="nav nav-lines portlet-nav" id="portlet4-tab">
+															<a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Profil</a>
+															<a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Data Registrasi</a>
+															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Pengembangan</a>
+														</div>
+														<!-- END Nav -->
+													</div>
+												</div>
 												<div class="portlet-body">
-													<form class="row g-3" action="<?=base_url();?>modul/siswa/update-siswa.php" autocomplete="off" method="POST" id="ubahForm">
-													
-														<div class="form-group col-md-6">
-															<label for="inputCity">Nama Lengkap</label>
-															<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
-															<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
+													<div class="tab-content">
+														<div class="tab-pane fade show active" id="portlet4-home">
+															<form class="row g-3" action="<?=base_url();?>modul/siswa/update-siswa.php" autocomplete="off" method="POST" id="ubahForm">
+															
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Nama Lengkap</label>
+																	<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
+																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">NIK</label>
+																	<input type="text" class="form-control" name="nik" value="<?=$pn['nik'];?>">
+																</div>
+															
+																<div class="form-group col-md-4">
+																	<label for="inputZip">Tempat Lahir</label>
+																	<input type="text" class="form-control" name="tempat" value="<?=$pn['tempat'];?>" required>
+																</div>
+																<div class="form-group col-md-5 border-top-0 pt-0">
+																	<label for="inputZip">Tanggal Lahir</label>
+																	<div class="input-group">
+																		<span class="input-group-text">
+																			<i class="fas fa-calendar-alt"></i>
+																		</span>
+																		<input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$pn['tanggal'];?>" required>
+																	</div>
+																</div>
+																<div class="form-group col-md-3 border-top-0 pt-0">
+																	<label for="inputCity">Jenis Kelamin</label>
+																	<select name="jeniskelamin" class="form-select">
+																		<option value="L" <?php if($pn['jk']=='L') echo 'selected';?>>Laki-laki</option>
+																		<option value="P" <?php if($pn['jk']=='P') echo 'selected';?>>Perempuan</option>
+																	</select>
+																</div>
+															
+																<div class="form-group col-md-4">
+																	<label for="inputCity">NIS</label>
+																	<input type="text" class="form-control" name="nis" value="<?=$pn['nis'];?>">
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
+																	<label for="inputZip">NISN</label>
+																	<input type="text" class="form-control" name="nisn" value="<?=$pn['nisn'];?>">
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
+																	<label for="inputZip">Agama</label>
+																	<select class="form-select" name="agama" id="agama">
+																		<?php 
+																		$sql2 = "select * from agama";
+																		$query2 = $connect->query($sql2);
+																		while($nk=$query2->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id_agama'];?>" ><?=$nk['nama_agama'];?></option>
+																		<?php };?>
+																	</select>
+																</div>
+															
+																<div class="form-group col-12">
+																	<label for="inputAddress">Alamat</label>
+																	<input type="text" class="form-control" name="alamat" value="<?=$pn['alamat'];?>">
+																</div>
+															
+																<div class="form-group col-12">
+																	<label for="inputAddress">Pendidikan Sebelumnya</label>
+																	<input type="text" class="form-control" name="pend_seb" value="<?=$pn['pend_sebelum'];?>">
+																</div>
+															
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Nama Ayah</label>
+																	<input type="text" class="form-control" name="ayah" value="<?=$pn['nama_ayah'];?>">
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Nama Ibu</label>
+																	<input type="text" class="form-control" name="ibu" value="<?=$pn['nama_ibu'];?>">
+																</div>
+															
+															<?php 
+															//$jns_ptk = $connect->query("select * from jenis_ptk where jenis_ptk_id='$level'")->fetch_assoc();
+															//$status_ptk = $connect->query("select * from status_kepegawaian where status_kepegawaian_id='$status'")->fetch_assoc();
+															?>
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Pekerjaan Ayah</label>
+																	<select class="form-select" name="pek_ayah">
+																		<?php 
+																		$sql21 = "select * from pekerjaan";
+																		$query21 = $connect->query($sql21);
+																		while($po1=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$po1['id_pekerjaan'];?>" <?php if($pn['pek_ayah']==$po1['id_pekerjaan']) echo 'selected'; ?>><?=$po1['nama_pekerjaan'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Pekerjaan Ibu</label>
+																	<select class="form-select" name="pek_ibu">
+																		<?php 
+																		$sql21 = "select * from pekerjaan";
+																		$query21 = $connect->query($sql21);
+																		while($po1=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$po1['id_pekerjaan'];?>" <?php if($pn['pek_ibu']==$po1['id_pekerjaan']) echo 'selected'; ?>><?=$po1['nama_pekerjaan'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-group col-4">
+																	<label for="inputAddress">Nomor HP/Whatsapp</label>
+																	<input type="text" name="no_wa" class="form-control" id="inputmask-2" value="<?=$pn['no_wa'];?>">
+																</div>
+																<div class="form-group col-8">
+																	<label for="inputAddress">Alamat Orang Tua</label>
+																	<input type="text" class="form-control" name="jalan" value="<?=$pn['jalan'];?>">
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Desa/Kelurahan</label>
+																	<select class="form-select" name="kelurahan" id="kelurahan">
+																		<option>Pilih Desa/kelurahan</option>
+																		<?php 
+																		$id_desa=$pn['kelurahan'];
+																		$id_kec=$pn['kecamatan'];
+																		$id_kab=$pn['kabupaten'];
+																		$id_prov=$pn['provinsi'];
+																		$sql21 = "select * from desa where id_kecamatan='$id_kec'";
+																		$query21 = $connect->query($sql21);
+																		while($nk=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id'];?>" <?php if($id_desa==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Kecamatan</label>
+																	<select class="form-select" name="kecamatan" id="kecamatan">
+																		<option>Pilih Kecamatan</option>
+																		<?php 
+																		$sql21 = "select * from kecamatan where id_kabupaten='$id_kab'";
+																		$query21 = $connect->query($sql21);
+																		while($nk=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id'];?>" <?php if($id_kec==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Kabupaten</label>
+																	<select class="form-select" name="kabupaten" id="kabupaten">
+																		<option>Pilih Kabupaten</option>
+																		<?php 
+																		$sql21 = "select * from kabupaten where id_provinsi='$id_prov'";
+																		$query21 = $connect->query($sql21);
+																		while($nk=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id'];?>" <?php if($id_kab==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Provinsi</label>
+																	<select class="form-select" name="provinsi" id="provinsi">
+																		<option>Pilih Provinsi</option>
+																		<?php 
+																		$sql21 = "select * from provinsi";
+																		$query21 = $connect->query($sql21);
+																		while($nk=$query21->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id_prov'];?>" <?php if($id_prov==$nk['id_prov']){echo "selected";}; ?>><?=$nk['nama'];?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="col-md-12 text-end mt-3">
+																	<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
+																	<button type="submit" class="btn btn-primary">Simpan</button>
+																</div>
+															</form>
 														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
-															<label for="inputZip">NIK</label>
-															<input type="text" class="form-control" name="nik" value="<?=$pn['nik'];?>">
-														</div>
-													
-														<div class="form-group col-md-4">
-															<label for="inputZip">Tempat Lahir</label>
-															<input type="text" class="form-control" name="tempat" value="<?=$pn['tempat'];?>" required>
-														</div>
-														<div class="form-group col-md-5 border-top-0 pt-0">
-															<label for="inputZip">Tanggal Lahir</label>
-															<div class="input-group">
-																<span class="input-group-text">
-																	<i class="fas fa-calendar-alt"></i>
-																</span>
-																<input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$pn['tanggal'];?>" required>
+														<div class="tab-pane fade" id="portlet4-profile">
+															<?php 
+															$cekreg = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->num_rows;
+															$regis = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->fetch_assoc();
+															if($cekreg>0){}else{
+															?>
+															<div class="alert alert-outline-secondary">
+																<div class="alert-icon">
+																	<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+																</div>
+																<div class="alert-content">Siswa belum memiliki Data Registrasi</div>
 															</div>
+															<?php } ?>
+															<form class="row g-3" action="<?=base_url();?>modul/siswa/update-registrasi.php" autocomplete="off" method="POST" id="ubahRegister">
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Jenis Pendaftaran</label>
+																	<select class="form-select" name="jns" id="jns">
+																		<?php 
+																		$sql2 = "select * from jns_daftar";
+																		$query2 = $connect->query($sql2);
+																		while($nk=$query2->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id_jns_daftar'];?>" <?php if($regis['jns_daftar']==$nk['id_jns_daftar']) echo 'selected';?>><?=$nk['nama_jns_daftar'];?></option>
+																		<?php };?>
+																	</select>
+																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Tanggal Masuk</label>
+																	<div class="input-group">
+																		<span class="input-group-text">
+																			<i class="fas fa-calendar-alt"></i>
+																		</span>
+																		<input type="text" id="tanggalmasuk" name="tanggalmasuk" class="form-control" value="<?=$regis['tgl_masuk'];?>">
+																	</div>
+																</div>
+															
+																<div class="form-group col-md-4">
+																	<label for="inputZip">Status</label>
+																	<select class="form-select" name="statuss" id="statuss">
+																		<?php 
+																		$sql2 = "select * from jns_mutasi";
+																		$query2 = $connect->query($sql2);
+																		while($nk=$query2->fetch_assoc()){
+																		?>
+																		<option value="<?=$nk['id_mutasi'];?>" <?php if($regis['jns_mutasi']==$nk['id_mutasi']) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
+																		<?php };?>
+																	</select>
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
+																	<label for="inputZip">Tanggal Mutasi</label>
+																	<div class="input-group">
+																		<span class="input-group-text">
+																			<i class="fas fa-calendar-alt"></i>
+																		</span>
+																		<input type="text" id="tanggalmutasi" name="tanggalmutasi" class="form-control" value="<?=$regis['tgl_mutasi'];?>">
+																	</div>
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
+																	<label for="inputCity">Alasan Mutasi</label>
+																	<input type="text" class="form-control" name="alasanmut" value="<?=$regis['alasan'];?>">
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="inputCity">Nomor Ijazah</label>
+																	<input type="text" class="form-control" name="noijazah" value="<?=$regis['ijazah'];?>">
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputZip">Nomor SKHUN</label>
+																	<input type="text" class="form-control" name="noskhun" value="<?=$regis['skhun'];?>">
+																</div>
+																
+																<div class="col-md-12 text-end mt-3">
+																	<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
+																	<button type="submit" class="btn btn-primary">Simpan</button>
+																</div>
+															</form>
 														</div>
-														<div class="form-group col-md-3 border-top-0 pt-0">
-															<label for="inputCity">Jenis Kelamin</label>
-															<select name="jeniskelamin" class="form-select">
-																<option value="L" <?php if($pn['jk']=='L') echo 'selected';?>>Laki-laki</option>
-																<option value="P" <?php if($pn['jk']=='P') echo 'selected';?>>Perempuan</option>
-															</select>
+														<div class="tab-pane fade" id="portlet4-contact">
 														</div>
-													
-														<div class="form-group col-md-4">
-															<label for="inputCity">NIS</label>
-															<input type="text" class="form-control" name="nis" value="<?=$pn['nis'];?>">
-														</div>
-														<div class="form-group col-md-4 border-top-0 pt-0">
-															<label for="inputZip">NISN</label>
-															<input type="text" class="form-control" name="nisn" value="<?=$pn['nisn'];?>">
-														</div>
-														<div class="form-group col-md-4 border-top-0 pt-0">
-															<label for="inputZip">Agama</label>
-															<select class="form-select" name="agama" id="agama">
-																<?php 
-																$sql2 = "select * from agama";
-																$query2 = $connect->query($sql2);
-																while($nk=$query2->fetch_assoc()){
-																?>
-																<option value="<?=$nk['id_agama'];?>" ><?=$nk['nama_agama'];?></option>
-																<?php };?>
-															</select>
-														</div>
-													
-														<div class="form-group col-12">
-															<label for="inputAddress">Alamat</label>
-															<input type="text" class="form-control" name="alamat" value="<?=$pn['alamat'];?>">
-														</div>
-													
-														<div class="form-group col-12">
-															<label for="inputAddress">Pendidikan Sebelumnya</label>
-															<input type="text" class="form-control" name="pend_seb" value="<?=$pn['pend_sebelum'];?>">
-														</div>
-													
-														<div class="form-group col-md-6">
-															<label for="inputCity">Nama Ayah</label>
-															<input type="text" class="form-control" name="ayah" value="<?=$pn['nama_ayah'];?>">
-														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
-															<label for="inputZip">Nama Ibu</label>
-															<input type="text" class="form-control" name="ibu" value="<?=$pn['nama_ibu'];?>">
-														</div>
-													
-													<?php 
-													//$jns_ptk = $connect->query("select * from jenis_ptk where jenis_ptk_id='$level'")->fetch_assoc();
-													//$status_ptk = $connect->query("select * from status_kepegawaian where status_kepegawaian_id='$status'")->fetch_assoc();
-													?>
-														<div class="form-group col-md-6">
-															<label for="inputCity">Pekerjaan Ayah</label>
-															<select class="form-select" name="pek_ayah">
-																<?php 
-																$sql21 = "select * from pekerjaan";
-																$query21 = $connect->query($sql21);
-																while($po1=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$po1['id_pekerjaan'];?>" <?php if($pn['pek_ayah']==$po1['id_pekerjaan']) echo 'selected'; ?>><?=$po1['nama_pekerjaan'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
-															<label for="inputZip">Pekerjaan Ibu</label>
-															<select class="form-select" name="pek_ibu">
-																<?php 
-																$sql21 = "select * from pekerjaan";
-																$query21 = $connect->query($sql21);
-																while($po1=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$po1['id_pekerjaan'];?>" <?php if($pn['pek_ibu']==$po1['id_pekerjaan']) echo 'selected'; ?>><?=$po1['nama_pekerjaan'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="form-group col-4">
-															<label for="inputAddress">Nomor HP/Whatsapp</label>
-															<input type="text" name="no_wa" class="form-control" id="inputmask-2" value="<?=$pn['no_wa'];?>">
-														</div>
-														<div class="form-group col-8">
-															<label for="inputAddress">Alamat Orang Tua</label>
-															<input type="text" class="form-control" name="jalan" value="<?=$pn['jalan'];?>">
-														</div>
-														<div class="form-group col-md-6">
-															<label for="inputCity">Desa/Kelurahan</label>
-															<select class="form-select" name="kelurahan" id="kelurahan">
-																<option>Pilih Desa/kelurahan</option>
-																<?php 
-																$id_desa=$pn['kelurahan'];
-																$id_kec=$pn['kecamatan'];
-																$id_kab=$pn['kabupaten'];
-																$id_prov=$pn['provinsi'];
-																$sql21 = "select * from desa where id_kecamatan='$id_kec'";
-																$query21 = $connect->query($sql21);
-																while($nk=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$nk['id'];?>" <?php if($id_desa==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
-															<label for="inputZip">Kecamatan</label>
-															<select class="form-select" name="kecamatan" id="kecamatan">
-																<option>Pilih Kecamatan</option>
-																<?php 
-																$sql21 = "select * from kecamatan where id_kabupaten='$id_kab'";
-																$query21 = $connect->query($sql21);
-																while($nk=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$nk['id'];?>" <?php if($id_kec==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="form-group col-md-6">
-															<label for="inputCity">Kabupaten</label>
-															<select class="form-select" name="kabupaten" id="kabupaten">
-																<option>Pilih Kabupaten</option>
-																<?php 
-																$sql21 = "select * from kabupaten where id_provinsi='$id_prov'";
-																$query21 = $connect->query($sql21);
-																while($nk=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$nk['id'];?>" <?php if($id_kab==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
-															<label for="inputZip">Provinsi</label>
-															<select class="form-select" name="provinsi" id="provinsi">
-																<option>Pilih Provinsi</option>
-																<?php 
-																$sql21 = "select * from provinsi";
-																$query21 = $connect->query($sql21);
-																while($nk=$query21->fetch_assoc()){
-																?>
-																<option value="<?=$nk['id_prov'];?>" <?php if($id_prov==$nk['id_prov']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																<?php } ?>
-															</select>
-														</div>
-														<div class="col-md-12 text-end mt-3">
-															<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
-															<button type="submit" class="btn btn-primary">Simpan</button>
-														</div>
-													</form>
+													</div>
 												</div>
 											</div>
 										</div>
