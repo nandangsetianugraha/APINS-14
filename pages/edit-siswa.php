@@ -296,7 +296,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																		$query2 = $connect->query($sql2);
 																		while($nk=$query2->fetch_assoc()){
 																		?>
-																		<option value="<?=$nk['id_mutasi'];?>" <?php if($regis['jns_mutasi']==$nk['id_mutasi']) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
+																		<option value="<?=$nk['id_mutasi'];?>" <?php if($regis['mutasi']==$nk['id_mutasi']) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
 																		<?php };?>
 																	</select>
 																</div>
@@ -309,17 +309,31 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																		<input type="text" id="tanggalmutasi" name="tanggalmutasi" class="form-control" value="<?=$regis['tgl_mutasi'];?>">
 																	</div>
 																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputCity">Asal TK</label>
+																	<select class="form-select" id="asaltk" name="asaltk">
+																		<option value="0" <?php if($regis['asal_tk']==0) echo "selected"; ?>>Ya</option>
+																		<option value="1" <?php if($regis['asal_tk']==1) echo "selected"; ?>>Tidak</option>
+																	</select>
+																</div>
+																<div class="form-group col-md-6 border-top-0 pt-0">
+																	<label for="inputCity">Asal RA</label>
+																	<select class="form-select" id="asalra" name="asalra">
+																		<option value="0" <?php if($regis['asal_ra']==0) echo "selected"; ?>>Ya</option>
+																		<option value="1" <?php if($regis['asal_ra']==1) echo "selected"; ?>>Tidak</option>
+																	</select>
+																</div>
 																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputCity">Alasan Mutasi</label>
-																	<input type="text" class="form-control" name="alasanmut" value="<?=$regis['alasan'];?>">
+																	<input type="text" class="form-control" name="alasan" value="<?=$regis['alasan'];?>">
 																</div>
 																<div class="form-group col-md-6">
 																	<label for="inputCity">Nomor Ijazah</label>
-																	<input type="text" class="form-control" name="noijazah" value="<?=$regis['ijazah'];?>">
+																	<input type="text" class="form-control" name="ijazah" value="<?=$regis['ijazah'];?>">
 																</div>
 																<div class="form-group col-md-6 border-top-0 pt-0">
 																	<label for="inputZip">Nomor SKHUN</label>
-																	<input type="text" class="form-control" name="noskhun" value="<?=$regis['skhun'];?>">
+																	<input type="text" class="form-control" name="skhun" value="<?=$regis['skhun'];?>">
 																</div>
 																
 																<div class="col-md-12 text-end mt-3">
