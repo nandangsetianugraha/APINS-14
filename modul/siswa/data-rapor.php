@@ -386,7 +386,7 @@ $ck2 = $connect->query("SELECT * FROM deskripsi_k13 WHERE id_pd='$idptk' and smt
 															$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->fetch_assoc();
 															$nomor=1;
 														?>
-															Dimensi : <?=$ndimensi['nama_dimensi'];?>
+															<b>Dimensi : <?=$ndimensi['nama_dimensi'];?></b><br>
 															<table class="table table-bordered mb-0">
 																<thead>
 																	<tr>
@@ -468,6 +468,7 @@ $ck2 = $connect->query("SELECT * FROM deskripsi_k13 WHERE id_pd='$idptk' and smt
 																	</tr>
 																</tbody>
 															</table>
+															<br/>
 														<?php } ?>
 												
 												
