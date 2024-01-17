@@ -63,7 +63,7 @@ function Header(){
    $this->SetTextColor(0,0,0);
    $this->SetFont('Arial','B','12');
    $this->Ln(0);
-   $this->Cell(16,0.5, $this->Image('logo.jpg', $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
+   $this->Cell(16,0.5, $this->Image('../assets/'.$cfg['image_login'], $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
     $this->Cell(0.3,0.5,'',0,0,'L',0);
     //$this->Cell(1.4,0.5, $this->Image($gambar2, $this->GetX(), $this->GetY(),2.2,1.7,0,0),0, 0, 'R', false );
     $this->Ln(0);
@@ -79,7 +79,7 @@ function Header(){
    $this->SetFont('Arial','','9');
    $this->Cell(4,0.5,'KOTA/KABUPATEN',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'INDRAMAYU','B',0,'L');
+   $this->Cell(7.5,0.5,'','B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(1.3,0.5,'KODE',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -88,11 +88,11 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'SEKOLAH/MADRASAH',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'SD ISLAM AL-JANNAH','B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($cfg['nama_sekolah']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(1.3,0.5,'KODE',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(3,0.5,'0879','B',0,'L');
+   $this->Cell(3,0.5,'','B',0,'L');
 
    $this->Ln(0.5);
    $this->Cell(4,0.5,'RUANG',0,0,'L');

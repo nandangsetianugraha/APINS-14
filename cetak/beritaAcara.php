@@ -117,7 +117,7 @@ class PDF extends FPDF{
 
     $this->SetFont('Arial','B',12);
     $this->Ln(0);
-    $this->Cell(16,0.5, $this->Image('logo.jpg', $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
+    $this->Cell(16,0.5, $this->Image('../assets/'.$cfg['image_login'], $this->GetX(), $this->GetY(),1.7,1.7,0,0), 0, 0, 'L', false );
     $this->Cell(0.3,0.5,'',0,0,'L',0);
     //$this->Cell(1.4,0.5, $this->Image($gambar2, $this->GetX(), $this->GetY(),2.2,1.7,0,0),0, 0, 'R', false );
     $this->Ln(0);
@@ -134,12 +134,12 @@ class PDF extends FPDF{
     $this->Cell(18,0.8,'TAHUN PELAJARAN '.$Ls['tapel'],0,0,'C');
     $this->Ln(1.5);
     $this->SetFont('Arial','',10);
-    $this->MultiCell(18,0.5,'Pada hari ini '.namahari($tanggal).' tanggal '.penyebut($tgl).' bulan '.namaBulan($bln).' tahun '.penyebut($thn).', di SD Islam Al-Jannah telah diselenggarakan '.$Ls['jenis'].' '.$smts.' Tahun Ajaran '.$Ls['tapel'].', untuk Mata Pelajaran '.$Ls['mapel'].' dari pukul '.$Ls['mulai'].' sampai dengan pukul '.$Ls['selesai'],0,'J',0);
+    $this->MultiCell(18,0.5,'Pada hari ini '.namahari($tanggal).' tanggal '.penyebut($tgl).' bulan '.namaBulan($bln).' tahun '.penyebut($thn).', di '.$cfg['nama_sekolah'].' telah diselenggarakan '.$Ls['jenis'].' '.$smts.' Tahun Ajaran '.$Ls['tapel'].', untuk Mata Pelajaran '.$Ls['mapel'].' dari pukul '.$Ls['mulai'].' sampai dengan pukul '.$Ls['selesai'],0,'J',0);
     $this->Ln(0);
     $this->Cell(0.5,0.5,'1.',0,0,'L');
     $this->Cell(5,0.5,'Sekolah/Madrasah',0,0,'L');
     $this->Cell(0.2,0.5,':',0,0,'L');
-    $this->Cell(12.5,0.5,'SD ISLAM AL-JANNAH','B',0,'L');
+    $this->Cell(12.5,0.5,strtoupper($cfg['nama_sekolah']),'B',0,'L');
     $this->Ln(0.7);
     $this->Cell(0.5,0.5,'',0,0,'L');
     $this->Cell(5,0.5,'Ruang/Kelas',0,0,'L');
