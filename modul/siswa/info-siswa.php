@@ -1,19 +1,11 @@
 				<?php 
+				include("../../config/config.php");
 				include("../../config/db_connect.php");
 				$tapel=$_POST['tapel'];
 				$smt=$_POST['smt'];
 				$idr=$_POST['rowid'];
 				$infoptk = $connect->query("select * from siswa where peserta_didik_id='$idr'")->fetch_assoc();
 				$kelas = $connect->query("select * from penempatan where peserta_didik_id='$idr' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
-				$filegbr = 'https://sdi-aljannah.web.id/apins/images/siswa/'.$infoptk['avatar'];
-				$file_headerss = @get_headers($filegbr);
-				if($file_headerss[0] == 'HTTP/1.1 404 Not Found') {
-					//$exists = false;
-					$gbr="https://sdi-aljannah.web.id/apins/images/siswa/avatar.png";
-				}else {
-					//$exists = true;
-					$gbr='https://sdi-aljannah.web.id/apins/images/siswa/'.$infoptk['avatar'];
-				};
 				?>
 				<div class="modal-header">
 					<h5 class="modal-title">Biodata <?=$infoptk['nama'];?></h5>
@@ -29,7 +21,7 @@
 								<div class="portlet-header portlet-header-bordered">
 									<div class="avatar avatar-circle avatar-lg">
 										<div class="avatar-display">
-											<img src="https://sdi-aljannah.web.id/apins/images/siswa/<?=$infoptk['avatar'];?>" alt="AI">
+											<img src="<?=base_url();?>images/siswa/<?=$infoptk['avatar'];?>" alt="AI">
 										</div>
 									</div>
 									<div class="portlet-addon">
