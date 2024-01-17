@@ -423,28 +423,31 @@ $query1 = $connect->query($sql1);
 $nilaimp='';
 $nomor=1;
 while ($row1 = $query1->fetch_assoc()) {
-	$idm=$row1['id_mapel'];
-	$adape=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
-	if($adape>0){
-		$npe=$connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
-		$nilaipe=number_format($npe['nilai'],0);
-		$data = explode("|" , $npe['deskripsi']);
-		$kelebihan=$data[0];
-		$kelemahan=$data[1];
-		$deskripsi1=$npe['deskripsi'];
-	}else{
-		$nilaipe="";
-		$kelebihan="";
-		$kelemahan="";
-	};
-	$mpl=$connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
-	$rapo->rowStyle('font-size:12;min-height:30');
-	$rapo->easyCell($nomor,'align:C; valign:T');
-	$rapo->easyCell($mpl['nama_mapel'],'valign:T');
-	$rapo->easyCell($nilaipe,'align:C; valign:T');
-	$rapo->easyCell($kelebihan."\n".$kelemahan,'valign:T');
-	$rapo->printRow();
-	$nomor=$nomor+1;
+    $idm = $row1['id_mapel'];
+    $adape = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
+
+    if ($adape > 0) {
+        $npe = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
+        $nilaipe = number_format($npe['nilai'], 0);
+        $data = explode("|", $npe['deskripsi']);
+        $kelebihan = $data[0];
+        $kelemahan = $data[1];
+        $deskripsi1 = $npe['deskripsi'];
+    } else {
+        // Lewati seluruh baris jika Nilai Akhir dan Catatan Kompetensi tidak tersedia
+        continue;
+    }
+
+    $mpl = $connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
+
+    $rapo->rowStyle('font-size:12;min-height:30');
+    $rapo->easyCell($nomor, 'align:C; valign:T');
+    $rapo->easyCell($mpl['nama_mapel'], 'valign:T');
+    $rapo->easyCell($nilaipe, 'align:C; valign:T');
+    $rapo->easyCell($kelebihan . "\n" . $kelemahan, 'valign:T');
+
+    $rapo->printRow();
+    $nomor = $nomor + 1;
 }
 
 //akhir tabel rapor
