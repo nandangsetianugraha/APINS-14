@@ -47,7 +47,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 								<div class="portlet-header portlet-header-bordered">
 									<h3 class="portlet-title"><?=$pn['nama'];?></h3>
 									<div class="portlet-addon">
-									
+										<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
 									</div>
 									<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 									<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
@@ -405,6 +405,14 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	<script>
 	var TabelRombel;
 	$('#tanggal').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
+	$('#tanggalmasuk').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
+	$('#tanggalmutasi').datepicker({
 		format: 'yyyy-mm-dd',
 		autoclose:true
 	});
