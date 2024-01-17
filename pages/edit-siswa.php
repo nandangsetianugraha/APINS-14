@@ -43,7 +43,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 							if($cek>0){
 								$pn = $connect->query("select * from siswa where peserta_didik_id='$idsis'")->fetch_assoc();
 							?>
-							<div class="portlet">
+							<div class="portlet" id="tampilan">
 								<div class="portlet-header portlet-header-bordered">
 									<h3 class="portlet-title"><?=$pn['nama'];?></h3>
 									<div class="portlet-addon">
@@ -514,12 +514,40 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 				data : form.serialize(),
 				dataType : 'json',
 				beforeSend: function(){	
-					$('#portlet1-profile').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+					$('#tampilan').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
 				},
 				success:function(response) {
-					$('#portlet1-profile').unblock();
+					$('#tampilan').unblock();
 					if(response.success == true) {
 						toastr.success(response.messages);
+						//setTimeout(function () {window.open("./","_self");},1000)
+						//setTimeout(function () {window.open("./","_self");},1000)
+						// reset the form
+					} else {
+						toastr.error(response.messages);
+					}  // /else
+				} // success  
+			}); // ajax subit 				
+			return false;
+		}); // /submit form for create member
+		$("#ubahRegister").unbind('submit').bind('submit', function() {
+			var form = $(this);
+			//submi the form to server
+			$.ajax({
+				url : form.attr('action'),
+				type : form.attr('method'),
+				data : form.serialize(),
+				dataType : 'json',
+				beforeSend: function(){	
+					$('#tampilan').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success:function(response) {
+					$('#tampilan').unblock();
+					if(response.success == true) {
+						toastr.success(response.messages);
+						setTimeout(function () {
+							location.reload();
+						},1500);
 						//setTimeout(function () {window.open("./","_self");},1000)
 						//setTimeout(function () {window.open("./","_self");},1000)
 						// reset the form
