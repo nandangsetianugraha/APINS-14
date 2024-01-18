@@ -47,7 +47,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 								<div class="portlet-header portlet-header-bordered">
 									<h3 class="portlet-title"><?=$pn['nama'];?></h3>
 									<div class="portlet-addon">
-										<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
+										<a href="<?=base_url();?>daftar-siswa" class="btn btn-danger">Kembali</a>
 									</div>
 									<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 									<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
@@ -62,7 +62,15 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 											<b id="uploaded_image"><img src="<?=base_url();?>images/siswa/<?=$pn['avatar'];?>" width="100%" alt="avatar" id="blah"></b>
 											<div class="profileupload">
 												<input type="file" accept="image/*" name="upload_image" id="upload_image">
-											</div>
+											</div><br/>
+											<?php 
+											$regis = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->fetch_assoc();
+											if(!empty($regis['lintang']) or !empty($regis['bujur'])){
+												$lintang=$regis['lintang'];
+												$bujur=$regis['bujur']
+											?>
+											
+											<?php } ?>
 										</div>
 										<div class="col-md-9">
 											<div class="portlet" id="portlet1-profile">
@@ -253,10 +261,10 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="tab-pane fade" id="portlet4-profile">
 															<?php 
 															$cekreg = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->num_rows;
-															$regis = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->fetch_assoc();
+															
 															if($cekreg>0){}else{
 															?>
-															<div class="alert alert-outline-secondary">
+															<div class="alert alert-outline-secondary" id="regist">
 																<div class="alert-icon">
 																	<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 																</div>
@@ -575,7 +583,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					$('#tampilan').unblock();
 					if(response.success == true) {
 						toastr.success(response.messages);
-						
+						$("#regist").hide(); 
 					} else {
 						toastr.error(response.messages);
 					}  // /else
