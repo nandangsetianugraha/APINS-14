@@ -52,6 +52,12 @@
 						<!-- BEGIN Menu Submenu -->
 						<div class="menu-submenu">
 							<div class="menu-item">
+								<a href="<?=base_url();?>daftar-ptk" data-menu-path="<?=base_url();?>" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Daftar PTK</span>
+								</a>
+							</div>
+							<div class="menu-item">
 								<a href="<?=base_url();?>berita-acara" data-menu-path="<?=base_url();?>" class="menu-item-link">
 									<i class="menu-item-bullet"></i>
 									<span class="menu-item-text">Berita Acara</span>

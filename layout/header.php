@@ -70,63 +70,7 @@
 															</div>
 															<span class="grid-nav-content">Profile</span>
 														</a>
-														<?php if($level==11) { ?>
-														<a href="<?=base_url();?>absensi-pegawai" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-comments"></i>
-															</div>
-															<span class="grid-nav-content">Absensi Pegawai</span>
-														</a>
-														<a href="<?=base_url();?>hari-libur" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-clone"></i>
-															</div>
-															<span class="grid-nav-content">Hari Libur</span>
-														</a>
-														<?php } ?>
 													</div>
-													<?php if($level==11) { ?>
-													<div class="grid-nav-row">
-														<a href="<?=base_url();?>sistem-gaji" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-calendar-check"></i>
-															</div>
-															<span class="grid-nav-content">Sistem Gaji</span>
-														</a>
-														<a href="<?=base_url();?>shift-kerja" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-sticky-note"></i>
-															</div>
-															<span class="grid-nav-content">Shift Kerja</span>
-														</a>
-														<a href="<?=base_url();?>daftar-pengguna" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-bell"></i>
-															</div>
-															<span class="grid-nav-content">Daftar Pengguna</span>
-														</a>
-													</div>
-													<div class="grid-nav-row">
-														<a href="<?=base_url();?>pegawai-id" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-calendar-check"></i>
-															</div>
-															<span class="grid-nav-content">ID Pegawai</span>
-														</a>
-														<a href="<?=base_url();?>daftar-ptk" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-sticky-note"></i>
-															</div>
-															<span class="grid-nav-content">Daftar PTK</span>
-														</a>
-														<a href="<?=base_url();?>gaji-bulanan" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-bell"></i>
-															</div>
-															<span class="grid-nav-content">Gaji Bulanan</span>
-														</a>
-													</div>
-													<?php } ?>
 												</div>
 												<!-- END Grid Nav -->
 											</div>
@@ -243,59 +187,9 @@
 															</div>
 															<span class="grid-nav-content">Profile</span>
 														</a>
-														<a href="<?=base_url();?>absensi-pegawai" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-comments"></i>
-															</div>
-															<span class="grid-nav-content">Absensi Pegawai</span>
-														</a>
-														<a href="<?=base_url();?>hari-libur" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-clone"></i>
-															</div>
-															<span class="grid-nav-content">Hari Libur</span>
-														</a>
+														
 													</div>
-													<div class="grid-nav-row">
-														<a href="<?=base_url();?>sistem-gaji" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-calendar-check"></i>
-															</div>
-															<span class="grid-nav-content">Sistem Gaji</span>
-														</a>
-														<a href="<?=base_url();?>shift-kerja" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-sticky-note"></i>
-															</div>
-															<span class="grid-nav-content">Shift Kerja</span>
-														</a>
-														<a href="<?=base_url();?>daftar-pengguna" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-bell"></i>
-															</div>
-															<span class="grid-nav-content">Daftar Pengguna</span>
-														</a>
-													</div>
-													<div class="grid-nav-row">
-														<a href="<?=base_url();?>pegawai-id" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-calendar-check"></i>
-															</div>
-															<span class="grid-nav-content">ID Pegawai</span>
-														</a>
-														<a href="<?=base_url();?>daftar-ptk" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-sticky-note"></i>
-															</div>
-															<span class="grid-nav-content">Daftar PTK</span>
-														</a>
-														<a href="<?=base_url();?>gaji-bulanan" class="grid-nav-item">
-															<div class="grid-nav-icon">
-																<i class="far fa-bell"></i>
-															</div>
-															<span class="grid-nav-content">Gaji Bulanan</span>
-														</a>
-													</div>
+													
 												</div>
 												<!-- END Grid Nav -->
 											</div>
