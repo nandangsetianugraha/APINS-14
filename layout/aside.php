@@ -30,14 +30,7 @@
 						</a>
 					</div>
                   	
-                    <div class="menu-item">
-                          <a href="<?=base_url();?>upload-dokumen" data-menu-path="<?=base_url();?>" class="menu-item-link">
-                              <div class="menu-item-icon">
-                                  <i class="fa-solid fa-folder-open"></i>
-                              </div>
-                              <span class="menu-item-text">Dokumen</span>
-                          </a>
-                    </div>
+                    
 					<?php if($level==11) { ?>
 					<div class="menu-section">
 						<div class="menu-section-icon">
@@ -45,41 +38,7 @@
 						</div>
 						<h2 class="menu-section-text">Administrator</h2>
 					</div>
-					<!-- END Menu Section -->
-					<div class="menu-item">
-						<button class="menu-item-link menu-item-toggle">
-							<div class="menu-item-icon">
-								<i class="fa fa-palette"></i>
-							</div>
-							<span class="menu-item-text">Artikel</span>
-							<div class="menu-item-addon">
-								<i class="menu-item-caret caret"></i>
-							</div>
-						</button>
-						<!-- BEGIN Menu Submenu -->
-						<div class="menu-submenu">
-							<div class="menu-item">
-								<a href="<?=base_url();?>gallery" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Gallery</span>
-								</a>
-							</div>
-                            <div class="menu-item">
-								<a href="<?=base_url();?>daftar-artikel" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Daftar Artikel</span>
-								</a>
-							</div>
-							<div class="menu-item">
-								<a href="<?=base_url();?>tambah-artikel" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Tambah Artikel</span>
-								</a>
-							</div>
-						</div>
-						<!-- END Menu Submenu -->
-                      	
-					</div>
+					
                   	<div class="menu-item">
 						<button class="menu-item-link menu-item-toggle">
 							<div class="menu-item-icon">
@@ -244,89 +203,7 @@
 						<!-- END Menu Submenu -->
 					</div>
 					
-					<?php if($level==11 or (($level==98 or $level==97) and ($ab>1 and $ab<6))) { ?>
-                    <div class="menu-section">
-						<div class="menu-section-icon">
-							<i class="fa fa-ellipsis-h"></i>
-						</div>
-						<h2 class="menu-section-text">Nilai DTA</h2>
-					</div>
-                    <div class="menu-item">
-                        <button class="menu-item-link menu-item-toggle">
-							<div class="menu-item-icon">
-								<i class="fa fa-clone"></i>
-							</div>
-							<span class="menu-item-text">Administrasi DTA</span>
-							<div class="menu-item-addon">
-								<i class="menu-item-caret caret"></i>
-							</div>
-						</button>
-                        <div class="menu-submenu">
-                            <div class="menu-item">
-								<a href="<?=base_url();?>materi-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Materi DTA</span>
-								</a>
-							</div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <button class="menu-item-link menu-item-toggle">
-							<div class="menu-item-icon">
-								<i class="fa fa-clone"></i>
-							</div>
-							<span class="menu-item-text">Penilaian DTA</span>
-							<div class="menu-item-addon">
-								<i class="menu-item-caret caret"></i>
-							</div>
-						</button>
-                        <div class="menu-submenu">
-                            <div class="menu-item">
-								<a href="<?=base_url();?>harian-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Penilaian Harian</span>
-								</a>
-							</div>
-                            <div class="menu-item">
-								<a href="<?=base_url();?>pts-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Penilaian PTS</span>
-								</a>
-							</div>
-                            <div class="menu-item">
-								<a href="<?=base_url();?>pas-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Penilaian PAS</span>
-								</a>
-							</div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <button class="menu-item-link menu-item-toggle">
-							<div class="menu-item-icon">
-								<i class="fa fa-clone"></i>
-							</div>
-							<span class="menu-item-text">Rapor DTA</span>
-							<div class="menu-item-addon">
-								<i class="menu-item-caret caret"></i>
-							</div>
-						</button>
-                        <div class="menu-submenu">
-                            <div class="menu-item">
-								<a href="<?=base_url();?>generate-rapor-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Generate Rapor</span>
-								</a>
-							</div>
-                            <div class="menu-item">
-								<a href="<?=base_url();?>rekap-rapor-dta" data-menu-path="<?=base_url();?>" class="menu-item-link">
-									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Rekap Rapor</span>
-								</a>
-							</div>
-                        </div>
-                    </div>
-					<?php } ?>
+					
 					<?php } ?>
                     
 					<?php if($kurikulum=="Kurikulum 2013"){ ?>
