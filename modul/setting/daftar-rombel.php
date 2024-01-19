@@ -14,6 +14,7 @@ while ($row = $query->fetch_assoc()) {
 	$idgp2=$row['penjas'];
 	$idgp3=$row['inggris'];
 	$ids=$row['id_rombel'];
+	$nrombel=$row['nama_rombel'];
 	$adawk = $connect->query("SELECT * FROM ptk where ptk_id='$idwk'")->num_rows;
 	if($adawk>0){
 		$nwk = $connect->query("SELECT * FROM ptk where ptk_id='$idwk'")->fetch_assoc();
@@ -50,8 +51,9 @@ while ($row = $query->fetch_assoc()) {
 		$namagp3="";
 	};
 	$actionButton = '
-	<button class="btn btn-effect-ripple btn-xs btn-primary" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#edit-rombel"><i class="fa fa-edit"></i></button>
-	<button class="btn btn-effect-ripple btn-xs btn-danger" onclick="removeRombel('.$ids.')"> <i class="fa fa-trash"></i></button>
+	<button class="btn btn-outline-success btn-sm me-1 mb-1" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#edit-rombel"><i class="fa fa-edit"></i> Edit</button>
+	<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="removeRombel('.$ids.')"> <i class="fa fa-trash"></i> Hapus</button>
+	<button class="btn btn-outline-primary btn-sm me-1 mb-1" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#anggota-rombel"> <i class="fa fa-users"></i> Anggota Rombel</button>
 	';
 	
 	$output['data'][] = array(
