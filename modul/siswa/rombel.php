@@ -22,17 +22,17 @@ $output = array('data' => array());
 		$namasis=$pn['nama'];
 		
 		$actionButton = '
-				<button class="btn btn-outline-success btn-icon" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#info">
-					<i class="fa fa-user"></i>
+				<button class="btn btn-outline-primary btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#info">
+					<i class="fa fa-user"></i> Info
 				</button>
-				<a href="'.base_url().'edit-siswa/'.$idp.'" class="btn btn-outline-primary btn-icon">
-					<i class="fa fa-pencil"></i>
+				<a href="'.base_url().'edit-siswa/'.$idp.'" class="btn btn-outline-success btn-sm me-1 mb-1">
+					<i class="fa fa-pencil"></i> Edit
 				</a>
-				<button class="btn btn-outline-info btn-icon" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#tempatkan">
-					<i class="fa fa-times"></i>
+				<button class="btn btn-outline-info btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#tempatkan">
+					<i class="fa fa-times"></i> Penempatan
 				</button>
-				<button class="btn btn-outline-danger btn-icon" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
-					<i class="fa fa-times"></i>
+				<button class="btn btn-outline-danger btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
+					<i class="fa fa-times"></i> Mutasikan
 				</button>
 				';
 		$namasis=$pn['nama'];
