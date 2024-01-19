@@ -114,6 +114,13 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="anggota-rombel">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="fetched-data2"></div>
+			</div>
+		</div>
+	</div>
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
@@ -173,7 +180,24 @@
 				"ajax": "modul/setting/daftar-rombel.php?tapel="+tapel+"&smt="+smt
 			});
 		});
-		$('#edit-rombel').on('show.bs.modal', function (e) {
+		$('#anggota-rombel').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('tema');
+			//menggunakan fungsi ajax untuk pengambilan data
+            $.ajax({
+                type : 'post',
+                url : 'modul/setting/anggota_rombel.php',
+				data :  'rowid='+ rowid,
+				beforeSend: function()
+				{	
+					$('.fetched-data2').html('<div class="modal-header"><button type="button" class="btn btn-label-danger btn-icon" data-bs-dismiss="modal"><i class="fa fa-times"></i></button></div><div class="modal-body"><div class="portlet"><div class="portlet-body"><i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...</div></div></div>');
+				},
+                success : function(data){
+                $('.fetched-data2').html(data);//menampilkan data ke dalam modal
+				
+                }
+            });
+         });
+		 $('#edit-rombel').on('show.bs.modal', function (e) {
             var rowid = $(e.relatedTarget).data('tema');
 			//menggunakan fungsi ajax untuk pengambilan data
             $.ajax({

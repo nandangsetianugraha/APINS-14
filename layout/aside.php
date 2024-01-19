@@ -115,9 +115,9 @@
 								</a>
 							</div>
 							<div class="menu-item">
-								<a href="<?=base_url();?>penempatan" data-menu-path="<?=base_url();?>" class="menu-item-link">
+								<a href="<?=base_url();?>daftar-siswa" data-menu-path="<?=base_url();?>" class="menu-item-link">
 									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Penempatan Siswa</span>
+									<span class="menu-item-text">Daftar Siswa</span>
 								</a>
 							</div>
 							<?php } ?>
