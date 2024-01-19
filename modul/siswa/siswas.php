@@ -30,10 +30,9 @@ $output = array('data' => array());
 				';
 		$namasis=$pn['nama'];
 		$output['data'][] = array(
-			$pn['nama'],
+			$actionButton.' '.$pn['nama'],
 			$pn['nis'],
-			$pn['nisn'],
-			$actionButton
+			$pn['nisn']
 		);
 	}
 

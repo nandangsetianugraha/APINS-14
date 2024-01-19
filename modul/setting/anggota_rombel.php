@@ -18,14 +18,14 @@ $nrombel=$romb['nama_rombel'];
 								<div class="portlet-body">
 									<div class="table-responsive">
 									<!-- BEGIN Datatable -->
-									<table id="siswa-1" class="table table-bordered table-striped table-hover">
+									<table id="siswa-1" class="table table-bordered table-striped table-hover table-responsive">
 										<thead>
 											<tr>
-												<th width="50%">Nama</th>
+												<th width="60%">Nama</th>
 												<th>NIS</th>
 												<th>NISN</th>
 												<th>Kelas</th>
-												<th></th>
+												
 											</tr>
 										</thead>
 									</table>
@@ -50,13 +50,13 @@ $nrombel=$romb['nama_rombel'];
 								<div class="portlet-body">
 									<div class="table-responsive">
 									<!-- BEGIN Datatable -->
-									<table id="siswa-2" class="table table-bordered table-striped table-hover">
+									<table id="siswa-2" class="table table-bordered table-striped table-hover table-responsive">
 										<thead>
 											<tr>
-												<th>Nama</th>
+												<th width="60%">Nama</th>
 												<th>NIS</th>
 												<th>NISN</th>
-												<th></th>
+												
 											</tr>
 										</thead>
 									</table>
