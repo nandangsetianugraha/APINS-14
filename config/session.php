@@ -56,12 +56,12 @@ if($level==96){
 	$kelas="1";
 	if(isset($_SESSION['kurikulum'])){
 	}else{
-		$_SESSION['kurikulum']='Kurikulum 2013';
+		$_SESSION['kurikulum']='Kurikulum Merdeka';
 	};
 };
 if($kelas==''){
 	$norombel=true;
-	$_SESSION['kurikulum']='Kurikulum 2013';
+	$_SESSION['kurikulum']='Kurikulum Merdeka';
 }else{
 	$norombel=false;
 };
