@@ -1,4 +1,4 @@
 <?php 
 $apps['nama']='APINS';
-$apps['versi']='14.01.03';
+$apps['versi']='14.01.22';
 ?>
