@@ -82,7 +82,7 @@ if (isset($_POST["import"])) {
 				$id_pd4=random(4);
 				$id_pd5=random(12);
 				$id_pd=$id_pd1.'-'.$id_pd2.'-'.$id_pd3.'-'.$id_pd4.'-'.$id_pd5;
-                $sql1 = "insert into ptk(ptk_id,nama,gelar,jenis_kelamin,tempat_lahir,tanggal_lahir,nik,status_kepegawaian_id,jenis_ptk_id,tmt,status_keaktifan_id) values('$id_pd','$nama','$gelar','$jk','$tempat','$tanggal','$nik','$status','$jenis','$tmt','1')";
+                $sql1 = "insert into ptk(ptk_id,nama,gelar,jenis_kelamin,tempat_lahir,tanggal_lahir,nik,status_kepegawaian_id,jenis_ptk_id,tmt,status_keaktifan_id,gambar) values('$id_pd','$nama','$gelar','$jk','$tempat','$tanggal','$nik','$status','$jenis','$tmt','1','user-default.jpg')";
                 $query1 = $connect->query($sql1);
 				
 				if ($query1 === TRUE) {

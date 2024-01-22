@@ -90,7 +90,7 @@ if (isset($_POST["import"])) {
 				$id_pd4=random(4);
 				$id_pd5=random(12);
 				$id_pd=$id_pd1.'-'.$id_pd2.'-'.$id_pd3.'-'.$id_pd4.'-'.$id_pd5;
-                $sql1 = "insert into siswa(peserta_didik_id,nis,nisn,nama,jk,tempat,tanggal,nik,alamat,nama_ayah,nama_ibu,no_wa,status) values('$id_pd','$nis','$nisn','$nama','$jk','$tempat','$tanggal_lahir','$nik','$alamat','$ayah','$ibu','$noHP','1')";
+                $sql1 = "insert into siswa(peserta_didik_id,nis,nisn,nama,jk,tempat,tanggal,nik,alamat,nama_ayah,nama_ibu,no_wa,avatar,status) values('$id_pd','$nis','$nisn','$nama','$jk','$tempat','$tanggal_lahir','$nik','$alamat','$ayah','$ibu','$noHP','user-default.jpg','1')";
                 $query1 = $connect->query($sql1);
 				
 				if ($query1 === TRUE) {
