@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2024 at 03:18 PM
+-- Generation Time: Jan 22, 2024 at 06:12 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -100,29 +100,6 @@ INSERT INTO `aspek` (`kd_aspek`, `nama_aspek`) VALUES
 (2, 'Sikap Sosial'),
 (3, 'Pengetahuan'),
 (4, 'Ketrampilan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `berita_acara`
---
-
-CREATE TABLE `berita_acara` (
-  `id_bap` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jenis` varchar(50) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `kelas` varchar(2) NOT NULL,
-  `mulai` varchar(5) NOT NULL,
-  `selesai` varchar(5) NOT NULL,
-  `mapel` varchar(50) NOT NULL,
-  `pengawas1` varchar(50) NOT NULL,
-  `pengawas2` varchar(50) NOT NULL,
-  `absen` int(11) NOT NULL,
-  `nomor_absen` varchar(50) NOT NULL,
-  `catatan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -791,29 +768,6 @@ INSERT INTO `indikator` (`id_indikator`, `kd_komp`, `kd_indikator`, `nama_indika
 (76, 14, 4, 'Guru dapat mengaplikasikan pengalaman PKB dalam perencanaan, pelaksanaan, penilaian pembelajaran dan tindak lanjutnya.'),
 (77, 14, 5, 'Guru melakukan  penelitian,  mengembangkan  karya  inovasi, mengikuti kegiatan ilmiah (misalnya seminar, konferensi), dan aktif dalam melaksanakan PKB.'),
 (78, 14, 6, 'Guru dapat  memanfaatkan TIK dalam berkomunikasi dan pelaksanaan PKB');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jadwalku`
---
-
-CREATE TABLE `jadwalku` (
-  `jadwal_id` int(10) NOT NULL,
-  `date` datetime NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `jadwalku`
---
-
-INSERT INTO `jadwalku` (`jadwal_id`, `date`, `title`, `description`) VALUES
-(1, '2019-12-20 08:00:00', 'Pembagian Raport', 'Semester 1 Tahun Pelajaran 2019/2020'),
-(2, '2020-01-06 07:00:00', 'Masuk Sekolah', 'Hari Pertama Masuk Sekolah Semester 2 Tahun Pelajaran 2019/2020'),
-(3, '2020-03-02 07:30:00', 'PTS Genap 2019/2020', 'Pendidikan Agama Islam'),
-(4, '2020-03-02 09:30:00', 'PTS Genap 2019/2020', 'Bahasa Indramayu');
 
 -- --------------------------------------------------------
 
@@ -41120,7 +41074,7 @@ CREATE TABLE `konfigurasi` (
   `semester` int(11) NOT NULL,
   `maintenis` int(11) NOT NULL,
   `nama_sekolah` varchar(100) NOT NULL,
-  `alamat_sekolah` varchar(100) NOT NULL,
+  `alamat_sekolah` varchar(200) NOT NULL,
   `image_login` varchar(200) NOT NULL,
   `versi` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41130,7 +41084,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_conf`, `tapel`, `semester`, `maintenis`, `nama_sekolah`, `alamat_sekolah`, `image_login`, `versi`) VALUES
-(1, '2023/2024', 2, 0, 'SD Islam Al-Jannah', 'Jalan Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu 45263', 'images/IMG-65a5889db065e3.08756654.png', '14.01.03');
+(1, '2023/2024', 2, 0, 'SD Islam Al-Jannah', 'Jl. Raya Gabuswetan No. 1', 'images/IMG-65a5889db065e3.08756654.png', '14.01.03');
 
 -- --------------------------------------------------------
 
@@ -41266,42 +41220,6 @@ CREATE TABLE `log` (
   `activity` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `log`
---
-
-INSERT INTO `log` (`id`, `ptk_id`, `logDate`, `activity`) VALUES
-(1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2023-12-16 21:33:00', 'Login ke Sistem'),
-(2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-02 23:54:27', 'Keluar dari Sistem'),
-(3, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-02 23:55:11', 'Login ke Sistem'),
-(4, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 01:27:11', 'Keluar dari Sistem'),
-(5, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 01:28:20', 'Login ke Sistem'),
-(6, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 21:04:37', 'Login ke Sistem'),
-(7, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:35:15', 'Keluar dari Sistem'),
-(8, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:48:36', 'Login ke Sistem'),
-(9, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:48:53', 'Keluar dari Sistem'),
-(10, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:49:15', 'Login ke Sistem'),
-(11, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:31', 'Keluar dari Sistem'),
-(12, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:48', 'Login ke Sistem'),
-(13, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-08 23:56:20', 'Login ke Sistem'),
-(14, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-10 22:08:46', 'Login ke Sistem'),
-(15, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:05:14', 'Keluar dari Sistem'),
-(16, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:05:29', 'Login ke Sistem'),
-(17, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:12:42', 'Keluar dari Sistem'),
-(18, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:12:59', 'Login ke Sistem'),
-(19, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:26:19', 'Keluar dari Sistem'),
-(20, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:26:27', 'Login ke Sistem'),
-(21, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 18:01:23', 'Login ke Sistem'),
-(22, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 06:08:35', 'Login ke Sistem'),
-(23, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 12:24:42', 'Keluar dari Sistem'),
-(24, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 06:24:56', 'Login ke Sistem'),
-(25, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-15 18:48:31', 'Login ke Sistem'),
-(26, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 15:34:34', 'Login ke Sistem'),
-(27, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 23:12:21', 'Keluar dari Sistem'),
-(28, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 17:15:01', 'Login ke Sistem'),
-(29, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-17 17:13:22', 'Login ke Sistem'),
-(30, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-22 02:38:51', 'Login ke Sistem');
-
 -- --------------------------------------------------------
 
 --
@@ -41315,15 +41233,6 @@ CREATE TABLE `loginattempts` (
   `Username` varchar(65) DEFAULT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `loginattempts`
---
-
-INSERT INTO `loginattempts` (`IP`, `Attempts`, `LastLogin`, `Username`, `ID`) VALUES
-('::1', 2, '2023-12-30 00:29:15', 'fakhira', 1),
-('::1', 2, '2024-01-08 23:56:00', 'admin', 2),
-('::1', 1, '2024-01-08 23:56:10', 'faridah', 3);
 
 -- --------------------------------------------------------
 
@@ -41833,7 +41742,7 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id`, `ptk_id`, `username`, `password`, `nama_lengkap`, `level`, `verified`, `gambar`) VALUES
 (1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'admin', '$2y$10$AA.AJ0acnB/jofl7cKN6cOHncAKoJJh8Up9sZf.YPMUk.toU.e1lO', 'Operator', 11, 1, 'avatar_1234914804.jpeg'),
-(2, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', 'guru1', '$2y$10$I/mL3e7FqSJgQyEUimK2HuzOiJPS.NwFNkmKCtf0yYs7KDwlBGI4q', 'Guru 1', 98, 1, 'user-default.png');
+(2, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', 'guru1', '$2y$10$IOoJkMrcjht/hdcpERu4FOr6oVCchNnpxyJFzIe0wpf2Lu9vVQu8q', 'Adiyanto', 98, 1, 'user-default.png');
 
 -- --------------------------------------------------------
 
@@ -42066,7 +41975,9 @@ CREATE TABLE `ptk` (
 
 INSERT INTO `ptk` (`id`, `ptk_id`, `nama`, `gelar`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `nik`, `status_perkawinan`, `niy_nigk`, `nuptk`, `status_kepegawaian_id`, `jenis_ptk_id`, `tmt`, `alamat_jalan`, `no_hp`, `email`, `status_keaktifan_id`, `gambar`, `nasabah_id`) VALUES
 (64, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', 'Adiyanto', '', 'L', 'Indramayu', '1990-01-17', '', 1, '', '', 1, 5, '2024-01-24', '', '', '', 1, 'avatar_1338064633.png', '0'),
-(2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'Operator', 'S.Pd.', 'L', 'Indramayu', '1988-01-10', '789', 2, '', '', 4, 11, '2023-01-01', '', '', '', 1, 'avatar_1265626780.png', '');
+(65, 'wfiyob9b-4g2z-fyre-nnye-h8mxd6h0dzsp', 'Muhammad Farouq', 'S.Pd.', 'L', 'Indramayu', '2000-03-03', '', 1, NULL, NULL, 0, 0, '0000-00-00', NULL, NULL, NULL, 1, NULL, NULL),
+(2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'Operator', 'S.Pd.', 'L', 'Indramayu', '1988-01-10', '789', 2, '', '', 4, 11, '2023-01-01', '', '', '', 1, 'avatar_1265626780.png', ''),
+(66, '94zkva6i-0g87-vq2x-ytw5-3uzny9gabedj', 'Rani Rahayu', 'S.Pd.', 'P', 'Cirebon', '1999-06-10', '', 1, NULL, NULL, 0, 0, '0000-00-00', NULL, NULL, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -42369,20 +42280,6 @@ CREATE TABLE `sk` (
   `jenis_ptk` varchar(50) NOT NULL,
   `jabatan` varchar(100) NOT NULL,
   `pengangkat` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skkb`
---
-
-CREATE TABLE `skkb` (
-  `id` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `no_surat` varchar(50) NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `kelas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42777,12 +42674,6 @@ ALTER TABLE `anak`
   ADD PRIMARY KEY (`id_anak`);
 
 --
--- Indexes for table `berita_acara`
---
-ALTER TABLE `berita_acara`
-  ADD PRIMARY KEY (`id_bap`);
-
---
 -- Indexes for table `catatan`
 --
 ALTER TABLE `catatan`
@@ -42878,12 +42769,6 @@ ALTER TABLE `ijazah`
 --
 ALTER TABLE `indikator`
   ADD PRIMARY KEY (`id_indikator`);
-
---
--- Indexes for table `jadwalku`
---
-ALTER TABLE `jadwalku`
-  ADD PRIMARY KEY (`jadwal_id`);
 
 --
 -- Indexes for table `jenis_ptk`
@@ -43311,12 +43196,6 @@ ALTER TABLE `sk`
   ADD PRIMARY KEY (`id_sk`);
 
 --
--- Indexes for table `skkb`
---
-ALTER TABLE `skkb`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `sk_aktif`
 --
 ALTER TABLE `sk_aktif`
@@ -43453,12 +43332,6 @@ ALTER TABLE `anak`
   MODIFY `id_anak` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `berita_acara`
---
-ALTER TABLE `berita_acara`
-  MODIFY `id_bap` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
@@ -43543,12 +43416,6 @@ ALTER TABLE `indikator`
   MODIFY `id_indikator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT for table `jadwalku`
---
-ALTER TABLE `jadwalku`
-  MODIFY `jadwal_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `jenjang_pendidikan`
 --
 ALTER TABLE `jenjang_pendidikan`
@@ -43612,13 +43479,13 @@ ALTER TABLE `lingkup_materi`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `loginattempts`
 --
 ALTER TABLE `loginattempts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mapel`
@@ -43792,7 +43659,7 @@ ALTER TABLE `prestasi`
 -- AUTO_INCREMENT for table `ptk`
 --
 ALTER TABLE `ptk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `ranking_ikm`
@@ -43865,12 +43732,6 @@ ALTER TABLE `siswa`
 --
 ALTER TABLE `sk`
   MODIFY `id_sk` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `skkb`
---
-ALTER TABLE `skkb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sk_aktif`
