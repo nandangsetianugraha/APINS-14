@@ -14,6 +14,7 @@ $output = array('data' => array());
 		$idp=$row['peserta_didik_id'];
 		$sqlp = "SELECT * FROM penempatan WHERE peserta_didik_id='$idp' and tapel='$tapel' and smt='$smt'";
 		$pn = $connect->query($sqlp)->fetch_assoc();
+		$cek = $connect->query($sqlp)->num_rows;
 		$nisn=$row['nisn'];
 		$jk=$row['jk'];
 		$ids=$row['id'];
@@ -46,6 +47,11 @@ $output = array('data' => array());
 				';
 		}
 		$namasis=$row['nama'];
+		if($cek>0){
+			$kelas = 'Kelas '.$rmb;
+		}else{
+			$kelas = '';
+		};
 		$output['data'][] = array(
 			'
 			<div class="rich-list-item p-0">
@@ -65,7 +71,7 @@ $output = array('data' => array());
 			$row['nis'],
 			$row['nisn'],
 			$row['tempat'].', '.TanggalIndo($row['tanggal']),
-			'Kelas '.$rmb,
+			$kelas,
 			$actionButton
 		);
 	}

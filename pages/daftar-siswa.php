@@ -47,7 +47,23 @@
 									<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
 								</div>
 								<div class="portlet-body">
-									
+									<form class="row g-3 mb-2" action="<?=base_url();?>pages/impor_siswa.php" method="post"
+											name="frmExcelImport" id="frmExcelImport"
+											enctype="multipart/form-data" onsubmit="return validateFile()">
+											<div class="col-md-6">
+												<input type="file" name="file" id="file" class="file"
+															accept=".xls,.xlsx">
+											</div>
+											<div class="col-md-3">
+												<button class="btn btn-primary" type="submit" id="submit" name="import"><i class="fas fa-print"></i> Impor Data Siswa</button>
+											</div>
+											<div class="col-md-3">
+												
+											</div>
+											
+										</form>
+										<br/>
+										<p>Untuk Format Impor Siswa <a href="<?=base_url();?>pages/template/format_siswa.xlsx">Format Siswa</a></p>
 									<!-- BEGIN Datatable -->
 									<table id="datatable-1" class="table table-bordered table-striped table-hover">
 										<thead>

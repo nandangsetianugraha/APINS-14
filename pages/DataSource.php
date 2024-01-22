@@ -15,15 +15,17 @@ namespace Phppot;
  *
  * @version 2.5 - recordCount function added
  */
+include "../config/db_connect.php";
 class DataSource
 {
+	
 
     // PHP 7.1.0 visibility modifiers are allowed for class constants.
     // when using above 7.1.0, declare the below constants as private
-    const HOST = 'localhost';
-    const USERNAME = 'root';
-    const PASSWORD = '';
-    const DATABASENAME = 'apins10';
+    const HOST = $host;
+    const USERNAME = $username;
+    const PASSWORD = $password;
+    const DATABASENAME = $db_name;
 
     private $conn;
 
