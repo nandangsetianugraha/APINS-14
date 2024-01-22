@@ -13,16 +13,18 @@ $output = array('data' => array());
 		$idps=$row['id'];
 		$idp=$row['ptk_id'];
 		$jk=$row['level'];
+		$nama = $connect->query("select * from ptk where ptk_id='$idp'")->fetch_assoc();
 		$j_ptk = $connect->query("select * from jenis_ptk where jenis_ptk_id='$jk'")->fetch_assoc();
 		$actionButton = '
-		<button class="btn btn-effect-ripple btn-xs btn-primary" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#info"><i class="fa fa-calendar"></i></button>';
+		<button class="btn btn-effect-ripple btn-xs btn-primary" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#edit-pengguna"><i class="fa fa-pencil"></i> Edit</button>
+		<button class="btn btn-effect-ripple btn-xs btn-success" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#info"><i class="fa fa-calendar"></i> Ubah Level</button>';
 		if($status==1){
 			$actionButton .= '
-			<button class="btn btn-effect-ripple btn-xs btn-primary" onclick="removePengguna('.$idps.')"><i class="fa fa-close"></i></button>
+			<button class="btn btn-effect-ripple btn-xs btn-danger" onclick="removePengguna('.$idps.')"><i class="fa fa-close"></i> Non-Aktif</button>
 			';
 		}else{
 			$actionButton .= '
-			<button class="btn btn-effect-ripple btn-xs btn-primary" onclick="AktifPengguna('.$idps.')"><i class="fa fa-close"></i></button>
+			<button class="btn btn-effect-ripple btn-xs btn-danger" onclick="AktifPengguna('.$idps.')"><i class="fa fa-close"></i> Aktifkan</button>
 			';
 		}
 				
@@ -30,7 +32,7 @@ $output = array('data' => array());
 		
 		$output['data'][] = array(
 			$row['username'],
-			$row['nama_lengkap'],
+			$nama['nama'],
 			$j_ptk['jenis_ptk'],
 			$actionButton
 		);

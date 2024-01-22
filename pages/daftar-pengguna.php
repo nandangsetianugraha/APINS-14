@@ -111,6 +111,15 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="edit-pengguna">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="form-horizontal" action="modul/kepegawaian/edit-user.php" autocomplete="off" method="POST" id="edituser">
+				<div class="fetched-data2"></div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
@@ -216,6 +225,23 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 				}
 			});
 		});
+		$('#edit-pengguna').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('tema');
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : 'modul/kepegawaian/e_edit_user.php',
+				data :  'rowid='+ rowid,
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#status').unblock();
+					$('.fetched-data2').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
 		$("#updateTemaForm").unbind('submit').bind('submit', function() {
 			var form = $(this);
 			//submi the form to server
@@ -257,6 +283,30 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 						toastr.success(response.messages);
 						TabelRombel.ajax.reload(null, false);
 						$("#tambah-pengguna").modal('hide');
+					} else {
+						toastr.error(response.messages);
+					}  // /else
+				} // success  
+			}); // ajax subit 				
+			return false;
+		}); // /submit form for create member
+		$("#edituser").unbind('submit').bind('submit', function() {
+			var form = $(this);
+			//submi the form to server
+			$.ajax({
+				url : form.attr('action'),
+				type : form.attr('method'),
+				data : form.serialize(),
+				dataType : 'json',
+				beforeSend: function(){	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success:function(response) {
+					$('#status').unblock();
+					if(response.success == true) {
+						toastr.success(response.messages);
+						TabelRombel.ajax.reload(null, false);
+						$("#edit-pengguna").modal('hide');
 					} else {
 						toastr.error(response.messages);
 					}  // /else

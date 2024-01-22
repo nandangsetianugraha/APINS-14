@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2024 at 12:16 PM
+-- Generation Time: Jan 22, 2024 at 03:18 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -871,36 +871,6 @@ INSERT INTO `jenis_ptk` (`jenis_ptk_id`, `jenis_ptk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_tunggakan`
---
-
-CREATE TABLE `jenis_tunggakan` (
-  `id_tunggakan` int(11) NOT NULL,
-  `nama_tunggakan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jenis_tunggakan`
---
-
-INSERT INTO `jenis_tunggakan` (`id_tunggakan`, `nama_tunggakan`) VALUES
-(1, 'Infaq Bulanan'),
-(2, 'Seragam Sekolah'),
-(3, 'Buku Pelajaran'),
-(4, 'Psikotest'),
-(5, 'Uang Bangunan'),
-(6, 'PSB'),
-(7, 'Biaya Pendaftaran'),
-(8, 'Tunggakan Tahun Lalu'),
-(9, 'PAS'),
-(10, 'UJIAN MADRASAH'),
-(11, 'Ujian Sekolah'),
-(12, 'PAT'),
-(14, 'Biaya Manasik Haji');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `jenjang`
 --
 
@@ -1221,23 +1191,6 @@ INSERT INTO `kecamatan` (`id`, `id_kabupaten`, `nama`) VALUES
 ('3212221', '3212', ' Patrol'),
 ('321301', '3213', 'Palimanan'),
 ('321302', '3213', 'Trusmi');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kegiatans`
---
-
-CREATE TABLE `kegiatans` (
-  `id` int(11) NOT NULL,
-  `waktu` timestamp NOT NULL DEFAULT current_timestamp(),
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -41177,7 +41130,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_conf`, `tapel`, `semester`, `maintenis`, `nama_sekolah`, `alamat_sekolah`, `image_login`, `versi`) VALUES
-(1, '2022/2023', 2, 0, 'SD Islam Al-Jannah', 'Jalan Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu 45263', 'images/IMG-65a5889db065e3.08756654.png', '14.01.03');
+(1, '2023/2024', 2, 0, 'SD Islam Al-Jannah', 'Jalan Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu 45263', 'images/IMG-65a5889db065e3.08756654.png', '14.01.03');
 
 -- --------------------------------------------------------
 
@@ -41195,7 +41148,6 @@ CREATE TABLE `kurikulum` (
 --
 
 INSERT INTO `kurikulum` (`id_kurikulum`, `nama_kurikulum`) VALUES
-(1, 'KTSP'),
 (2, 'Kurikulum 2013'),
 (3, 'Kurikulum Merdeka');
 
@@ -41693,22 +41645,6 @@ CREATE TABLE `nuts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pas_dta`
---
-
-CREATE TABLE `pas_dta` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pekerjaan`
 --
 
@@ -41873,20 +41809,6 @@ CREATE TABLE `penempatan` (
   `tapel` varchar(9) NOT NULL,
   `smt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `penempatan`
---
-
-INSERT INTO `penempatan` (`id_rombel`, `peserta_didik_id`, `nama`, `rombel`, `tapel`, `smt`) VALUES
-(1, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', 'tes', '1A', '2022/2023', 2),
-(2, '3xjq0umj-yz2m-vamr-qbbb-wdhvyoy5eigv', 'hu', '1B', '2022/2023', 2),
-(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', 'me', '1A', '2022/2023', 2),
-(4, '', '', '', '', 0),
-(5, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', 'yoa', '1A', '2022/2023', 2),
-(6, '9wc8g0z3-fhfa-u380-8cfr-y6wudqrn2eju', 'Angga Dwi Saputra', '1A', '2022/2023', 2),
-(7, 'n3sg3dns-97w0-gz3j-b9de-7an5rt05bsyd', 'Dewi Septia Acha', '2A', '2022/2023', 2),
-(8, 'dj9f36ts-k1ta-1t3c-ciwc-88d8k6jv3j1h', 'Mahfudin Obito', '1B', '2022/2023', 2);
 
 -- --------------------------------------------------------
 
@@ -42299,15 +42221,6 @@ CREATE TABLE `rombel` (
   `inggris` varchar(36) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rombel`
---
-
-INSERT INTO `rombel` (`id_rombel`, `nama_rombel`, `kurikulum`, `tapel`, `smt`, `wali_kelas`, `pendamping`, `pai`, `penjas`, `inggris`) VALUES
-(1, '1A', 'Kurikulum Merdeka', '2022/2023', 2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '', '', '', ''),
-(2, '1B', 'Kurikulum 2013', '2022/2023', 2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '', '', '', ''),
-(3, '2A', 'Kurikulum Merdeka', '2022/2023', 2, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', ' ', ' ', ' ', ' ');
-
 -- --------------------------------------------------------
 
 --
@@ -42440,19 +42353,6 @@ CREATE TABLE `siswa` (
   `status` int(11) NOT NULL,
   `nasabah_id` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `siswa`
---
-
-INSERT INTO `siswa` (`id`, `peserta_didik_id`, `nis`, `nisn`, `nama`, `jk`, `tempat`, `tanggal`, `nik`, `agama`, `pend_sebelum`, `alamat`, `nama_ayah`, `nama_ibu`, `no_wa`, `pek_ayah`, `pek_ibu`, `jalan`, `kelurahan`, `kecamatan`, `kabupaten`, `provinsi`, `avatar`, `status`, `nasabah_id`) VALUES
-(1, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', '', '', 'tes', 'L', 'indramayu', '2024-01-02', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
-(2, '3xjq0umj-yz2m-vamr-qbbb-wdhvyoy5eigv', '', '', 'hu', 'L', 'indramayu', '2024-01-02', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
-(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '', '', 'Siswa 1', 'L', 'Ind', '2024-01-01', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
-(4, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', '', '', 'yoa', 'L', 'ind', '2024-01-01', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
-(17, '9wc8g0z3-fhfa-u380-8cfr-y6wudqrn2eju', '', '', 'Angga Dwi Saputra', 'L', 'Indramayu', '2020-01-14', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, ''),
-(18, 'n3sg3dns-97w0-gz3j-b9de-7an5rt05bsyd', '', '', 'Dewi Septia Acha', 'P', 'Cirebon', '2000-05-19', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, ''),
-(19, 'dj9f36ts-k1ta-1t3c-ciwc-88d8k6jv3j1h', '', '', 'Mahfudin Obito', 'L', 'Klaten', '2010-03-03', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -42993,12 +42893,6 @@ ALTER TABLE `jenis_ptk`
   ADD KEY `jenis_ptk_id` (`jenis_ptk_id`);
 
 --
--- Indexes for table `jenis_tunggakan`
---
-ALTER TABLE `jenis_tunggakan`
-  ADD PRIMARY KEY (`id_tunggakan`);
-
---
 -- Indexes for table `jenjang`
 --
 ALTER TABLE `jenjang`
@@ -43075,12 +42969,6 @@ ALTER TABLE `keb_khusus`
 -- Indexes for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kegiatans`
---
-ALTER TABLE `kegiatans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -43237,12 +43125,6 @@ ALTER TABLE `nsp_temp`
 -- Indexes for table `nuts`
 --
 ALTER TABLE `nuts`
-  ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `pas_dta`
---
-ALTER TABLE `pas_dta`
   ADD PRIMARY KEY (`idNH`);
 
 --
@@ -43667,12 +43549,6 @@ ALTER TABLE `jadwalku`
   MODIFY `jadwal_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `jenis_tunggakan`
---
-ALTER TABLE `jenis_tunggakan`
-  MODIFY `id_tunggakan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT for table `jenjang_pendidikan`
 --
 ALTER TABLE `jenjang_pendidikan`
@@ -43707,12 +43583,6 @@ ALTER TABLE `kd_spirit`
 --
 ALTER TABLE `keahlian`
   MODIFY `idke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `kegiatans`
---
-ALTER TABLE `kegiatans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kkm`
@@ -43853,12 +43723,6 @@ ALTER TABLE `nuts`
   MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pas_dta`
---
-ALTER TABLE `pas_dta`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `pembelajaran`
 --
 ALTER TABLE `pembelajaran`
@@ -43886,7 +43750,7 @@ ALTER TABLE `pend_terakhir`
 -- AUTO_INCREMENT for table `penempatan`
 --
 ALTER TABLE `penempatan`
-  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
@@ -43970,7 +43834,7 @@ ALTER TABLE `riwayat_pendidikan`
 -- AUTO_INCREMENT for table `rombel`
 --
 ALTER TABLE `rombel`
-  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `saran`
@@ -43994,7 +43858,7 @@ ALTER TABLE `sikap`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sk`
