@@ -162,8 +162,8 @@ $querys = $connect->query("select * from penempatan where rombel='$kelas' and ta
    $pdf->Ln(1.5);
    $pdf->SetFont('Arial','','9');
    $pdf->Cell(11,0.7,'',0,0,'L');
-   $pdf->Cell(4.8,0.7,'Wali Kelas',0,0,'L');
-   $pdf->Cell(5.8,0.7,'Guru Pendamping',0,0,'L');
+   $pdf->Cell(4.8,0.7,'',0,0,'L');
+   $pdf->Cell(5.8,0.7,'Wali Kelas',0,0,'L');
    $pdf->Ln(0.7);
    $pdf->Cell(5.8,0.7,'Jumlah Peserta Didik',"LT",0,'L');
    $pdf->Cell(0.4,0.7,':','T',0,'L');
@@ -198,16 +198,16 @@ $querys = $connect->query("select * from penempatan where rombel='$kelas' and ta
 		$pendamping=$namapend['nama'].', '.$namapend['gelar'];
 	}
    $pdf->Cell(1.2,0.8,'',0,0,'L');
-   $pdf->Cell(4.1,0.8,'( '.$walikelas.' )',0,0,'L');
+   $pdf->Cell(4.1,0.8,'',0,0,'L');
    $pdf->Cell(1.2,0.8,'',0,0,'L');
-   $pdf->Cell(4,0.8,'( '.$pendamping.' )',0,0,'L');
+   $pdf->Cell(4,0.8,'( '.$walikelas.' )',0,0,'L');
 
    $pdf->Ln(0.6);
    $pdf->Cell(6.2,0.6,'',0,0,'L');
    $pdf->Cell(1,0.6,'','T',0,'L');
    $pdf->Ln(0);
    $pdf->Cell(9.5,0.6,'',0,0,'L');
-   $pdf->Cell(4.1,0.6,'NIP. -',0,0,'L');
+   $pdf->Cell(4.1,0.6,'',0,0,'L');
    $pdf->Cell(1.5,0.6,'',0,0,'L');
    $pdf->Cell(4.1,0.6,'NIP. -',0,0,'L');
 
