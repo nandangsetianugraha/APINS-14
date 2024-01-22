@@ -58,9 +58,9 @@
 								</a>
 							</div>
 							<div class="menu-item">
-								<a href="<?=base_url();?>berita-acara" data-menu-path="<?=base_url();?>" class="menu-item-link">
+								<a href="<?=base_url();?>daftar-pengguna" data-menu-path="<?=base_url();?>" class="menu-item-link">
 									<i class="menu-item-bullet"></i>
-									<span class="menu-item-text">Berita Acara</span>
+									<span class="menu-item-text">Daftar Pengguna</span>
 								</a>
 							</div>
                           	<div class="menu-item">
