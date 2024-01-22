@@ -9,11 +9,7 @@
 		}
 	</style>
 </head>
-<?php  
-$sql = "SELECT * FROM setting_dokumen";
-$querys = $connect->query($sql);
-$row = $querys->fetch_assoc();
-?>
+
 <body class="preload-active aside-active aside-mobile-minimized aside-desktop-maximized">
 	<!-- BEGIN Preload -->
 	<?php include "layout/loader.php"; ?>
@@ -98,21 +94,7 @@ $row = $querys->fetch_assoc();
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Tutup Dokumen</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="pdok" name="pdok">
-                                                                            <option value="0" <?php if($row['tutup']==0) echo "selected"; ?>>Tidak</option>
-                                                                            <option value="1" <?php if($row['tutup']==1) echo "selected"; ?>>Ya</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal dan Waktu</label>
-                                                                    <div class="col-sm-4">
-                                                                        <input type="text" class="form-control" name="twaktu" value="<?=$row['tanggal'];?>"  required>
-                                                                    </div>
-                                                                </div>
+                                                                
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-end mt-3">
                                                                         <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
@@ -246,24 +228,7 @@ $row = $querys->fetch_assoc();
                                                                         <button class="btn btn-danger" type="button" id="hapusMapelkm"><i class="fa fa-trash"></i></button>
                                                                     </div>
                                                                 </div>
-																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Mata Pelajaran DTA</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="mapeldta" name="mapeldta">
-                                                                            <?php 
-                                                                            $sql46 = "select * from mapel_dta order by id_mapel asc";
-                                                                            $query46 = $connect->query($sql46);
-                                                                            while($nk6=$query46->fetch_assoc()){
-                                                                                echo '<option data-nilai="'.$nk6['nama_mapel'].'" value="'.$nk6['id_mapel'].'" >'.$nk6['nama_mapel'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahMapeldta"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusMapeldta"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
+																
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Ekstrakurikuler</label>
                                                                     <div class="col-sm-4">
@@ -410,15 +375,7 @@ $row = $querys->fetch_assoc();
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="tambahMapeldta">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form class="form-horizontal" action="modul/setting/tambah-mapel.php" autocomplete="off" method="POST" id="buatmapeldta">
-				<div class="fetched-data"></div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<div class="modal fade" id="tambahEkskul">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -1026,61 +983,7 @@ $row = $querys->fetch_assoc();
 		}); // ajax subit 				
 		return false;
 	}); // /submit form for create member
-	$('#tambahMapeldta').on('show.bs.modal', function (e) {
-            const kur = 'dta';
-			//menggunakan fungsi ajax untuk pengambilan data
-			$.ajax({
-				type : 'post',
-				url : 'modul/setting/m_mapel.php',
-				data :  'jns=' + kur,
-				beforeSend: function()
-				{	
-					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
-				},
-				success : function(data){
-					$('#status').unblock();
-					$('.fetched-data').html(data);//menampilkan data ke dalam modal
-				}
-			});
-		});
-	$("#buatmapeldta").unbind('submit').bind('submit', function() {
-		var form = $(this);
-		//submi the form to server
-		$.ajax({
-			url : form.attr('action'),
-			type : form.attr('method'),
-			data : form.serialize(),
-			dataType : 'json',
-			success:function(response) {
-				if(response.success == true) {
-					toastr.success(response.messages);
-					$("#tambahMapeldta").modal('hide');
-					const jns = 'dta';
-					$.ajax({
-						type : 'GET',
-						url : 'modul/setting/daftar-mapel.php',
-						data :  'jns=' + jns,
-						dataType : 'HTML',
-						beforeSend: function()
-						{	
-							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
-						},
-						success: function (data) {
-							//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-							$("#mapeldta").html(data);
-							$('#status').unblock();
-							// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
-						}
-					});
-
-					//$("#createTemaForm")[0].reset();
-				} else {
-					toastr.error(response.messages);
-				}  // /else
-			} // success  
-		}); // ajax subit 				
-		return false;
-	}); // /submit form for create member
+	
 	$('#tambahEkskul').on('show.bs.modal', function (e) {
             //menggunakan fungsi ajax untuk pengambilan data
 			$.ajax({
@@ -1281,14 +1184,7 @@ $row = $querys->fetch_assoc();
 				removeMapelkm(mapel);
 			}
 		});
-		$( "#hapusMapeldta" ).click(function() {
-			var mapel = $('#mapeldta').val();
-			if(mapel == 0){
-				Swal.fire("Kesalahan",'Pilih Mapel Dahulu',"error");
-			}else{
-				removeMapeldta(mapel);
-			}
-		});
+		
 		$( "#hapusEkskul" ).click(function() {
 			var ekskul = $('#ekskul').val();
 			if(ekskul == 0){
@@ -1442,57 +1338,6 @@ $row = $querys->fetch_assoc();
 									success: function (data) {
 										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
 										$("#mapelkm").html(data);
-										$('#status').unblock();
-										// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
-									}
-								});
-							} else {
-								Swal.fire("Kesalahan",response.messages,"error");
-							}
-						}
-					});
-			  }
-			})
-			
-		} else {
-			Swal.fire("Kesalahan","Error Sistem","error");
-		}
-	}
-	function removeMapeldta(id = null) {
-		if(id) {
-			// click on remove button
-			const mapel = $('#mapeldta option:selected').data('nilai');
-			Swal.fire({
-			  title: 'Yakin dihapus?',
-			  text: "Apakah anda yakin menghapus Mata Pelajaran "+mapel+"?",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Ya, Hapus!'
-			}).then((result) => {
-			  if (result.isConfirmed) {
-				$.ajax({
-						url: 'modul/setting/hapus-mapel.php',
-						type: 'post',
-						data: {member_id : id, jns : 'dta'},
-						dataType: 'json',
-						success:function(response) {
-							if(response.success == true) {						
-								// refresh the table
-								const jns = 'dta';
-								$.ajax({
-									type : 'GET',
-									url : 'modul/setting/daftar-mapel.php',
-									data :  'jns=' + jns,
-									dataType : 'HTML',
-									beforeSend: function()
-									{	
-										$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
-									},
-									success: function (data) {
-										//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-										$("#mapeldta").html(data);
 										$('#status').unblock();
 										// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
 									}

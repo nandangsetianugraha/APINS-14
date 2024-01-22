@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2024 at 04:11 AM
+-- Generation Time: Jan 22, 2024 at 12:16 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `apins10`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `id_absen` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `peserta_didik_id` varchar(36) NOT NULL,
+  `tapel` varchar(10) NOT NULL,
+  `smt` int(11) NOT NULL,
+  `kelas` varchar(2) NOT NULL,
+  `absensi` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -42843,6 +42859,12 @@ CREATE TABLE `ulhar` (
 --
 
 --
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
 -- Indexes for table `agama`
 --
 ALTER TABLE `agama`
@@ -43535,6 +43557,12 @@ ALTER TABLE `ulhar`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `anak`
