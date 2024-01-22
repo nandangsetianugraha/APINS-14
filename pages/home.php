@@ -292,16 +292,16 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 								<div class="col-md-6">
 									<div class="portlet mb-2">
 										<div class="portlet-header portlet-header-bordered">
-											<div class="portlet-icon">
-												<i class="fa fa-user"></i>
-												<input type="hidden" id="idptks" value="<?=$bioku['ptk_id'];?>">
+											<div class="avatar avatar-circle avatar-lg">
+												<div class="avatar-display">
+													<img src="<?=base_url();?>images/ptk/<?=$bioku['gambar'];?>" alt="AI">
+													<input type="hidden" id="idptks" value="<?=$bioku['ptk_id'];?>">
+												</div>
 											</div>
-											<h3 class="portlet-title"></h3>
 											<div class="portlet-addon">
 												<!-- BEGIN Nav -->
 												<div class="nav nav-lines portlet-nav" id="portlet1-tab">
-													<a class="nav-item nav-link active" id="portlet1-home-tab" data-bs-toggle="tab" href="#portlet1-home">Home</a>
-													<a class="nav-item nav-link" id="portlet1-profile-tab" data-bs-toggle="tab" href="#portlet1-profile">Profile</a>
+													<a class="nav-item nav-link active" id="portlet1-profile-tab" data-bs-toggle="tab" href="#portlet1-profile">Profile</a>
 													<a class="nav-item nav-link" id="portlet1-sk-tab" data-bs-toggle="tab" href="#portlet1-sk">SK</a>
 													<a class="nav-item nav-link" id="portlet1-contact-tab" data-bs-toggle="tab" href="#portlet1-contact">Password</a>
 												</div>
@@ -311,145 +311,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 										<div class="portlet-body">
 											<!-- BEGIN Tab -->
 											<div class="tab-content">
-												<div class="tab-pane fade show active" id="portlet1-home">
-													<div class="row">
-														<div class="col-lg-4 col-sm-6">
-															<select id="bulanku" name="bulanku" class="form-select">
-																<option value="07" <?php if($bulan==="07"){echo "selected";}; ?>>Juli</option>
-																<option value="08" <?php if($bulan==="08"){echo "selected";}; ?>>Agustus</option>
-																<option value="09" <?php if($bulan==="09"){echo "selected";}; ?>>September</option>
-																<option value="10" <?php if($bulan==="10"){echo "selected";}; ?>>Oktober</option>
-																<option value="11" <?php if($bulan==="11"){echo "selected";}; ?>>November</option>
-																<option value="12" <?php if($bulan==="12"){echo "selected";}; ?>>Desember</option>
-																<option value="01" <?php if($bulan==="01"){echo "selected";}; ?>>Januari</option>
-																<option value="02" <?php if($bulan==="02"){echo "selected";}; ?>>Februari</option>
-																<option value="03" <?php if($bulan==="03"){echo "selected";}; ?>>Maret</option>
-																<option value="04" <?php if($bulan==="04"){echo "selected";}; ?>>April</option>
-																<option value="05" <?php if($bulan==="05"){echo "selected";}; ?>>Mei</option>
-																<option value="06" <?php if($bulan==="06"){echo "selected";}; ?>>Juni</option>
-															</select>
-														</div>
-														<div class="col-lg-8 col-sm-6">
-															<select id="tahunku" name="tahunku" class="form-select">
-																<?php
-																for($i=date('Y'); $i>=date('Y')-12; $i-=1){
-																echo "<option value='$i'> $i </option>";
-																}
-																?>
-															</select>
-														</div>
-													</div>
-													<hr/>
-													<table class="table table-sm absen-pegawai">
-															<thead>
-															  <tr>
-																<th scope="col">Tanggal</th>
-																<th scope="col">Jam Masuk</th>
-																<th scope="col">Jam Pulang</th>
-																<th scope="col">Terlambat</th>
-																<th scope="col">Pulang Cepat</th>
-															  </tr>
-															</thead>
-															<tbody>
-																<?php 
-																$idptk = $bioku["ptk_id"];
-																$peg = $connect->query("select * from id_pegawai where ptk_id='$idptk'")->fetch_assoc();
-																$idpeg=$peg['pegawai_id'];
-																$hari = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
-																$telat=0;
-																$cepul=0;
-																for ($i=1; $i < $hari+1; $i++) { 
-																	if($i>9){
-																		$ab=$i;
-																	}else{
-																		$ab="0".$i;
-																	};
-																	$ttt=$tahun."-".$bulan."-".$ab;
-                                                                  if($i>$tglsek and $bulans==$bulan){}else{
-																	if(namahari($ttt)==="Sabtu" || namahari($ttt)==="Minggu"){
-																?>
-																
-																<?php 
-																	}else{
-																		$ceklibur=$connect->query("select * from harilibur where '$ttt' between tanggal_awal and tanggal_akhir")->num_rows;
-																		if($ceklibur>0){
-																			$libur=$connect->query("select * from harilibur where '$ttt' between tanggal_awal and tanggal_akhir")->fetch_assoc();
-																?>
-																
-																<?php 
-																		}else{
-																			$cekijin=$connect->query("select * from ijin_ptk where '$ttt' between tanggal_awal and tanggal_akhir and pegawai_id='$idpeg'")->num_rows;
-																			if($cekijin>0){
-																				$ijins=$connect->query("select * from ijin_ptk where '$ttt' between tanggal_awal and tanggal_akhir and pegawai_id='$idpeg'")->fetch_assoc();
-																				if($ijins['status']=='I'){
-																					$stats='IJIN '.$ijins['keterangan'];
-																				};
-																				if($ijins['status']=='S'){
-																					$stats='SAKIT '.$ijins['keterangan'];
-																				};
-																				if($ijins['status']=='C'){
-																					$stats='CUTI '.$ijins['keterangan'];
-																				};
-																?>
-																<tr>
-																	<td><?=namahari($ttt);?>, <?=TanggalIndo($ttt);?></td>
-																	<td colspan="4"><?=$stats;?></td>
-																</tr>
-																<?php 
-																			}else{
-																			$kerja=$connect->query("select * from shift where '$ttt' between tanggal_awal and tanggal_akhir")->fetch_assoc();
-																			$jmasuk=$kerja['masuk'];
-																			if(empty($jmasuk)){
-																				$jmasuk="07:00:00";
-																			};
-																			$jkeluar=$kerja['keluar'];
-																			if(empty($jkeluar)){
-																				$jkeluar="15:45:00";
-																			};
-																			$sql = "SELECT pegawai_id,
-																			  DATE_FORMAT(tanggal,'%Y-%m-%d') tgl,
-																			  min(left(RIGHT(tanggal, 8), 5)) jam1,
-																			  MAX(left(right(tanggal, 8), 5)) jam2,
-																			  if(LEAST(12600,trim(TIME_TO_SEC(TIMEDIFF(min(left(RIGHT(tanggal, 8), 5)), '$jmasuk'))))>0,LEAST(12600,trim(TIME_TO_SEC(TIMEDIFF(min(left(RIGHT(tanggal, 8), 5)), '$jmasuk'))))/60,'') diff1, 
-																			  if(LEAST(14400,trim(TIME_TO_SEC(TIMEDIFF('$jkeluar', MAX(left(right(tanggal, 8), 5))))))>0,LEAST(14400,trim(TIME_TO_SEC(TIMEDIFF('$jkeluar', MAX(left(right(tanggal, 8), 5))))))/60,'') diff2
-																			  FROM absensi_ptk where pegawai_id='$idpeg' and DATE_FORMAT(tanggal,'%Y-%m-%d')='$ttt' group by tgl";
-																			$query = $connect->query($sql);
-																			$row = $query->fetch_assoc();
-																			if($row['jam2']==$row['jam1']){
-																				$keluar='';
-																				$pulcep='';
-																			}else{
-																				$keluar=$row['jam2'];
-																				$pulcep=$row['diff2'];
-																			}
-																			$telat=$telat+$row['diff1'];
-																			$cepul=$cepul+$row['diff2'];
-																?>
-																<tr>
-																	<td><?=namahari($ttt);?>, <?=TanggalIndo($ttt);?></td>
-																	<td><?=$row['jam1'];?></td>
-																	<td><?=$keluar;?></td>
-																	<td><?=$row['diff1'];?> <?php if(empty($row['diff1'])){}else{echo "Menit";} ?></td>
-																	<td><?=$pulcep;?> <?php if(empty($row['diff2'])){}else{echo "Menit";} ?></td>
-																</tr>
-																<?php 
-																		}
-																		}
-																	}
-																}}
-																?>
-															</tbody>
-															<tfoot>
-																<tr>
-																	<td colspan="3" style="text-align:right">Total</td>
-																	<td><?=$telat;?> Menit</td>
-																	<td><?=$cepul;?> Menit</td>
-																</tr>
-															</tfoot>
-														</table>
-													
-												</div>
-												<div class="tab-pane fade" id="portlet1-profile">
+												<div class="tab-pane fade show active" id="portlet1-profile">
 													<form class="row g-3" action="modul/kepegawaian/update-biodata.php" autocomplete="off" method="POST" id="ubahForm">
 														<div class="col-6">
 															<label for="inputAddress" class="form-label">Nama Lengkap</label>

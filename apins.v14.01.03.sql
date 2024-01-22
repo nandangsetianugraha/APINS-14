@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2024 at 06:07 PM
+-- Generation Time: Jan 22, 2024 at 04:11 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -20,67 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `apins10`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `absensi`
---
-
-CREATE TABLE `absensi` (
-  `id_absen` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `kelas` varchar(2) NOT NULL,
-  `absensi` varchar(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `absensi_ptk`
---
-
-CREATE TABLE `absensi_ptk` (
-  `id` int(11) NOT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `tanggal` datetime NOT NULL,
-  `latitude` varchar(50) NOT NULL,
-  `longitude` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `absensi_ptk`
---
-
-INSERT INTO `absensi_ptk` (`id`, `pegawai_id`, `tanggal`, `latitude`, `longitude`) VALUES
-(1, 1, '2023-01-17 11:33:00', '-6.4165401', '108.0805673'),
-(2, 4, '2023-01-17 11:59:00', '-6.4165345', '108.0805629'),
-(3, 4, '2023-01-17 11:59:00', '-6.4165345', '108.0805629'),
-(4, 101, '2023-01-17 12:12:00', '-6.4165416', '108.0805683');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `absen_config`
---
-
-CREATE TABLE `absen_config` (
-  `id` int(11) NOT NULL,
-  `masuk1` varchar(8) NOT NULL,
-  `masuk2` varchar(8) NOT NULL,
-  `keluar1` varchar(8) NOT NULL,
-  `keluar2` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `absen_config`
---
-
-INSERT INTO `absen_config` (`id`, `masuk1`, `masuk2`, `keluar1`, `keluar2`) VALUES
-(1, '06:00:00', '07:00:00', '12:00:00', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -128,38 +67,6 @@ CREATE TABLE `anak` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `arbain`
---
-
-CREATE TABLE `arbain` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `arbain`
---
-
-INSERT INTO `arbain` (`id`, `nama`) VALUES
-(1, 'ARBA\'IN 1'),
-(2, 'ARBA\'IN 3'),
-(3, 'ARBA\'IN 5'),
-(4, 'ARBA\'IN 7'),
-(5, 'ARBA\'IN 8'),
-(6, 'ARBA\'IN 9'),
-(7, 'ARBA\'IN 11'),
-(8, 'ARBA\'IN 12'),
-(9, 'ARBA\'IN 13'),
-(10, 'ARBA\'IN 14'),
-(11, 'ARBA\'IN 15'),
-(12, 'ARBA\'IN 17'),
-(13, 'ARBA\'IN 18'),
-(14, 'ARBA\'IN 20'),
-(15, 'ARBA\'IN 21');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `aspek`
 --
 
@@ -177,23 +84,6 @@ INSERT INTO `aspek` (`kd_aspek`, `nama_aspek`) VALUES
 (2, 'Sikap Sosial'),
 (3, 'Pengetahuan'),
 (4, 'Ketrampilan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `berita`
---
-
-CREATE TABLE `berita` (
-  `id` int(11) NOT NULL,
-  `penulis` varchar(36) NOT NULL,
-  `tanggal` date NOT NULL,
-  `judul` text NOT NULL,
-  `slug` varchar(250) NOT NULL,
-  `isi` longtext NOT NULL,
-  `images` varchar(200) NOT NULL DEFAULT 'default.jpg',
-  `view` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -217,36 +107,6 @@ CREATE TABLE `berita_acara` (
   `nomor_absen` varchar(50) NOT NULL,
   `catatan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bulan_spp`
---
-
-CREATE TABLE `bulan_spp` (
-  `id_bulan` int(11) NOT NULL,
-  `bulan` varchar(12) NOT NULL,
-  `bulan_pendek` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `bulan_spp`
---
-
-INSERT INTO `bulan_spp` (`id_bulan`, `bulan`, `bulan_pendek`) VALUES
-(1, 'Juli', 'JUL'),
-(2, 'Agustus', 'AGS'),
-(3, 'September', 'SEP'),
-(4, 'Oktober', 'OKT'),
-(5, 'November', 'NOV'),
-(6, 'Desember', 'DES'),
-(7, 'Januari', 'JAN'),
-(8, 'Februari', 'FEB'),
-(9, 'Maret', 'MAR'),
-(10, 'April', 'APR'),
-(11, 'Mei', 'MEI'),
-(12, 'Juni', 'JUN');
 
 -- --------------------------------------------------------
 
@@ -332,6 +192,13 @@ CREATE TABLE `data_prestasi` (
   `akademik` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `data_prestasi`
+--
+
+INSERT INTO `data_prestasi` (`id`, `peserta_didik_id`, `smt`, `tapel`, `kesenian`, `olahraga`, `akademik`) VALUES
+(1, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', 2, '2022/2023', 'Juara 1 Lomba Menyanyi Solo Tingkat kecamatan Gabuswetan<br>Juara 2 Lomba Makan', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -348,6 +215,13 @@ CREATE TABLE `data_proyek` (
   `nama_proyek` text NOT NULL,
   `deskripsi_proyek` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_proyek`
+--
+
+INSERT INTO `data_proyek` (`id_proyek`, `tema`, `fase`, `kelas`, `tapel`, `smt`, `nama_proyek`, `deskripsi_proyek`) VALUES
+(1, 1, 'A', '1A', '2022/2023', 2, 'Hallo', 'Ini Proyek pertama');
 
 -- --------------------------------------------------------
 
@@ -367,6 +241,14 @@ CREATE TABLE `data_register` (
   `ijazah` int(11) NOT NULL,
   `skhun` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `data_register`
+--
+
+INSERT INTO `data_register` (`peserta_didik_id`, `jns_daftar`, `tgl_masuk`, `asal_tk`, `asal_ra`, `mutasi`, `tgl_mutasi`, `alasan`, `ijazah`, `skhun`) VALUES
+('oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', 1, '2024-01-02', 0, 1, '1', '0000-00-00', '', 0, ''),
+('qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', 1, '2024-01-01', 1, 0, '1', '0000-00-00', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -581,76 +463,6 @@ INSERT INTO `dimensi_proyek` (`id_dimensi`, `nama_dimensi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doa`
---
-
-CREATE TABLE `doa` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `doa`
---
-
-INSERT INTO `doa` (`id`, `nama`) VALUES
-(1, 'AKAN TIDUR'),
-(2, 'BANGUN TIDUR'),
-(3, 'AKAN MAKAN'),
-(4, 'SESUDAH MAKAN'),
-(5, 'BERCERMIN'),
-(6, 'SESUDAH WUDHU'),
-(7, 'MENDOAKAN ORANG TUA'),
-(8, 'MENJENGUK ORANG SAKIT'),
-(9, 'MASUK MASJID'),
-(10, 'KELUAR MASJID'),
-(11, 'BELAJAR'),
-(12, 'BERBUKA PUASA'),
-(13, 'BERPAKAIAN'),
-(14, 'MASUK KAMAR MANDI'),
-(15, 'KELUAR KAMAR MANDI'),
-(16, 'KELUAR RUMAH'),
-(17, 'KEBAIKAN DUNIA AKHIRAT'),
-(18, 'NAIK KENDARAAN'),
-(19, 'BERSIN'),
-(20, 'ADA ANGIN KENCANG'),
-(21, 'KETIKA MARAH'),
-(22, 'KETIKA KAGUM'),
-(23, 'SESUDAH ADZAN'),
-(24, 'ZIARAH KUBUR'),
-(25, 'TURUN HUJAN'),
-(26, 'MINTA HUJAN'),
-(27, 'TERTIMPA MUSIBAH'),
-(28, 'KETIKA MENDENGAR PETIR'),
-(29, 'PENUTUP MAJELIS'),
-(30, 'MOHON AMPUN'),
-(31, 'KALIMAT TAYYIBAH'),
-(32, 'MELEPAS PAKAIAN'),
-(33, 'PEMBUKA HATI'),
-(34, 'SYAYIDUL ISTIGFAR'),
-(35, 'DZIKIR PAGI HARI 1'),
-(36, 'DZIKIR PAGI HARI 2'),
-(37, 'DZIKIR PAGI HARI 3');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doa_harian`
---
-
-CREATE TABLE `doa_harian` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `surah` int(11) NOT NULL,
-  `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ekskul`
 --
 
@@ -821,35 +633,6 @@ INSERT INTO `elemen_proyek` (`id_elemen`, `dimensi`, `elemen`, `sub_elemen`, `fa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
---
-
-CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `start` date NOT NULL,
-  `end` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `filepkg`
---
-
-CREATE TABLE `filepkg` (
-  `id_penilaian` int(11) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `ptk_id` varchar(36) NOT NULL,
-  `nama_file` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `formatif`
 --
 
@@ -863,159 +646,6 @@ CREATE TABLE `formatif` (
   `lm` varchar(2) NOT NULL,
   `tp` varchar(10) NOT NULL,
   `nilai` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `form_data`
---
-
-CREATE TABLE `form_data` (
-  `id` int(11) NOT NULL,
-  `ptk_id` varchar(36) NOT NULL,
-  `tapel` varchar(9) DEFAULT NULL,
-  `judul` varchar(150) NOT NULL,
-  `file_names` varchar(250) NOT NULL,
-  `tipefile` varchar(100) DEFAULT NULL,
-  `kategori` int(11) DEFAULT 2,
-  `download` int(11) NOT NULL DEFAULT 0,
-  `view` int(11) NOT NULL DEFAULT 0,
-  `hapus` int(11) NOT NULL DEFAULT 0,
-  `submitted_on` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gajipokok`
---
-
-CREATE TABLE `gajipokok` (
-  `id` int(11) NOT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `insentif` int(11) DEFAULT NULL,
-  `transport` int(11) DEFAULT NULL,
-  `tunj_walikelas` int(11) DEFAULT NULL,
-  `tunj_kepsek` int(11) DEFAULT NULL,
-  `tunj_kehadiran` int(11) DEFAULT NULL,
-  `tunj_ekskul` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gallery`
---
-
-CREATE TABLE `gallery` (
-  `gallery_id` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `judul` text NOT NULL,
-  `link` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hadits`
---
-
-CREATE TABLE `hadits` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hadits_arbain`
---
-
-CREATE TABLE `hadits_arbain` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `surah` int(11) NOT NULL,
-  `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hadits_pilihan`
---
-
-CREATE TABLE `hadits_pilihan` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `surah` int(11) NOT NULL,
-  `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hafalan`
---
-
-CREATE TABLE `hafalan` (
-  `id_hafalan` int(11) NOT NULL,
-  `jenis_hafalan` int(11) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `slug` varchar(200) NOT NULL,
-  `arab` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `artinya` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `harilibur`
---
-
-CREATE TABLE `harilibur` (
-  `id` int(11) NOT NULL,
-  `tanggal_awal` date NOT NULL,
-  `tanggal_akhir` date DEFAULT NULL,
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `harilibur`
---
-
-INSERT INTO `harilibur` (`id`, `tanggal_awal`, `tanggal_akhir`, `keterangan`) VALUES
-(1, '2023-01-23', '2023-01-23', 'Cuti Bersama Imlek 2574'),
-(2, '2023-01-02', '2023-01-06', 'Libur Semester 1'),
-(3, '2023-08-07', '2023-08-10', ''),
-(4, '2023-03-23', '2023-03-24', 'Libur awal puasa'),
-(5, '2023-04-07', '2023-04-07', 'Libur Wafat Isa Almasih'),
-(6, '2023-04-17', '2023-04-28', 'Libur Menjelang Idul Fitri'),
-(7, '2023-05-01', '2023-05-01', 'Hari Buruh'),
-(8, '2023-05-18', '2023-05-18', 'Libur Kenaikan Isa Almasih'),
-(23, '2023-06-02', '2023-06-02', 'Cuti Bersama Waisak'),
-(24, '2023-06-01', '2023-06-01', 'Hari Lahir Pancasilas'),
-(25, '2023-06-26', '2023-07-14', 'Libur Panjang Akhir Tahun Ajaran 2022/2023'),
-(26, '2023-07-19', '2023-07-19', 'Libur Tahun Baru Islam 1445 H'),
-(29, '2023-08-17', '2023-08-17', 'Libur Kemerdekaan RI');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hari_efektif`
---
-
-CREATE TABLE `hari_efektif` (
-  `id_hari` int(11) NOT NULL,
-  `bulan` varchar(2) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `hari` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1048,29 +678,6 @@ CREATE TABLE `ijazah` (
   `peserta_didik_id` varchar(36) NOT NULL,
   `nama` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ijin_ptk`
---
-
-CREATE TABLE `ijin_ptk` (
-  `id` int(11) NOT NULL,
-  `tanggal_awal` date NOT NULL,
-  `tanggal_akhir` date DEFAULT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `status` varchar(1) NOT NULL,
-  `keterangan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ijin_ptk`
---
-
-INSERT INTO `ijin_ptk` (`id`, `tanggal_awal`, `tanggal_akhir`, `pegawai_id`, `status`, `keterangan`) VALUES
-(1, '2023-02-09', '2023-02-10', 110, 'I', 'Ijin 2 Hari'),
-(2, '2023-08-05', '2023-08-05', 3, 'I', 'keperluan');
 
 -- --------------------------------------------------------
 
@@ -1168,22 +775,6 @@ INSERT INTO `indikator` (`id_indikator`, `kd_komp`, `kd_indikator`, `nama_indika
 (76, 14, 4, 'Guru dapat mengaplikasikan pengalaman PKB dalam perencanaan, pelaksanaan, penilaian pembelajaran dan tindak lanjutnya.'),
 (77, 14, 5, 'Guru melakukan  penelitian,  mengembangkan  karya  inovasi, mengikuti kegiatan ilmiah (misalnya seminar, konferensi), dan aktif dalam melaksanakan PKB.'),
 (78, 14, 6, 'Guru dapat  memanfaatkan TIK dalam berkomunikasi dan pelaksanaan PKB');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `invoice`
---
-
-CREATE TABLE `invoice` (
-  `id` int(11) NOT NULL,
-  `nomor` varchar(50) NOT NULL,
-  `tanggal` date NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `jenis` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1408,61 +999,6 @@ INSERT INTO `jns_tinggal` (`id_jns_tinggal`, `nama_jns_tinggal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `juzamma`
---
-
-CREATE TABLE `juzamma` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `juzamma`
---
-
-INSERT INTO `juzamma` (`id`, `nama`) VALUES
-(1, 'AL FATIHAH'),
-(2, 'AN NAS'),
-(3, 'AL FALAQ'),
-(4, 'AL IKHLAS'),
-(5, 'AL LAHAB'),
-(6, 'AN NASR'),
-(7, 'AL KAFIRUUN'),
-(8, 'AL KAUTSAR'),
-(9, 'AL MAUN'),
-(10, 'AL QURAISY'),
-(11, 'AL FIIL'),
-(12, 'AL HUMAZAH'),
-(13, 'AL \'ASR'),
-(14, 'AT TAKATSUR'),
-(15, 'AL QORIAH'),
-(16, 'AL ADIYAT'),
-(17, 'AL ZALZALAH'),
-(18, 'AL BAYINAH'),
-(19, 'AL QODR'),
-(20, 'AL ALAQ'),
-(21, 'AT TIN'),
-(22, 'AL INSYIRAH'),
-(23, 'AD DHUHA'),
-(24, 'AL LAIL'),
-(25, 'ASY SYAMS'),
-(26, 'AL BALAD'),
-(27, 'AL FAJR'),
-(28, 'AL GHOSIYAH'),
-(29, 'AL A\'LA'),
-(30, 'AT TARIQ'),
-(31, 'AL BURUUJ'),
-(32, 'AL INSYIQOQ'),
-(33, 'AL MUTAFFIFIN'),
-(34, 'AL INFITAR'),
-(35, 'AT TAKWIR'),
-(36, 'ABATSA'),
-(37, 'AN NAZI\'AT'),
-(38, 'AN NABA');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kabupaten`
 --
 
@@ -1673,48 +1209,18 @@ INSERT INTO `kecamatan` (`id`, `id_kabupaten`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kegiatan`
---
-
-CREATE TABLE `kegiatan` (
-  `id_keg` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` int(11) NOT NULL,
-  `jenis` varchar(50) NOT NULL,
-  `nilai` varchar(1) NOT NULL,
-  `ket` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kegiatans`
 --
 
 CREATE TABLE `kegiatans` (
   `id` int(11) NOT NULL,
-  `waktu` date NOT NULL DEFAULT current_timestamp(),
+  `waktu` timestamp NOT NULL DEFAULT current_timestamp(),
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kegiatans_images`
---
-
-CREATE TABLE `kegiatans_images` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -41605,20 +41111,6 @@ CREATE TABLE `kkmku` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentar`
---
-
-CREATE TABLE `komentar` (
-  `id_komentar` int(11) NOT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_komentator` varchar(36) NOT NULL,
-  `isi_komen` text NOT NULL,
-  `tanggal_komen` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kompetensi`
 --
 
@@ -41669,7 +41161,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_conf`, `tapel`, `semester`, `maintenis`, `nama_sekolah`, `alamat_sekolah`, `image_login`, `versi`) VALUES
-(1, '2022/2023', 2, 0, 'SD Islam Al-Jannah', 'Jl. Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu', 'images/logo.png', '14.01.03');
+(1, '2022/2023', 2, 0, 'SD Islam Al-Jannah', 'Jalan Raya Gabuswetan No. 1 Desa Gabuswetan Kec. Gabuswetan Indramayu 45263', 'images/IMG-65a5889db065e3.08756654.png', '14.01.03');
 
 -- --------------------------------------------------------
 
@@ -41823,7 +41315,24 @@ INSERT INTO `log` (`id`, `ptk_id`, `logDate`, `activity`) VALUES
 (10, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:49:15', 'Login ke Sistem'),
 (11, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:31', 'Keluar dari Sistem'),
 (12, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-03 23:52:48', 'Login ke Sistem'),
-(13, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-08 23:56:20', 'Login ke Sistem');
+(13, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-08 23:56:20', 'Login ke Sistem'),
+(14, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-10 22:08:46', 'Login ke Sistem'),
+(15, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:05:14', 'Keluar dari Sistem'),
+(16, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:05:29', 'Login ke Sistem'),
+(17, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:12:42', 'Keluar dari Sistem'),
+(18, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:12:59', 'Login ke Sistem'),
+(19, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:26:19', 'Keluar dari Sistem'),
+(20, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 02:26:27', 'Login ke Sistem'),
+(21, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-11 18:01:23', 'Login ke Sistem'),
+(22, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 06:08:35', 'Login ke Sistem'),
+(23, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 12:24:42', 'Keluar dari Sistem'),
+(24, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-12 06:24:56', 'Login ke Sistem'),
+(25, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-15 18:48:31', 'Login ke Sistem'),
+(26, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 15:34:34', 'Login ke Sistem'),
+(27, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 23:12:21', 'Keluar dari Sistem'),
+(28, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-16 17:15:01', 'Login ke Sistem'),
+(29, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-17 17:13:22', 'Login ke Sistem'),
+(30, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-22 02:38:51', 'Login ke Sistem');
 
 -- --------------------------------------------------------
 
@@ -41880,32 +41389,6 @@ INSERT INTO `mapel` (`id_mapel`, `kd_mapel`, `nama_mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mapel_dta`
---
-
-CREATE TABLE `mapel_dta` (
-  `id_mapel` int(11) NOT NULL,
-  `kd_mapel` varchar(4) NOT NULL,
-  `nama_mapel` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mapel_dta`
---
-
-INSERT INTO `mapel_dta` (`id_mapel`, `kd_mapel`, `nama_mapel`) VALUES
-(1, 'AQ', 'Alqur\'an'),
-(2, 'HD', 'Hadits'),
-(3, 'AD', 'Akidah'),
-(4, 'AK', 'Akhlak'),
-(5, 'FQ', 'Fiqih'),
-(6, 'TI', 'Tarikh Islam'),
-(7, 'BA', 'Bahasa Arab'),
-(8, 'MLK', 'Mulok');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `mata_pelajaran`
 --
 
@@ -41920,30 +41403,24 @@ CREATE TABLE `mata_pelajaran` (
 --
 
 INSERT INTO `mata_pelajaran` (`id_mapel`, `kd_mapel`, `nama_mapel`) VALUES
-(1, 'PAI', 'Pendidikan Agama Islam dan Budi Pekerti'),
-(2, 'PP', 'Pendidikan Pancasila'),
-(3, 'BIN', 'Bahasa Indonesia'),
-(4, 'MTK', 'Matematika'),
-(5, 'IPAS', 'Ilmu Pengetahuan Alam dan Sosial'),
-(6, 'PJOK', 'Pendidikan Jasmani Olahraga dan Kesehatan'),
-(7, 'SR', 'Seni Rupa'),
-(8, 'BIG', 'Bahasa Inggris'),
-(9, 'BID', 'Bahasa Indramayu');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `materi_dta`
---
-
-CREATE TABLE `materi_dta` (
-  `id_lm` int(11) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `lm` varchar(2) NOT NULL,
-  `nama_lm` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 'PAI', 'Pendidikan Al-Islam'),
+(2, 'FI', 'Fiqih Ibadah'),
+(3, 'PAH', 'Pendidikan Al-Quran Hadits'),
+(4, 'PKM', 'Pendidikan Kemuhammadiyahan'),
+(5, 'PBA', 'Pendidikan Bahasa Arab'),
+(6, 'PPKn', 'Pendidikan Pancasila dan Kewarganegaraan'),
+(7, 'BIN', 'Bahasa Indonesia'),
+(8, 'MTK', 'Matematika'),
+(9, 'IPAS', 'Ilmu Pengetahuan Alam dan Sosial'),
+(10, 'SR', 'Seni Rupa'),
+(11, 'SM', 'Seni Musik'),
+(12, 'SL', 'Seni Lukis'),
+(13, 'PJOK', 'Pendidikan Jasmani, Olahraga, dan Kesehatan'),
+(14, 'BIG', 'Bahasa Inggris'),
+(15, 'BJW', 'Bahasa Jawa'),
+(16, 'TIK', 'Teknologi Informasi dan Komunikasi (TIK)'),
+(17, 'HW', 'Hizbul Wathan'),
+(18, 'TFD', 'Tahfidz');
 
 -- --------------------------------------------------------
 
@@ -41956,33 +41433,6 @@ CREATE TABLE `mengajar` (
   `tapel` varchar(9) NOT NULL,
   `ptk_id` varchar(36) NOT NULL,
   `rombel` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
-CREATE TABLE `messages` (
-  `msg_id` int(11) NOT NULL,
-  `incoming_msg_id` int(255) NOT NULL,
-  `outgoing_msg_id` int(255) NOT NULL,
-  `msg` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nasabah`
---
-
-CREATE TABLE `nasabah` (
-  `id` int(11) NOT NULL,
-  `nasabah_id` varchar(10) NOT NULL,
-  `user_id` varchar(36) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `jenis` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42275,39 +41725,6 @@ INSERT INTO `pekerjaan` (`id_pekerjaan`, `nama_pekerjaan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
---
-
-CREATE TABLE `pembayaran` (
-  `id_bayar` int(11) NOT NULL,
-  `id_invoice` varchar(50) NOT NULL,
-  `tanggal` date NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `jenis` int(11) NOT NULL,
-  `bulan` int(11) DEFAULT NULL,
-  `deskripsi` varchar(200) NOT NULL,
-  `bayar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pembayaran_temp`
---
-
-CREATE TABLE `pembayaran_temp` (
-  `id_bayar` int(11) NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `jenis` int(11) NOT NULL,
-  `bulan` int(11) DEFAULT NULL,
-  `deskripsi` varchar(300) DEFAULT NULL,
-  `bayar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pembelajaran`
 --
 
@@ -42347,6 +41764,13 @@ CREATE TABLE `pemetaan_proyek` (
   `proyek` int(11) NOT NULL,
   `dimensi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pemetaan_proyek`
+--
+
+INSERT INTO `pemetaan_proyek` (`id_pemetaan`, `proyek`, `dimensi`) VALUES
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -42434,6 +41858,20 @@ CREATE TABLE `penempatan` (
   `smt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `penempatan`
+--
+
+INSERT INTO `penempatan` (`id_rombel`, `peserta_didik_id`, `nama`, `rombel`, `tapel`, `smt`) VALUES
+(1, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', 'tes', '1A', '2022/2023', 2),
+(2, '3xjq0umj-yz2m-vamr-qbbb-wdhvyoy5eigv', 'hu', '1B', '2022/2023', 2),
+(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', 'me', '1A', '2022/2023', 2),
+(4, '', '', '', '', 0),
+(5, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', 'yoa', '1A', '2022/2023', 2),
+(6, '9wc8g0z3-fhfa-u380-8cfr-y6wudqrn2eju', 'Angga Dwi Saputra', '1A', '2022/2023', 2),
+(7, 'n3sg3dns-97w0-gz3j-b9de-7an5rt05bsyd', 'Dewi Septia Acha', '2A', '2022/2023', 2),
+(8, 'dj9f36ts-k1ta-1t3c-ciwc-88d8k6jv3j1h', 'Mahfudin Obito', '1B', '2022/2023', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -42456,7 +41894,8 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id`, `ptk_id`, `username`, `password`, `nama_lengkap`, `level`, `verified`, `gambar`) VALUES
-(1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'admin', '$2y$10$nHhU9luEd4o9T8rcr33lLuEz.OshJGT6u/rDVvDeKULHEQ7ZETdqa', 'Administrator', 11, 1, 'avatar_1234914804.jpeg');
+(1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'admin', '$2y$10$AA.AJ0acnB/jofl7cKN6cOHncAKoJJh8Up9sZf.YPMUk.toU.e1lO', 'Operator', 11, 1, 'avatar_1234914804.jpeg'),
+(2, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', 'guru1', '$2y$10$I/mL3e7FqSJgQyEUimK2HuzOiJPS.NwFNkmKCtf0yYs7KDwlBGI4q', 'Guru 1', 98, 1, 'user-default.png');
 
 -- --------------------------------------------------------
 
@@ -42535,21 +41974,21 @@ CREATE TABLE `penilaian_proyek` (
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `pesan`
+-- Dumping data for table `penilaian_proyek`
 --
 
-CREATE TABLE `pesan` (
-  `id_pesan` int(10) NOT NULL,
-  `id_pengirim` varchar(36) NOT NULL,
-  `id_penerima` varchar(36) NOT NULL,
-  `tanggal` date NOT NULL,
-  `judul_pesan` varchar(50) NOT NULL,
-  `isi_pesan` longtext NOT NULL,
-  `sudah_dibaca` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `penilaian_proyek` (`id_penilaian`, `peserta_didik_id`, `kelas`, `tapel`, `smt`, `proyek`, `id_elemen`, `dimensi`, `nilai`) VALUES
+(1, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 1, 1, 1),
+(2, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 2, 1, 2),
+(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 3, 1, 2),
+(4, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 4, 1, 1),
+(5, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 5, 1, 2),
+(6, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 6, 1, 2),
+(7, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 7, 1, 1),
+(8, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 8, 1, 1),
+(9, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 9, 1, 2),
+(10, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 1, 10, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -42579,40 +42018,6 @@ CREATE TABLE `peserta_us` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pkg`
---
-
-CREATE TABLE `pkg` (
-  `id_pkg` int(11) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `ptk_id` varchar(36) NOT NULL,
-  `kd_komp` int(11) NOT NULL,
-  `kd_indikator` int(11) NOT NULL,
-  `nilai` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `potongan_gaji`
---
-
-CREATE TABLE `potongan_gaji` (
-  `id` int(11) NOT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `bulan` varchar(2) NOT NULL,
-  `tahun` int(11) NOT NULL,
-  `hari` int(11) DEFAULT 0,
-  `absen` int(11) DEFAULT 0,
-  `ekskul` int(11) DEFAULT 0,
-  `telat` int(11) DEFAULT 0,
-  `cepat` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `prestasi`
 --
 
@@ -42636,21 +42041,6 @@ INSERT INTO `prestasi` (`idprestasi`, `peserta_didik_id`, `prestasi`, `tahun`, `
 (2, '93934c18-e0dd-e111-8468-8d010f14253e', 'Lomba Cipta Baca Puisi', '2016', 'UPTD Kecamatan', 'Kecamatan', '1', ''),
 (3, 'a0ba4c18-e0dd-e111-8468-8d010f14253e', 'Lomba Membatik', '2016', 'UPTD Kecamatan', 'Kecamatan', '1', ''),
 (4, 'c05a8bf0-3ba2-11e3-9efc-fb46fe1a1bf9', 'Lomba Calistung Kelas 3', '2016', 'UPTD Kecamatan', 'Kecamatan', '1', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `printer`
---
-
-CREATE TABLE `printer` (
-  `id_printer` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL,
-  `spp` varchar(100) NOT NULL,
-  `tabungan` varchar(100) NOT NULL,
-  `kwitansi` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -42737,38 +42127,8 @@ CREATE TABLE `ptk` (
 --
 
 INSERT INTO `ptk` (`id`, `ptk_id`, `nama`, `gelar`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `nik`, `status_perkawinan`, `niy_nigk`, `nuptk`, `status_kepegawaian_id`, `jenis_ptk_id`, `tmt`, `alamat_jalan`, `no_hp`, `email`, `status_keaktifan_id`, `gambar`, `nasabah_id`) VALUES
-(2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'Operator', '', 'L', 'Indramayu', '1988-01-10', '', 2, '', '', 4, 11, '0000-00-00', '', '', '', 1, 'avatar_1265626780.png', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pts_dta`
---
-
-CREATE TABLE `pts_dta` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ranking_dta`
---
-
-CREATE TABLE `ranking_dta` (
-  `id_rank` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` varchar(2) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(64, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', 'Adiyanto', '', 'L', 'Indramayu', '1990-01-17', '', 1, '', '', 1, 5, '2024-01-24', '', '', '', 1, 'avatar_1338064633.png', '0'),
+(2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'Operator', 'S.Pd.', 'L', 'Indramayu', '1988-01-10', '789', 2, '', '', 4, 11, '2023-01-01', '', '', '', 1, 'avatar_1265626780.png', '');
 
 -- --------------------------------------------------------
 
@@ -42784,6 +42144,15 @@ CREATE TABLE `ranking_ikm` (
   `smt` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ranking_ikm`
+--
+
+INSERT INTO `ranking_ikm` (`id_rank`, `id_pd`, `kelas`, `tapel`, `smt`, `jumlah`) VALUES
+(1, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', '2022/2023', 2, 0),
+(2, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', '1A', '2022/2023', 2, 0),
+(3, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', '1A', '2022/2023', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -42805,22 +42174,6 @@ CREATE TABLE `raport` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `raport_dta`
---
-
-CREATE TABLE `raport_dta` (
-  `id_raport` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` varchar(2) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` double(11,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `raport_ikm`
 --
 
@@ -42834,6 +42187,17 @@ CREATE TABLE `raport_ikm` (
   `nilai` double(11,2) NOT NULL DEFAULT 0.00,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `raport_ikm`
+--
+
+INSERT INTO `raport_ikm` (`id_raport`, `id_pd`, `kelas`, `smt`, `tapel`, `mapel`, `nilai`, `deskripsi`) VALUES
+(1, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', 2, '2022/2023', 4, 0.00, 'Menunjukkan pemahaman sangat baik dalam |Perlu bantuan dalam '),
+(2, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', '1A', 2, '2022/2023', 4, 0.00, 'Menunjukkan pemahaman sangat baik dalam |Perlu bantuan dalam '),
+(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '1A', 2, '2022/2023', 1, 0.00, 'Menunjukkan pemahaman sangat baik dalam |Perlu bantuan dalam '),
+(4, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', '1A', 2, '2022/2023', 1, 0.00, 'Menunjukkan pemahaman sangat baik dalam |Perlu bantuan dalam '),
+(5, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', '1A', 2, '2022/2023', 1, 0.00, 'Menunjukkan pemahaman sangat baik dalam |Perlu bantuan dalam ');
 
 -- --------------------------------------------------------
 
@@ -42919,6 +42283,15 @@ CREATE TABLE `rombel` (
   `inggris` varchar(36) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `rombel`
+--
+
+INSERT INTO `rombel` (`id_rombel`, `nama_rombel`, `kurikulum`, `tapel`, `smt`, `wali_kelas`, `pendamping`, `pai`, `penjas`, `inggris`) VALUES
+(1, '1A', 'Kurikulum Merdeka', '2022/2023', 2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '', '', '', ''),
+(2, '1B', 'Kurikulum 2013', '2022/2023', 2, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '', '', '', ''),
+(3, '2A', 'Kurikulum Merdeka', '2022/2023', 2, 'ddzm6nmb-hs7n-qe3g-hyoy-pjdf4wn971su', ' ', ' ', ' ', ' ');
+
 -- --------------------------------------------------------
 
 --
@@ -43001,46 +42374,6 @@ INSERT INTO `sekolah` (`sekolah_id`, `nama`, `nss`, `npsn`, `bentuk_pendidikan_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting_dokumen`
---
-
-CREATE TABLE `setting_dokumen` (
-  `id_setting` int(11) NOT NULL,
-  `tutup` int(11) NOT NULL,
-  `tanggal` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `setting_dokumen`
---
-
-INSERT INTO `setting_dokumen` (`id_setting`, `tutup`, `tanggal`) VALUES
-(1, 0, 'Nov 19, 2024 23:59:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shift`
---
-
-CREATE TABLE `shift` (
-  `id_shift` int(11) NOT NULL,
-  `tanggal_awal` date NOT NULL,
-  `tanggal_akhir` date NOT NULL,
-  `masuk` time NOT NULL,
-  `keluar` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `shift`
---
-
-INSERT INTO `shift` (`id_shift`, `tanggal_awal`, `tanggal_akhir`, `masuk`, `keluar`) VALUES
-(3, '2023-08-07', '2023-08-10', '07:00:00', '15:45:00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `sikap`
 --
 
@@ -43092,6 +42425,19 @@ CREATE TABLE `siswa` (
   `nasabah_id` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`id`, `peserta_didik_id`, `nis`, `nisn`, `nama`, `jk`, `tempat`, `tanggal`, `nik`, `agama`, `pend_sebelum`, `alamat`, `nama_ayah`, `nama_ibu`, `no_wa`, `pek_ayah`, `pek_ibu`, `jalan`, `kelurahan`, `kecamatan`, `kabupaten`, `provinsi`, `avatar`, `status`, `nasabah_id`) VALUES
+(1, 'oled14dg-t8x0-1gnh-mype-t0qe48ne2i6l', '', '', 'tes', 'L', 'indramayu', '2024-01-02', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
+(2, '3xjq0umj-yz2m-vamr-qbbb-wdhvyoy5eigv', '', '', 'hu', 'L', 'indramayu', '2024-01-02', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
+(3, 'qt3g6fak-ehzg-vru9-2nh9-jxtcnyeahuix', '', '', 'Siswa 1', 'L', 'Ind', '2024-01-01', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
+(4, 'g8mggwlc-7m1c-pomw-o8jr-qrkfr5fhinzq', '', '', 'yoa', 'L', 'ind', '2024-01-01', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0'),
+(17, '9wc8g0z3-fhfa-u380-8cfr-y6wudqrn2eju', '', '', 'Angga Dwi Saputra', 'L', 'Indramayu', '2020-01-14', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, ''),
+(18, 'n3sg3dns-97w0-gz3j-b9de-7an5rt05bsyd', '', '', 'Dewi Septia Acha', 'P', 'Cirebon', '2000-05-19', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, ''),
+(19, 'dj9f36ts-k1ta-1t3c-ciwc-88d8k6jv3j1h', '', '', 'Mahfudin Obito', 'L', 'Klaten', '2010-03-03', '', 1, '', '', '', '', '', 0, 0, '', '', '', '', '', '', 1, '');
+
 -- --------------------------------------------------------
 
 --
@@ -43136,38 +42482,6 @@ CREATE TABLE `sk_aktif` (
   `peserta_didik_id` varchar(36) NOT NULL,
   `kelas` varchar(20) NOT NULL,
   `tapel` varchar(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `slip_gaji`
---
-
-CREATE TABLE `slip_gaji` (
-  `id` int(11) NOT NULL,
-  `ptk_id` varchar(36) NOT NULL,
-  `bulan` varchar(2) NOT NULL,
-  `tahun` varchar(4) NOT NULL,
-  `gapok` int(11) NOT NULL,
-  `tunj_transport` int(11) NOT NULL,
-  `tunj_jabatan` int(11) NOT NULL,
-  `tunj_lain` int(11) NOT NULL,
-  `tunj_kehadiran` int(11) NOT NULL,
-  `tunj_ekskul` int(11) NOT NULL,
-  `pot_telat` int(11) NOT NULL,
-  `pot_cepat` int(11) NOT NULL,
-  `pot_absen` int(11) NOT NULL,
-  `pot_ketidakhadiran` int(11) NOT NULL,
-  `pot_ekskul` int(11) NOT NULL,
-  `hari_kerja` int(11) NOT NULL,
-  `kehadiran` int(11) NOT NULL,
-  `absensi` int(11) NOT NULL,
-  `telat` int(11) NOT NULL,
-  `cepat` int(11) NOT NULL,
-  `total_gaji` int(11) NOT NULL,
-  `total_pot` int(11) NOT NULL,
-  `gaji_bersih` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43302,99 +42616,6 @@ CREATE TABLE `sumatif` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `surah`
---
-
-CREATE TABLE `surah` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `surah`
---
-
-INSERT INTO `surah` (`id`, `nama`) VALUES
-(1, 'Al-Baqarah 1-8'),
-(2, 'Al-Baqarah 183'),
-(3, 'Al-Baqarah 255'),
-(4, 'Al-Baqarah 284-286'),
-(5, 'Al-Baqarah 153-157'),
-(6, 'Luqman 12-19'),
-(7, 'Ar-Rahman 1-6'),
-(8, 'Ar-Rahman 7-13'),
-(9, 'Al-Mu\'minin 1-4'),
-(10, 'Al-Mu\'minin 5-9'),
-(11, 'Al-Mu\'minin 10-11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `surah_pilihan`
---
-
-CREATE TABLE `surah_pilihan` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `surah` int(11) NOT NULL,
-  `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `surat_ijin`
---
-
-CREATE TABLE `surat_ijin` (
-  `id` int(11) NOT NULL,
-  `no_surat` varchar(100) NOT NULL,
-  `ptk_id` varchar(36) NOT NULL,
-  `tanggal_awal` date NOT NULL,
-  `tanggal_akhir` date NOT NULL,
-  `keterangan` varchar(10) NOT NULL,
-  `alasan` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL,
-  `penolakan` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tabungan`
---
-
-CREATE TABLE `tabungan` (
-  `id` int(11) NOT NULL,
-  `tanggal` date DEFAULT NULL,
-  `kode` int(11) NOT NULL,
-  `nasabah_id` varchar(10) NOT NULL,
-  `masuk` bigint(20) DEFAULT 0,
-  `keluar` bigint(20) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tahfidz`
---
-
-CREATE TABLE `tahfidz` (
-  `idNH` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `surah` int(11) NOT NULL,
-  `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tapel`
 --
 
@@ -43418,32 +42639,6 @@ INSERT INTO `tapel` (`id_tapel`, `nama_tapel`) VALUES
 (16, '2022/2023'),
 (17, '2023/2024'),
 (18, '2014/2015');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tarif_spp`
---
-
-CREATE TABLE `tarif_spp` (
-  `id` int(11) NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `tarif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `telegram`
---
-
-CREATE TABLE `telegram` (
-  `id` int(11) NOT NULL,
-  `iduser` varchar(100) NOT NULL,
-  `nama` varchar(200) NOT NULL,
-  `nis` varchar(15) NOT NULL,
-  `username` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43523,9 +42718,17 @@ CREATE TABLE `titimangsa` (
   `id` int(11) NOT NULL,
   `smt` int(11) NOT NULL,
   `tapel` varchar(9) NOT NULL,
+  `tempat` varchar(100) NOT NULL,
   `tanggal` varchar(50) NOT NULL,
   `tanggal2` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `titimangsa`
+--
+
+INSERT INTO `titimangsa` (`id`, `smt`, `tapel`, `tempat`, `tanggal`, `tanggal2`) VALUES
+(1, 2, '2022/2023', 'Gabuswetan', '2024-01-05', '2024-01-19');
 
 -- --------------------------------------------------------
 
@@ -43572,51 +42775,6 @@ INSERT INTO `transportasi` (`id_transportasi`, `nama_transportasi`) VALUES
 (13, 'Sepeda motor'),
 (14, 'Mobil pribadi'),
 (99, 'Lainnya');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tryout`
---
-
-CREATE TABLE `tryout` (
-  `id_to` int(11) NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `toke` int(11) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tugas`
---
-
-CREATE TABLE `tugas` (
-  `id_tugas` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `tugas_ke` int(11) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` float(11,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tunggakan_lain`
---
-
-CREATE TABLE `tunggakan_lain` (
-  `id` int(11) NOT NULL,
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `tapel` varchar(9) NOT NULL,
-  `jenis` int(11) NOT NULL,
-  `tarif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43680,156 +42838,9 @@ CREATE TABLE `ulhar` (
   `nilai` float(11,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `unique_id` int(255) NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usm1`
---
-
-CREATE TABLE `usm1` (
-  `id` int(11) NOT NULL,
-  `nis` varchar(10) DEFAULT NULL,
-  `nopes` varchar(20) DEFAULT NULL,
-  `pair` varchar(4) DEFAULT NULL,
-  `paiu` varchar(4) DEFAULT NULL,
-  `pais` varchar(4) DEFAULT NULL,
-  `pknr` varchar(4) DEFAULT NULL,
-  `pknu` varchar(4) DEFAULT NULL,
-  `pkns` varchar(4) DEFAULT NULL,
-  `binr` varchar(4) DEFAULT NULL,
-  `binu` varchar(4) DEFAULT NULL,
-  `bins` varchar(4) DEFAULT NULL,
-  `mtkr` varchar(4) DEFAULT NULL,
-  `mtku` varchar(4) DEFAULT NULL,
-  `mtks` varchar(4) DEFAULT NULL,
-  `ipar` varchar(4) DEFAULT NULL,
-  `ipau` varchar(4) DEFAULT NULL,
-  `ipas` varchar(4) DEFAULT NULL,
-  `ipsr` varchar(4) DEFAULT NULL,
-  `ipsu` varchar(4) DEFAULT NULL,
-  `ipss` varchar(4) DEFAULT NULL,
-  `sbkr` varchar(4) DEFAULT NULL,
-  `sbku` varchar(4) DEFAULT NULL,
-  `sbks` varchar(4) DEFAULT NULL,
-  `pjkr` varchar(4) DEFAULT NULL,
-  `pjku` varchar(4) DEFAULT NULL,
-  `pjks` varchar(4) DEFAULT NULL,
-  `bidr` varchar(4) DEFAULT NULL,
-  `bidu` varchar(4) DEFAULT NULL,
-  `bids` varchar(4) DEFAULT NULL,
-  `bigr` varchar(4) DEFAULT NULL,
-  `bigu` varchar(4) DEFAULT NULL,
-  `bigs` varchar(4) DEFAULT NULL,
-  `pbpr` varchar(4) DEFAULT NULL,
-  `pbpu` varchar(4) DEFAULT NULL,
-  `pbps` varchar(4) DEFAULT NULL,
-  `binun` varchar(4) DEFAULT NULL,
-  `mtkun` varchar(4) DEFAULT NULL,
-  `ipaun` varchar(4) DEFAULT NULL,
-  `rataun` varchar(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `us_praktek`
---
-
-CREATE TABLE `us_praktek` (
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `pai` decimal(10,2) NOT NULL,
-  `bin` decimal(10,2) NOT NULL,
-  `ipa` decimal(10,2) NOT NULL,
-  `bid` decimal(10,2) NOT NULL,
-  `big` decimal(10,2) NOT NULL,
-  `pjk` decimal(10,2) NOT NULL,
-  `sbk` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `us_tulis`
---
-
-CREATE TABLE `us_tulis` (
-  `peserta_didik_id` varchar(36) NOT NULL,
-  `pai` decimal(10,2) NOT NULL,
-  `pkn` decimal(10,2) NOT NULL,
-  `ips` decimal(10,2) NOT NULL,
-  `bid` decimal(10,2) NOT NULL,
-  `big` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `uts`
---
-
-CREATE TABLE `uts` (
-  `id_uts` int(11) NOT NULL,
-  `id_pd` varchar(36) NOT NULL,
-  `kelas` int(11) NOT NULL,
-  `smt` int(11) NOT NULL,
-  `tapel` varchar(10) NOT NULL,
-  `mapel` int(11) NOT NULL,
-  `nilai` float(11,2) NOT NULL DEFAULT 0.00,
-  `oleh` varchar(36) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `video`
---
-
-CREATE TABLE `video` (
-  `id_video` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `link` varchar(150) NOT NULL,
-  `judul` varchar(200) NOT NULL,
-  `uri` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `absensi`
---
-ALTER TABLE `absensi`
-  ADD PRIMARY KEY (`id_absen`);
-
---
--- Indexes for table `absensi_ptk`
---
-ALTER TABLE `absensi_ptk`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `absen_config`
---
-ALTER TABLE `absen_config`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `agama`
@@ -43844,28 +42855,10 @@ ALTER TABLE `anak`
   ADD PRIMARY KEY (`id_anak`);
 
 --
--- Indexes for table `arbain`
---
-ALTER TABLE `arbain`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `berita`
---
-ALTER TABLE `berita`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `berita_acara`
 --
 ALTER TABLE `berita_acara`
   ADD PRIMARY KEY (`id_bap`);
-
---
--- Indexes for table `bulan_spp`
---
-ALTER TABLE `bulan_spp`
-  ADD PRIMARY KEY (`id_bulan`);
 
 --
 -- Indexes for table `catatan`
@@ -43929,18 +42922,6 @@ ALTER TABLE `dimensi_proyek`
   ADD PRIMARY KEY (`id_dimensi`);
 
 --
--- Indexes for table `doa`
---
-ALTER TABLE `doa`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `doa_harian`
---
-ALTER TABLE `doa_harian`
-  ADD PRIMARY KEY (`idNH`);
-
---
 -- Indexes for table `ekskul`
 --
 ALTER TABLE `ekskul`
@@ -43953,76 +42934,10 @@ ALTER TABLE `elemen_proyek`
   ADD PRIMARY KEY (`id_elemen`);
 
 --
--- Indexes for table `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `filepkg`
---
-ALTER TABLE `filepkg`
-  ADD PRIMARY KEY (`id_penilaian`);
-
---
 -- Indexes for table `formatif`
 --
 ALTER TABLE `formatif`
   ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `form_data`
---
-ALTER TABLE `form_data`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gajipokok`
---
-ALTER TABLE `gajipokok`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`gallery_id`);
-
---
--- Indexes for table `hadits`
---
-ALTER TABLE `hadits`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hadits_arbain`
---
-ALTER TABLE `hadits_arbain`
-  ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `hadits_pilihan`
---
-ALTER TABLE `hadits_pilihan`
-  ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `hafalan`
---
-ALTER TABLE `hafalan`
-  ADD PRIMARY KEY (`id_hafalan`);
-
---
--- Indexes for table `harilibur`
---
-ALTER TABLE `harilibur`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hari_efektif`
---
-ALTER TABLE `hari_efektif`
-  ADD PRIMARY KEY (`id_hari`);
 
 --
 -- Indexes for table `id_pegawai`
@@ -44037,22 +42952,10 @@ ALTER TABLE `ijazah`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ijin_ptk`
---
-ALTER TABLE `ijin_ptk`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `indikator`
 --
 ALTER TABLE `indikator`
   ADD PRIMARY KEY (`id_indikator`);
-
---
--- Indexes for table `invoice`
---
-ALTER TABLE `invoice`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jadwalku`
@@ -44104,12 +43007,6 @@ ALTER TABLE `jns_tinggal`
   ADD PRIMARY KEY (`id_jns_tinggal`);
 
 --
--- Indexes for table `juzamma`
---
-ALTER TABLE `juzamma`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
@@ -44159,23 +43056,10 @@ ALTER TABLE `kecamatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kegiatan`
---
-ALTER TABLE `kegiatan`
-  ADD PRIMARY KEY (`id_keg`);
-
---
 -- Indexes for table `kegiatans`
 --
 ALTER TABLE `kegiatans`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kegiatans_images`
---
-ALTER TABLE `kegiatans_images`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `kelurahan`
@@ -44194,12 +43078,6 @@ ALTER TABLE `kkm`
 --
 ALTER TABLE `kkmku`
   ADD PRIMARY KEY (`id_kkm`);
-
---
--- Indexes for table `komentar`
---
-ALTER TABLE `komentar`
-  ADD PRIMARY KEY (`id_komentar`);
 
 --
 -- Indexes for table `kompetensi`
@@ -44244,40 +43122,16 @@ ALTER TABLE `mapel`
   ADD PRIMARY KEY (`id_mapel`);
 
 --
--- Indexes for table `mapel_dta`
---
-ALTER TABLE `mapel_dta`
-  ADD PRIMARY KEY (`id_mapel`);
-
---
 -- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id_mapel`);
 
 --
--- Indexes for table `materi_dta`
---
-ALTER TABLE `materi_dta`
-  ADD PRIMARY KEY (`id_lm`);
-
---
 -- Indexes for table `mengajar`
 --
 ALTER TABLE `mengajar`
   ADD PRIMARY KEY (`id_mengajar`);
-
---
--- Indexes for table `messages`
---
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`msg_id`);
-
---
--- Indexes for table `nasabah`
---
-ALTER TABLE `nasabah`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `nats`
@@ -44376,18 +43230,6 @@ ALTER TABLE `pekerjaan`
   ADD PRIMARY KEY (`id_pekerjaan`);
 
 --
--- Indexes for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_bayar`);
-
---
--- Indexes for table `pembayaran_temp`
---
-ALTER TABLE `pembayaran_temp`
-  ADD PRIMARY KEY (`id_bayar`);
-
---
 -- Indexes for table `pembelajaran`
 --
 ALTER TABLE `pembelajaran`
@@ -44455,12 +43297,6 @@ ALTER TABLE `penilaian_proyek`
   ADD PRIMARY KEY (`id_penilaian`);
 
 --
--- Indexes for table `pesan`
---
-ALTER TABLE `pesan`
-  ADD PRIMARY KEY (`id_pesan`);
-
---
 -- Indexes for table `pesertaun`
 --
 ALTER TABLE `pesertaun`
@@ -44473,28 +43309,10 @@ ALTER TABLE `peserta_us`
   ADD UNIQUE KEY `peserta_didik_id` (`peserta_didik_id`);
 
 --
--- Indexes for table `pkg`
---
-ALTER TABLE `pkg`
-  ADD PRIMARY KEY (`id_pkg`);
-
---
--- Indexes for table `potongan_gaji`
---
-ALTER TABLE `potongan_gaji`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `prestasi`
 --
 ALTER TABLE `prestasi`
   ADD PRIMARY KEY (`idprestasi`);
-
---
--- Indexes for table `printer`
---
-ALTER TABLE `printer`
-  ADD PRIMARY KEY (`id_printer`);
 
 --
 -- Indexes for table `provinsi`
@@ -44510,18 +43328,6 @@ ALTER TABLE `ptk`
   ADD UNIQUE KEY `ptk_id` (`ptk_id`);
 
 --
--- Indexes for table `pts_dta`
---
-ALTER TABLE `pts_dta`
-  ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `ranking_dta`
---
-ALTER TABLE `ranking_dta`
-  ADD PRIMARY KEY (`id_rank`);
-
---
 -- Indexes for table `ranking_ikm`
 --
 ALTER TABLE `ranking_ikm`
@@ -44531,12 +43337,6 @@ ALTER TABLE `ranking_ikm`
 -- Indexes for table `raport`
 --
 ALTER TABLE `raport`
-  ADD PRIMARY KEY (`id_raport`);
-
---
--- Indexes for table `raport_dta`
---
-ALTER TABLE `raport_dta`
   ADD PRIMARY KEY (`id_raport`);
 
 --
@@ -44588,18 +43388,6 @@ ALTER TABLE `sekolah`
   ADD UNIQUE KEY `sekolah_id` (`sekolah_id`);
 
 --
--- Indexes for table `setting_dokumen`
---
-ALTER TABLE `setting_dokumen`
-  ADD PRIMARY KEY (`id_setting`);
-
---
--- Indexes for table `shift`
---
-ALTER TABLE `shift`
-  ADD PRIMARY KEY (`id_shift`);
-
---
 -- Indexes for table `sikap`
 --
 ALTER TABLE `sikap`
@@ -44628,12 +43416,6 @@ ALTER TABLE `skkb`
 -- Indexes for table `sk_aktif`
 --
 ALTER TABLE `sk_aktif`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `slip_gaji`
---
-ALTER TABLE `slip_gaji`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -44679,52 +43461,10 @@ ALTER TABLE `sumatif`
   ADD PRIMARY KEY (`idNH`);
 
 --
--- Indexes for table `surah`
---
-ALTER TABLE `surah`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `surah_pilihan`
---
-ALTER TABLE `surah_pilihan`
-  ADD PRIMARY KEY (`idNH`);
-
---
--- Indexes for table `surat_ijin`
---
-ALTER TABLE `surat_ijin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tabungan`
---
-ALTER TABLE `tabungan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tahfidz`
---
-ALTER TABLE `tahfidz`
-  ADD PRIMARY KEY (`idNH`);
-
---
 -- Indexes for table `tapel`
 --
 ALTER TABLE `tapel`
   ADD PRIMARY KEY (`id_tapel`);
-
---
--- Indexes for table `tarif_spp`
---
-ALTER TABLE `tarif_spp`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `telegram`
---
-ALTER TABLE `telegram`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tema`
@@ -44769,24 +43509,6 @@ ALTER TABLE `transportasi`
   ADD PRIMARY KEY (`id_transportasi`);
 
 --
--- Indexes for table `tryout`
---
-ALTER TABLE `tryout`
-  ADD PRIMARY KEY (`id_to`);
-
---
--- Indexes for table `tugas`
---
-ALTER TABLE `tugas`
-  ADD PRIMARY KEY (`id_tugas`);
-
---
--- Indexes for table `tunggakan_lain`
---
-ALTER TABLE `tunggakan_lain`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `uas`
 --
 ALTER TABLE `uas`
@@ -44811,62 +43533,8 @@ ALTER TABLE `ulhar`
   ADD PRIMARY KEY (`id_ulhar`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `usm1`
---
-ALTER TABLE `usm1`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `us_praktek`
---
-ALTER TABLE `us_praktek`
-  ADD UNIQUE KEY `peserta_didik_id` (`peserta_didik_id`);
-
---
--- Indexes for table `us_tulis`
---
-ALTER TABLE `us_tulis`
-  ADD UNIQUE KEY `peserta_didik_id` (`peserta_didik_id`);
-
---
--- Indexes for table `uts`
---
-ALTER TABLE `uts`
-  ADD PRIMARY KEY (`id_uts`);
-
---
--- Indexes for table `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`id_video`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `absensi`
---
-ALTER TABLE `absensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `absensi_ptk`
---
-ALTER TABLE `absensi_ptk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `absen_config`
---
-ALTER TABLE `absen_config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `anak`
@@ -44875,28 +43543,10 @@ ALTER TABLE `anak`
   MODIFY `id_anak` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `arbain`
---
-ALTER TABLE `arbain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `berita`
---
-ALTER TABLE `berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `berita_acara`
 --
 ALTER TABLE `berita_acara`
   MODIFY `id_bap` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `bulan_spp`
---
-ALTER TABLE `bulan_spp`
-  MODIFY `id_bulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `catatan`
@@ -44926,13 +43576,13 @@ ALTER TABLE `data_kesehatan`
 -- AUTO_INCREMENT for table `data_prestasi`
 --
 ALTER TABLE `data_prestasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `data_proyek`
 --
 ALTER TABLE `data_proyek`
-  MODIFY `id_proyek` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proyek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_k13`
@@ -44947,22 +43597,10 @@ ALTER TABLE `dimensi_proyek`
   MODIFY `id_dimensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `doa`
---
-ALTER TABLE `doa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT for table `doa_harian`
---
-ALTER TABLE `doa_harian`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `ekskul`
 --
 ALTER TABLE `ekskul`
-  MODIFY `id_ekskul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ekskul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `elemen_proyek`
@@ -44971,76 +43609,10 @@ ALTER TABLE `elemen_proyek`
   MODIFY `id_elemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `filepkg`
---
-ALTER TABLE `filepkg`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `formatif`
 --
 ALTER TABLE `formatif`
   MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `form_data`
---
-ALTER TABLE `form_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `gajipokok`
---
-ALTER TABLE `gajipokok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hadits`
---
-ALTER TABLE `hadits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hadits_arbain`
---
-ALTER TABLE `hadits_arbain`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hadits_pilihan`
---
-ALTER TABLE `hadits_pilihan`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hafalan`
---
-ALTER TABLE `hafalan`
-  MODIFY `id_hafalan` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `harilibur`
---
-ALTER TABLE `harilibur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `hari_efektif`
---
-ALTER TABLE `hari_efektif`
-  MODIFY `id_hari` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `id_pegawai`
@@ -45055,22 +43627,10 @@ ALTER TABLE `ijazah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ijin_ptk`
---
-ALTER TABLE `ijin_ptk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `indikator`
 --
 ALTER TABLE `indikator`
   MODIFY `id_indikator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
-
---
--- AUTO_INCREMENT for table `invoice`
---
-ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jadwalku`
@@ -45089,12 +43649,6 @@ ALTER TABLE `jenis_tunggakan`
 --
 ALTER TABLE `jenjang_pendidikan`
   MODIFY `id_jenjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `juzamma`
---
-ALTER TABLE `juzamma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -45127,21 +43681,9 @@ ALTER TABLE `keahlian`
   MODIFY `idke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kegiatan`
---
-ALTER TABLE `kegiatan`
-  MODIFY `id_keg` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `kegiatans`
 --
 ALTER TABLE `kegiatans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kegiatans_images`
---
-ALTER TABLE `kegiatans_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -45155,12 +43697,6 @@ ALTER TABLE `kkm`
 --
 ALTER TABLE `kkmku`
   MODIFY `id_kkm` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `komentar`
---
-ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kurikulum`
@@ -45178,7 +43714,7 @@ ALTER TABLE `lingkup_materi`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `loginattempts`
@@ -45193,40 +43729,16 @@ ALTER TABLE `mapel`
   MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `mapel_dta`
---
-ALTER TABLE `mapel_dta`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `materi_dta`
---
-ALTER TABLE `materi_dta`
-  MODIFY `id_lm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `mengajar`
 --
 ALTER TABLE `mengajar`
   MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `nasabah`
---
-ALTER TABLE `nasabah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nats`
@@ -45319,18 +43831,6 @@ ALTER TABLE `pas_dta`
   MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pembayaran_temp`
---
-ALTER TABLE `pembayaran_temp`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `pembelajaran`
 --
 ALTER TABLE `pembelajaran`
@@ -45346,7 +43846,7 @@ ALTER TABLE `pemetaan`
 -- AUTO_INCREMENT for table `pemetaan_proyek`
 --
 ALTER TABLE `pemetaan_proyek`
-  MODIFY `id_pemetaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemetaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pend_terakhir`
@@ -45358,13 +43858,13 @@ ALTER TABLE `pend_terakhir`
 -- AUTO_INCREMENT for table `penempatan`
 --
 ALTER TABLE `penempatan`
-  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengumuman`
@@ -45382,30 +43882,12 @@ ALTER TABLE `penilaian`
 -- AUTO_INCREMENT for table `penilaian_proyek`
 --
 ALTER TABLE `penilaian_proyek`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pesan`
---
-ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pesertaun`
 --
 ALTER TABLE `pesertaun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pkg`
---
-ALTER TABLE `pkg`
-  MODIFY `id_pkg` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `potongan_gaji`
---
-ALTER TABLE `potongan_gaji`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -45415,34 +43897,16 @@ ALTER TABLE `prestasi`
   MODIFY `idprestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `printer`
---
-ALTER TABLE `printer`
-  MODIFY `id_printer` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `ptk`
 --
 ALTER TABLE `ptk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
---
--- AUTO_INCREMENT for table `pts_dta`
---
-ALTER TABLE `pts_dta`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `ranking_dta`
---
-ALTER TABLE `ranking_dta`
-  MODIFY `id_rank` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `ranking_ikm`
 --
 ALTER TABLE `ranking_ikm`
-  MODIFY `id_rank` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `raport`
@@ -45451,16 +43915,10 @@ ALTER TABLE `raport`
   MODIFY `id_raport` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `raport_dta`
---
-ALTER TABLE `raport_dta`
-  MODIFY `id_raport` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `raport_ikm`
 --
 ALTER TABLE `raport_ikm`
-  MODIFY `id_raport` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_raport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `raport_k13`
@@ -45484,7 +43942,7 @@ ALTER TABLE `riwayat_pendidikan`
 -- AUTO_INCREMENT for table `rombel`
 --
 ALTER TABLE `rombel`
-  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `saran`
@@ -45499,12 +43957,6 @@ ALTER TABLE `sas`
   MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `shift`
---
-ALTER TABLE `shift`
-  MODIFY `id_shift` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `sikap`
 --
 ALTER TABLE `sikap`
@@ -45514,7 +43966,7 @@ ALTER TABLE `sikap`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `sk`
@@ -45532,12 +43984,6 @@ ALTER TABLE `skkb`
 -- AUTO_INCREMENT for table `sk_aktif`
 --
 ALTER TABLE `sk_aktif`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `slip_gaji`
---
-ALTER TABLE `slip_gaji`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -45577,52 +44023,10 @@ ALTER TABLE `sumatif`
   MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `surah`
---
-ALTER TABLE `surah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `surah_pilihan`
---
-ALTER TABLE `surah_pilihan`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `surat_ijin`
---
-ALTER TABLE `surat_ijin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tabungan`
---
-ALTER TABLE `tabungan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tahfidz`
---
-ALTER TABLE `tahfidz`
-  MODIFY `idNH` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tapel`
 --
 ALTER TABLE `tapel`
   MODIFY `id_tapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `tarif_spp`
---
-ALTER TABLE `tarif_spp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `telegram`
---
-ALTER TABLE `telegram`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tema`
@@ -45652,31 +44056,13 @@ ALTER TABLE `temp_pts`
 -- AUTO_INCREMENT for table `titimangsa`
 --
 ALTER TABLE `titimangsa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tp`
 --
 ALTER TABLE `tp`
   MODIFY `id_tp` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tryout`
---
-ALTER TABLE `tryout`
-  MODIFY `id_to` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tugas`
---
-ALTER TABLE `tugas`
-  MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tunggakan_lain`
---
-ALTER TABLE `tunggakan_lain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `uas`
@@ -45689,34 +44075,6 @@ ALTER TABLE `uas`
 --
 ALTER TABLE `ulhar`
   MODIFY `id_ulhar` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `uts`
---
-ALTER TABLE `uts`
-  MODIFY `id_uts` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `video`
---
-ALTER TABLE `video`
-  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `kegiatans_images`
---
-ALTER TABLE `kegiatans_images`
-  ADD CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `kegiatans` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
