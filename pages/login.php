@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html
   lang="en"
   class="light-style layout-wide customizer-hide"
@@ -13,7 +11,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login | <?=$apps['nama'];?> v<?=$apps['versi'];?></title>
+    <title>Login | <?=$apps['nama'];?></title>
 
     <meta name="description" content="" />
 
@@ -63,84 +61,31 @@
 
     <div class="authentication-wrapper authentication-cover">
       <!-- Logo -->
-      <a href="<?=base_url();?>" class="auth-cover-brand d-flex align-items-center gap-2">
-        <span class="app-brand-logo demo">
-          <span style="color: var(--bs-primary)">
-            <svg width="268" height="150" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
-                fill="currentColor" />
-              <path
-                d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
-                fill="url(#paint0_linear_2989_100980)"
-                fill-opacity="0.4" />
-              <path
-                d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
-                fill="currentColor" />
-              <path
-                d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
-                fill="currentColor" />
-              <path
-                d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
-                fill="url(#paint1_linear_2989_100980)"
-                fill-opacity="0.4" />
-              <path
-                d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
-                fill="currentColor" />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_2989_100980"
-                  x1="5.36642"
-                  y1="0.849138"
-                  x2="10.532"
-                  y2="24.104"
-                  gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-opacity="1" />
-                  <stop offset="1" stop-opacity="0" />
-                </linearGradient>
-                <linearGradient
-                  id="paint1_linear_2989_100980"
-                  x1="5.19475"
-                  y1="0.849139"
-                  x2="10.3357"
-                  y2="24.1155"
-                  gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-opacity="1" />
-                  <stop offset="1" stop-opacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </span>
-        </span>
-        <span class="app-brand-text demo text-heading fw-bold"><?=$apps['nama'];?> v<?=$apps['versi'];?></span>
-      </a>
+      
       <!-- /Logo -->
       <div class="authentication-inner row m-0">
         <!-- /Left Section -->
-        <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center justify-content-center p-5 pb-2">
-
-          <img
-            src="<?=base_url();?>assets/img/illustrations/covers.jpg"
-            class="authentication-image"
-            alt="mask"
-            data-app-light-img="illustrations/covers.jpg"
-            data-app-dark-img="illustrations/covers.jpg" />
-        </div>
+       
         <!-- /Left Section -->
 
         <!-- Login -->
 		
         <div
-          class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4" id="log-in">
-          <div class="w-px-400 mx-auto pt-5 pt-lg-0" id="statusnya">
-            <h4 class="mb-2"><?=$apps['nama'];?> v<?=$apps['versi'];?></h4>
+          class="d-flex col-12 col-lg-12 col-xl-12 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4" id="log-in">
+          <div class="w-px-400 mx-auto pt-1 pt-lg-0" id="statusnya">
+			<p class="text-center mt-2">
+              <a href="<?=base_url();?>">
+			  		<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image" style="width: 100px; height: 100px;"><br>				
+				<span class="app-brand-text demo text-heading fw-bold">Rapor <?=$apps['nama'];?> Versi <?=$apps['versi'];?></span>
+			  </a>
+            </p>
+			
             <?php if($maintenis==1){ ?>
                 <div class="alert alert-solid-danger d-flex align-items-center" role="alert">
                     <i class="mdi mdi-alert-circle-outline me-2"></i>
                     Saat ini Server sedang Maintenance, beberapa halaman akan dibatasi aksesnya.
                 </div>
             <?php } ?>
-            
 
             <form id="formAuthentication" class="mb-3" method="POST" name="form1" action="<?=base_url();?>pages/checklogin.php" autocomplete="off">
               <div class="form-floating form-floating-outline mb-3">
@@ -191,18 +136,50 @@
 						</select>
 					  </div>
 				</div>
+				<a href="<?=base_url();?>lupa-password">Forgot password?</a>
               </div>
               <button type="submit"  name="Submit" id="submit" class="btn btn-primary d-grid w-100">Masuk</button>
             </form>
 
-            <p class="text-center mt-2">
-              <span>Lupa Kata Sandi?</span>
-              <a href="<?=base_url();?>lupa-password">
-                <span>Masuk menggunakan OTP</span>
-              </a>
-            </p>
+            <script>
+    function updateClock() {
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var seconds = currentTime.getSeconds();
+      var day = currentTime.getDate();
+      var month = currentTime.getMonth() + 1; // Perhatikan: Bulan dimulai dari 0
+      var year = currentTime.getFullYear();
 
-            
+      // Format waktu
+      hours = (hours < 10) ? "0" + hours : hours;
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+      
+      // Format tanggal
+      day = (day < 10) ? "0" + day : day;
+      month = (month < 10) ? "0" + month : month;
+
+      // Membuat string waktu dan tanggal dalam format HH:mm:ss DD/MM/YYYY
+      var dateTimeString = hours + ":" + minutes + ":" + seconds + " " + day + "-" + month + "-" + year;
+
+      // Menetapkan nilai string waktu dan tanggal ke elemen dengan id "dateTime"
+      document.getElementById("dateTime").innerText = dateTimeString;
+
+      // Memanggil fungsi ini lagi setiap detik
+      setTimeout(updateClock, 1000);
+    }
+
+    // Memanggil fungsi updateClock() setelah dokumen selesai dimuat
+    window.onload = function() {
+      updateClock();
+    };
+  </script>
+</head>
+<body>
+  
+  <div class="text-center mt-2" id="dateTime"></div>
+</body>
 
             
           </div>
@@ -239,79 +216,6 @@
 
     <!-- Page JS -->
     <script src="<?=base_url();?>assets/js/pages-auth.js"></script>
-	<script>
-	$(document).ready(function () {
-    "use strict";
-	toastr.options = {
-			  "closeButton": true,
-			  "debug": false,
-			  "newestOnTop": false,
-			  "progressBar": false,
-			  "positionClass": "toast-top-full-width",
-			  "preventDuplicates": false,
-			  "onclick": null,
-			  "showDuration": "300",
-			  "hideDuration": "1000",
-			  "timeOut": "4000",
-			  "extendedTimeOut": "1000",
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut"
-			}
-    $("#submit").click(function () {
-
-        var username = $("#username").val(), password = $("#password").val(), tapel = $("#tapel").val(), smt = $("#smt").val();
-		
-        if ((username === "") || (password === "")) {
-			toastr["error"]("Username atau Password tidak boleh kosong!!")
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "<?=base_url();?>pages/checklogin.php",
-                data: "username=" + username + "&password=" + password + "&tapel=" + tapel + "&smt=" + smt,
-                dataType: 'JSON',
-				beforeSend: function()
-                {	
-                    $('#log-in').block({ 
-					message: '<div class="d-flex justify-content-center"><p class="mb-0">Please wait...</p> <div class="sk-wave m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>',
-					css: {
-					  backgroundColor: 'transparent',
-					  color: '#fff',
-					  border: '0'
-					},
-					overlayCSS: {
-					  opacity: 0.5
-					}
-					});
-					//$('#log-in').block();
-                },
-				success: function (html) {
-                  	$("#loading").hide();
-					$(".loader").hide();
-                    if (html.success === true) {
-						toastr["success"]("Login Sukses <br/> Tunggu sebentar.... Anda akan dialihkan ke Halaman Admin");
-						$("#statusnya").html('<h4 class="mb-2">Login Sukses ✉️</h4><p class="text-start">Login berhasil... Anda akan dialihkan ke Halaman Utama.</p><a class="btn btn-primary w-100 my-3" href="./"> Beranda </a>');
-						setTimeout(function () {
-							location.reload();
-						},1500);
-						$('#log-in').unblock();
-					} else {
-						toastr["error"](html.messages);
-						$('#log-in').unblock();
-						//$("#pesan").html(html.response);
-						//liveToast1.show();
-                    }
-                },
-                error: function (textStatus, errorThrown) {
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                }
-            });
-        }
-        return false;
-    });
-});
-	</script>
+	<script src="<?=base_url();?>pages/login.js"></script>
   </body>
 </html>
