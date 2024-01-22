@@ -219,9 +219,10 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 											</div>
 											<h3 class="portlet-title">Notification</h3>
 											<div class="portlet-addon">
-												<!-- BEGIN Dropdown -->
-												
-												<!-- END Dropdown -->
+												<?php if($level==11){ ?>
+                                                <button class="btn btn-outline-success btn-sm me-1 mb-1" onclick="unduhNotif()"><i class="fa fa-download"></i> Unduh</button>
+												<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="hapusNotif()"><i class="fa fa-recycle"></i> Hapus</button>
+                                              	<?php } ?>
 											</div>
 										</div>
 										<div class="portlet-body">
@@ -855,6 +856,41 @@ $('#upload_image').on('change', function(){
 		} else {
 			Swal.fire("Kesalahan","Error Sistem","error");
 		}
+	}
+	function hapusNotif() {
+		
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Notifikasi ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/berita/hapus-notif.php',
+						type: 'post',
+						data: {member_id : 0},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								toastr.success(response.messages);
+								//Swal.fire("Sukses",response.messages,"success");
+								$("#collapse1One").load('modul/kepegawaian/aktivitas.php?idptk='+idptk)
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		
 	}
 	function PopupCenter(pageURL, title,w,h) {
 		var left = (screen.width/2)-(w/2);
