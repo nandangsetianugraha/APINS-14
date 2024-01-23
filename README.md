@@ -21,6 +21,10 @@ Guru<br/>
 username : guru1<br/>
 password : 20258088<br/>
 
+### Screenshot
+<img src="https://github.com/nandangsetianugraha/APINS-14/blob/main/images/login.png">
+<img src="https://github.com/nandangsetianugraha/APINS-14/blob/main/images/beranda.png">
+
 ### Demo
 https://demos.sdi-aljannah.web.id
 
