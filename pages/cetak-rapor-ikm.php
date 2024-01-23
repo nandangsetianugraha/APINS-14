@@ -334,6 +334,15 @@
 			PopupCenter('cetak/cetak-mutasi.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Halaman Mutasi',800,800);
 			
 		});
+		$(document).on('click', '#previewB', function(e){
+			e.preventDefault();
+			var rowid = $(this).data('id');
+			var kelas = $(this).data('kelas');
+			var tapel = $(this).data('tapel');
+			var smt = $(this).data('smt');
+			PopupCenter('cetak/cetak-nilai.php?idp='+rowid+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel, 'Cetak Halaman Nilai',800,800);
+			
+		});
 		
 	});	
 		
