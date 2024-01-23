@@ -31,6 +31,7 @@ https://demos.sdi-aljannah.web.id
     <td align="center"><a href="https://github.com/shoelyshtya"><img src="https://avatars.githubusercontent.com/u/60667662?v=4" width="100px;" alt=""/><br /><sub><b>shoelysh</b></sub></a><br /><a href="#design-shoelysh" title="Design">💻</a></td>
   </tr>
 </table>
-### Trakteer
+
+## Trakteer
 https://teer.id/nandangsetianugraha
 
