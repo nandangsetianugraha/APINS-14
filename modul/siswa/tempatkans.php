@@ -33,12 +33,12 @@ $rombel=$connect->query("SELECT * FROM penempatan where peserta_didik_id='$idp' 
 			<input type="hidden" class="form-control" name="idsw" value="<?=$ids;?>"/>
 			<input type="hidden" class="form-control" name="nisn" value="<?=$siswa['nisn'];?>" readonly>
 			<?php 
-			$sql = "select * from rombel where tapel='$tapel'";
+			$sql = "select * from rombel where tapel='$tapel' and tapel='$smt'";
 			$query = $connect->query($sql);
 			?>
 			<select name="kelas" class="form-select">
 			<?php while ($row = $query->fetch_assoc()) { ?>
-				<option value="<?=$row['nama_rombel'];?>">Kelas <?=$row['nama_rombel'];?></option>
+				<option value="<?=$row['nama_rombel'];?>" <?php if($row['nama_rombel']===$rombel['rombel']) echo "selected"; ?>>Kelas <?=$row['nama_rombel'];?></option>
 			<?php } ?>
 			</select>
 		</div>
