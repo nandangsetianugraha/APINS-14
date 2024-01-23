@@ -153,7 +153,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 															<!-- BEGIN Avatar -->
 															<div class="avatar">
 																<div class="avatar-display" id="uploaded_image2">
-																	<img src="assets/<?=$cfg['image_login'];?>" alt="Avatar image">
+																	<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
 																</div>
 															</div>
 															<!-- END Avatar -->
@@ -166,7 +166,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
                                                           	<?php if($level==11){ ?>
 															<div class="row g-3">
 																<div class="col-md-6">
-																	<a href="edit-pengumuman/<?=$jpesan['id'];?>" class="btn btn-sm btn-icon btn-primary"><i class="fa-solid fa-pencil"></i></a>
+																	<a href="<?=base_url();?>edit-pengumuman/<?=$jpesan['id'];?>" class="btn btn-sm btn-icon btn-primary"><i class="fa-solid fa-pencil"></i></a>
 																</div>
 																<div class="col-md-6">
 																	<button class="btn btn-icon btn-sm btn-danger" onclick="removePengumuman('<?=$jpesan['id'];?>')"> <i class="fa fa-trash"></i></button>
@@ -190,7 +190,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 																<!-- BEGIN Avatar -->
 																<div class="avatar">
 																	<div class="avatar-display" id="uploaded_image2">
-																		<img src="assets/<?=$cfg['image_login'];?>" alt="Avatar image">
+																		<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
 																	</div>
 																</div>
 																<!-- END Avatar -->
@@ -220,7 +220,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 											<h3 class="portlet-title">Notification</h3>
 											<div class="portlet-addon">
 												<?php if($level==11){ ?>
-                                                <button class="btn btn-outline-success btn-sm me-1 mb-1" onclick="unduhNotif()"><i class="fa fa-download"></i> Unduh</button>
+                                                <a class="btn btn-outline-success btn-sm me-1 mb-1" href="<?=base_url();?>pages/ekspor_notif.php"><i class="fa fa-download"></i> Unduh</a>
 												<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="hapusNotif()"><i class="fa fa-recycle"></i> Hapus</button>
                                               	<?php } ?>
 											</div>
@@ -248,7 +248,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 														<!-- BEGIN Avatar -->
 														<div class="avatar avatar-label-info">
 															<div class="avatar-display">
-																<img alt="AI" src="images/ptk/<?=$nama['gambar'];?>" class=" img-fluid">
+																<img alt="AI" src="<?=base_url();?>images/ptk/<?=$nama['gambar'];?>" class=" img-fluid">
 															</div>
 														</div>
 														<!-- END Avatar -->
@@ -271,7 +271,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 														<!-- BEGIN Avatar -->
 														<div class="avatar avatar-label-info">
 															<div class="avatar-display">
-																<img alt="AI" src="assets/images/avatar/blank.webp" class=" img-fluid">
+																<img alt="AI" src="<?=base_url();?>assets/images/avatar/blank.webp" class=" img-fluid">
 															</div>
 														</div>
 														<!-- END Avatar -->
