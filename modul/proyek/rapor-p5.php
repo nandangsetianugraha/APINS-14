@@ -28,7 +28,7 @@ $smt=$_GET['smt'];
 $tapel=$_GET['tapel'];
 $dproyek=$connect->query("select * from data_proyek where kelas='$kelas' and tapel='$tapel' and smt='$smt'")->fetch_assoc();
 $idproyek=$dproyek['id_proyek'];
-$sql = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
+$sql = "select penempatan.peserta_didik_id,siswa.nama from penempatan left join siswa on penempatan.peserta_didik_id=siswa.peserta_didik_id where penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt' order by siswa.nama asc";
 $query = $connect->query($sql);
 $sqlp="select * from pemetaan_proyek where proyek='$idproyek'";
 $queryp=$connect->query($sqlp);
