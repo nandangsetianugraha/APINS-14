@@ -2,7 +2,7 @@
 $host = "localhost"; // Host name
 $username = "root"; // Mysql username
 $password = ""; // Mysql password
-$db_name = "apins10"; // Database name
+$db_name = "apins"; // Database name
 
 // create connection
 $connect = new mysqli($host, $username, $password, $db_name);
@@ -15,8 +15,8 @@ if($connect->connect_error) {
 };
 $sql = "select * from konfigurasi";
 $cekconfig = $connect->query($sql);
-$cfg=$cekconfig->fetch_assoc();
-$tapel_aktif=$cfg['tapel'];
-$smt_aktif=$cfg['semester'];
-$maintenis=$cfg['maintenis'];
-$versi=$cfg['versi'];
+$cfg=$connect->query("select * from sekolah")->fetch_assoc();
+$cfgs=$cekconfig->fetch_assoc();
+$tapel_aktif=$cfgs['tapel'];
+$smt_aktif=$cfgs['semester'];
+$maintenis=$cfgs['maintenis'];
