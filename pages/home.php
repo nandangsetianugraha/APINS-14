@@ -271,7 +271,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 														<!-- BEGIN Avatar -->
 														<div class="avatar avatar-label-info">
 															<div class="avatar-display">
-																<img alt="AI" src="<?=base_url();?>assets/images/avatar/blank.webp" class=" img-fluid">
+																<img alt="AI" src="assets/<?=$cfgs['image_login'];?>" class=" img-fluid">
 															</div>
 														</div>
 														<!-- END Avatar -->
