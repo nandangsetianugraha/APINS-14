@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 07:53 AM
+-- Generation Time: Jan 24, 2024 at 04:20 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `apins`
+-- Database: `apins14`
 --
 
 -- --------------------------------------------------------
@@ -41220,6 +41220,13 @@ CREATE TABLE `log` (
   `activity` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`id`, `ptk_id`, `logDate`, `activity`) VALUES
+(0, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', '2024-01-24 16:10:21', 'Login ke Sistem');
+
 -- --------------------------------------------------------
 
 --
@@ -42170,11 +42177,11 @@ CREATE TABLE `sas` (
 
 CREATE TABLE `sekolah` (
   `sekolah_id` varchar(36) DEFAULT NULL,
-  `nama` varchar(18) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
   `nss` bigint(12) DEFAULT NULL,
   `npsn` int(8) DEFAULT NULL,
   `bentuk_pendidikan_id` int(1) DEFAULT NULL,
-  `alamat_jalan` varchar(25) DEFAULT NULL,
+  `alamat_jalan` varchar(35) DEFAULT NULL,
   `rt` int(1) DEFAULT NULL,
   `rw` int(1) DEFAULT NULL,
   `desa` varchar(20) DEFAULT NULL,
