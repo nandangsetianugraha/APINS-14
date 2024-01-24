@@ -3,7 +3,7 @@
 				<h3 class="aside-title">
 					<div class="avatar">
 						<div class="avatar-display" id="uploaded_image2">
-							<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
+							<img src="<?=base_url();?>assets/<?=$cfgs['image_login'];?>" alt="Avatar image">
 						</div>
 					</div>
 					<?=$apps['nama'];?>

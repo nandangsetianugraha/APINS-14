@@ -80,7 +80,7 @@ $namafilenya="Raport ".$siswa['nama']." Semester ".$smt." Tahun ".$tahun1."-".$t
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Nama Sekolah');
  $table3->easyCell(':');
- $table3->easyCell(strtoupper($cfg['nama_sekolah']));
+ $table3->easyCell(strtoupper($cfg['nama']));
  $table3->easyCell('Semester');
  $table3->easyCell(':');
  $table3->easyCell($smt);
@@ -88,7 +88,7 @@ $namafilenya="Raport ".$siswa['nama']." Semester ".$smt." Tahun ".$tahun1."-".$t
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Alamat Sekolah');
  $table3->easyCell(':');
- $table3->easyCell($cfg['alamat_sekolah']);
+ $table3->easyCell($cfg['alamat_jalan']);
  $table3->easyCell('Tahun Pelajaran');
  $table3->easyCell(':');
  $table3->easyCell($tapel);

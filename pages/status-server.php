@@ -271,21 +271,117 @@
 														</div>
 														<div class="tab-pane fade" id="nav3-contact">
 															<?php
-															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
+															$nsekd = $connect->query("select * from sekolah where sekolah_id='20162e13-2cf5-e011-91d5-a9ab0de328a2'")->fetch_assoc();
 															?>
 															<form class="d-grid gap-3" action="modul/setting/update-sekolah.php" autocomplete="off" method="POST" id="ubahSekolah" autocomplete="off">
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Sekolah</label>
                                                                     <div class="col-sm-4">
-                                                                        <input type="text" class="form-control" id="nama_sekolah" name="nama_sekolah" value="<?=$nsek['nama_sekolah'];?>">
+                                                                        <input type="text" class="form-control" id="nama_sekolah" name="nama_sekolah" value="<?=$nsekd['nama'];?>">
+																		<input type="hidden" class="form-control" id="idsek" name="idsek" value="20162e13-2cf5-e011-91d5-a9ab0de328a2" required>
                                                                     </div>
-                                                                    
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Statistik Sekolah (NSS)</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="text" class="form-control" id="nss" name="nss" value="<?=$nsekd['nss'];?>">
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Pokok Sekolah Nasional (NPSN)</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="text" class="form-control" id="npsn" name="npsn" value="<?=$nsekd['npsn'];?>">
+																	</div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat Sekolah</label>
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat Jalan</label>
                                                                     <div class="col-sm-4">
-                                                                        <textarea class="form-control" id="alamat" name="alamat" rows="3"><?=$nsek['alamat_sekolah'];?></textarea>
+                                                                        <textarea class="form-control" id="alamat" name="alamat" rows="3"><?=$nsekd['alamat_jalan'];?></textarea>
                                                                     </div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">RT</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="rt" name="rt" value="<?=$nsekd['rt'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">RW</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="rw" name="rw" value="<?=$nsekd['rw'];?>">
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Desa</label>
+                                                                    <div class="col-sm-2">
+                                                                        <select class="form-select" id="desas" name="desas">
+                                                                            <?php 
+                                                                            $sql15 = "select * from desa order by id asc";
+                                                                            $query15 = $connect->query($sql15);
+                                                                            while($nks1=$query15->fetch_assoc()){
+																			?>
+                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['desa']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+																			<?php 
+                                                                            }	
+                                                                            ?>
+                                                                        </select>
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Kecamatan</label>
+                                                                    <div class="col-sm-2">
+                                                                        <select class="form-select" id="kecs" name="kecs">
+                                                                            <?php 
+                                                                            $sql15 = "select * from kecamatan order by id asc";
+                                                                            $query15 = $connect->query($sql15);
+                                                                            while($nks1=$query15->fetch_assoc()){
+																			?>
+                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['kecamatan']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+																			<?php 
+                                                                            }	
+                                                                            ?>
+                                                                        </select>
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kabupaten</label>
+                                                                    <div class="col-sm-2">
+                                                                        <select class="form-select" id="kabs" name="kabs">
+                                                                            <?php 
+                                                                            $sql15 = "select * from kabupaten order by id asc";
+                                                                            $query15 = $connect->query($sql15);
+                                                                            while($nks1=$query15->fetch_assoc()){
+																			?>
+                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['kabupaten']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+																			<?php 
+                                                                            }	
+                                                                            ?>
+                                                                        </select>
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Provinsi</label>
+																	<div class="col-sm-2">
+                                                                        <select class="form-select" id="provs" name="provs">
+																			<?php 
+                                                                            $sql15 = "select * from provinsi order by id_prov asc";
+                                                                            $query15 = $connect->query($sql15);
+                                                                            while($nks1=$query15->fetch_assoc()){
+																			?>
+                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id_prov'];?>" <?php if($nsekd['provinsi']==$nks1['id_prov']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+																			<?php 
+                                                                            }	
+                                                                            ?>  
+                                                                        </select>
+																	</div>
+																</div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kodepos</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="kodepos" name="kodepos" value="<?=$nsekd['kode_pos'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Lintang</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="lintang" name="lintang" value="<?=$nsekd['lintang'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Bujur</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="bujur" name="bujur" value="<?=$nsekd['bujur'];?>">
+																	</div>
                                                                 </div>
 																<div class="row">
                                                                     <div class="col-md-12 text-end mt-3">
@@ -613,6 +709,25 @@
 				}
 			});
 	});
+	$('#provs').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var prov = $('#provs').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/kabupaten.php',
+				data :  'prov_id=' + prov,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kabs").html(data);
+					$('#status').unblock();
+				}
+			});
+	});
 	
 	$('#tambahKab').on('show.bs.modal', function (e) {
             var prov = $('#prov').val();
@@ -683,6 +798,25 @@
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
 					$("#keca").html(data);
+					$('#status').unblock();
+				}
+			});
+	});
+	$('#kabs').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var kab = $('#kabs').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/kecamatan.php',
+				data :  'id_kabupaten=' + kab,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kecs").html(data);
 					$('#status').unblock();
 				}
 			});
@@ -759,6 +893,26 @@
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
 					$("#desa").html(data);
+					$('#status').unblock();
+					// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+				}
+			});
+	});
+	$('#kecs').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var desa = $('#kecs').val();
+			$.ajax({
+				type : 'GET',
+				url : '<?=base_url();?>pages/desa.php',
+				data :  'id_kecamatan=' + desa,
+                dataType : 'HTML',
+				beforeSend: function()
+				{	
+					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#desas").html(data);
 					$('#status').unblock();
 					// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
 				}

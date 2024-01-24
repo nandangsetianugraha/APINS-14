@@ -9,6 +9,15 @@ function Header(){
 	$smt=$_GET['smt'];
 	$status=$_GET['status'];
 	$cfg=$connect->query("select * from konfigurasi where id_conf='1'")->fetch_assoc();
+	$cfgs=$connect->query("select * from sekolah")->fetch_assoc();
+	$iddesa=$cfgs['desa'];
+	$idkec=$cfgs['kecamatan'];
+	$idkab=$cfgs['kabupaten'];
+	$idprov=$cfgs['provinsi'];
+	$desa=$connect->query("select * from desa where id='$iddesa'")->fetch_assoc();
+	$kec=$connect->query("select * from kecamatan where id='$idkec'")->fetch_assoc();
+	$kab=$connect->query("select * from kabupaten where id='$idkab'")->fetch_assoc();
+	$prov=$connect->query("select * from provinsi where id_prov='$idprov'")->fetch_assoc();
 	$jns=$connect->query("select * from jns_mutasi where id_mutasi='$status'")->fetch_assoc();
    $this->SetTextColor(0,0,0);
    $this->SetFont('Arial','B','12');
@@ -29,7 +38,7 @@ function Header(){
    $this->SetFont('Arial','','9');
    $this->Cell(4,0.5,'KOTA/KABUPATEN',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'','B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($kab['nama']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(1.3,0.5,'KODE',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -38,7 +47,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'SEKOLAH/MADRASAH',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($cfg['nama_sekolah']),'B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($cfgs['nama']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(1.3,0.5,'KODE',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');

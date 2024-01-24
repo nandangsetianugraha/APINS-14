@@ -78,13 +78,13 @@ $padding = 2;
 QRcode::png($isi_teks,$namafile,QR_ECLEVEL_L,5,2);
 //QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
 $QR = imagecreatefrompng($namafile);
-$logopng = imagecreatefrompng('../assets/'.$cfg['image_login']);
+$logopng = imagecreatefrompng('../assets/'.$cfgs['image_login']);
 $QR_width = imagesx($QR);
 $QR_height = imagesy($QR);
 $logo_width = imagesx($logopng);
 $logo_height = imagesy($logopng);
 			
-list($newwidth, $newheight) = getimagesize('../assets/'.$cfg['image_login']);
+list($newwidth, $newheight) = getimagesize('../assets/'.$cfgs['image_login']);
 $out = imagecreatetruecolor($QR_width, $QR_width);
 imagecopyresampled($out, $QR, 0, 0, 0, 0, $QR_width, $QR_height, $QR_width, $QR_height);
 imagecopyresampled($out, $logopng, $QR_width/2.65, $QR_height/2.65, 0, 0, $QR_width/4, $QR_height/4, $newwidth, $newheight);
