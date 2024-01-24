@@ -153,7 +153,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 															<!-- BEGIN Avatar -->
 															<div class="avatar">
 																<div class="avatar-display" id="uploaded_image2">
-																	<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
+																	<img src="<?=base_url();?>assets/<?=$cfgs['image_login'];?>" alt="Avatar image">
 																</div>
 															</div>
 															<!-- END Avatar -->
@@ -190,7 +190,7 @@ $jptk=$connect->query("select * from ptk where status_keaktifan_id=1")->num_rows
 																<!-- BEGIN Avatar -->
 																<div class="avatar">
 																	<div class="avatar-display" id="uploaded_image2">
-																		<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image">
+																		<img src="<?=base_url();?>assets/<?=$cfgs['image_login'];?>" alt="Avatar image">
 																	</div>
 																</div>
 																<!-- END Avatar -->
