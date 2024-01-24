@@ -4,14 +4,11 @@ require_once '../../config/db_connect.php';
 if($_POST) {	
 	$validator = array('success' => false, 'messages' => array());
 	$idproyek=$_POST['idproyek'];
-	$kelas=$_POST['kelas'];
-	$smt=$_POST['smt'];
-	$tapel=$_POST['tapel'];
 	$tema=$_POST['tema'];
 	$fase=$_POST['fase'];
 	$nproyek=strip_tags($connect->real_escape_string($_POST['n_proyek']));
 	$dproyek=strip_tags($connect->real_escape_string($_POST['d_proyek']));
-	if(empty($kelas) || empty($smt) || empty($tema) || empty($fase) || empty($nproyek) || empty($dproyek)){
+	if(empty($idproyek) || empty($tema) || empty($fase) || empty($nproyek) || empty($dproyek)){
 		$validator['success'] = false;
 		$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 	}else{

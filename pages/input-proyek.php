@@ -321,7 +321,7 @@
 						var mp = $('#mp').val();
 						TabelRombel.ajax.reload(null, false);
 					} else {
-						Swal.fire("Kesalahan","Masih ada TP yang terdaftar pada LM ini!","error");
+						Swal.fire("Kesalahan",response.messages,"error");
 					}
 				} // /success
 			}); // /ajax
