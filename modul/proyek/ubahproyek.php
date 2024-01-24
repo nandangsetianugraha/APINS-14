@@ -13,7 +13,7 @@ if($_POST) {
 		$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 	}else{
 		
-			$sql1 = "UPDATE data_proyek set tema='$tema',fase='$fase',kelas='$kelas',tapel='$tapel',smt='$smt',nama_proyek='$nproyek',deskripsi_proyek='$dproyek' where id_proyek='$idproyek'";
+			$sql1 = "UPDATE data_proyek set tema='$tema',fase='$fase',nama_proyek='$nproyek',deskripsi_proyek='$dproyek' where id_proyek='$idproyek'";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;
