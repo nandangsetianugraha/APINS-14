@@ -23,10 +23,11 @@ $kelas=$_GET['kelas'];
 $ab=substr($kelas,0,1);
 $smt=$_GET['smt'];
 $tapel=$_GET['tapel'];
-$sql = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and smt='$smt' order by nama asc";
+$sql = "select penempatan.peserta_didik_id,siswa.nama from penempatan left join siswa on penempatan.peserta_didik_id=siswa.peserta_didik_id where penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt' order by nama asc";
 $query = $connect->query($sql);
 while ($row = $query->fetch_assoc()) {
 	$idp=$row['peserta_didik_id'];
+	//$siswa = $connect->query("select * from siswa where peserta_didik_id='$idp'")->fetch_assoc();
 	$sq1 = "SELECT * FROM raport_ikm WHERE id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel'";
 	$ada1 = $connect->query($sq1)->num_rows;
 	$status="";
@@ -101,7 +102,7 @@ while ($row = $query->fetch_assoc()) {
 	
 	//$namasis=$pn['nama'];
 	$output['data'][] = array(
-		$row['nama'],
+		$siswa['nama'],
 		$tombol,
 		$aksi
 	);
