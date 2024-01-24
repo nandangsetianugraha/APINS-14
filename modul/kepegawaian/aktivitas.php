@@ -6,6 +6,8 @@
 													$level=$_SESSION['level'];
 													$idku=$_GET['idptk'];
 													$jns = isset($_GET['jns']) ? $_GET['jns'] : '0';
+                                                    $hariini=date('Y-m-d H:i:s');
+													$waktus = explode(' ',$hariini);
 													?>
 													<?php 
 															if($level==11){
@@ -14,8 +16,7 @@
 																$logs = $connect->query("select * from log where ptk_id='$idku' order by logDate desc limit 5");
 															};
 															$jlogs=$logs->num_rows;
-															$hariini=date('Y-m-d H:i:s');
-															$waktus = explode(' ',$hariini);
+															
 															if($jlogs>0){
 																while($mlogs=$logs->fetch_assoc()){
 																	$idlog=$mlogs['id'];
@@ -45,13 +46,16 @@
 															</div>
 															<?php } ?>
 														</div>
-														<?php }}else{ ?>
+														<?php }}else{ 
+                                                        $hariini=date('Y-m-d H:i:s');
+													    $waktus = explode(' ',$hariini);    
+                                                        ?>
 														<div class="rich-list-item">
 															<div class="rich-list-prepend">
 																<!-- BEGIN Avatar -->
 																<div class="avatar avatar-label-info">
 																	<div class="avatar-display">
-																		<img alt="AI" src="assets/images/avatar/blank.webp" class=" img-fluid">
+																		<img alt="AI" src="assets/<?=$cfgs['image_login'];?>" class=" img-fluid">
 																	</div>
 																</div>
 																<!-- END Avatar -->
