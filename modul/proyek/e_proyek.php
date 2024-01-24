@@ -11,6 +11,7 @@ $proy=$connect->query("select * from data_proyek where id_proyek='$rowid'")->fet
 					<input type="hidden" class="form-control" id="kelas" name="kelas" value="<?=$kelas;?>">
 					<input type="hidden" class="form-control" id="smt" name="smt" value="<?=$smt;?>">
 					<input type="hidden" class="form-control" id="tapel" name="tapel" value="<?=$tapel;?>">
+					<input type="hidden" class="form-control" id="idproyek" name="idproyek" value="<?=$rowid;?>">
 					<div class="mb-4">
                       <label class="form-label" for="example-text-input">Tema</label>
 					  
