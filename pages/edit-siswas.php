@@ -4,8 +4,14 @@ $bln=isset($_GET['bln']) ? $_GET['bln'] : date("m");
 $thn=isset($_GET['thn']) ? $_GET['thn'] : date("Y");
 $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
 ?>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="stylesheet" href="<?=base_url();?>assets/css/croppie.css" />
+<style>
+#mapWrap {
+    width: 100%;
+    height: 400px; 
+}    
+</style>
 </head>
 
 <body class="preload-active aside-active aside-mobile-minimized aside-desktop-maximized">
@@ -71,6 +77,9 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 											?>
 											
 											<?php } ?>
+											<input type="hidden" class="form-control" name="bujur" id="bujur" value="<?=$regis['bujur'];?>" required>
+											<input type="hidden" class="form-control" name="lintang" id="lintang" value="<?=$regis['lintang'];?>" required>
+											<div id="mapWrap"></div>
 										</div>
 										<div class="col-md-9">
 											<div class="portlet" id="portlet1-profile">
@@ -418,6 +427,42 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
 	<script src="<?=base_url();?>assets/js/croppie.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script>
+	// Define latitude, longitude and zoom level
+	const latitude = $('#lintang').val();
+	const longitude = $('#bujur').val();
+	const zoom = 14;
+
+	// Set DIV element to embed map
+	var mymap = L.map('mapWrap');
+
+	// Add initial marker & popup window
+	var mmr = L.marker([0,0]);
+	mmr.bindPopup('0,0');
+	mmr.addTo(mymap);
+
+	// Add copyright attribution
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
+		foo: 'bar',
+		attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+	).addTo(mymap);
+
+	// Set lat lng position and zoom level of map 
+	mmr.setLatLng(L.latLng(latitude, longitude));
+	mymap.setView([latitude, longitude], zoom);
+
+	// Set popup window content
+	mmr.setPopupContent('Latitude: '+latitude+' <br /> Longitude: '+longitude).openPopup();
+
+	// Set marker onclick event
+	mmr.on('click', openPopupWindow);
+
+	// Marker click event handler
+	function openPopupWindow(e) {
+		mmr.setPopupContent('Latitude: '+e.latlng.lat+' <br /> Longitude: '+e.latlng.lng).openPopup();
+	}
+	</script>
 	<script>
 	var TabelRombel;
 	$('#tanggal').datepicker({
