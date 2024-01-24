@@ -102,7 +102,7 @@ while ($row = $query->fetch_assoc()) {
 	
 	//$namasis=$pn['nama'];
 	$output['data'][] = array(
-		$siswa['nama'],
+		$row['nama'],
 		$tombol,
 		$aksi
 	);
