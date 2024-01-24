@@ -75,7 +75,7 @@
           <div class="w-px-400 mx-auto pt-1 pt-lg-0" id="statusnya">
 			<p class="text-center mt-2">
               <a href="<?=base_url();?>">
-			  		<img src="<?=base_url();?>assets/<?=$cfg['image_login'];?>" alt="Avatar image" style="width: 100px; height: 100px;"><br>				
+			  		<img src="<?=base_url();?>assets/<?=$cfgs['image_login'];?>" alt="Avatar image" style="width: 100px; height: 100px;"><br>				
 				<span class="app-brand-text demo text-heading fw-bold">Rapor <?=$apps['nama'];?> Versi <?=$apps['versi'];?></span>
 			  </a>
             </p>
