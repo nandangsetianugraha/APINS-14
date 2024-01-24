@@ -7,6 +7,15 @@ class PDF extends FPDF{
 function Header(){
    global $connect;
 	$cfg=$connect->query("select * from konfigurasi where id_conf='1'")->fetch_assoc();
+	$cfgs=$connect->query("select * from sekolah")->fetch_assoc();
+	$idesa = $cfgs['desa'];
+	$ikec = $cfgs['kecamatan'];
+	$ikab = $cfgs['kabupaten'];
+	$iprov = $cfgs['provinsi'];
+	$desa=$connect->query("select * from desa where id='$idesa'")->fetch_assoc();
+	$kec=$connect->query("select * from kecamatan where id='$ikec'")->fetch_assoc();
+	$kab=$connect->query("select * from kabupaten where id='$ikab'")->fetch_assoc();
+	$prov=$connect->query("select * from provinsi where id_prov='$iprov'")->fetch_assoc();
 	$kelas=$_GET['kelas'];
 	$ab=substr($kelas, 0, 1);
 	$tapel=$_GET['tapel'];
@@ -34,7 +43,7 @@ function Header(){
    $this->SetFont('Arial','','9');
    $this->Cell(4,0.5,'Nama Sekolah',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($cfg['nama_sekolah']),'B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($cfgs['nama']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Status',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -43,7 +52,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'Alamat',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,$cfg['alamat_sekolah'],'B',0,'L');
+   $this->Cell(7.5,0.5,$cfgs['alamat_jalan'],'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Hari/Tanggal',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -52,7 +61,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'Desa/Kelurahan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'','B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($desa['nama']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Pukul',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -61,7 +70,7 @@ function Header(){
    //$tanggal=$Ls['tanggal'];
    $this->Cell(4,0.5,'Kecamatan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'','B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($kec['nama']),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Kelas',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -70,7 +79,7 @@ function Header(){
 
    $this->Cell(4,0.5,'Kabupaten',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,'','B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($kab['nama']),'B',0,'L');
 
    $this->SetFont('Arial','B','8');
    $this->SetFillColor(192,192,192);
