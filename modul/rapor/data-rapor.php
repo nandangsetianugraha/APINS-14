@@ -23,7 +23,7 @@ $kelas=$_GET['kelas'];
 $ab=substr($kelas,0,1);
 $smt=$_GET['smt'];
 $tapel=$_GET['tapel'];
-$sql = "select penempatan.peserta_didik_id,siswa.nama from penempatan left join siswa on penempatan.peserta_didik_id=siswa.peserta_didik_id where penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt' order by nama asc";
+$sql = "select penempatan.peserta_didik_id,siswa.nama from penempatan left join siswa on penempatan.peserta_didik_id=siswa.peserta_didik_id where penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt' order by siswa.nama asc";
 $query = $connect->query($sql);
 while ($row = $query->fetch_assoc()) {
 	$idp=$row['peserta_didik_id'];
