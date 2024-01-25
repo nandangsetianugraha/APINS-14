@@ -30,6 +30,8 @@
 											<a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Profil</a>
 											<a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Data Rapor</a>
 											<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Rekam Didik</a>
+											<a class="nav-item nav-link" id="portlet4-kes-tab" data-bs-toggle="tab" href="#portlet4-kes">Data Kesehatan</a>
+											<a class="nav-item nav-link" id="portlet4-kemenkes-tab" data-bs-toggle="tab" href="#portlet4-kemenkes">Data Kemenkes</a>
 										</div>
 										<!-- END Nav -->
 									</div>
@@ -246,6 +248,75 @@
 															<td><?php if($abc=='5'){ echo "&#10004;"; };?></td>
 															<td><?php if($abc=='6'){ echo "&#10004;"; };?></td>
 															
+														</tr>
+														<?php } ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="portlet4-kes">
+											<div class="table-responsive">
+												<table class="table table-striped table-hover mb-0">
+													<thead>
+														<tr>
+															<th>Semester</th>
+															<th>Tinggi Badan (cm)</th>
+															<th>Berat Badan (Kg)</th>
+															<th>Pendengaran</th>
+															<th>Penglihatan</th>
+															<th>Gigi</th>
+															<th>Lainnya</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
+														$sql212 = "select * from penempatan where peserta_didik_id='$idr' order by tapel desc";
+														$query212 = $connect->query($sql212);
+														while($nk1=$query212->fetch_assoc()){
+															$abc=substr($nk1['rombel'],0,1);
+															$tpl=$nk1['tapel'];
+															$smtl=$nk1['smt'];
+															$dkes = $connect->query("select * from data_kesehatan where peserta_didik_id='$idr' and tapel='$tpl' and smt='$smtl'")->fetch_assoc();
+														?>
+														<tr>
+															<td><?=$nk1['tapel'];?><br/><?php if($nk1['smt']=='1'){ echo "Ganjil"; }else{ echo "Genap"; }; ?></td>
+															<td><?=$dkes['tinggi'];?></td>
+															<td><?=$dkes['berat'];?></td>
+															<td><?=$dkes['pendengaran'];?></td>
+															<td><?=$dkes['penglihatan'];?></td>
+															<td><?=$dkes['gigi'];?></td>
+															<td><?=$dkes['lainnya'];?></td>
+															
+														</tr>
+														<?php } ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="portlet4-kemenkes">
+											<div class="table-responsive">
+												<table class="table table-striped table-hover mb-0">
+													<thead>
+														<tr>
+															<th>Jenis Layanan</th>
+															<th>Tanggal Pelaksanaan</th>
+															<th>Tempat Pelaksanaan</th>
+															<th>Tipe Vaksinasi</th>
+															<th>Dosis</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
+														$sql2121 = "select * from data_kemenkes where peserta_didik_id='$idr'";
+														$query2121 = $connect->query($sql2121);
+														while($nk2=$query2121->fetch_assoc()){
+														?>
+														<tr>
+															<td><?=$nk2['jenis'];?></td>															
+															<td><?=$nk2['tanggal'];?></td>															
+															<td><?=$nk2['tempat'];?></td>															
+															<td><?=$nk2['tipe'];?></td>															
+															<td><?=$nk2['dosis'];?></td>															
 														</tr>
 														<?php } ?>
 													</tbody>

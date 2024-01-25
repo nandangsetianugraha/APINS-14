@@ -89,7 +89,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="nav nav-lines portlet-nav" id="portlet4-tab">
 															<a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Profil</a>
 															<a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Data Registrasi</a>
-															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Pengembangan</a>
+															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Data Kemenkes</a>
 														</div>
 														<!-- END Nav -->
 													</div>
@@ -368,6 +368,19 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 															</form>
 														</div>
 														<div class="tab-pane fade" id="portlet4-contact">
+															<button class="btn btn-effect-ripple btn-xs btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahkemenkes"><i class="fa fa-plus"></i> Kemenkes</button>
+															<table id="kes-1" class="table table-bordered table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>JENIS LAYANAN</th>
+																		<th>TANGGAL PELAKSANAAN</th>
+																		<th>TEMPAT PELAKSANAAN</th>
+																		<th>TIPE VAKSINASI</th>
+																		<th>DOSIS</th>
+																		<th></th>
+																	</tr>
+																</thead>
+															</table>
 														</div>
 													</div>
 												</div>
@@ -423,6 +436,15 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="tambahkemenkes">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="tambahkemenkesform" method="POST" action="../modul/siswa/tambah-kemenkes.php" class="form" autocomplete="off">
+				<div class="fetched-data2"></div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
@@ -465,6 +487,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	</script>
 	<script>
 	var TabelRombel;
+	var TabelKes;
 	$('#tanggal').datepicker({
 		format: 'yyyy-mm-dd',
 		autoclose:true
@@ -510,6 +533,13 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 		  height:300
 		}
 	});
+	TabelKes = $("#kes-1").DataTable({ 
+			"destroy":true,
+			"searching": true,
+			"paging":true,
+			"responsive":true,
+			"ajax": "../modul/siswa/daftar-kemenkes.php?idptk="+idptk
+		});
 	$('#upload_image').on('change', function(){
 		var reader = new FileReader();
 		reader.onload = function (event) {
@@ -629,6 +659,51 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					if(response.success == true) {
 						toastr.success(response.messages);
 						$("#regist").hide(); 
+					} else {
+						toastr.error(response.messages);
+					}  // /else
+				} // success  
+			}); // ajax subit 				
+			return false;
+		}); // /submit form for create member
+		$('#tambahkemenkes').on('show.bs.modal', function (e) {
+            var idptk = $('#idpt').val();
+			$('#tanggal_kes').datepicker({
+				format: 'yyyy-mm-dd',
+				autoclose:true
+			});
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : '../modul/siswa/m_kemenkes.php',
+				data :  'idptk='+ idptk,
+				beforeSend: function()
+				{	
+					$('#kes-1').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#kes-1').unblock();
+					$('.fetched-data2').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+		$("#tambahkemenkesform").unbind('submit').bind('submit', function() {
+			var form = $(this);
+			//submi the form to server
+			$.ajax({
+				url : form.attr('action'),
+				type : form.attr('method'),
+				data : form.serialize(),
+				dataType : 'json',
+				beforeSend: function(){	
+					$('#kes-1').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success:function(response) {
+					$('#kes-1').unblock();
+					if(response.success == true) {
+						toastr.success(response.messages);
+						$("#tambahkemenkes").modal('hide');
+						TabelKes.ajax.reload(null, false);
 					} else {
 						toastr.error(response.messages);
 					}  // /else
