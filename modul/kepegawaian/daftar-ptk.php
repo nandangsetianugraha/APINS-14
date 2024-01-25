@@ -11,6 +11,7 @@ $output = array('data' => array());
 	$query = $connect->query($sql);
 	while ($row = $query->fetch_assoc()) {
 		$idp=$row['ptk_id'];
+		$ids = $row['id'];
 		$jk=$row['jenis_kelamin'];
 		
 		
@@ -21,14 +22,19 @@ $output = array('data' => array());
 			</div>
 		</div>
 		';
+		if($status==1){
 		$actionButton = '
-				<div class="btn-group">
-					<a href="'.base_url().'edit-ptk/'.$idp.'" type="button" class="btn btn-sm btn-primary" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>
-				</div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-sm btn-danger" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#mutasikan"><i class="fas fa-exclamation-triangle"></i></button>
-				</div>
+				<a href="'.base_url().'edit-ptk/'.$idp.'" type="button" class="btn btn-outline-success btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="fa fa-pencil"></i> Edit</a>
+				<button type="button" class="btn btn-outline-info btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#mutasikan"><i class="fa fa-user-times"></i> Mutasi</button>
+				<button type="button" class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="hapusPTK('.$ids.')"><i class="fa fa-trash"></i> Hapus</button>
 				';
+		}else{
+		$actionButton = '
+				<a href="'.base_url().'edit-ptk/'.$idp.'" type="button" class="btn btn-outline-success btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="fa fa-pencil"></i> Edit</a>
+				<button type="button" class="btn btn-outline-info btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#mutasikan"><i class="fa fa-user-times"></i> Aktifkan</button>
+				<button type="button" class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="hapusPTK('.$ids.')"><i class="fa fa-trash"></i> Hapus</button>
+				';
+		}
 		//$tgl=ucfirst(strtolower($row['tempat'])).", ".TanggalIndo($row['tanggal']);
 		$namasis=$row['nama'];
 		$output['data'][] = array(

@@ -45,10 +45,16 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<span class="input-group-text">
 															<i class="fas fa-user-alt"></i>
 														</span>
-														<select class="form-select" id="stst" name="stst">
-															<option value="1">Aktif</option>
-															<option value="0">Non Aktif</option>
+														<select class="form-select" name="stst" id="stst">
+															<?php 
+															$sql2 = "select * from jns_mutasi";
+															$query2 = $connect->query($sql2);
+															while($nk=$query2->fetch_assoc()){
+															?>
+															<option value="<?=$nk['id_mutasi'];?>" <?php if($nk['id_mutasi']==1) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
+															<?php };?>
 														</select>
+														
 													</div>
 												</div> 
 											</div>
@@ -120,10 +126,11 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="tambah-pengguna">
+	
+	<div class="modal fade" id="mutasikan">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="form-horizontal" action="modul/kepegawaian/add-user.php" autocomplete="off" method="POST" id="adduser">
+				<form class="form-horizontal" action="modul/kepegawaian/mutasi-ptk.php" autocomplete="off" method="POST" id="mutasiptk">
 				<div class="fetched-data1"></div>
 				</form>
 			</div>
@@ -168,6 +175,77 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			TabelRombel.search( this.value ).draw();
 		} );
 		
+		$('#mutasikan').on('show.bs.modal', function (e) {
+			var siswa = $(e.relatedTarget).data('siswa');
+			var smt = $(e.relatedTarget).data('smt');
+			var tapel = $(e.relatedTarget).data('tapel');
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'get',
+				url : 'modul/kepegawaian/e_mutasi.php',
+				data :  'ptk='+siswa+'&smt='+smt+'&tapel='+tapel,
+				beforeSend: function()
+				{	
+					$(".fetched-data1").html('<div class="modal-header"><button type="button" class="btn btn-label-danger btn-icon" data-bs-dismiss="modal"><i class="fa fa-times"></i></button></div><div class="modal-body"><div class="portlet"><div class="portlet-body"><i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...</div></div></div>');
+				},
+				success : function(data){
+					$('.fetched-data1').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+		
+		$("#mutasiptk").unbind('submit').bind('submit', function() {
+			var form = $(this);
+			$.ajax({
+				url : form.attr('action'),
+				type : form.attr('method'),
+				data : form.serialize(),
+				dataType : 'json',
+				beforeSend: function()
+				{	
+					$(".fetched-data1").html('<div class="modal-header"><button type="button" class="btn btn-label-danger btn-icon" data-bs-dismiss="modal"><i class="fa fa-times"></i></button></div><div class="modal-body"><div class="portlet"><div class="portlet-body"><i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...</div></div></div>');
+				},
+				success:function(response) {
+					if(response.success == true) {
+						const Toast = Swal.mixin({
+						  toast: true,
+						  position: 'top-right',
+						  iconColor: 'white',
+						  customClass: {
+							popup: 'colored-toast'
+						  },
+						  showConfirmButton: false,
+						  timer: 1500,
+						  timerProgressBar: true
+						})
+						Toast.fire({
+						  icon: 'success',
+						  title: response.messages
+						})
+						$("#mutasikan").modal('hide');
+						TabelRombel.ajax.reload(null, false);
+					} else {
+						const Toast = Swal.mixin({
+						  toast: true,
+						  position: 'top-right',
+						  iconColor: 'white',
+						  customClass: {
+							popup: 'colored-toast'
+						  },
+						  showConfirmButton: false,
+						  timer: 1500,
+						  timerProgressBar: true
+						})
+						Toast.fire({
+						  icon: 'success',
+						  title: response.messages
+						})
+					}  // /else
+				} // success  
+			}); // ajax subit 				
+			return false;
+		}); // /submit form for create member
+		
 		$('#stst').change(function(){
 				//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
 			var stst = $('#stst').val();
@@ -198,6 +276,45 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 		
 		
 	});	
+	
+	function hapusPTK(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus PTK ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/kepegawaian/hapus-ptk.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								toastr.success(response.messages);
+								TabelRombel.ajax.reload(null, false);
+								$("#info").modal('hide');
+							} else {
+								toastr.error(response.messages);
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	
 	</script>
 </body>
 </html>
