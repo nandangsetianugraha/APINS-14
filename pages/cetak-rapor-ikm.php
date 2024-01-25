@@ -35,7 +35,7 @@
 									<h3 class="portlet-title">Cetak Rapor</h3>
 									<div class="portlet-addon">
 										    
-											<?php if($level==11){ ?>
+											<?php if($level==11 || $level==93){ ?>
 											<select id="kelas" name="kelas" class="form-select">
 												<option value="0">Pilih Rombel</option>
 												<?php 

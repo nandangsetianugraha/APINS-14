@@ -88,7 +88,7 @@
 												}	
 												?>
 											</select>
-											<?php }elseif($level==11){ ?>
+											<?php }elseif($level==11 || $level==93){ ?>
 											<select id="kelas" name="kelas" class="form-select">
 												<option value="0">Pilih Rombel</option>
 												<?php 
