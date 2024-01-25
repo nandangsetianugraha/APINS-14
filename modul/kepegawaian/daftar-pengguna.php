@@ -16,17 +16,20 @@ $output = array('data' => array());
 		$nama = $connect->query("select * from ptk where ptk_id='$idp'")->fetch_assoc();
 		$j_ptk = $connect->query("select * from jenis_ptk where jenis_ptk_id='$jk'")->fetch_assoc();
 		$actionButton = '
-		<button class="btn btn-effect-ripple btn-xs btn-primary" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#edit-pengguna"><i class="fa fa-pencil"></i> Edit</button>
-		<button class="btn btn-effect-ripple btn-xs btn-success" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#info"><i class="fa fa-calendar"></i> Ubah Level</button>';
+		<button class="btn btn-outline-primary btn-sm me-1 mb-1" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#edit-pengguna"><i class="fa fa-pencil"></i> Edit</button>
+		<button class="btn btn-outline-info btn-sm me-1 mb-1" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#info"><i class="fa fa-calendar"></i> Ubah Level</button>';
 		if($status==1){
 			$actionButton .= '
-			<button class="btn btn-effect-ripple btn-xs btn-danger" onclick="removePengguna('.$idps.')"><i class="fa fa-close"></i> Non-Aktif</button>
+			<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="removePengguna('.$idps.')"><i class="fa fa-close"></i> Non-Aktif</button>
 			';
 		}else{
 			$actionButton .= '
-			<button class="btn btn-effect-ripple btn-xs btn-danger" onclick="AktifPengguna('.$idps.')"><i class="fa fa-close"></i> Aktifkan</button>
+			<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="AktifPengguna('.$idps.')"><i class="fa fa-close"></i> Aktifkan</button>
 			';
-		}
+		};
+		$actionButton .= '
+			<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="HapusPengguna('.$idps.')"><i class="fa fa-trash"></i> Hapus</button>
+			';
 				
 		//$tgl=ucfirst(strtolower($row['tempat'])).", ".TanggalIndo($row['tanggal']);
 		

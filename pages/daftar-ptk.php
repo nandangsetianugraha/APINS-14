@@ -283,7 +283,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			
 			Swal.fire({
 			  title: 'Yakin dihapus?',
-			  text: "Apakah anda yakin menghapus PTK ini?",
+			  text: "Apakah anda yakin menghapus PTK ini? Akan dihapus juga akun dari PTK yang bersangkutan!",
 			  icon: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
