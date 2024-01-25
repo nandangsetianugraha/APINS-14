@@ -38,8 +38,11 @@ $nkec=$connect->query("select * from kecamatan where id='$kec_id' and id_kabupat
 			<input type="text" autocomplete=off class="form-control" value="[<?=$kec_id;?>] <?=$nkec['nama'];?>" readonly>
 		</div>
 		<div class="mb-4">
+			<?php 
+			$iddesa=$connect->query("SELECT * FROM desa WHERE id_kecamatan='$kec_id' ORDER BY id DESC")->fetch_assoc();
+			?>
 			<label class="form-label" for="example-text-input">ID Desa</label>
-			<input type="text" name="id_desa" autocomplete=off class="form-control" value="<?=$kec_id;?>">
+			<input type="text" name="id_desa" autocomplete=off class="form-control" value="<?=$iddesa['id']+1;?>">
 		</div>
 		<div class="mb-4">
 			<label class="form-label" for="example-text-input">Nama Desa</label>

@@ -31,8 +31,11 @@ $nkab=$connect->query("select * from kabupaten where id='$kab_id' and id_provins
 			<input type="text" autocomplete=off class="form-control"value="[<?=$kab_id;?>] <?=$nkab['nama'];?>" readonly>
 		</div>
 		<div class="mb-4">
+			<?php 
+			$idkec=$connect->query("SELECT * FROM kecamatan WHERE id_kabupaten='$kab_id' ORDER BY id DESC")->fetch_assoc();
+			?>
 			<label class="form-label" for="example-text-input">ID Kecamatan</label>
-			<input type="text" name="id_kec" autocomplete=off class="form-control" value="<?=$kab_id;?>">
+			<input type="text" name="id_kec" autocomplete=off class="form-control" value="<?=$idkec['id']+1;?>">
 		</div>
 		<div class="mb-4">
 			<label class="form-label" for="example-text-input">Nama Kecamatan</label>

@@ -19,7 +19,10 @@ $prov_id=$_POST['prov_id'];
 	<?php }else{ ?>
 		<div class="mb-4">
 			<label class="form-label" for="example-text-input">ID Provinsi</label>
-			<input type="text" name="id_prov" autocomplete=off class="form-control" placeholder="ID Provinsi">
+			<?php 
+			$idprov=$connect->query("SELECT * FROM provinsi WHERE id_prov IN (SELECT MAX(id_prov) FROM provinsi)")->fetch_assoc();
+			?>
+			<input type="text" name="id_prov" autocomplete=off class="form-control" value="<?=$idprov['id_prov']+1;?>">
 		</div>
 		<div class="mb-4">
 			<label class="form-label" for="example-text-input">Nama Provinsi</label>
