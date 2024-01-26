@@ -53,7 +53,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 									</div>
 									<div class="row" id="dip2">
 										<div class="col-md-3">
-											<img src="<?=base_url();?>images/ptk/user-default.jpg" alt="avatar" id="blah"></b>
+											<img src="<?=base_url();?>images/siswa/avatar.png" alt="avatar" width="100%" id="blah"></b>
 										</div>
 										<div class="col-md-9">
 											<div class="portlet" id="portlet1-profile">
@@ -199,7 +199,6 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 															</select>
 														</div>
 														<div class="col-md-12 text-end mt-3">
-															<a href="<?=base_url();?>penempatan" class="btn btn-danger">Kembali</a>
 															<button type="submit" class="btn btn-primary">Simpan</button>
 														</div>
 													</form>
@@ -259,7 +258,6 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 		format: 'yyyy-mm-dd',
 		autoclose:true
 	});
-	$("#inputmask-2").inputmask({ mask: "9999999999999" });
 	$("#dip").hide(); 
 	$("#dip2").show(); 
 	toastr.options = {
@@ -284,7 +282,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			var prov = $('#provinsi').val();
 			$.ajax({
 				type : 'GET',
-				url : 'config/kabupaten.php',
+				url : 'pages/kabupaten.php',
 				data :  'prov_id=' + prov,
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
@@ -298,7 +296,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			var kab = $('#kabupaten').val();
 			$.ajax({
 				type : 'GET',
-				url : 'config/kecamatan.php',
+				url : 'pages/kecamatan.php',
 				data :  'id_kabupaten=' + kab,
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
@@ -312,7 +310,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			var desa = $('#kecamatan').val();
 			$.ajax({
 				type : 'GET',
-				url : 'config/desa.php',
+				url : 'pages/desa.php',
 				data :  'id_kecamatan=' + desa,
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
