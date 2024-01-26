@@ -352,6 +352,44 @@
 		});
 	});	
 	
+	function HapusSiswa(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin Menghapus Siswa ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/siswa/hapus-siswa.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								TabelRombel.ajax.reload(null, false);
+								
+								toastr.success(response.messages);
+							} else {
+								toastr.error(response.messages);
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	
 	function PopupCenter(pageURL, title,w,h) {
 		var left = (screen.width/2)-(w/2);
 		var top = (screen.height/2)-(h/2);

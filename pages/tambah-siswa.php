@@ -334,9 +334,9 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					$('#portlet1-profile').unblock();
 					if(response.success == true) {
 						toastr.success(response.messages);
-						//setTimeout(function () {window.open("./","_self");},1000)
-						//setTimeout(function () {window.open("./","_self");},1000)
-						// reset the form
+						setTimeout(function () {
+							location.reload();
+						},500);
 					} else {
 						toastr.error(response.messages);
 					}  // /else

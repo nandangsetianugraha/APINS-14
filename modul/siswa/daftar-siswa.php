@@ -29,6 +29,10 @@ $output = array('data' => array());
 				<a href="'.base_url().'edit-siswas/'.$idp.'" class="btn btn-outline-primary btn-sm me-1 mb-1">
 					<i class="fa fa-pencil"></i> Edit
 				</a>
+				<button class="btn btn-outline-danger btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
+					<i class="fa fa-times"></i> Aktifkan
+				</button>
+				<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="HapusSiswa('.$ids.')"><i class="fa fa-trash"></i> Hapus</button>
 				';
 		}else{
 		$actionButton = '
@@ -44,6 +48,7 @@ $output = array('data' => array());
 				<button class="btn btn-outline-danger btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
 					<i class="fa fa-times"></i> Mutasikan
 				</button>
+				<button class="btn btn-outline-danger btn-sm me-1 mb-1" onclick="HapusSiswa('.$ids.')"><i class="fa fa-trash"></i> Hapus</button>
 				';
 		}
 		$namasis=$row['nama'];
