@@ -46,7 +46,11 @@
 													<input type="text" class="form-control" name="nama" value="<?=$infoptk['nama'];?>" required>
 													<input type="hidden" class="form-control" id="idptks" name="ptkid" value="<?=$infoptk['peserta_didik_id'];?>" required>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-2">
+													<label for="inputEmail4" class="form-label">Nama Panggil</label>
+													<input type="text" class="form-control" name="nama_panggil" value="<?=$infoptk['nama_panggil'];?>">
+												</div>
+												<div class="col-md-4">
 													<label for="inputEmail4" class="form-label">NIK</label>
 													<input type="text" class="form-control" name="nik" value="<?=$infoptk['nik'];?>">
 												</div>
