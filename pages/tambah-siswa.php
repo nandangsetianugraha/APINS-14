@@ -60,11 +60,15 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 												<div class="portlet-body">
 													<form class="row g-3" action="modul/siswa/tambah-siswa.php" autocomplete="off" method="POST" id="ubahForm">
 													
-														<div class="form-group col-md-6">
+														<div class="form-group col-md-4">
 															<label for="inputCity">Nama Lengkap</label>
 															<input type="text" class="form-control" name="nama"  required>
 														</div>
-														<div class="form-group col-md-6 border-top-0 pt-0">
+														<div class="form-group col-md-3">
+															<label for="inputzip">Nama Panggil</label>
+															<input type="text" class="form-control" name="nama_panggil"  required>
+														</div>
+														<div class="form-group col-md-5 border-top-0 pt-0">
 															<label for="inputZip">NIK</label>
 															<input type="text" class="form-control" name="nik" >
 														</div>
