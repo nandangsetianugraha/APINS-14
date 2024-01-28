@@ -2325,11 +2325,12 @@ CREATE TABLE `siswa` (
   `nis` varchar(9) NOT NULL,
   `nisn` varchar(10) DEFAULT NULL,
   `nama` varchar(150) DEFAULT NULL,
+  `nama_panggil` varchar(50) DEFAULT NULL,
   `jk` varchar(1) DEFAULT NULL,
   `tempat` varchar(50) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nik` varchar(16) DEFAULT NULL,
-  `agama` int(11) NOT NULL DEFAULT 1,
+  `agama` int(11) NOT NULL DEFAULT '1',
   `pend_sebelum` varchar(100) NOT NULL,
   `alamat` varchar(350) DEFAULT NULL,
   `nama_ayah` varchar(150) DEFAULT NULL,
@@ -2348,11 +2349,11 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
-INSERT INTO `siswa` (`id`, `peserta_didik_id`, `nis`, `nisn`, `nama`, `jk`, `tempat`, `tanggal`, `nik`, `agama`, `pend_sebelum`, `alamat`, `nama_ayah`, `nama_ibu`, `no_wa`, `pek_ayah`, `pek_ibu`, `jalan`, `kelurahan`, `kecamatan`, `kabupaten`, `provinsi`, `avatar`, `status`, `nasabah_id`) VALUES
-(13, '36d3vclk-fsj3-2cnu-t93f-oxzndqqfn1tb', '', '', 'ngadi', 'L', 'sss', '2024-01-22', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0');
+INSERT INTO `siswa` (`id`, `peserta_didik_id`, `nis`, `nisn`, `nama`, `nama_panggil`, `jk`, `tempat`, `tanggal`, `nik`, `agama`, `pend_sebelum`, `alamat`, `nama_ayah`, `nama_ibu`, `no_wa`, `pek_ayah`, `pek_ibu`, `jalan`, `kelurahan`, `kecamatan`, `kabupaten`, `provinsi`, `avatar`, `status`, `nasabah_id`) VALUES
+(13, '36d3vclk-fsj3-2cnu-t93f-oxzndqqfn1tb', '', '', 'ngadi', '', 'L', 'sss', '2024-01-22', '', 1, '', '', '', '', '', 1, 1, '', 'Pilih Desa/kelurahan', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Provinsi', 'avatar.png', 1, '0');
 
 -- --------------------------------------------------------
 
