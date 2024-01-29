@@ -91,7 +91,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Ln(0.5);
 
-   $this->Cell(19,0,strtoupper($cfg['nama_sekolah']),0,0,'C');
+   $this->Cell(19,0,strtoupper($cfgs['nama']),0,0,'C');
    $this->Ln(0.5);
    $this->Cell(19,0,'SEMESTER '.$smt.' TAHUN PELAJARAN '.$tapel,0,0,'C');
    $this->Ln(1);
