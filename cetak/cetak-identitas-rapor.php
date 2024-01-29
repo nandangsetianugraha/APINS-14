@@ -287,7 +287,7 @@ $ndes=$des['nama'];
  $table3->easyCell('Provinsi');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($nprov),'border:B;font-style:B');
+ $table3->easyCell($nprov,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
