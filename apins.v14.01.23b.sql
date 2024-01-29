@@ -2251,11 +2251,11 @@ CREATE TABLE `sas` (
 
 CREATE TABLE `sekolah` (
   `sekolah_id` varchar(36) DEFAULT NULL,
-  `nama` varchar(18) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
   `nss` bigint(12) DEFAULT NULL,
   `npsn` int(8) DEFAULT NULL,
   `bentuk_pendidikan_id` int(1) DEFAULT NULL,
-  `alamat_jalan` varchar(25) DEFAULT NULL,
+  `alamat_jalan` varchar(100) DEFAULT NULL,
   `rt` int(1) DEFAULT NULL,
   `rw` int(1) DEFAULT NULL,
   `desa` varchar(20) DEFAULT NULL,
@@ -2267,7 +2267,7 @@ CREATE TABLE `sekolah` (
   `bujur` varchar(100) DEFAULT NULL,
   `nomor_telepon` varchar(14) DEFAULT NULL,
   `nomor_fax` varchar(10) DEFAULT NULL,
-  `email` varchar(22) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `website` varchar(200) DEFAULT NULL,
   `kebutuhan_khusus_id` int(1) DEFAULT NULL,
   `status_sekolah` int(1) DEFAULT NULL,
