@@ -26,7 +26,7 @@ function Header(){
 	$kab = json_decode($kabss,true);
 	foreach ($kab as $d) {
 		if($ikab==$d['id'])
-			$kab1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
+			$kab1 = ucwords(strtolower(substr($d['name'], 10)));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar 10 menghilangkan kata kabupaten(spasi)
     };
 	// tutup curl 
 	curl_close($kb);  
