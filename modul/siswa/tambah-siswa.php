@@ -18,6 +18,7 @@ if($_POST) {
 	$nis=strip_tags($connect->real_escape_string($_POST['nis']));
 	$nisn=strip_tags($connect->real_escape_string($_POST['nisn']));
 	$nama=strip_tags($connect->real_escape_string($_POST['nama']));
+	$nama_panggil=strip_tags($connect->real_escape_string($_POST['nama_panggil']));
 	$jk=$_POST['jk'];
 	$tempat=strip_tags($connect->real_escape_string($_POST['tempat']));
 	$tanggal=$_POST['tanggal'];
@@ -47,7 +48,7 @@ if($_POST) {
 		$validator['success'] = false;
 		$validator['messages'] = "Nama dan tanggal lahir tidak boleh kosong!";
 	}else{
-			$sql1 = "INSERT INTO siswa(peserta_didik_id,nis,nisn,nama,jk,tempat,tanggal,nik,agama,pend_sebelum,alamat,nama_ayah,nama_ibu,no_wa,pek_ayah,pek_ibu,jalan,kelurahan,kecamatan,kabupaten,provinsi,avatar,status,nasabah_id) VALUES('$id_pd','$nis','$nisn','$nama','$jk','$tempat','$tanggal','$nik','$agama','$pend','$alamat','$ayah','$ibu','$no_wa','$pek_ayah','$pek_ibu','$jalan','$kelurahan','$kecamatan','$kabupaten','$provinsi','avatar.png','1','0')";
+			$sql1 = "INSERT INTO siswa(peserta_didik_id,nis,nisn,nama,nama_panggil,jk,tempat,tanggal,nik,agama,pend_sebelum,alamat,nama_ayah,nama_ibu,no_wa,pek_ayah,pek_ibu,jalan,kelurahan,kecamatan,kabupaten,provinsi,avatar,status,nasabah_id) VALUES('$id_pd','$nis','$nisn','$nama','$nama_panggil','$jk','$tempat','$tanggal','$nik','$agama','$pend','$alamat','$ayah','$ibu','$no_wa','$pek_ayah','$pek_ibu','$jalan','$kelurahan','$kecamatan','$kabupaten','$provinsi','avatar.png','1','0')";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;
