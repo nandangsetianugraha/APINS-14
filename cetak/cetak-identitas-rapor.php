@@ -266,21 +266,21 @@ $ndes=$des['nama'];
  $table3->easyCell('Kelurahan/Desa');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($des1),'border:B;font-style:B');
+ $table3->easyCell($des1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kecamatan');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($kec1),'border:B;font-style:B');
+ $table3->easyCell($kec1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kabupaten/Kota');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($kab1),'border:B;font-style:B');
+ $table3->easyCell($kab1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
