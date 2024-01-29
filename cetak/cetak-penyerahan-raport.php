@@ -26,7 +26,7 @@ function Header(){
 	$kab = json_decode($kabss,true);
 	foreach ($kab as $d) {
 		if($ikab==$d['id'])
-			$kab1 = $d['name'];
+			$kab1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kb);  
@@ -44,7 +44,7 @@ function Header(){
 	$kec = json_decode($kecss,true);
 	foreach ($kec as $d) {
 		if($ikec==$d['id'])
-			$kec1 = $d['name'];
+			$kec1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kc); 
@@ -62,7 +62,7 @@ function Header(){
 	$dss = json_decode($desass,true);
 	foreach ($dss as $d) {
 		if($idesa==$d['id'])
-			$des1 = $d['name'];
+			$des1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($ds); 
