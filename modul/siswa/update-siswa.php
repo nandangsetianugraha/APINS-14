@@ -33,7 +33,7 @@ if($_POST) {
 		$validator['success'] = false;
 		$validator['messages'] = "Nama dan tanggal lahir tidak boleh kosong!";
 	}else{
-			$sql1 = "UPDATE siswa SET nis='$nis', nisn='$nisn', nama='$nama', nama='$nama_panggil', jk='$jk', tempat='$tempat', tanggal='$tanggal', nik='$nik', agama='$agama', pend_sebelum='$pend', alamat='$alamat', nama_ayah='$ayah', nama_ibu='$ibu', no_wa='$no_wa', pek_ayah='$pek_ayah', pek_ibu='$pek_ibu', jalan='$jalan', kelurahan='$kelurahan', kecamatan='$kecamatan', kabupaten='$kabupaten', provinsi='$provinsi' WHERE peserta_didik_id='$ids'";
+			$sql1 = "UPDATE siswa SET nis='$nis', nisn='$nisn', nama='$nama', nama_panggil='$nama_panggil', jk='$jk', tempat='$tempat', tanggal='$tanggal', nik='$nik', agama='$agama', pend_sebelum='$pend', alamat='$alamat', nama_ayah='$ayah', nama_ibu='$ibu', no_wa='$no_wa', pek_ayah='$pek_ayah', pek_ibu='$pek_ibu', jalan='$jalan', kelurahan='$kelurahan', kecamatan='$kecamatan', kabupaten='$kabupaten', provinsi='$provinsi' WHERE peserta_didik_id='$ids'";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;
