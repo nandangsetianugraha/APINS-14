@@ -275,7 +275,7 @@ $querys = $connect->query("select * from penempatan where rombel='$kelas' and ta
    $pdf->Cell(9.5,0.6,'',0,0,'L');
    $pdf->Cell(4.1,0.6,'',0,0,'L');
    $pdf->Cell(1.5,0.6,'',0,0,'L');
-   $pdf->Cell(4.1,0.6,'NIP. -',0,0,'L');
+   $pdf->Cell(4.1,0.6,$namawali['niy_nigk'].'',0,'C','L');
 
    $pdf->Output();
  ?>
