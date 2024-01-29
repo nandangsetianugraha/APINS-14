@@ -99,12 +99,16 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="tab-pane fade show active" id="portlet4-home">
 															<form class="row g-3" action="<?=base_url();?>modul/siswa/update-siswa.php" autocomplete="off" method="POST" id="ubahForm">
 															
-																<div class="form-group col-md-6">
+																<div class="form-group col-md-4">
 																	<label for="inputCity">Nama Lengkap</label>
 																	<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
 																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
 																</div>
-																<div class="form-group col-md-6 border-top-0 pt-0">
+																<div class="form-group col-md-4">
+																	<label for="inputzip">Nama Panggil</label>
+																	<input type="text" class="form-control" name="nama_panggil"  value="<?=$pn['nama_panggil'];?>" required>
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">NIK</label>
 																	<input type="text" class="form-control" name="nik" value="<?=$pn['nik'];?>">
 																</div>
@@ -113,7 +117,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<label for="inputZip">Tempat Lahir</label>
 																	<input type="text" class="form-control" name="tempat" value="<?=$pn['tempat'];?>" required>
 																</div>
-																<div class="form-group col-md-5 border-top-0 pt-0">
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">Tanggal Lahir</label>
 																	<div class="input-group">
 																		<span class="input-group-text">
@@ -122,7 +126,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																		<input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$pn['tanggal'];?>" required>
 																	</div>
 																</div>
-																<div class="form-group col-md-3 border-top-0 pt-0">
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputCity">Jenis Kelamin</label>
 																	<select name="jeniskelamin" class="form-select">
 																		<option value="L" <?php if($pn['jk']=='L') echo 'selected';?>>Laki-laki</option>

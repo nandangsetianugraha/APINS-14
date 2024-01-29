@@ -4,8 +4,14 @@ $bln=isset($_GET['bln']) ? $_GET['bln'] : date("m");
 $thn=isset($_GET['thn']) ? $_GET['thn'] : date("Y");
 $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
 ?>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="stylesheet" href="<?=base_url();?>assets/css/croppie.css" />
+<style>
+#mapWrap {
+    width: 100%;
+    height: 400px; 
+}    
+</style>
 </head>
 
 <body class="preload-active aside-active aside-mobile-minimized aside-desktop-maximized">
@@ -47,7 +53,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 								<div class="portlet-header portlet-header-bordered">
 									<h3 class="portlet-title"><?=$pn['nama'];?></h3>
 									<div class="portlet-addon">
-										<a href="<?=base_url();?>rombel" class="btn btn-danger">Kembali</a>
+										<a href="<?=base_url();?>daftar-siswa" class="btn btn-danger">Kembali</a>
 									</div>
 									<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 									<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
@@ -62,7 +68,18 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 											<b id="uploaded_image"><img src="<?=base_url();?>images/siswa/<?=$pn['avatar'];?>" width="100%" alt="avatar" id="blah"></b>
 											<div class="profileupload">
 												<input type="file" accept="image/*" name="upload_image" id="upload_image">
-											</div>
+											</div><br/>
+											<?php 
+											$regis = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->fetch_assoc();
+											if(!empty($regis['lintang']) or !empty($regis['bujur'])){
+												$lintang=$regis['lintang'];
+												$bujur=$regis['bujur']
+											?>
+											
+											<?php } ?>
+											<input type="hidden" class="form-control" name="bujur" id="bujur" value="<?=$regis['bujur'];?>" required>
+											<input type="hidden" class="form-control" name="lintang" id="lintang" value="<?=$regis['lintang'];?>" required>
+											<div id="mapWrap"></div>
 										</div>
 										<div class="col-md-9">
 											<div class="portlet" id="portlet1-profile">
@@ -72,7 +89,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="nav nav-lines portlet-nav" id="portlet4-tab">
 															<a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Profil</a>
 															<a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Data Registrasi</a>
-															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Pengembangan</a>
+															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Data Kemenkes</a>
 														</div>
 														<!-- END Nav -->
 													</div>
@@ -82,12 +99,16 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="tab-pane fade show active" id="portlet4-home">
 															<form class="row g-3" action="<?=base_url();?>modul/siswa/update-siswa.php" autocomplete="off" method="POST" id="ubahForm">
 															
-																<div class="form-group col-md-6">
+																<div class="form-group col-md-4">
 																	<label for="inputCity">Nama Lengkap</label>
 																	<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
 																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
 																</div>
-																<div class="form-group col-md-6 border-top-0 pt-0">
+																<div class="form-group col-md-4">
+																	<label for="inputzip">Nama Panggil</label>
+																	<input type="text" class="form-control" name="nama_panggil"  value="<?=$pn['nama_panggil'];?>" required>
+																</div>
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">NIK</label>
 																	<input type="text" class="form-control" name="nik" value="<?=$pn['nik'];?>">
 																</div>
@@ -96,7 +117,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<label for="inputZip">Tempat Lahir</label>
 																	<input type="text" class="form-control" name="tempat" value="<?=$pn['tempat'];?>" required>
 																</div>
-																<div class="form-group col-md-5 border-top-0 pt-0">
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">Tanggal Lahir</label>
 																	<div class="input-group">
 																		<span class="input-group-text">
@@ -105,7 +126,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																		<input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$pn['tanggal'];?>" required>
 																	</div>
 																</div>
-																<div class="form-group col-md-3 border-top-0 pt-0">
+																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputCity">Jenis Kelamin</label>
 																	<select name="jeniskelamin" class="form-select">
 																		<option value="L" <?php if($pn['jk']=='L') echo 'selected';?>>Laki-laki</option>
@@ -253,10 +274,10 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<div class="tab-pane fade" id="portlet4-profile">
 															<?php 
 															$cekreg = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->num_rows;
-															$regis = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->fetch_assoc();
+															
 															if($cekreg>0){}else{
 															?>
-															<div class="alert alert-outline-secondary">
+															<div class="alert alert-outline-secondary" id="regist">
 																<div class="alert-icon">
 																	<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 																</div>
@@ -351,6 +372,19 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 															</form>
 														</div>
 														<div class="tab-pane fade" id="portlet4-contact">
+															<button class="btn btn-effect-ripple btn-xs btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahkemenkes"><i class="fa fa-plus"></i> Kemenkes</button>
+															<table id="kes-1" class="table table-bordered table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>JENIS LAYANAN</th>
+																		<th>TANGGAL PELAKSANAAN</th>
+																		<th>TEMPAT PELAKSANAAN</th>
+																		<th>TIPE VAKSINASI</th>
+																		<th>DOSIS</th>
+																		<th></th>
+																	</tr>
+																</thead>
+															</table>
 														</div>
 													</div>
 												</div>
@@ -406,12 +440,58 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="tambahkemenkes">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="tambahkemenkesform" method="POST" action="../modul/siswa/tambah-kemenkes.php" class="form" autocomplete="off">
+				<div class="fetched-data2"></div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- END Modal -->
 	<?php include "layout/offcanvas-todo.php"; ?>
 	<?php include "layout/script.php"; ?>
 	<script src="<?=base_url();?>assets/js/croppie.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script>
+	// Define latitude, longitude and zoom level
+	const latitude = $('#lintang').val();
+	const longitude = $('#bujur').val();
+	const zoom = 14;
+
+	// Set DIV element to embed map
+	var mymap = L.map('mapWrap');
+
+	// Add initial marker & popup window
+	var mmr = L.marker([0,0]);
+	mmr.bindPopup('0,0');
+	mmr.addTo(mymap);
+
+	// Add copyright attribution
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
+		foo: 'bar',
+		attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+	).addTo(mymap);
+
+	// Set lat lng position and zoom level of map 
+	mmr.setLatLng(L.latLng(latitude, longitude));
+	mymap.setView([latitude, longitude], zoom);
+
+	// Set popup window content
+	mmr.setPopupContent('Latitude: '+latitude+' <br /> Longitude: '+longitude).openPopup();
+
+	// Set marker onclick event
+	mmr.on('click', openPopupWindow);
+
+	// Marker click event handler
+	function openPopupWindow(e) {
+		mmr.setPopupContent('Latitude: '+e.latlng.lat+' <br /> Longitude: '+e.latlng.lng).openPopup();
+	}
+	</script>
 	<script>
 	var TabelRombel;
+	var TabelKes;
 	$('#tanggal').datepicker({
 		format: 'yyyy-mm-dd',
 		autoclose:true
@@ -457,6 +537,13 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 		  height:300
 		}
 	});
+	TabelKes = $("#kes-1").DataTable({ 
+			"destroy":true,
+			"searching": true,
+			"paging":true,
+			"responsive":true,
+			"ajax": "../modul/siswa/daftar-kemenkes.php?idptk="+idptk
+		});
 	$('#upload_image').on('change', function(){
 		var reader = new FileReader();
 		reader.onload = function (event) {
@@ -575,7 +662,52 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					$('#tampilan').unblock();
 					if(response.success == true) {
 						toastr.success(response.messages);
-						
+						$("#regist").hide(); 
+					} else {
+						toastr.error(response.messages);
+					}  // /else
+				} // success  
+			}); // ajax subit 				
+			return false;
+		}); // /submit form for create member
+		$('#tambahkemenkes').on('show.bs.modal', function (e) {
+            var idptk = $('#idpt').val();
+			$('#tanggal_kes').datepicker({
+				format: 'yyyy-mm-dd',
+				autoclose:true
+			});
+			//menggunakan fungsi ajax untuk pengambilan data
+			$.ajax({
+				type : 'post',
+				url : '../modul/siswa/m_kemenkes.php',
+				data :  'idptk='+ idptk,
+				beforeSend: function()
+				{	
+					$('#kes-1').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success : function(data){
+					$('#kes-1').unblock();
+					$('.fetched-data2').html(data);//menampilkan data ke dalam modal
+				}
+			});
+		});
+		$("#tambahkemenkesform").unbind('submit').bind('submit', function() {
+			var form = $(this);
+			//submi the form to server
+			$.ajax({
+				url : form.attr('action'),
+				type : form.attr('method'),
+				data : form.serialize(),
+				dataType : 'json',
+				beforeSend: function(){	
+					$('#kes-1').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success:function(response) {
+					$('#kes-1').unblock();
+					if(response.success == true) {
+						toastr.success(response.messages);
+						$("#tambahkemenkes").modal('hide');
+						TabelKes.ajax.reload(null, false);
 					} else {
 						toastr.error(response.messages);
 					}  // /else
