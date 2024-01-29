@@ -87,8 +87,8 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 															<input type="text" class="form-control" name="nik">
 														</div>
 														<div class="col-4">
-															<label for="inputAddress" class="form-label">NIY/NIGK</label>
-															<input type="text" class="form-control" name="niynigk">
+															<label for="inputAddress" class="form-label" title="Silahkan Masukan NIY/NIGK/NIP/NBM ex: NBM. 123456">NIY/NIGK</label>
+															<input type="text" class="form-control" name="niynigk" title="Silahkan Masukan NIY/NIGK/NIP/NBM ex: NBM. 123456">
 														</div>
 														<div class="col-4">
 															<label for="inputAddress" class="form-label">NUPTK</label>
