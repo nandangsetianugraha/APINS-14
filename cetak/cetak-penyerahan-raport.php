@@ -12,9 +12,66 @@ function Header(){
 	$ikec = $cfgs['kecamatan'];
 	$ikab = $cfgs['kabupaten'];
 	$iprov = $cfgs['provinsi'];
+	
+	// Kabupaten
+	// persiapkan curl
+	$kb = curl_init(); 
+	// set url 
+	curl_setopt($kb, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/".$iprov.".json");
+	// return the transfer as a string 
+	curl_setopt($kb, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$kabss = curl_exec($kb); 
+	// menampilkan hasil curl
+	$kab = json_decode($kabss,true);
+	foreach ($kab as $d) {
+		if($ikab==$d['id'])
+			$kab1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($kb);  
+
+	// Kecamatan
+	// persiapkan curl
+	$kc = curl_init(); 
+	// set url 
+	curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$ikab.".json");
+	// return the transfer as a string 
+	curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$kecss= curl_exec($kc); 
+	// menampilkan hasil curl
+	$kec = json_decode($kecss,true);
+	foreach ($kec as $d) {
+		if($ikec==$d['id'])
+			$kec1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($kc); 
+	
+	// Desa
+	// persiapkan curl
+	$ds = curl_init(); 
+	// set url 
+	curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$ikec.".json");
+	// return the transfer as a string 
+	curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$desass = curl_exec($ds); 
+	// menampilkan hasil curl
+	$dss = json_decode($desass,true);
+	foreach ($dss as $d) {
+		if($idesa==$d['id'])
+			$des1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($ds); 
+	
+	/**
 	$desa=$connect->query("select * from desa where id='$idesa'")->fetch_assoc();
 	$kec=$connect->query("select * from kecamatan where id='$ikec'")->fetch_assoc();
 	$kab=$connect->query("select * from kabupaten where id='$ikab'")->fetch_assoc();
+	**/
 	$prov=$connect->query("select * from provinsi where id_prov='$iprov'")->fetch_assoc();
 	$kelas=$_GET['kelas'];
 	$ab=substr($kelas, 0, 1);
@@ -61,7 +118,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'Desa/Kelurahan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($desa['nama']),'B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($des1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Pukul',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -70,7 +127,7 @@ function Header(){
    //$tanggal=$Ls['tanggal'];
    $this->Cell(4,0.5,'Kecamatan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kec['nama']),'B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($kec1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Kelas',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -79,7 +136,7 @@ function Header(){
 
    $this->Cell(4,0.5,'Kabupaten',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kab['nama']),'B',0,'L');
+   $this->Cell(7.5,0.5,strtoupper($kab1),'B',0,'L');
 
    $this->SetFont('Arial','B','8');
    $this->SetFillColor(192,192,192);
