@@ -2032,7 +2032,7 @@ CREATE TABLE `ptk` (
   `tanggal_lahir` date DEFAULT NULL,
   `nik` varchar(16) DEFAULT NULL,
   `status_perkawinan` int(11) NOT NULL DEFAULT 1,
-  `niy_nigk` varchar(14) DEFAULT NULL,
+  `niy_nigk` varchar(30) DEFAULT NULL,
   `nuptk` varchar(16) DEFAULT NULL,
   `status_kepegawaian_id` int(1) DEFAULT NULL,
   `jenis_ptk_id` int(2) DEFAULT NULL,
