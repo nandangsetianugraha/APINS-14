@@ -715,16 +715,21 @@
 			var prov = $('#provs').val();
 			$.ajax({
 				type : 'GET',
-				url : '<?=base_url();?>pages/kabupaten.php',
-				data :  'prov_id=' + prov,
-                dataType : 'HTML',
+				url : 'https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/'+prov+'.json',
+				dataType : 'json',
 				beforeSend: function()
 				{	
 					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
 				},
 				success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-					$("#kabs").html(data);
+					
+					//var kecs = $.parseJSON(data);
+					var sampleName = '<option value="0">Pilih Kabupaten</option>';
+					$.each(data, function () {
+						sampleName += "<option value='"+this['id']+"'>"+this['name']+"</option>";
+					});
+					$("#kabs").html(sampleName);
 					$('#status').unblock();
 				}
 			});
@@ -808,16 +813,18 @@
 			var kab = $('#kabs').val();
 			$.ajax({
 				type : 'GET',
-				url : '<?=base_url();?>pages/kecamatan.php',
-				data :  'id_kabupaten=' + kab,
-                dataType : 'HTML',
+				url : 'https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/'+kab+'.json',
+				dataType : 'json',
 				beforeSend: function()
 				{	
 					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
 				},
 				success: function (data) {
-					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-					$("#kecs").html(data);
+					var sampleName = '<option value="0">Pilih Kecamatan</option>';
+					$.each(data, function () {
+						sampleName += "<option value='"+this['id']+"'>"+this['name']+"</option>";
+					});
+					$("#kecs").html(sampleName);
 					$('#status').unblock();
 				}
 			});
@@ -904,18 +911,19 @@
 			var desa = $('#kecs').val();
 			$.ajax({
 				type : 'GET',
-				url : '<?=base_url();?>pages/desa.php',
-				data :  'id_kecamatan=' + desa,
-                dataType : 'HTML',
+				url : 'https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/'+desa+'.json',
+				dataType : 'json',
 				beforeSend: function()
 				{	
 					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
 				},
 				success: function (data) {
-					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-					$("#desas").html(data);
+					var sampleName = '<option value="0">Pilih Desa</option>';
+					$.each(data, function () {
+						sampleName += "<option value='"+this['id']+"'>"+this['name']+"</option>";
+					});
+					$("#desas").html(sampleName);
 					$('#status').unblock();
-					// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
 				}
 			});
 	});
