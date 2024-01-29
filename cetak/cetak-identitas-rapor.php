@@ -53,13 +53,70 @@ $id_kec=$siswa['kecamatan'];
 $id_des=$siswa['kelurahan'];
 $prov=$connect->query("select * from provinsi where id_prov='$id_prov'")->fetch_assoc();
 $nprov=$prov['nama'];
+// Kabupaten
+	// persiapkan curl
+	$kb = curl_init(); 
+	// set url 
+	curl_setopt($kb, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/".$id_prov.".json");
+	// return the transfer as a string 
+	curl_setopt($kb, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$kabss = curl_exec($kb); 
+	// menampilkan hasil curl
+	$kab = json_decode($kabss,true);
+	foreach ($kab as $d) {
+		if($id_kab==$d['id'])
+			$kab1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($kb);  
+
+	// Kecamatan
+	// persiapkan curl
+	$kc = curl_init(); 
+	// set url 
+	curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+	// return the transfer as a string 
+	curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$kecss= curl_exec($kc); 
+	// menampilkan hasil curl
+	$kec = json_decode($kecss,true);
+	foreach ($kec as $d) {
+		if($id_kec==$d['id'])
+			$kec1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($kc); 
+	
+	// Desa
+	// persiapkan curl
+	$ds = curl_init(); 
+	// set url 
+	curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+	// return the transfer as a string 
+	curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+	// $output contains the output string 
+	$desass = curl_exec($ds); 
+	// menampilkan hasil curl
+	$dss = json_decode($desass,true);
+	foreach ($dss as $d) {
+		if($id_des==$d['id'])
+			$des1 = $d['name'];
+    };
+	// tutup curl 
+	curl_close($ds);
+
+
+
+/**
 $kab=$connect->query("select * from kabupaten where id='$id_kab'")->fetch_assoc();
 $nkab=$kab['nama'];
 $kec=$connect->query("select * from kecamatan where id='$id_kec'")->fetch_assoc();
 $nkec=$kec['nama'];
 $des=$connect->query("select * from desa where id='$id_des'")->fetch_assoc();
 $ndes=$des['nama'];
-
+**/
  $pdf->AddPage(); 
  $pdf->AddFont('lato','','Lato-Regular.php');
  $pdf->AddFont('FontUTF8','','Arimo-Regular.php'); 
@@ -209,28 +266,28 @@ $ndes=$des['nama'];
  $table3->easyCell('Kelurahan/Desa');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($ndes,'border:B;font-style:B');
+ $table3->easyCell(strtoupper($des1),'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kecamatan');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($nkec,'border:B;font-style:B');
+ $table3->easyCell(strtoupper($kec1),'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kabupaten/Kota');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($nkab,'border:B;font-style:B');
+ $table3->easyCell(strtoupper($kab1),'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Provinsi');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($nprov,'border:B;font-style:B');
+ $table3->easyCell(strtoupper($nprov),'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
