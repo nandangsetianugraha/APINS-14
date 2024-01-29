@@ -145,7 +145,7 @@ $nprov=$prov['nama'];
 	$kab = json_decode($kabss,true);
 	foreach ($kab as $d) {
 		if($id_kab==$d['id'])
-			$kab1 = $d['name'];
+			$kab1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kb);  
@@ -163,7 +163,7 @@ $nprov=$prov['nama'];
 	$kec = json_decode($kecss,true);
 	foreach ($kec as $d) {
 		if($id_kec==$d['id'])
-			$kec1 = $d['name'];
+			$kec1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kc); 
@@ -181,7 +181,7 @@ $nprov=$prov['nama'];
 	$dss = json_decode($desass,true);
 	foreach ($dss as $d) {
 		if($id_des==$d['id'])
-			$des1 = $d['name'];
+			$des1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($ds);
