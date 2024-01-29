@@ -118,7 +118,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'Desa/Kelurahan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($des1),'B',0,'L');
+   $this->Cell(7.5,0.5,($des1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Pukul',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -127,7 +127,7 @@ function Header(){
    //$tanggal=$Ls['tanggal'];
    $this->Cell(4,0.5,'Kecamatan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kec1),'B',0,'L');
+   $this->Cell(7.5,0.5,($kec1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Kelas',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -136,7 +136,7 @@ function Header(){
 
    $this->Cell(4,0.5,'Kabupaten',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kab1),'B',0,'L');
+   $this->Cell(7.5,0.5,($kab1),'B',0,'L');
 
    $this->SetFont('Arial','B','8');
    $this->SetFillColor(192,192,192);
