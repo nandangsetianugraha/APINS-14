@@ -273,6 +273,49 @@
 														<div class="tab-pane fade" id="nav3-contact">
 															<?php
 															$nsekd = $connect->query("select * from sekolah where sekolah_id='20162e13-2cf5-e011-91d5-a9ab0de328a2'")->fetch_assoc();
+															$id_prov=$nsekd['provinsi'];
+															$id_kab=$nsekd['kabupaten'];
+															$id_kec=$nsekd['kecamatan'];
+															$id_des=$nsekd['desa'];
+															$prov=$connect->query("select * from provinsi where id_prov='$id_prov'")->fetch_assoc();
+															$nprov=$prov['nama'];
+															
+
+															// Kecamatan
+															// persiapkan curl
+															$kc = curl_init(); 
+															// set url 
+															curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+															// return the transfer as a string 
+															curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+															// $output contains the output string 
+															$kecss= curl_exec($kc); 
+															// menampilkan hasil curl
+															$kec = json_decode($kecss,true);
+															foreach ($kec as $d) {
+																if($id_kec==$d['id'])
+																	$kec1 = $d['name'];
+															};
+															// tutup curl 
+															curl_close($kc); 
+															
+															// Desa
+															// persiapkan curl
+															$ds = curl_init(); 
+															// set url 
+															curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+															// return the transfer as a string 
+															curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+															// $output contains the output string 
+															$desass = curl_exec($ds); 
+															// menampilkan hasil curl
+															$dss = json_decode($desass,true);
+															foreach ($dss as $d) {
+																if($id_des==$d['id'])
+																	$des1 = $d['name'];
+															};
+															// tutup curl 
+															curl_close($ds);
 															?>
 															<form class="d-grid gap-3" action="modul/setting/update-sekolah.php" autocomplete="off" method="POST" id="ubahSekolah" autocomplete="off">
 																<div class="row">
@@ -315,13 +358,24 @@
                                                                     <div class="col-sm-2">
                                                                         <select class="form-select" id="desas" name="desas">
                                                                             <?php 
-                                                                            $sql15 = "select * from desa order by id asc";
-                                                                            $query15 = $connect->query($sql15);
-                                                                            while($nks1=$query15->fetch_assoc()){
+																			// Kabupaten
+																			// persiapkan curl
+																			$ds = curl_init(); 
+																			// set url 
+																			curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+																			// return the transfer as a string 
+																			curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$desass = curl_exec($ds); 
+																			// menampilkan hasil curl
+																			$des = json_decode($desass,true);
+																			foreach ($des as $d) {
 																			?>
-                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['desa']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_des==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
 																			<?php 
                                                                             }	
+																			// tutup curl 
+																			curl_close($ds); 
                                                                             ?>
                                                                         </select>
 																	</div>
@@ -329,13 +383,24 @@
                                                                     <div class="col-sm-2">
                                                                         <select class="form-select" id="kecs" name="kecs">
                                                                             <?php 
-                                                                            $sql15 = "select * from kecamatan order by id asc";
-                                                                            $query15 = $connect->query($sql15);
-                                                                            while($nks1=$query15->fetch_assoc()){
+																			// Kabupaten
+																			// persiapkan curl
+																			$kc = curl_init(); 
+																			// set url 
+																			curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kecss = curl_exec($kc); 
+																			// menampilkan hasil curl
+																			$kec = json_decode($kecss,true);
+																			foreach ($kec as $d) {
 																			?>
-                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['kecamatan']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kec==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
 																			<?php 
                                                                             }	
+																			// tutup curl 
+																			curl_close($kc); 
                                                                             ?>
                                                                         </select>
 																	</div>
@@ -345,13 +410,24 @@
                                                                     <div class="col-sm-2">
                                                                         <select class="form-select" id="kabs" name="kabs">
                                                                             <?php 
-                                                                            $sql15 = "select * from kabupaten order by id asc";
-                                                                            $query15 = $connect->query($sql15);
-                                                                            while($nks1=$query15->fetch_assoc()){
+																			// Kabupaten
+																			// persiapkan curl
+																			$kb = curl_init(); 
+																			// set url 
+																			curl_setopt($kb, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/".$id_prov.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kb, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kabss = curl_exec($kb); 
+																			// menampilkan hasil curl
+																			$kab = json_decode($kabss,true);
+																			foreach ($kab as $d) {
 																			?>
-                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id'];?>" <?php if($nsekd['kabupaten']==$nks1['id']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kab==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
 																			<?php 
                                                                             }	
+																			// tutup curl 
+																			curl_close($kb); 
                                                                             ?>
                                                                         </select>
 																	</div>
