@@ -66,7 +66,7 @@ $nprov=$prov['nama'];
 	$kab = json_decode($kabss,true);
 	foreach ($kab as $d) {
 		if($id_kab==$d['id'])
-			$kab1 = $d['name'];
+			$kab1 = ucwords(strtolower(substr($d['name'], 10)));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar 10 menghilangkan kata kabupaten(spasi)
     };
 	// tutup curl 
 	curl_close($kb);  
@@ -84,7 +84,7 @@ $nprov=$prov['nama'];
 	$kec = json_decode($kecss,true);
 	foreach ($kec as $d) {
 		if($id_kec==$d['id'])
-			$kec1 = $d['name'];
+			$kec1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kc); 
@@ -102,7 +102,7 @@ $nprov=$prov['nama'];
 	$dss = json_decode($desass,true);
 	foreach ($dss as $d) {
 		if($id_des==$d['id'])
-			$des1 = $d['name'];
+			$des1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($ds);
@@ -266,28 +266,28 @@ $ndes=$des['nama'];
  $table3->easyCell('Kelurahan/Desa');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($des1),'border:B;font-style:B');
+ $table3->easyCell($des1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kecamatan');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($kec1),'border:B;font-style:B');
+ $table3->easyCell($kec1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kabupaten/Kota');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($kab1),'border:B;font-style:B');
+ $table3->easyCell($kab1,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Provinsi');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell(strtoupper($nprov),'border:B;font-style:B');
+ $table3->easyCell($nprov,'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
