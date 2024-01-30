@@ -26,7 +26,7 @@ function Header(){
 	$kab = json_decode($kabss,true);
 	foreach ($kab as $d) {
 		if($ikab==$d['id'])
-			$kab1 = $d['name'];
+			$kab1 = ucwords(strtolower(substr($d['name'], 10)));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar 10 menghilangkan kata kabupaten(spasi)
     };
 	// tutup curl 
 	curl_close($kb);  
@@ -44,7 +44,7 @@ function Header(){
 	$kec = json_decode($kecss,true);
 	foreach ($kec as $d) {
 		if($ikec==$d['id'])
-			$kec1 = $d['name'];
+			$kec1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($kc); 
@@ -62,7 +62,7 @@ function Header(){
 	$dss = json_decode($desass,true);
 	foreach ($dss as $d) {
 		if($idesa==$d['id'])
-			$des1 = $d['name'];
+			$des1 = ucwords(strtolower($d['name']));// Menggunakan ucwords untuk memastikan setiap kata dimulai dengan huruf besar
     };
 	// tutup curl 
 	curl_close($ds); 
@@ -91,7 +91,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Ln(0.5);
 
-   $this->Cell(19,0,strtoupper($cfg['nama_sekolah']),0,0,'C');
+   $this->Cell(19,0,strtoupper($cfgs['nama']),0,0,'C');
    $this->Ln(0.5);
    $this->Cell(19,0,'SEMESTER '.$smt.' TAHUN PELAJARAN '.$tapel,0,0,'C');
    $this->Ln(1);
@@ -118,7 +118,7 @@ function Header(){
    $this->Ln(0.5);
    $this->Cell(4,0.5,'Desa/Kelurahan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($des1),'B',0,'L');
+   $this->Cell(7.5,0.5,($des1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Pukul',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -127,7 +127,7 @@ function Header(){
    //$tanggal=$Ls['tanggal'];
    $this->Cell(4,0.5,'Kecamatan',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kec1),'B',0,'L');
+   $this->Cell(7.5,0.5,($kec1),'B',0,'L');
    $this->Cell(0.3,0.5,'',0,0,'L');
    $this->Cell(2.3,0.5,'Kelas',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
@@ -136,7 +136,7 @@ function Header(){
 
    $this->Cell(4,0.5,'Kabupaten',0,0,'L');
    $this->Cell(0.3,0.5,':',0,0,'L');
-   $this->Cell(7.5,0.5,strtoupper($kab1),'B',0,'L');
+   $this->Cell(7.5,0.5,($kab1),'B',0,'L');
 
    $this->SetFont('Arial','B','8');
    $this->SetFillColor(192,192,192);
