@@ -138,61 +138,7 @@
 														</div>
 														<div class="tab-pane fade" id="nav3-profile">
 															<form class="d-grid gap-3" autocomplete="off">
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Provinsi</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="prov" name="prov">
-																			<option>Pilih Provinsi</option>
-                                                                            <?php 
-                                                                            $sql5 = "select * from provinsi order by id_prov asc";
-                                                                            $query5 = $connect->query($sql5);
-                                                                            while($nks=$query5->fetch_assoc()){
-                                                                                echo '<option data-nilai="'.$nks['nama'].'" value="'.$nks['id_prov'].'">'.$nks['nama'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahProv"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusProv"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
-																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kabupaten</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="kabu" name="kabu">
-                                                                            <option>Pilih Kabupaten</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahKab"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusKab"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
-																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kecamatan</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="keca" name="keca">
-                                                                            <option>Pilih Kecamatan</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahKec"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusKec"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
-																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Desa</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="desa" name="desa">
-                                                                            <option>Pilih Desa</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahDesa"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusDesa"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
+                                                                
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Mata Pelajaran K-13</label>
                                                                     <div class="col-sm-4">
