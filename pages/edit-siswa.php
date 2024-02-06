@@ -320,13 +320,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																			// tutup curl 
 																			curl_close($pv); 
                                                                         ?>
-																		<?php 
-																		$sql21 = "select * from provinsi";
-																		$query21 = $connect->query($sql21);
-																		while($nk=$query21->fetch_assoc()){
-																		?>
-																		<option value="<?=$nk['id_prov'];?>" <?php if($id_prov==$nk['id_prov']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																		<?php } ?>
+																		
 																	</select>
 																</div>
 																<div class="col-md-12 text-end mt-3">
