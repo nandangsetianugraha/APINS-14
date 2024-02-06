@@ -215,16 +215,31 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<select class="form-select" name="kelurahan" id="kelurahan">
 																		<option>Pilih Desa/kelurahan</option>
 																		<?php 
-																		$id_desa=$pn['kelurahan'];
-																		$id_kec=$pn['kecamatan'];
-																		$id_kab=$pn['kabupaten'];
-																		$id_prov=$pn['provinsi'];
-																		$sql21 = "select * from desa where id_kecamatan='$id_kec'";
-																		$query21 = $connect->query($sql21);
-																		while($nk=$query21->fetch_assoc()){
-																		?>
-																		<option value="<?=$nk['id'];?>" <?php if($id_desa==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																		<?php } ?>
+																			$id_desa=$pn['kelurahan'];
+																			$id_kec=$pn['kecamatan'];
+																			$id_kab=$pn['kabupaten'];
+																			$id_prov=$pn['provinsi'];
+																		
+																			// Kabupaten
+																			// persiapkan curl
+																			$ds = curl_init(); 
+																			// set url 
+																			curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+																			// return the transfer as a string 
+																			curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$desass = curl_exec($ds); 
+																			// menampilkan hasil curl
+																			$des = json_decode($desass,true);
+																			foreach ($des as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_desa==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($ds); 
+                                                                        ?>
+																		
 																	</select>
 																</div>
 																<div class="form-group col-md-6 border-top-0 pt-0">
@@ -232,12 +247,26 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<select class="form-select" name="kecamatan" id="kecamatan">
 																		<option>Pilih Kecamatan</option>
 																		<?php 
-																		$sql21 = "select * from kecamatan where id_kabupaten='$id_kab'";
-																		$query21 = $connect->query($sql21);
-																		while($nk=$query21->fetch_assoc()){
-																		?>
-																		<option value="<?=$nk['id'];?>" <?php if($id_kec==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																		<?php } ?>
+																			// Kabupaten
+																			// persiapkan curl
+																			$kc = curl_init(); 
+																			// set url 
+																			curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kecss = curl_exec($kc); 
+																			// menampilkan hasil curl
+																			$kec = json_decode($kecss,true);
+																			foreach ($kec as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kec==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($kc); 
+                                                                        ?>
+																		
 																	</select>
 																</div>
 																<div class="form-group col-md-6">
@@ -245,12 +274,26 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<select class="form-select" name="kabupaten" id="kabupaten">
 																		<option>Pilih Kabupaten</option>
 																		<?php 
-																		$sql21 = "select * from kabupaten where id_provinsi='$id_prov'";
-																		$query21 = $connect->query($sql21);
-																		while($nk=$query21->fetch_assoc()){
-																		?>
-																		<option value="<?=$nk['id'];?>" <?php if($id_kab==$nk['id']){echo "selected";}; ?>><?=$nk['nama'];?></option>
-																		<?php } ?>
+																			// Kabupaten
+																			// persiapkan curl
+																			$kb = curl_init(); 
+																			// set url 
+																			curl_setopt($kb, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/".$id_prov.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kb, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kabss = curl_exec($kb); 
+																			// menampilkan hasil curl
+																			$kab = json_decode($kabss,true);
+																			foreach ($kab as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kab==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($kb); 
+                                                                        ?>
+																		
 																	</select>
 																</div>
 																<div class="form-group col-md-6 border-top-0 pt-0">
