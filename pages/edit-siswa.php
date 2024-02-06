@@ -654,6 +654,8 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 						sampleName += "<option value='"+this['id']+"'>"+this['name']+"</option>";
 					});
 					$("#kabupaten").html(sampleName);
+					$("#kecamatan").html('<option>Pilih Kecamatan</option>');
+					$("#kelurahan").html('<option>Pilih Desa</option>');
 					$('#status').unblock();
 				}
 			});
@@ -688,6 +690,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 						sampleName += "<option value='"+this['id']+"'>"+this['name']+"</option>";
 					});
 					$("#kecamatan").html(sampleName);
+					$("#kelurahan").html('<option>Pilih Desa</option>');
 					$('#status').unblock();
 				}
 			});
