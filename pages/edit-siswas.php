@@ -301,6 +301,26 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<select class="form-select" name="provinsi" id="provinsi">
 																		<option>Pilih Provinsi</option>
 																		<?php 
+																			// Kabupaten
+																			// persiapkan curl
+																			$pv = curl_init(); 
+																			// set url 
+																			curl_setopt($pv, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/provinces.json");
+																			// return the transfer as a string 
+																			curl_setopt($pv, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$prv = curl_exec($pv); 
+																			// menampilkan hasil curl
+																			$prvs = json_decode($prv,true);
+																			foreach ($prvs as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_prov==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($pv); 
+                                                                        ?>
+																		<?php 
 																		$sql21 = "select * from provinsi";
 																		$query21 = $connect->query($sql21);
 																		while($nk=$query21->fetch_assoc()){
