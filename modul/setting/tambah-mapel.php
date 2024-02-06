@@ -12,9 +12,9 @@ if($_POST) {
 		$validator['success'] = false;
 		$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 	}else{
-		if($jns=='k13'){
+		if($jns=='Kurikulum 2013'){
 			$sql = "select * from mapel where kd_mapel='$kd_mapel' and nama_mapel='$mapel'";
-		}elseif($jns=='km'){
+		}elseif($jns=='Kurikulum Merdeka'){
 			$sql = "select * from mata_pelajaran where kd_mapel='$kd_mapel' and nama_mapel='$mapel'";
 		}elseif($jns=='dta'){
 			$sql = "select * from mapel_dta where kd_mapel='$kd_mapel' and nama_mapel='$mapel'";
@@ -28,9 +28,9 @@ if($_POST) {
 			$validator['success'] = false;
 			$validator['messages'] = "Kode Mapel sudah ada, silahkan hapus terlebih dahulu!";
 		}else{
-			if($jns=='k13'){
+			if($jns=='Kurikulum 2013'){
 				$sql1 = "insert into mapel(kd_mapel,nama_mapel) values('$kd_mapel','$mapel')";
-			}elseif($jns=='km'){
+			}elseif($jns=='Kurikulum Merdeka'){
 				$sql1 = "insert into mata_pelajaran(kd_mapel,nama_mapel) values('$kd_mapel','$mapel')";
 			}elseif($jns=='dta'){
 				$sql1 = "insert into mapel_dta(kd_mapel,nama_mapel) values('$kd_mapel','$mapel')";

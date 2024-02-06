@@ -1,4 +1,4 @@
-<?php $data="Status Server";?>
+<?php $data="Identitas Sekolah";?>
 <?php include "layout/head.php"; ?>
 <style>
 		#errorMs {
@@ -33,155 +33,226 @@
 							
                                             <div class="portlet mb-0">
 												<div class="portlet-body">
-													<nav class="mb-3">
-														<!-- BEGIN Nav -->
-														<div class="nav nav-tabs" id="nav3-tab">
-															<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
-															<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
-															<a class="nav-item nav-link active" id="nav3-home-tab" data-bs-toggle="tab" href="#nav3-home">Server</a>
-															<a class="nav-item nav-link" id="nav3-home-tab" data-bs-toggle="tab" href="#nav3-titimangsa">Titimangsa Rapor</a>
-															<a class="nav-item nav-link" id="nav3-profile-tab" data-bs-toggle="tab" href="#nav3-profile">Konfigurasi Lainnya</a>
-															
-														</div>
-														<!-- END Nav -->
-													</nav>
-													<!-- BEGIN Tab -->
-													<div class="tab-content" id="nav3-tabContent">
-														<div class="tab-pane fade show active" id="nav3-home">
-															<form class="d-grid gap-3" action="modul/setting/update-server.php" autocomplete="off" method="POST" id="ubahForm" autocomplete="off">
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun Ajaran</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="ptapel" name="ptapel">
-                                                                            <?php 
-                                                                            $sql4 = "select * from tapel order by nama_tapel asc";
-                                                                            $query4 = $connect->query($sql4);
-                                                                            $ak=0;
-                                                                            while($nk=$query4->fetch_assoc()){
-                                                                                if($tapel==$nk['nama_tapel']){
-                                                                                    $stt="selected";
-                                                                                }else{
-                                                                                    $stt='';
-                                                                                };
-                                                                                echo '<option value="'.$nk['nama_tapel'].'" '.$stt.'>'.$nk['nama_tapel'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahTema"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusTapel"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Semester</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="psmt" name="psmt">
-                                                                            <option value="0">Pilih Semester</option>
-                                                                            <option value="1" <?php if($smt==1) echo "selected"; ?>>Semester 1</option>
-                                                                            <option value="2" <?php if($smt==2) echo "selected"; ?>>Semester 2</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Perawatan</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="pstatus" name="pstatus">
-                                                                            <option>Pilih Perawatan</option>
-                                                                            <option value="0" <?php if($maintenis==0) echo "selected"; ?>>Tidak</option>
-                                                                            <option value="1" <?php if($maintenis==1) echo "selected"; ?>>Ya</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="row">
-                                                                    <div class="col-md-12 text-end mt-3">
-                                                                        <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-														</div>
-														<div class="tab-pane fade show" id="nav3-titimangsa">
+													<div class="row">
+														<div class="col-4">
 															<?php
-															$ntitimangsa = $connect->query("select * from titimangsa WHERE smt='$smt' and tapel='$tapel'")->fetch_assoc();
+															$nsek = $connect->query("select * from konfigurasi where id_conf=1")->fetch_assoc();
 															?>
-															<form class="d-grid gap-3" action="modul/setting/update-titimangsa.php" autocomplete="off" method="POST" id="ubahTitimangsa" autocomplete="off">
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Tempat</label>
-                                                                    <div class="col-sm-4">
-                                                                        <input type="hidden" class="form-control" name="smt" value="<?=$smt;?>"  required>
-																		<input type="hidden" class="form-control" name="tapel" value="<?=$tapel;?>"  required>
-																		<input type="text" class="form-control" name="tempat" value="<?=$ntitimangsa['tempat'];?>"  required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kelas 1 - 5</label>
-                                                                    <div class="col-sm-4">
-                                                                        <input type="text" id="tanggal" name="tanggal" class="form-control" value="<?=$ntitimangsa['tanggal'];?>" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kelas 6</label>
-                                                                    <div class="col-sm-4">
-                                                                        <input type="text" id="tanggal2" name="tanggal2" class="form-control" value="<?=$ntitimangsa['tanggal2'];?>" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-12 text-end mt-3">
-                                                                        <button type="submit" class="btn btn-primary modal-confirm">Simpan</button>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </form>
+															<div class="gallery">
+																<img src="<?=base_url();?>assets/<?=$nsek['image_login'];?>" id="preImg">
+															</div>	
+															<p id="errorMs"></p>
+															<form action="<?=base_url();?>assets/upload.php"
+															  id="form" 
+															  method="post"
+															  enctype="multipart/form-data">
+																<input type="file"
+																   id="myImage">
+
+																<input type="submit" 
+																   id="submit" 
+																   value="Simpan">
+															</form>	
 														</div>
-														<div class="tab-pane fade" id="nav3-profile">
-															<form class="d-grid gap-3" autocomplete="off">
-                                                                
-																
-																
+														<div class="col-8">
+															<?php
+															$nsekd = $connect->query("select * from sekolah where sekolah_id='20162e13-2cf5-e011-91d5-a9ab0de328a2'")->fetch_assoc();
+															$id_prov=$nsekd['provinsi'];
+															$id_kab=$nsekd['kabupaten'];
+															$id_kec=$nsekd['kecamatan'];
+															$id_des=$nsekd['desa'];
+															$prov=$connect->query("select * from provinsi where id_prov='$id_prov'")->fetch_assoc();
+															$nprov=$prov['nama'];
+															
+
+															// Kecamatan
+															// persiapkan curl
+															$kc = curl_init(); 
+															// set url 
+															curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+															// return the transfer as a string 
+															curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+															// $output contains the output string 
+															$kecss= curl_exec($kc); 
+															// menampilkan hasil curl
+															$kec = json_decode($kecss,true);
+															foreach ($kec as $d) {
+																if($id_kec==$d['id'])
+																	$kec1 = $d['name'];
+															};
+															// tutup curl 
+															curl_close($kc); 
+															
+															// Desa
+															// persiapkan curl
+															$ds = curl_init(); 
+															// set url 
+															curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+															// return the transfer as a string 
+															curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+															// $output contains the output string 
+															$desass = curl_exec($ds); 
+															// menampilkan hasil curl
+															$dss = json_decode($desass,true);
+															foreach ($dss as $d) {
+																if($id_des==$d['id'])
+																	$des1 = $d['name'];
+															};
+															// tutup curl 
+															curl_close($ds);
+															?>
+															<form class="d-grid gap-3" action="modul/setting/update-sekolah.php" autocomplete="off" method="POST" id="ubahSekolah" autocomplete="off">
 																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Ekstrakurikuler</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="ekskul" name="ekskul">
-                                                                            <?php 
-                                                                            $sql46 = "select * from ekskul order by id_ekskul asc";
-                                                                            $query46 = $connect->query($sql46);
-                                                                            while($nk6=$query46->fetch_assoc()){
-                                                                                echo '<option data-nilai="'.$nk6['nama_ekskul'].'" value="'.$nk6['id_ekskul'].'" >'.$nk6['nama_ekskul'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahEkskul"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusEkskul"><i class="fa fa-trash"></i></button>
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Sekolah</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control" id="nama_sekolah" name="nama_sekolah" value="<?=$nsekd['nama'];?>">
+																		<input type="hidden" class="form-control" id="idsek" name="idsek" value="20162e13-2cf5-e011-91d5-a9ab0de328a2" required>
                                                                     </div>
                                                                 </div>
 																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Jenis Pekerjaan</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="pekj" name="pekj">
-                                                                            <?php 
-                                                                            $sql47 = "select * from pekerjaan order by id_pekerjaan asc";
-                                                                            $query47 = $connect->query($sql47);
-                                                                            while($nk7=$query47->fetch_assoc()){
-                                                                                echo '<option data-nilai="'.$nk7['nama_pekerjaan'].'" value="'.$nk7['id_pekerjaan'].'" >'.$nk7['nama_pekerjaan'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahPekerjaan"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusPekerjaan"><i class="fa fa-trash"></i></button>
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Statistik Sekolah (NSS)</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control" id="nss" name="nss" value="<?=$nsekd['nss'];?>">
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Pokok Sekolah Nasional (NPSN)</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control" id="npsn" name="npsn" value="<?=$nsekd['npsn'];?>">
+																	</div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat Jalan</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea class="form-control" id="alamat" name="alamat" rows="3"><?=$nsekd['alamat_jalan'];?></textarea>
                                                                     </div>
                                                                 </div>
-                                                                
-                                                                
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">RT</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="rt" name="rt" value="<?=$nsekd['rt'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">RW</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="rw" name="rw" value="<?=$nsekd['rw'];?>">
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Desa</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="desas" name="desas">
+                                                                            <?php 
+																			// Kabupaten
+																			// persiapkan curl
+																			$ds = curl_init(); 
+																			// set url 
+																			curl_setopt($ds, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/villages/".$id_kec.".json");
+																			// return the transfer as a string 
+																			curl_setopt($ds, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$desass = curl_exec($ds); 
+																			// menampilkan hasil curl
+																			$des = json_decode($desass,true);
+																			foreach ($des as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_des==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($ds); 
+                                                                            ?>
+                                                                        </select>
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Kecamatan</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="kecs" name="kecs">
+                                                                            <?php 
+																			// Kabupaten
+																			// persiapkan curl
+																			$kc = curl_init(); 
+																			// set url 
+																			curl_setopt($kc, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/districts/".$id_kab.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kc, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kecss = curl_exec($kc); 
+																			// menampilkan hasil curl
+																			$kec = json_decode($kecss,true);
+																			foreach ($kec as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kec==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($kc); 
+                                                                            ?>
+                                                                        </select>
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kabupaten</label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select" id="kabs" name="kabs">
+                                                                            <?php 
+																			// Kabupaten
+																			// persiapkan curl
+																			$kb = curl_init(); 
+																			// set url 
+																			curl_setopt($kb, CURLOPT_URL, "https://nandangsetianugraha.github.io/api-wilayah-indonesia/api/regencies/".$id_prov.".json");
+																			// return the transfer as a string 
+																			curl_setopt($kb, CURLOPT_RETURNTRANSFER, 1); 
+																			// $output contains the output string 
+																			$kabss = curl_exec($kb); 
+																			// menampilkan hasil curl
+																			$kab = json_decode($kabss,true);
+																			foreach ($kab as $d) {
+																			?>
+                                                                                <option data-nilai="<?=$d['name'];?>" value="<?=$d['id'];?>" <?php if($id_kab==$d['id']) echo "selected"; ?>><?=$d['name'];?></option>';
+																			<?php 
+                                                                            }	
+																			// tutup curl 
+																			curl_close($kb); 
+                                                                            ?>
+                                                                        </select>
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Provinsi</label>
+																	<div class="col-sm-4">
+                                                                        <select class="form-select" id="provs" name="provs">
+																			<?php 
+                                                                            $sql15 = "select * from provinsi order by id_prov asc";
+                                                                            $query15 = $connect->query($sql15);
+                                                                            while($nks1=$query15->fetch_assoc()){
+																			?>
+                                                                                <option data-nilai="<?=$nks1['nama'];?>" value="<?=$nks1['id_prov'];?>" <?php if($nsekd['provinsi']==$nks1['id_prov']) echo "selected"; ?>><?=$nks1['nama'];?></option>';
+																			<?php 
+                                                                            }	
+                                                                            ?>  
+                                                                        </select>
+																	</div>
+																</div>
+																<div class="row">
+                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kodepos</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="kodepos" name="kodepos" value="<?=$nsekd['kode_pos'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Lintang</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="lintang" name="lintang" value="<?=$nsekd['lintang'];?>">
+																	</div>
+																	<label for="inputEmail3" class="col-sm-2 col-form-label">Bujur</label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text" class="form-control" id="bujur" name="bujur" value="<?=$nsekd['bujur'];?>">
+																	</div>
+                                                                </div>
+																<div class="row">
+                                                                    <div class="col-md-12 text-end mt-3">
+                                                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                                                    </div>
+                                                                </div>
                                                             </form>
 														</div>
 													</div>
-													<!-- END Tab -->
+													
 												</div>
 											</div>
 
