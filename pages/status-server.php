@@ -140,24 +140,7 @@
                                                                 
 																
 																
-																<div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Ekstrakurikuler</label>
-                                                                    <div class="col-sm-4">
-                                                                        <select class="form-select" id="ekskul" name="ekskul">
-                                                                            <?php 
-                                                                            $sql46 = "select * from ekskul order by id_ekskul asc";
-                                                                            $query46 = $connect->query($sql46);
-                                                                            while($nk6=$query46->fetch_assoc()){
-                                                                                echo '<option data-nilai="'.$nk6['nama_ekskul'].'" value="'.$nk6['id_ekskul'].'" >'.$nk6['nama_ekskul'].'</option>';
-                                                                            }	
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahEkskul"><i class="fa fa-plus"></i></button>
-                                                                        <button class="btn btn-danger" type="button" id="hapusEkskul"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
+																
 																<div class="row">
                                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Jenis Pekerjaan</label>
                                                                     <div class="col-sm-4">

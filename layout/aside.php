@@ -88,6 +88,12 @@
 								</a>
 							</div>
 							<div class="menu-item">
+								<a href="<?=base_url();?>daftar-ekstrakurikuler" data-menu-path="<?=base_url();?>" class="menu-item-link">
+									<i class="menu-item-bullet"></i>
+									<span class="menu-item-text">Ekstrakurikuler</span>
+								</a>
+							</div>
+							<div class="menu-item">
 								<a href="<?=base_url();?>setting-rombel" data-menu-path="<?=base_url();?>" class="menu-item-link">
 									<i class="menu-item-bullet"></i>
 									<span class="menu-item-text">Setting Rombel</span>
