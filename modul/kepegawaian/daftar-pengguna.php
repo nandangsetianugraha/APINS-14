@@ -14,6 +14,13 @@ $output = array('data' => array());
 		$idp=$row['ptk_id'];
 		$jk=$row['level'];
 		$nama = $connect->query("select * from ptk where ptk_id='$idp'")->fetch_assoc();
+        $gmb='
+		<div class="avatar avatar-label-info">
+			<div class="avatar-display">
+				<img alt="AI" src="'.base_url().'images/ptk/'.$nama['gambar'].'" class=" img-fluid">
+			</div>
+		</div>
+		';
 		$j_ptk = $connect->query("select * from jenis_ptk where jenis_ptk_id='$jk'")->fetch_assoc();
 		$actionButton = '
 		<button class="btn btn-outline-primary btn-sm me-1 mb-1" data-tema="'.$idps.'" data-bs-toggle="modal" data-bs-target="#edit-pengguna"><i class="fa fa-pencil"></i> Edit</button>
@@ -35,7 +42,7 @@ $output = array('data' => array());
 		
 		$output['data'][] = array(
 			$row['username'],
-			$nama['nama'],
+			$gmb.' '.$nama['nama'],
 			$j_ptk['jenis_ptk'],
 			$actionButton
 		);

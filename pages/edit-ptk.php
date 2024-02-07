@@ -59,7 +59,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 									</div>
 									<div class="row" id="dip2">
 										<div class="col-md-3">
-											<b id="uploaded_image"><img src="<?=base_url();?>images/ptk/<?=$infoptk['gambar'];?>" alt="avatar" id="blah"></b>
+											<b id="uploaded_image"><img src="<?=base_url();?>images/ptk/<?=$infoptk['gambar'];?>" width="100%" alt="avatar" id="blah"></b>
 											<div class="profileupload">
 												<input type="file" accept="image/*" name="upload_image" id="upload_image">
 											</div>
