@@ -261,7 +261,7 @@ CREATE TABLE `data_register` (
   `sekolah_mutasi` varchar(50) DEFAULT NULL,
   `nopes` varchar(100) DEFAULT NULL,
   `ijazah` varchar(100) DEFAULT NULL,
-  `skhun` varchar(20) DEFAULT NULL
+  `file_ijazah` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

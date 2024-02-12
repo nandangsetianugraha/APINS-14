@@ -87,22 +87,23 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 													<div class="portlet-addon">
 														<!-- BEGIN Nav -->
 														<div class="nav nav-lines portlet-nav" id="portlet4-tab">
-															<a class="nav-item nav-link active" id="portlet4-home-tab" data-bs-toggle="tab" href="#portlet4-home">Profil</a>
-															<a class="nav-item nav-link" id="portlet4-profile-tab" data-bs-toggle="tab" href="#portlet4-profile">Data Registrasi</a>
-															<a class="nav-item nav-link" id="portlet4-contact-tab" data-bs-toggle="tab" href="#portlet4-contact">Data Kemenkes</a>
+															<a class="nav-item nav-link <?php if($act=='' or $act=='biodata'){ echo "active";} ?>" href="<?=base_url();?>edit-siswa/<?=$tipe;?>/biodata">Biodata</a>
+															<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
+															<a class="nav-item nav-link <?php if($act=='register'){ echo "active";} ?>" href="<?=base_url();?>edit-siswa/<?=$tipe;?>/register">Data Registrasi</a>
+															<a class="nav-item nav-link <?php if($act=='lulusan'){ echo "active";} ?>" href="<?=base_url();?>edit-siswa/<?=$tipe;?>/lulusan">Data Lulusan</a>
+															<a class="nav-item nav-link <?php if($act=='kemenkes'){ echo "active";} ?>" href="<?=base_url();?>edit-siswa/<?=$tipe;?>/kemenkes">Data Kemenkes</a>
 														</div>
 														<!-- END Nav -->
 													</div>
 												</div>
 												<div class="portlet-body">
 													<div class="tab-content">
-														<div class="tab-pane fade show active" id="portlet4-home">
+														<?php if($act=='' or $act=='biodata'){ ?>
 															<form class="row g-3" action="<?=base_url();?>modul/siswa/update-siswa.php" autocomplete="off" method="POST" id="ubahForm">
 															
 																<div class="form-group col-md-4">
 																	<label for="inputCity">Nama Lengkap</label>
 																	<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
-																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
 																</div>
 																<div class="form-group col-md-4">
 																	<label for="inputzip">Nama Panggil</label>
@@ -327,8 +328,8 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<button type="submit" class="btn btn-primary">Simpan</button>
 																</div>
 															</form>
-														</div>
-														<div class="tab-pane fade" id="portlet4-profile">
+														<?php } ?>
+														<?php if($act=='register'){ ?>
 															<?php 
 															$cekreg = $connect->query("select * from data_register where peserta_didik_id='$idsis'")->num_rows;
 															
@@ -392,6 +393,13 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<label for="inputCity">Bujur</label>
 																	<input type="text" class="form-control" name="bujur" value="<?=$regis['bujur'];?>">
 																</div>
+																<div class="col-md-12 text-end mt-3">
+																	<button type="submit" class="btn btn-primary">Simpan</button>
+																</div>
+															</form>
+														<?php } ?>
+														<?php if($act=='lulusan'){ ?>
+															<form class="row g-3" enctype="multipart/form-data" autocomplete="off" method="POST" id="ubahlulusan">
 																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">Tanggal Mutasi</label>
 																	<div class="input-group">
@@ -399,6 +407,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																			<i class="fas fa-calendar-alt"></i>
 																		</span>
 																		<input type="text" id="tanggalmutasi" name="tanggalmutasi" class="form-control" value="<?=$regis['tgl_mutasi'];?>">
+																		<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
 																	</div>
 																</div>
 																<div class="form-group col-md-4 border-top-0 pt-0">
@@ -419,16 +428,56 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<input type="text" class="form-control" name="ijazah" value="<?=$regis['ijazah'];?>">
 																</div>
 																<div class="form-group col-md-6 border-top-0 pt-0">
-																	<label for="inputZip">Nomor SKHUN</label>
-																	<input type="text" class="form-control" name="skhun" value="<?=$regis['skhun'];?>">
+																	<label for="inputZip">File Ijazah</label>
+																	<?php 
+                                                                    if(empty($regis['file_ijazah']) or $regis['file_ijazah']==''){
+                                                                    ?>
+                                                                    <div class="alert alert-outline-secondary" id="itung">
+                                                                        <div class="alert-icon">
+                                                                            <i class="fa fa-lightbulb"></i>
+                                                                        </div>
+                                                                        <div class="alert-content"> 
+                                                                        Belum ada file ijazah
+                                                                        </div>
+                                                                    </div>
+																	
+                                                                    <?php 
+                                                                    }else{
+                                                                    ?>
+                                                                    
+                                                                    <?php 
+                                                                    }
+                                                                    ?>
+																	<input type="file" class="form-control" id="file" name="files[]" multiple />
 																</div>
 																
 																<div class="col-md-12 text-end mt-3">
-																	<button type="submit" class="btn btn-primary">Simpan</button>
+																	<button type="submit" class="btn btn-primary submitBtn">Simpan</button>
 																</div>
 															</form>
-														</div>
-														<div class="tab-pane fade" id="portlet4-contact">
+															<br/>
+															<?php 
+                                                                    if(empty($regis['file_ijazah']) or $regis['file_ijazah']==''){
+                                                                    ?>
+                                                                    
+                                                                    <?php 
+                                                                    }else{
+                                                                    ?>
+                                                                    <div class="alert alert-outline-secondary" id="itung">
+                                                                        <div class="alert-icon">
+                                                                            <i class="fa fa-lightbulb"></i>
+                                                                        </div>
+                                                                        <div class="alert-content"> 
+                                                                        <button class="btn btn-sm btn-outline-info" data-doc="<?=$pn['peserta_didik_id'];?>" data-bs-toggle="modal" data-bs-target="#info">
+																			<i class="fa-solid fa-magnifying-glass"></i> <?=$regis['file_ijazah'];?>
+																		</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <?php 
+                                                                    }
+                                                                    ?>
+														<?php } ?>
+														<?php if($act=='kemenkes'){ ?>
 															<button class="btn btn-effect-ripple btn-xs btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahkemenkes"><i class="fa fa-plus"></i> Kemenkes</button>
 															<table id="kes-1" class="table table-bordered table-striped table-hover">
 																<thead>
@@ -442,7 +491,8 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	</tr>
 																</thead>
 															</table>
-														</div>
+														<?php } ?>
+
 													</div>
 												</div>
 											</div>
@@ -488,10 +538,17 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="info">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content fetched-data">
+				
+			</div>
+		</div>
+	</div>
 	<div class="modal fade" id="tambah-pengguna">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="form-horizontal" action="modul/kepegawaian/add-user.php" autocomplete="off" method="POST" id="adduser">
+				<form class="form-horizontal" action="<?=base_url();?>modul/kepegawaian/add-user.php" autocomplete="off" method="POST" id="adduser">
 				<div class="fetched-data1"></div>
 				</form>
 			</div>
@@ -500,7 +557,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	<div class="modal fade" id="tambahkemenkes">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form id="tambahkemenkesform" method="POST" action="../modul/siswa/tambah-kemenkes.php" class="form" autocomplete="off">
+				<form id="tambahkemenkesform" method="POST" action="<?=base_url();?>modul/siswa/tambah-kemenkes.php" class="form" autocomplete="off">
 				<div class="fetched-data2"></div>
 				</form>
 			</div>
@@ -599,7 +656,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			"searching": true,
 			"paging":true,
 			"responsive":true,
-			"ajax": "../modul/siswa/daftar-kemenkes.php?idptk="+idptk
+			"ajax": "<?=base_url();?>modul/siswa/daftar-kemenkes.php?idptk="+idptk
 		});
 	$('#upload_image').on('change', function(){
 		var reader = new FileReader();
@@ -786,10 +843,65 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					} else {
 						toastr.error(response.messages);
 					}  // /else
+					setTimeout(function () {location.reload();},500);
 				} // success  
 			}); // ajax subit 				
 			return false;
 		}); // /submit form for create member
+		$('#info').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('doc');
+			//menggunakan fungsi ajax untuk pengambilan data
+            $.ajax({
+                type : 'post',
+                url : '<?=base_url();?>modul/siswa/info-ijazah.php',
+                data :  'rowid='+ rowid,
+				beforeSend: function()
+				{	
+					$('.fetched-data').html('<div class="modal-header"><button type="button" class="btn btn-label-danger btn-icon" data-bs-dismiss="modal"><i class="fa fa-times"></i></button></div><div class="modal-body"><div class="portlet"><div class="portlet-body"><i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...</div></div></div>');
+                  	
+				},
+                success : function(data){
+					$('.fetched-data').html(data);//menampilkan data ke dalam modal
+					
+                }
+            });
+        });
+		$("#ubahlulusan").on('submit', function(e){
+			e.preventDefault();
+			$.ajax({
+				type: 'POST',
+				url: '<?=base_url();?>ijazah/update-lulusan.php',
+				data: new FormData(this),
+				dataType: 'json',
+				contentType: false,
+				cache: false,
+				processData:false,
+				beforeSend: function(){
+					$('.submitBtn').attr("disabled","disabled");
+					//$('#fupForm').css("opacity",".5");
+					//$('.statusmsg').html('<div class="portlet"><div class="portlet-body"><div class="spinner-grow text-success"></div> Loading ...</div></div>');
+					$('#tampilan').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function(response){
+					$('#tampilan').unblock();
+					
+					if(response.success == true){
+						//$('#fupForm')[0].reset();
+						toastr.success(response.messages);
+						
+						//$('.statusmsg').html('<div class="portlet"><div class="portlet-body"><div class="spinner-grow text-success"></div> Loading ...</div></div>');
+					}else{
+						toastr.error(response.messages);
+					   // $('.statusmsg').html('<div class="portlet"><div class="portlet-body">'+response.message+'</div></div>');
+					}
+					//$('#fupForm').css("opacity","");
+					$(".submitBtn").removeAttr("disabled");
+					//setTimeout(function () {window.open("<?=base_url();?>upload-dokumen","_self");},1000);
+					setTimeout(function () {location.reload();},500);					
+				}
+			});
+		});
+		
 		$('#tambahkemenkes').on('show.bs.modal', function (e) {
             var idptk = $('#idpt').val();
 			$('#tanggal_kes').datepicker({
@@ -799,7 +911,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			//menggunakan fungsi ajax untuk pengambilan data
 			$.ajax({
 				type : 'post',
-				url : '../modul/siswa/m_kemenkes.php',
+				url : '<?=base_url();?>modul/siswa/m_kemenkes.php',
 				data :  'idptk='+ idptk,
 				beforeSend: function()
 				{	

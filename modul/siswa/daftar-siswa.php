@@ -26,7 +26,7 @@ $output = array('data' => array());
 				<button class="btn btn-outline-success btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#info">
 					<i class="fa fa-user"></i> Info
 				</button>
-				<a href="'.base_url().'edit-siswas/'.$idp.'" class="btn btn-outline-primary btn-sm me-1 mb-1">
+				<a href="'.base_url().'edit-siswa/'.$idp.'" class="btn btn-outline-primary btn-sm me-1 mb-1">
 					<i class="fa fa-pencil"></i> Edit
 				</a>
 				<button class="btn btn-outline-danger btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
@@ -39,7 +39,7 @@ $output = array('data' => array());
 				<button class="btn btn-outline-success btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#info">
 					<i class="fa fa-user"></i> Info
 				</button>
-				<a href="'.base_url().'edit-siswas/'.$idp.'" class="btn btn-outline-primary btn-sm me-1 mb-1">
+				<a href="'.base_url().'edit-siswa/'.$idp.'" class="btn btn-outline-primary btn-sm me-1 mb-1">
 					<i class="fa fa-pencil"></i> Edit
 				</a>
 				<button class="btn btn-outline-danger btn-sm me-1 mb-1" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-idsis="'.$idsw.'" data-bs-toggle="modal" data-bs-target="#mutasikan">
