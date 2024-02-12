@@ -399,6 +399,18 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 															</form>
 														<?php } ?>
 														<?php if($act=='lulusan'){ ?>
+															<?php 
+															if($regis['jns_mutasi']=='1'){
+															?>
+															<div class="alert alert-outline-secondary" id="itung">
+                                                                <div class="alert-icon">
+                                                                    <i class="fa fa-lightbulb"></i>
+                                                                </div>
+                                                                <div class="alert-content"> 
+																	Siswa ini masih terdaftar AKTIF
+                                                                </div>
+                                                            </div>
+															<?php }elseif($regis['jns_mutasi']=='7'){ ?>
 															<form class="row g-3" enctype="multipart/form-data" autocomplete="off" method="POST" id="ubahlulusan">
 																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">Tanggal Mutasi</label>
@@ -476,6 +488,16 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
                                                                     <?php 
                                                                     }
                                                                     ?>
+															<?php }else{ ?>
+															<div class="alert alert-outline-secondary" id="itung">
+                                                                <div class="alert-icon">
+                                                                    <i class="fa fa-lightbulb"></i>
+                                                                </div>
+                                                                <div class="alert-content"> 
+																	Siswa ini bukan Lulusan sekolah ini
+                                                                </div>
+                                                            </div>
+															<?php } ?>
 														<?php } ?>
 														<?php if($act=='kemenkes'){ ?>
 															<button class="btn btn-effect-ripple btn-xs btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahkemenkes"><i class="fa fa-plus"></i> Kemenkes</button>
