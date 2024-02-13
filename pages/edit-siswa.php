@@ -104,6 +104,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																<div class="form-group col-md-4">
 																	<label for="inputCity">Nama Lengkap</label>
 																	<input type="text" class="form-control" name="nama"  value="<?=$pn['nama'];?>" required>
+																	<input type="hidden" class="form-control" name="ptkid" id="idpt" value="<?=$pn['peserta_didik_id'];?>" required>
 																</div>
 																<div class="form-group col-md-4">
 																	<label for="inputzip">Nama Panggil</label>
