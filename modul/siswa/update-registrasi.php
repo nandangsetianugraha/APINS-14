@@ -15,8 +15,10 @@ if($_POST) {
 	$bujur=strip_tags($connect->real_escape_string($_POST['bujur']));
 	
 		$cekreg = $connect->query("select * from data_register where peserta_didik_id='$ids'")->num_rows;
+		$sql7 = "UPDATE siswa SET status='$jns_mutasi' WHERE peserta_didik_id='$ids'";
+		$query7 = $connect->query($sql7);
 		if($cekreg>0){
-			$sql1 = "UPDATE data_register SET jns_daftar='$jns_daftar', tgl_masuk='$tanggalmasuk', jns_mutasi='$jns_mutasi', noakta='$noakta', nokk='$nokk', lintang='$lintang', bujur='$bujur' WHERE peserta_didik_id='$ids'";
+			$sql1 = "UPDATE data_register SET jns_daftar='$jns_daftar', tgl_masuk='$tanggalmasuk', noakta='$noakta', nokk='$nokk', lintang='$lintang', bujur='$bujur' WHERE peserta_didik_id='$ids'";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;
@@ -26,7 +28,7 @@ if($_POST) {
 				$validator['messages'] = "Kok Error ya???";
 			};
 		}else{
-			$sql1 = "INSERT INTO data_register(peserta_didik_id,jns_daftar,tgl_masuk,jns_mutasi,noakta,nokk,lintang,bujur) VALUES('$ids','$jns_daftar','$tanggalmasuk','$jns_mutasi','$noakta','$nokk','$lintang','$bujur')";
+			$sql1 = "INSERT INTO data_register(peserta_didik_id,jns_daftar,tgl_masuk,noakta,nokk,lintang,bujur) VALUES('$ids','$jns_daftar','$tanggalmasuk','$noakta','$nokk','$lintang','$bujur')";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;

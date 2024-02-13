@@ -365,7 +365,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																		$query2 = $connect->query($sql2);
 																		while($nk=$query2->fetch_assoc()){
 																		?>
-																		<option value="<?=$nk['id_mutasi'];?>" <?php if($regis['jns_mutasi']==$nk['id_mutasi']) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
+																		<option value="<?=$nk['id_mutasi'];?>" <?php if($pn['status']==$nk['id_mutasi']) echo 'selected';?>><?=$nk['nama_mutasi'];?></option>
 																		<?php };?>
 																	</select>
 																</div>
@@ -401,7 +401,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 														<?php } ?>
 														<?php if($act=='lulusan'){ ?>
 															<?php 
-															if($regis['jns_mutasi']=='1'){
+															if($pn['status']=='1'){
 															?>
 															<div class="alert alert-outline-secondary" id="itung">
                                                                 <div class="alert-icon">
@@ -411,7 +411,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	Siswa ini masih terdaftar AKTIF
                                                                 </div>
                                                             </div>
-															<?php }elseif($regis['jns_mutasi']=='7'){ ?>
+															<?php }elseif($pn['status']=='7'){ ?>
 															<form class="row g-3" enctype="multipart/form-data" autocomplete="off" method="POST" id="ubahlulusan">
 																<div class="form-group col-md-4 border-top-0 pt-0">
 																	<label for="inputZip">Tanggal Mutasi</label>
