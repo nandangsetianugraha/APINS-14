@@ -467,6 +467,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 																	<button type="submit" class="btn btn-primary submitBtn">Simpan</button>
 																</div>
 															</form>
+															<canvas id="pdfViewer"></canvas>
 															<br/>
 															<?php 
                                                                     if(empty($regis['file_ijazah']) or $regis['file_ijazah']==''){
@@ -590,6 +591,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	<?php include "layout/script.php"; ?>
 	<script src="<?=base_url();?>assets/js/croppie.js"></script>
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script type="text/javascript" src="<?=base_url();?>assets/js/pdf.min.js"></script>
 	<script>
 	// Define latitude, longitude and zoom level
 	const latitude = $('#lintang').val();
@@ -661,6 +663,54 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 			"showMethod": "fadeIn",
 			"hideMethod": "fadeOut"
 		};
+	
+	var pdfjsLib = window['pdfjs-dist/build/pdf'];
+	pdfjsLib.GlobalWorkerOptions.workerSrc = '<?=base_url();?>assets/js/pdf.worker.min.js';
+
+	$("#file").on("change", function(e){
+		var file = e.target.files[0]
+		if(file.type == "application/pdf"){
+			var fileReader = new FileReader();  
+			fileReader.onload = function() {
+				var pdfData = new Uint8Array(this.result);
+				// Using DocumentInitParameters object to load binary data.
+				var loadingTask = pdfjsLib.getDocument({data: pdfData});
+				loadingTask.promise.then(function(pdf) {
+				  console.log('PDF loaded');
+				  
+				  // Fetch the first page
+				  var pageNumber = 1;
+				  pdf.getPage(pageNumber).then(function(page) {
+					console.log('Page loaded');
+					
+					var scale = 1.3;
+					var viewport = page.getViewport({scale: scale});
+
+					// Prepare canvas using PDF page dimensions
+					var canvas = $("#pdfViewer")[0];
+					var context = canvas.getContext('2d');
+					canvas.height = viewport.height;
+					canvas.width = viewport.width;
+
+					// Render PDF page into canvas context
+					var renderContext = {
+					  canvasContext: context,
+					  viewport: viewport
+					};
+					var renderTask = page.render(renderContext);
+					renderTask.promise.then(function () {
+					  console.log('Page rendered');
+					});
+				  });
+				}, function (reason) {
+				  // PDF loading error
+				  console.error(reason);
+				});
+			};
+			fileReader.readAsArrayBuffer(file);
+		}
+	});
+	
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,
 		viewport: {
