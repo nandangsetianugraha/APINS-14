@@ -1,6 +1,6 @@
 <?php
 function base_url($param = []) {
-  $base_url = 'http://localhost:8080/apins/';
+  $base_url = 'http://localhost:8080/apins-14/';
   $result = (!$param) ? $base_url : $base_url . $param;
   return $result;
 };

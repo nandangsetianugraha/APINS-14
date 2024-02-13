@@ -865,7 +865,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 					} else {
 						toastr.error(response.messages);
 					}  // /else
-					setTimeout(function () {location.reload();},500);
+					//setTimeout(function () {location.reload();},500);
 				} // success  
 			}); // ajax subit 				
 			return false;
