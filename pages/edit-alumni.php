@@ -630,6 +630,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	<script>
 	var TabelRombel;
 	var TabelKes;
+	$("#pdfViewer").hide();
 	$('#tanggal').datepicker({
 		format: 'yyyy-mm-dd',
 		autoclose:true
@@ -668,6 +669,7 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	pdfjsLib.GlobalWorkerOptions.workerSrc = '<?=base_url();?>assets/js/pdf.worker.min.js';
 
 	$("#file").on("change", function(e){
+		$("#pdfViewer").show();
 		var file = e.target.files[0]
 		if(file.type == "application/pdf"){
 			var fileReader = new FileReader();  
