@@ -1,4 +1,4 @@
-# APINS 14.01.22
+# APINS 14.02
 ### <i>Aplikasi Penilaian dan Informasi Nilai Siswa (SD) Kurikulum 2013 dan Kurikulum Merdeka</i>
 
 ## Introduction
@@ -13,6 +13,20 @@
 ## Installation
 - ubah konfigurasi alamat web di config/config.php
 - ubah database di config/db_connect.php
+
+## Version
+14.02
+- [Update] Perubahan tabel data_register (skhun --> file_ijazah [varchar 250])
+- [FIX] Alamat Siswa pada bagian Edit Siswa
+- [Update] Pemisahan Menu Identitas Sekolah
+- [Update] Penambahan Menu Mata Pelajaran
+- [Update] Nilai Rapor tidak bisa di Generate apabila Nilai STS dan SAS nya masih kosong.
+
+14.01.23c
+- Perbaikan NIP menjadi NIY NIGK
+- Penggunaan API Wilayah Indonesia
+- Penambahan field Nama Panggilan pada tabel siswa
+
 ## Login
 Operator<br/>
 username : admin<br/>
