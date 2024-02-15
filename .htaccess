@@ -5,3 +5,9 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^.*$ ./index.php
+
+<IfModule mod_security.c>
+    SecRuleEngine On
+    SecRule ARGS "@rx ^[[:alnum:][:space:]@\.\-\_]+$" \
+        "id:1,phase:2,t:none,t:lowercase,deny,status:400,msg:'Invalid characters in input'"
+</IfModule>
