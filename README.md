@@ -15,6 +15,9 @@
 - ubah database di config/db_connect.php
 
 ## Version
+14.02b
+- [Fix] Penambahan, Edit, dan Hapus Tema pada Kurikulum K13
+  
 14.02
 - [Update] Perubahan tabel data_register (skhun --> file_ijazah [varchar 250])
 - [FIX] Alamat Siswa pada bagian Edit Siswa
