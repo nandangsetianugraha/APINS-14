@@ -237,12 +237,13 @@
 			});
 		});
 		$('#infop').on('show.bs.modal', function (e) {
-            var rowid = $(e.relatedTarget).data('tema');
+            var kelas = $('#kelas').val();
+			var smt = $('#smt').val();
 			//menggunakan fungsi ajax untuk pengambilan data
 			$.ajax({
 				type : 'post',
-				url : 'modul/administrasi/edit-tema.php',
-                data :  'rowid='+ rowid,
+				url : 'modul/administrasi/m_tema.php',
+                data :  'kelas='+ kelas+'&smt='+smt,
 				beforeSend: function()
 				{	
 					$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
@@ -271,7 +272,7 @@
 				}
 			});
 		});
-		$("#KDPForm").unbind('submit').bind('submit', function() {
+		$("#createTemaForm").unbind('submit').bind('submit', function() {
 			var form = $(this);
 			//submi the form to server
 			$.ajax({
@@ -291,39 +292,8 @@
 						var kelas = $('#kelas').val();
 						var tapel = $('#tapel').val();
 						var smt = $('#smt').val();
-						$('#datatable-1').DataTable().ajax.reload();
+						TabelP.ajax.reload(null, false);
 						$("#infop").modal('hide');
-						//$("#createKDFormk")[0].reset();
-						// this function is built in function of datatables;
-					} else {
-						toastr.error(response.messages);
-					}  // /else
-				} // success  
-			}); // ajax subit 				
-			return false;
-		}); // /submit form for Tujuan
-		$("#KDKForm").unbind('submit').bind('submit', function() {
-			var form = $(this);
-			//submi the form to server
-			$.ajax({
-				url : form.attr('action'),
-				type : form.attr('method'),
-				data : form.serialize(),
-				dataType : 'json',
-				beforeSend: function()
-						{	
-							$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
-						},
-				success:function(response) {
-					$("#info").modal('hide');
-					$('#status').unblock();
-					if(response.success == true) {
-						toastr.success(response.messages);
-						var kelas = $('#kelas').val();
-						var tapel = $('#tapel').val();
-						var smt = $('#smt').val();
-						$('#datatable-2').DataTable().ajax.reload();
-						$("#infok").modal('hide');
 						//$("#createKDFormk")[0].reset();
 						// this function is built in function of datatables;
 					} else {
@@ -346,10 +316,9 @@
 						toastr.success(response.messages);
 						var kelas = $('#kelas').val();
 						var smt=$('#smt').val();
-						var mp=$('#mp').val();
 						TabelP.ajax.reload(null, false);
-						TabelK.ajax.reload(null, false);
-						$("#edit-info").modal('hide');
+						toastr.success(response.messages);
+						$("#editTema").modal('hide');
 					} else {
 						toastr.error(response.messages);
 					}
@@ -360,13 +329,13 @@
 	});	
 		
 	
-	function removeKD(id = null) {
+	function removeTema(id = null) {
 		if(id) {
 			// click on remove button
 			
 			Swal.fire({
 			  title: 'Yakin dihapus?',
-			  text: "Apakah anda yakin menghapus KD ini?",
+			  text: "Apakah anda yakin menghapus Tema ini?",
 			  icon: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
@@ -375,18 +344,17 @@
 			}).then((result) => {
 			  if (result.isConfirmed) {
 				$.ajax({
-						url: 'modul/administrasi/hapus-KD.php',
+						url: 'modul/administrasi/hapus-tema.php',
 						type: 'post',
-						data: {member_id : id},
+						data: {tema : id},
 						dataType: 'json',
 						success:function(response) {
 							if(response.success == true) {						
 								// refresh the table
 								var kelas = $('#kelas').val();
-								var smt=$('#smt').val();
-								var mp=$('#mp').val();
-								$('#datatable-1').DataTable().ajax.reload();
-								$('#datatable-2').DataTable().ajax.reload();
+								var smt=$('#smt').val();								
+								TabelP.ajax.reload(null, false);
+								toastr.success(response.messages);
 							} else {
 								Swal.fire("Kesalahan",response.messages,"error");
 							}
