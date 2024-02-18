@@ -18,7 +18,7 @@
 		<div class="section mt-2">
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/ptk/<?=$pendamping['gambar'];?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/ptk/<?=$pendamping['gambar'];?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$pendamping['nama'];?></h3>
@@ -78,7 +78,7 @@
 											<div class="form-group basic">
 												<div class="input-wrapper">
 													<label class="label" for="email6">Tempat Tanggal Lahir</label>
-													<input type="text" class="form-control" value="<?=$pendamping['tempat_lahir'];?>, <?=TanggalIndo($pendamping['tanggal_lahir']);?>" readonly>
+													<input type="text" class="form-control" value="<?=$pendamping['tempat_lahir'];?>, <?=$pendamping['tanggal_lahir'];?>" readonly>
 												</div>
 											</div>
 										</div>
