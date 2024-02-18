@@ -6,7 +6,7 @@
                     <!-- profile box -->
                     <div class="profileBox">
                         <div class="image-wrapper">
-                            <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="image" class="imaged rounded">
+                            <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="image" class="imaged rounded">
                         </div>
                         <div class="in">
                             <strong><?=$bioku['nama'];?></strong>
@@ -23,7 +23,7 @@
 
                     <ul class="listview flush transparent no-line image-listview mt-2">
                         <li>
-                            <a href="<?=base_url();?>" class="item">
+                            <a href="<?=base_url();?>siswa/" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="home-outline"></ion-icon>
                                 </div>
@@ -33,7 +33,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url();?>nilai" class="item">
+                            <a href="<?=base_url();?>siswa/nilai" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="cube-outline"></ion-icon>
                                 </div>
@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url();?>rapor" class="item">
+                            <a href="<?=base_url();?>siswa/rapor" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="layers-outline"></ion-icon>
                                 </div>
@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url();?>tunggakan" class="item">
+                            <a href="<?=base_url();?>siswa/tunggakan" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                                 </div>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
 						<li>
-                            <a href="<?=base_url();?>tabungan" class="item">
+                            <a href="<?=base_url();?>siswa/tabungan" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="cash-outline"></ion-icon>
                                 </div>

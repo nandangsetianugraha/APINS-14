@@ -1,6 +1,6 @@
 <?php
-require_once '../config/config.php';
-require_once '../config/db_connect.php';
+require_once '../../config/config.php';
+require_once '../../config/db_connect.php';
 $semester=$_GET['smt'];
 $tapel=$_GET['tapel'];
 $idptk=$_GET['pdid'];

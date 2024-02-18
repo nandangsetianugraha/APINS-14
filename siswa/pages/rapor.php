@@ -17,7 +17,7 @@
 		<div class="section mt-2">
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$bioku['nama'];?></h3>

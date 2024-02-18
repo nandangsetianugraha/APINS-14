@@ -17,7 +17,7 @@
 		<div class="section mt-2">
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$bioku['nama'];?></h3>
@@ -29,7 +29,7 @@
 				?>
 				<ul class="listview image-listview flush transparent mt-3 mb-2">
 					<li>
-						<a href="<?=base_url();?>harian-k13" class="item">
+						<a href="<?=base_url();?>siswa/harian-k13" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="chatbubble-ellipses-outline"></ion-icon>
 							</div>
@@ -39,7 +39,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>penilaian-tengah-semester" class="item">
+						<a href="<?=base_url();?>siswa/penilaian-tengah-semester" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="document-text-outline"></ion-icon>
 							</div>
@@ -49,7 +49,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>penilaian-akhir-semester" class="item">
+						<a href="<?=base_url();?>siswa/penilaian-akhir-semester" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="documents-outline"></ion-icon>
 							</div>
@@ -62,7 +62,7 @@
 				<?php }else{ ?>
 				<ul class="listview image-listview flush transparent mt-3 mb-2">
 					<li>
-						<a href="<?=base_url();?>harian-ikm" class="item">
+						<a href="<?=base_url();?>siswa/harian-ikm" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="chatbubble-ellipses-outline"></ion-icon>
 							</div>
@@ -72,7 +72,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>sumatif-tengah-semester" class="item">
+						<a href="<?=base_url();?>siswa/sumatif-tengah-semester" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="document-text-outline"></ion-icon>
 							</div>
@@ -82,7 +82,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>sumatif-akhir-semester" class="item">
+						<a href="<?=base_url();?>siswa/sumatif-akhir-semester" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="documents-outline"></ion-icon>
 							</div>

@@ -17,7 +17,7 @@
 		<div class="section mt-2">
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$bioku['nama'];?></h3>
@@ -28,7 +28,7 @@
 				
 				<ul class="listview image-listview flush transparent mt-3 mb-2">
 					<li>
-						<a href="<?=base_url();?>harian-pengetahuan" class="item">
+						<a href="<?=base_url();?>siswa/harian-pengetahuan" class="item">
 							<div class="icon-box bg-primary">
 								<ion-icon name="document-text-outline"></ion-icon>
 							</div>
@@ -38,7 +38,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>harian-ketrampilan" class="item">
+						<a href="<?=base_url();?>siswa/harian-ketrampilan" class="item">
 							<div class="icon-box bg-info">
 								<ion-icon name="document-text-outline"></ion-icon>
 							</div>

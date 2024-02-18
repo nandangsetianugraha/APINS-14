@@ -1,32 +1,32 @@
 
 	
 	<div class="appBottomMenu">
-                <a href="<?=base_url();?>nilai" class="item">
+                <a href="<?=base_url();?>siswa/nilai" class="item">
                     <div class="col">
                         <ion-icon name="reader-outline"></ion-icon>
                         <strong>Nilai</strong>
                     </div>
                 </a>
-                <a href="<?=base_url();?>rapor" class="item">
+                <a href="<?=base_url();?>siswa/rapor" class="item">
                     <div class="col">
                         <ion-icon name="calendar-outline"></ion-icon>
                         <strong>Rapor</strong>
                     </div>
                 </a>
-                <a href="<?=base_url();?>" class="item">
+                <a href="<?=base_url();?>siswa/" class="item">
                     <div class="col">
                         <div class="action-button large">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                     </div>
                 </a>
-                <a href="<?=base_url();?>tunggakan" class="item">
+                <a href="<?=base_url();?>siswa/tunggakan" class="item">
                     <div class="col">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <strong>Tunggakan</strong>
                     </div>
                 </a>
-				<a href="<?=base_url();?>profile" class="item">
+				<a href="<?=base_url();?>siswa/profile" class="item">
                     <div class="col">
                         <ion-icon name="people-outline"></ion-icon>
                         <strong>Profile</strong>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="btn-inline">
-                            <a href="<?=base_url();?>logout.php" class="btn btn-text-danger">
+                            <a href="<?=base_url();?>siswa/logout.php" class="btn btn-text-danger">
                                 <ion-icon name="trash-outline"></ion-icon>
                                 Keluar
                             </a>

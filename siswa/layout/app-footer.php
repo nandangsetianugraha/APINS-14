@@ -1,5 +1,5 @@
 		<div class="appFooter">
-            <img src="<?=base_url();?>assets/img/logo.png" alt="icon" class="footer-logo mb-2">
+            <img src="<?=base_url();?>siswa/assets/img/logo.png" alt="icon" class="footer-logo mb-2">
             <div class="footer-title">
                 Copyright © Mobilekit 2020. All Rights Reserved.
             </div>

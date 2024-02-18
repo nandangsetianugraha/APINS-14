@@ -16,7 +16,7 @@
         <!-- konten -->
 		<div class="error-page">
             <div class="mb-2">
-                <img src="<?=base_url();?>assets/img/404.png" alt="alt" class="imaged square w200">
+                <img src="<?=base_url();?>siswa/assets/img/404.png" alt="alt" class="imaged square w200">
             </div>
             <h1 class="title">Error</h1>
             <div class="text mb-3">
@@ -27,7 +27,7 @@
             <div class="fixed-footer">
                 <div class="row">
                     <div class="col-12">
-                        <a href="<?=base_url();?>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+                        <a href="<?=base_url();?>siswa/" class="btn btn-primary btn-lg btn-block">Go Back</a>
                     </div>
                 </div>
             </div>

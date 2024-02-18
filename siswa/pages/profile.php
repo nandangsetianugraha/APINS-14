@@ -17,16 +17,13 @@
         <!-- konten -->
 		<div class="section mt-2">
 			<?php 
-			$spp = $connect->query("select * from tarif_spp where peserta_didik_id='$idku'")->fetch_assoc();
-			$sppbln = $connect->query("select * from pembayaran where peserta_didik_id='$idku' and tapel='$tapel_aktif' and jenis='1' and bulan='$blnspp'")->num_rows;
-			$rincian = $connect->query("select * from pembayaran where peserta_didik_id='$idku' and tapel='$tapel_aktif' and jenis='1' and bulan='$blnspp'")->fetch_assoc();
 			$jlak=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='L' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel_aktif' and penempatan.smt='$smt_aktif'")->num_rows;
 			$jper=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='P' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel_aktif' and penempatan.smt='$smt_aktif'")->num_rows;
 			$jtot=$jlak+$jper;
 			?>
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$bioku['nama'];?></h3>

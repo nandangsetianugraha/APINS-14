@@ -13,16 +13,13 @@
         <!-- konten -->
 		<div class="section mt-2">
 			<?php 
-			$spp = $connect->query("select * from tarif_spp where peserta_didik_id='$idku'")->fetch_assoc();
-			$sppbln = $connect->query("select * from pembayaran where peserta_didik_id='$idku' and tapel='$tapel_aktif' and jenis='1' and bulan='$blnspp'")->num_rows;
-			$rincian = $connect->query("select * from pembayaran where peserta_didik_id='$idku' and tapel='$tapel_aktif' and jenis='1' and bulan='$blnspp'")->fetch_assoc();
 			$jlak=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='L' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel_aktif' and penempatan.smt='$smt_aktif'")->num_rows;
 			$jper=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='P' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel_aktif' and penempatan.smt='$smt_aktif'")->num_rows;
 			$jtot=$jlak+$jper;
 			?>
             <div class="profile-head">
                 <div class="avatar">
-                    <img src="<?=home_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
+                    <img src="<?=base_url();?>images/siswa/<?=$avatar;?>" alt="avatar" class="imaged w64 rounded">
                 </div>
                 <div class="in">
                     <h3 class="name"><?=$bioku['nama'];?></h3>
@@ -33,8 +30,8 @@
 		<div class="section full mt-2">
             <ul class="listview image-listview">
 					<li>
-						<a href="<?=base_url();?>wali-kelas" class="item">
-							<img src="<?=home_url();?>images/ptk/<?=$wali['gambar'];?>" alt="image" class="image">
+						<a href="<?=base_url();?>siswa/wali-kelas" class="item">
+							<img src="<?=base_url();?>images/ptk/<?=$wali['gambar'];?>" alt="image" class="image">
 							<div class="in">
 								<div>
 									<?=$wali['nama'];?>
@@ -45,8 +42,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?=base_url();?>guru-pendamping" class="item">
-							<img src="<?=home_url();?>images/ptk/<?=$pendamping['gambar'];?>" alt="image" class="image">
+						<a href="<?=base_url();?>siswa/guru-pendamping" class="item">
+							<img src="<?=base_url();?>images/ptk/<?=$pendamping['gambar'];?>" alt="image" class="image">
 							<div class="in">
 								<div>
 									<?=$pendamping['nama'];?>
@@ -61,24 +58,13 @@
 
         
 
-					<?php if($sppbln>0){ ?>
-					<div class="alert alert-primary alert-dismissible fade show mt-2 ml-2 mr-2" role="alert">
-						<h4>Terima Kasih</h4>
-						Anda sudah melakukan pembayaran Infaq Bulanan Bulan <?=$blns[$bln-1];?><br/>
-						No. Invoice : <?=$rincian['id_invoice'];?> Tanggal : <?=TanggalIndo($rincian['tanggal']);?>
-					</div>
-					<?php }else{ ?>
-					<div class="alert alert-success alert-dismissible fade show mt-2 ml-2 mr-2" role="alert">
-						<h4>Perhatian!</h4>
-						<strong>Infaq Bulanan</strong> Bulan <?=$blns[$bln-1];?> Belum dibayar.
-					</div>
-					<?php } ?>
+					
 
        
 		<div class="row ml-2 mr-2 mt-2">
             <div class="col-4">
 				<center>
-                <a href="<?=base_url();?>nilai" class="btn btn-lg btn-block btn-icon btn-primary">
+                <a href="<?=base_url();?>siswa/nilai" class="btn btn-lg btn-block btn-icon btn-primary">
 					<ion-icon name="document-text-outline"></ion-icon>
                 </a><br/>
 				Nilai
@@ -86,7 +72,7 @@
 			</div>
 			<div class="col-4">
 				<center>
-                <a href="<?=base_url();?>rapor" class="btn btn-lg btn-block btn-icon btn-primary">
+                <a href="<?=base_url();?>siswa/rapor" class="btn btn-lg btn-block btn-icon btn-primary">
 					<ion-icon name="receipt-outline"></ion-icon>
                 </a><br/>
 				Rapor
@@ -94,7 +80,7 @@
 			</div>
 			<div class="col-4">
 				<center>
-                <a href="<?=base_url();?>tunggakan" class="btn btn-lg btn-block btn-icon btn-primary">
+                <a href="<?=base_url();?>siswa/tunggakan" class="btn btn-lg btn-block btn-icon btn-primary">
 					<ion-icon name="library-outline"></ion-icon>
                 </a><br/>
 				Tunggakan
@@ -104,7 +90,7 @@
 		<div class="row ml-2 mr-2 mt-2">
 			<div class="col-4">
 				<center>
-                <a href="<?=base_url();?>tabungan" class="btn btn-lg btn-block btn-icon btn-primary">
+                <a href="<?=base_url();?>siswa/tabungan" class="btn btn-lg btn-block btn-icon btn-primary">
 					<ion-icon name="reader-outline"></ion-icon>
                 </a><br/>
 				Tabungan
@@ -112,7 +98,7 @@
 			</div>
 			<div class="col-4">
 				<center>
-                <a href="<?=base_url();?>dokumen" class="btn btn-lg btn-block btn-icon btn-primary">
+                <a href="<?=base_url();?>siswa/dokumen" class="btn btn-lg btn-block btn-icon btn-primary">
 					<ion-icon name="card-outline"></ion-icon>
                 </a><br/>
 				Dokumen
@@ -210,7 +196,7 @@
         <div class="notification-dialog android-style">
             <div class="notification-header">
                 <div class="in">
-                    <img src="assets/img/icon/72x72.png" alt="image" class="imaged w24">
+                    <img src="<?=base_url();?>siswa/assets/img/icon/72x72.png" alt="image" class="imaged w24">
                     <strong>APINS</strong>
                     <span><?=TanggalIndo(date('Y-m-d'));?></span>
                 </div>
