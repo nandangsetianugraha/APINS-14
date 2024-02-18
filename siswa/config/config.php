@@ -1,70 +1,56 @@
 <?php
+$bulan=date('m');
+$tahun=date('Y');
+$bln=(int) date("m");
+$blns = array("Januari", "Februari", "Maret", "April", "Mei", "Juni","Juli", "Agustus", "September", "Oktober", "November", "Desember");
+switch ($bln) {
+	case 1: 
+		$blnspp=7;
+		break;
+	case 2: 
+		$blnspp=8;
+		break;
+	case 3: 
+		$blnspp=9;
+		break;
+	case 4: 
+		$blnspp=10;
+		break;
+	case 5: 
+		$blnspp=11;
+		break;
+	case 6: 
+		$blnspp=12;
+		break;
+	case 7: 
+		$blnspp=1;
+		break;
+	case 8: 
+		$blnspp=2;
+		break;
+	case 9: 
+		$blnspp=3;
+		break;
+	case 10: 
+		$blnspp=4;
+		break;
+	case 11: 
+		$blnspp=5;
+		break;
+	case 12: 
+		$blnspp=6;
+		break;
+	default:
+		$blnspp=0; 
+		break;
+};
 function base_url($param = []) {
-  $base_url = 'http://localhost:8080/apins/';
+  $base_url = 'https://apins.sdi-aljannah.web.id/siswa/';
   $result = (!$param) ? $base_url : $base_url . $param;
   return $result;
 };
 
-function is_user_login()
-{
-	if(isset($_SESSION['peserta_didik_id']))
-	{
-		return true;
-	}
-	return false;
-};
 
-function fm_get_size($file)
-{
-    static $iswin;
-    static $isdarwin;
-    if (!isset($iswin)) {
-        $iswin = (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN');
-    }
-    if (!isset($isdarwin)) {
-        $isdarwin = (strtoupper(substr(PHP_OS, 0)) == "DARWIN");
-    }
-
-    static $exec_works;
-    if (!isset($exec_works)) {
-        $exec_works = (function_exists('exec') && !ini_get('safe_mode') && @exec('echo EXEC') == 'EXEC');
-    }
-
-    // try a shell command
-    if ($exec_works) {
-        $arg = escapeshellarg($file);
-        $cmd = ($iswin) ? "for %F in (\"$file\") do @echo %~zF" : ($isdarwin ? "stat -f%z $arg" : "stat -c%s $arg");
-        @exec($cmd, $output);
-        if (is_array($output) && ctype_digit($size = trim(implode("\n", $output)))) {
-            return $size;
-        }
-    }
-
-    // try the Windows COM interface
-    if ($iswin && class_exists("COM")) {
-        try {
-            $fsobj = new COM('Scripting.FileSystemObject');
-            $f = $fsobj->GetFile( realpath($file) );
-            $size = $f->Size;
-        } catch (Exception $e) {
-            $size = null;
-        }
-        if (ctype_digit($size)) {
-            return $size;
-        }
-    }
-
-    // if all else fails
-    return filesize($file);
-};
-function fm_get_filesize($size)
-{
-    $size = (float) $size;
-    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-    $power = ($size > 0) ? floor(log($size, 1024)) : 0;
-    $power = ($power > (count($units) - 1)) ? (count($units) - 1) : $power;
-    return sprintf('%s %s', round($size / pow(1024, $power), 2), $units[$power]);
-};
 
 function namahari($tanggal){
     $tgl=substr($tanggal,8,2);
@@ -80,7 +66,7 @@ function namahari($tanggal){
         case '5': return "Jumat"; break;
         case '6': return "Sabtu"; break;
     };
-}; 
+};
 
 function KonDecRomawi($angka){
     $hsl = "";
@@ -183,4 +169,20 @@ function TanggalIndo($tanggal){
 function limit_words($string, $word_limit){
     $words = explode(" ",$string);
     return implode(" ",array_splice($words,0,$word_limit));
+};
+
+function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
+};
+
+function is_user_login()
+{
+	if(isset($_SESSION['peserta_didik_id']))
+	{
+		return true;
+	}
+	return false;
 };

@@ -1,0 +1,38 @@
+[
+  {
+    "versi": "v2022.12.04",
+    "deskripsi": "- [Penambahan] Menu Rapor P5<br/>- [Perbaikan] Tampilan",
+    "tanggal": "04/12/2022",
+	"id":6
+  },
+  {
+    "versi": "v2022.08.03",
+    "deskripsi": "- [Penambahan] Menu Kalendar Pendidikan",
+    "tanggal": "03/08/2022",
+	"id":5
+  },
+  {
+    "versi": "v2022.07.30",
+    "deskripsi": "- [Penambahan] Menu Cetak Rapor",
+    "tanggal": "30/07/2022",
+	"id":4
+  },
+  {
+    "versi": "v2022.07.28",
+    "deskripsi": "- [Penambahan] Menu Data Absensi<br/>- [Penambahan] Menu Absensi Siswa<br/>- [Perbaikan] Lingkup Materi tidak bisa dihapus apabila masih terikat dengan Tujuan Pembelajaran<br/>- [Perbaikan] Generate Rapor tidak bisa dibuat apabila nilai STS dan SAS belum diinput<br/>- [Perbaikan] beberapa bug minor lainnya",
+    "tanggal": "28/07/2022",
+	"id":3
+  },
+  {
+    "versi": "v2022.07.26",
+    "deskripsi": "- [Penambahan] Menu Data Kesehatan<br/>- [Penambahan] Menu Data Ekstrakurikuler<br/>- [Penambahan] Menu Generate Rapor<br/>- [Perbaikan] Input STS dan SAS",
+    "tanggal": "26/07/2022",
+	"id":2
+  },
+  {
+    "versi": "v2022.07.19",
+    "deskripsi": "- [Perbaikan] Input Lingkup Materi<br/>- [Perbaikan] Tabel lingkup_materi (varchar(50) --> varchar(150))<br/>- [Penambahan] STS dan SAS",
+    "tanggal": "19/07/2022",
+	"id":1
+  }
+]
