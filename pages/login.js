@@ -27,7 +27,7 @@ $(document).ready(function () {
         } else {
             $.ajax({
                 type: "POST",
-                url: "pages/checklogin.php",
+                url: uri+"pages/checklogin.php",
                 data: "username=" + username + "&password=" + password + "&tapel=" + tapel + "&smt=" + smt,
                 dataType: 'JSON',
 				beforeSend: function()
