@@ -1,5 +1,6 @@
 $(document).ready(function () {
     "use strict";
+	var uri = $('#uri').val();
 	toastr.options = {
 			  "closeButton": true,
 			  "debug": false,
