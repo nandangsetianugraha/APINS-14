@@ -43,7 +43,10 @@ password : 20258088<br/>
 <img src="https://github.com/nandangsetianugraha/APINS-14/blob/main/images/beranda.png">
 
 ### Demo
-https://demos.sdi-aljannah.web.id
+- Admin/Guru
+https://demos.sdi-aljannah.web.id<br/>
+- Siswa
+https://demos.sdi-aljannah.web.id/siswa/
 
 ## Contributors
 <table>
