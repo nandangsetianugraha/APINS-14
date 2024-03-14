@@ -1,6 +1,10 @@
 <?php
-function base_url($param = []) {
-  $base_url = 'http://localhost:8080/apins/';
+  function base_url($param = []) {
+  // Mendeteksi protokol yang digunakan (HTTP atau HTTPS)
+  $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+  // URL dasar
+  $base_url = $protocol . 'localhost:8080/apins/';
+  // Menggabungkan parameter jika ada
   $result = (!$param) ? $base_url : $base_url . $param;
   return $result;
 };
