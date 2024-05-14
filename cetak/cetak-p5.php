@@ -117,12 +117,11 @@ $namafile=$rombs['rombel']."-".$siswa['nama'].".pdf";
  
 //====================================================================
 //Isi Raport
-$sql = "select * from pemetaan_proyek where proyek='$proyek' order by dimensi asc";
+$sql = "select * from pemetaan_proyek where proyek='$proyek' group by proyek";
 $query = $connect->query($sql);
 while($s=$query->fetch_assoc()) {
-	$ceks=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->num_rows;
-	if($ceks>0){
 		$iddimensi=$s['dimensi'];
+		$elemen=$s['elemen'];
 		$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->fetch_assoc();
 		$nomor=1;
 		$table4=new easyTable($pdf, '{30,210}', 'align:L');
@@ -144,13 +143,15 @@ while($s=$query->fetch_assoc()) {
 		$rapo->easyCell('BSB','align:C; valign:M');
 		$rapo->printRow(true);
 		
-		$sql1 = "select * from elemen_proyek where dimensi='$iddimensi' and fase='$vase'";
+		$sql1 = "select * from pemetaan_proyek where proyek='$proyek' order by elemen asc";
 		$query1 = $connect->query($sql1);
 		while($n=$query1->fetch_assoc()) {
-			$idel=$n['id_elemen'];
-			$ada = $connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek' and id_elemen='$idel' and dimensi='$iddimensi'")->num_rows;
+			$iddim=$n['dimensi'];
+			$idel=$n['elemen'];
+			$ada = $connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek' and id_elemen='$idel' and dimensi='$iddim'")->num_rows;
+			$m=$connect->query("select * from elemen_proyek where id_elemen='$idel'")->fetch_assoc();
 			if($ada>0){
-				$utt=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek' and id_elemen='$idel' and dimensi='$iddimensi'")->fetch_assoc();
+				$utt=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek' and id_elemen='$idel' and dimensi='$iddim'")->fetch_assoc();
 				$ncek=$utt['nilai'];
 				if($ncek==0){
 					$stat1='img:checklist.jpg,w7;';
@@ -182,7 +183,7 @@ while($s=$query->fetch_assoc()) {
 			$rapo->rowStyle('font-size:11');
 			//$rapo->easyCell(iconv("UTF-8", "ENCODE",'Hello World'), 'font-color:#66686b;');
 			$rapo->easyCell($nomor,'align:C; valign:M');
-			$rapo->easyCell("<b>".$n['sub_elemen']."</b>:\n".$n['capaian'],'align:L;valign:M');
+			$rapo->easyCell("<b>".$m['sub_elemen']."</b>:\n".$m['capaian'],'align:L;valign:M');
 			$rapo->easyCell('',$stat1.'align:C; valign:M');
 			$rapo->easyCell('',$stat2.'align:C; valign:M');
 			$rapo->easyCell('',$stat3.'align:C; valign:M');
@@ -191,8 +192,8 @@ while($s=$query->fetch_assoc()) {
 			
 			$nomor=$nomor+1;
 		};
-		$promin=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddimensi' ORDER BY nilai desc LIMIT 1")->fetch_assoc();
-		$promax=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddimensi' ORDER BY nilai asc LIMIT 1")->fetch_assoc();
+		$promin=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddim' ORDER BY nilai desc LIMIT 1")->fetch_assoc();
+		$promax=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddim' ORDER BY nilai asc LIMIT 1")->fetch_assoc();
 		$elmin=$promin['id_elemen'];
 		$elmax=$promax['id_elemen'];
 		$nmin=$connect->query("select * from elemen_proyek where id_elemen='$elmin'")->fetch_assoc();
@@ -202,14 +203,13 @@ while($s=$query->fetch_assoc()) {
 		}else{
 		$proses="Ananda ".$siswa['nama']." berkembang sangat baik dalam ".$nmax['capaian'].". Namun masih butuh bimbingan dalam ".$nmin['capaian'];
 		};
-		$rapo->rowStyle('font-size:11');
-		$rapo->easyCell("<b>Catatan Proses :</b> ".$proses,'colspan:6;align:L; valign:T');
+		//$rapo->rowStyle('font-size:11');
+		//$rapo->easyCell("<b>Catatan Proses :</b> ".$proses,'colspan:6;align:L; valign:T');
 		$rapo->printRow();
 		
 		//akhir tabel rapor
 		$rapo->endTable(5);
-	}else{
-	}
+	
 	//$pdf->AddPage(); 
 }
 //$pdf->AddPage();

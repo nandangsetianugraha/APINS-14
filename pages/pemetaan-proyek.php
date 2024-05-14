@@ -88,7 +88,10 @@
 									<table id="datatable-1" class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>
-												<th>Dimensi Penilaian</th>
+												<th>Dimensi</th>
+												<th>Elemen</th>
+												<th>Sub Elemen</th>
+												<th>Capaian</th>
 												<th></th>
 											</tr>
 										</thead>
@@ -174,7 +177,7 @@
 				"searching": true,
 				"paging":true,
 				"responsive":true,
-				"ajax": "modul/proyek/peta-proyek.php?proyek="+proyek
+				"ajax": "modul/proyek/peta-proyek.php?proyek=0"
 			});
 		});
 		$('#proyek').change(function(){

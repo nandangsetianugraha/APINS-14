@@ -5,19 +5,20 @@ if($_POST) {
 	$validator = array('success' => false, 'messages' => array());
 	$proyek=$_POST['proyek'];
 	$dimensi=$_POST['dimensi'];
-	if(empty($proyek) || empty($dimensi)){
+	$sub_elemen=$_POST['sub_elemen'];
+	if(empty($proyek) || empty($dimensi) || empty($sub_elemen)){
 		$validator['success'] = false;
 		$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 	}else{
-		$sql = "select * from pemetaan_proyek where proyek='$proyek' and dimensi='$dimensi'";
+		$sql = "select * from pemetaan_proyek where proyek='$proyek' and dimensi='$dimensi' and elemen='$elemen'";
 		$query = $connect->query($sql);
 		$cks = $query->fetch_assoc();
 		$ada=$query->num_rows;
 		if($ada>0){
 			$validator['success'] = false;
-			$validator['messages'] = "Peta Proyek sudah dipetakana, silahkan hapus terlebih dahulu!";
+			$validator['messages'] = "Peta Proyek sudah dipetakan, silahkan hapus terlebih dahulu!";
 		}else{
-			$sql1 = "insert into pemetaan_proyek(proyek,dimensi) values('$proyek','$dimensi')";
+			$sql1 = "insert into pemetaan_proyek(proyek,dimensi,elemen) values('$proyek','$dimensi','$sub_elemen')";
 			$query1 = $connect->query($sql1);
 			if($query1 === TRUE) {			
 				$validator['success'] = true;

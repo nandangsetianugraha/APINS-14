@@ -27,12 +27,17 @@ $proyek=$_GET['proyek'];
 		$proyek=$row['proyek'];
 		$nproyek=$connect->query("select * from data_proyek where id_proyek='$proyek'")->fetch_assoc();
 		$dimensi=$row['dimensi'];
+		$elemen=$row['elemen'];
 		$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$dimensi'")->fetch_assoc();
+		$nelemen=$connect->query("select * from elemen_proyek where id_elemen='$elemen'")->fetch_assoc();
 		$actionButton = '
 		<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-danger" onclick="removePeta('.$idpeta.')"><i class="fas fa-trash"></i></button>
 		';
 		$output['data'][] = array(
 			$ndimensi['nama_dimensi'],
+			$nelemen['elemen'],
+			$nelemen['sub_elemen'],
+			$nelemen['capaian'],
 			$actionButton
 		);
 	}
