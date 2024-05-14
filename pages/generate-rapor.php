@@ -209,7 +209,7 @@
 				"searching": true,
 				"paging":true,
 				"responsive":true,
-				"ajax": "modul/rapor/rapor-ikm.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt+'&mp='+mp
+				"ajax": "modul/rapor/rapor-ikm.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt+'&mp=0'
 			});
 		});
 		$('#mp').change(function(){
