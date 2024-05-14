@@ -124,12 +124,7 @@ while($s=$query->fetch_assoc()) {
 		$elemen=$s['elemen'];
 		$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->fetch_assoc();
 		$nomor=1;
-		$table4=new easyTable($pdf, '{30,210}', 'align:L');
-		$table4->rowStyle('font-size:11; font-style:B;');
-		$table4->easyCell('Dimensi : ');
-		$table4->easyCell($ndimensi['nama_dimensi']);
-		$table4->printRow();
-		$table4->endTable();
+		
 		
 		$rapo=new easyTable($pdf, '{15, 125, 25, 25, 25, 25}', 'border:1');
 		$rapo->rowStyle('font-size:11; font-style:B; bgcolor:#BEBEBE;min-height:8');
