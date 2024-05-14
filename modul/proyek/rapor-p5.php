@@ -44,12 +44,8 @@ while ($row = $query->fetch_assoc()) {
 	if(empty($idproyek)){
 		$tombol=' ';
 	}else{
-		if($ceksiswa==$jumfase){
 		$tombol='
 		<button class="btn btn-sm btn-outline-primary me-1 mb-1" id="previewS" data-kelas="'.$kelas.'" data-id="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'" data-proyek="'.$idproyek.'"><i class="fa fa-print"></i> Cetak</button>';
-		}else{
-			$tombol='';
-		}
 	};
 	
 	//$namasis=$pn['nama'];
