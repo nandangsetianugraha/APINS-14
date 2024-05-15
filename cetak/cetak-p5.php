@@ -203,7 +203,7 @@ $eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
 $eks->easyCell('Catatan Proses','align:C; valign:M');
 $eks->printRow();
 $eks->rowStyle('font-size:12; min-height:50');
-$eks->easyCell($ctt['simpulan'],'align:L; valign:T');
+$eks->easyCell("".$ctt['simpulan']."",'align:L; valign:T');
 $eks->printRow();
 $eks->endTable(5);
 //$pdf->AddPage();

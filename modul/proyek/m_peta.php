@@ -10,6 +10,16 @@ $proyek=$_POST['proyek'];
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body" id="okkk">
+                    <?php 
+                    if($kelas==0 or $proyek==0){
+                    ?>
+                            <div class="alert alert-outline-secondary">
+								<div class="alert-icon">
+									<i class="fa fa-wrench"></i>
+								</div>
+								<div class="alert-content">Pilih Kelas dan Proyek dulu!</div>
+							</div>
+                    <?php }else{ ?>
 					<div class="mb-4">
                       <input type="hidden" class="form-control" name="kelas" value="<?=$kelas;?>">
 					  <input type="hidden" class="form-control" name="smt" value="<?=$smt;?>">
@@ -43,9 +53,15 @@ $proyek=$_POST['proyek'];
 							<option value="0">Pilih Sub Elemen</option>
 					  </select>
 					</div>
+                    <?php } ?>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Simpan</button>
+                    <?php 
+                    if($kelas==0 or $proyek==0){
+                    ?>
+					<?php }else{ ?>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <?php } ?>
 					<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
 				</div>
 				

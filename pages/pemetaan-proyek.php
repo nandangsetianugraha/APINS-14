@@ -199,9 +199,7 @@
 			var mapel = $('#mp').val();
 			var smt = $('#smt').val();
 			var proyek = $('#proyek').val();
-			if(kelas==0 || proyek==0){
-				Swal.fire("Kesalahan","Isi Dahulu Kelas sama Mapelnya","error");
-			}else{
+			
 			//menggunakan fungsi ajax untuk pengambilan data
 				$.ajax({
 					type : 'post',
@@ -209,14 +207,14 @@
 					data :  'kelas='+ kelas+"&smt="+smt+"&tapel="+tapel+"&proyek="+proyek,
 					beforeSend: function()
 					{	
-						$('#status').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+						$('#okkk').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
 					},
 					success : function(data){
-						$('#status').unblock();
+						$('#okkk').unblock();
 						$('.fetched-data').html(data);//menampilkan data ke dalam modal
 					}
 				});
-			}
+			
 		});
 		$('#edit-info').on('show.bs.modal', function (e) {
             var rowid = $(e.relatedTarget).data('proyek');
