@@ -29,7 +29,7 @@ if($kelas=='0'){
 		<?php 
 		while($nk=$query4->fetch_assoc()){
 		?>
-		<option value="<?=$nk['id_elemen'];?>"><?=$nk['elemen'];?></option>
+		<option value="<?=$nk['elemen'];?>"><?=$nk['elemen'];?></option>
 		<?php } ?>
 	</select>
 <?php } ?>

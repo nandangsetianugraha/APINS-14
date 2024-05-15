@@ -22,7 +22,7 @@ if($kelas=='0'){
 	</select>
 <?php 
 }else{
-	$sql4 = "select * from elemen_proyek where id_elemen='$elemen'";
+	$sql4 = "select * from elemen_proyek where dimensi='$dimensi' and elemen='$elemen' and fase='$fase'";
 	$query4 = $connect->query($sql4);
 ?>
 	<select class="form-select" id="sub_elemen" name="sub_elemen">
