@@ -15,7 +15,7 @@ $proyek=$_POST['proyek'];
 					  <input type="hidden" class="form-control" name="smt" value="<?=$smt;?>">
 					  <input type="hidden" class="form-control" name="tapel" value="<?=$tapel;?>">
 					  <input type="hidden" class="form-control" name="proyek" value="<?=$proyek;?>">
-					  
+					  <label>Dimensi</label>
 					  <select class="form-select" id="dimensi" name="dimensi">
 							<option value="0">Pilih Dimensi</option>
 							<?php 
@@ -32,11 +32,13 @@ $proyek=$_POST['proyek'];
 					  
                     </div>
 					<div class="mb-4">
+						<label>Elemen</label>
 						<select class="form-select" id="elemen" name="elemen">
 							<option value="0">Pilih Elemen</option>
 					  </select>
 					</div>
 					<div class="mb-4">
+					  <label>Sub Elemen</label>
 					  <select class="form-select" id="sub_elemen" name="sub_elemen">
 							<option value="0">Pilih Sub Elemen</option>
 					  </select>
