@@ -30,18 +30,11 @@ $dproyek=$connect->query("select * from data_proyek where kelas='$kelas' and tap
 $idproyek=$dproyek['id_proyek'];
 $sql = "select penempatan.peserta_didik_id,siswa.nama from penempatan left join siswa on penempatan.peserta_didik_id=siswa.peserta_didik_id where penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt' order by siswa.nama asc";
 $query = $connect->query($sql);
-$sqlp="select * from pemetaan_proyek where proyek='$idproyek'";
-$queryp=$connect->query($sqlp);
-$jumfase=0;
-while ($rowp = $queryp->fetch_assoc()) {
-	$dimensi=$rowp['dimensi'];
-	$cekjum=$connect->query("select * from elemen_proyek where dimensi='$dimensi' and fase='$vase'")->num_rows;
-	$jumfase=$jumfase+$cekjum;
-}
+$cekjum=$connect->query("select * from pemetaan_proyek where proyek='$idproyek'")->num_rows;
 while ($row = $query->fetch_assoc()) {
 	$idp=$row['peserta_didik_id'];
 	$ceksiswa=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$idproyek'")->num_rows;
-	if(empty($idproyek)){
+	if(empty($idproyek) or ($ceksiswa<$cekjum)){
 		$tombol=' ';
 	}else{
 		$tombol='

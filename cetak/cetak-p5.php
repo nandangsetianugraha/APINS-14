@@ -187,17 +187,7 @@ while($s=$query->fetch_assoc()) {
 			
 			$nomor=$nomor+1;
 		};
-		$promin=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddim' ORDER BY nilai desc LIMIT 1")->fetch_assoc();
-		$promax=$connect->query("select * from penilaian_proyek where peserta_didik_id='$idp' and kelas='$kelas' and tapel='$tapel' and smt='$smt' and proyek='$proyek' and dimensi='$iddim' ORDER BY nilai asc LIMIT 1")->fetch_assoc();
-		$elmin=$promin['id_elemen'];
-		$elmax=$promax['id_elemen'];
-		$nmin=$connect->query("select * from elemen_proyek where id_elemen='$elmin'")->fetch_assoc();
-		$nmax=$connect->query("select * from elemen_proyek where id_elemen='$elmax'")->fetch_assoc();
-		if(empty($elmin) or empty($elmax)){
-			$proses="";
-		}else{
-		$proses="Ananda ".$siswa['nama']." berkembang sangat baik dalam ".$nmax['capaian'].". Namun masih butuh bimbingan dalam ".$nmin['capaian'];
-		};
+		
 		//$rapo->rowStyle('font-size:11');
 		//$rapo->easyCell("<b>Catatan Proses :</b> ".$proses,'colspan:6;align:L; valign:T');
 		$rapo->printRow();
@@ -207,6 +197,15 @@ while($s=$query->fetch_assoc()) {
 	
 	//$pdf->AddPage(); 
 }
+$ctt=$connect->query("select * from simpulan_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek'")->fetch_assoc();
+$eks=new easyTable($pdf, '{320}', 'border:1');
+$eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
+$eks->easyCell('Catatan Proses','align:C; valign:M');
+$eks->printRow();
+$eks->rowStyle('font-size:12; min-height:50');
+$eks->easyCell($ctt['simpulan'],'align:L; valign:T');
+$eks->printRow();
+$eks->endTable(5);
 //$pdf->AddPage();
 $table6=new easyTable($pdf, '{20,40,5,20,60}', 'align:L');
 $table6->rowStyle('font-size:12; font-style:B;');
