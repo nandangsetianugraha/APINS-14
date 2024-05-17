@@ -117,11 +117,11 @@ $namafile=$rombs['rombel']."-".$siswa['nama'].".pdf";
  
 //====================================================================
 //Isi Raport
-$sql = "select * from pemetaan_proyek where proyek='$proyek' group by proyek";
+$sql = "select * from pemetaan_proyek where proyek='$proyek' group by dimensi";
 $query = $connect->query($sql);
 while($s=$query->fetch_assoc()) {
 		$iddimensi=$s['dimensi'];
-		$elemen=$s['elemen'];
+		//$elemen=$s['elemen'];
 		$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->fetch_assoc();
 		$nomor=1;
 		
@@ -138,7 +138,7 @@ while($s=$query->fetch_assoc()) {
 		$rapo->easyCell('BSB','align:C; valign:M');
 		$rapo->printRow(true);
 		
-		$sql1 = "select * from pemetaan_proyek where proyek='$proyek' order by elemen asc";
+		$sql1 = "select * from pemetaan_proyek where proyek='$proyek' and dimensi='$iddimensi' order by elemen asc";
 		$query1 = $connect->query($sql1);
 		while($n=$query1->fetch_assoc()) {
 			$iddim=$n['dimensi'];
