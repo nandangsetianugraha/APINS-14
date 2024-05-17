@@ -124,7 +124,11 @@ while($s=$query->fetch_assoc()) {
 		//$elemen=$s['elemen'];
 		$ndimensi=$connect->query("select * from dimensi_proyek where id_dimensi='$iddimensi'")->fetch_assoc();
 		$nomor=1;
-		
+		$rapo=new easyTable($pdf, '{240}', 'border:0');
+		$rapo->rowStyle('font-size:11; font-style:B;');
+		$rapo->easyCell('Dimensi : '.$ndimensi['nama_dimensi'],'align:L; valign:M');
+		$rapo->printRow(true);
+		$rapo->endTable(1);
 		
 		$rapo=new easyTable($pdf, '{15, 125, 25, 25, 25, 25}', 'border:1');
 		$rapo->rowStyle('font-size:11; font-style:B; bgcolor:#BEBEBE;min-height:8');
@@ -202,7 +206,7 @@ $eks=new easyTable($pdf, '{320}', 'border:1');
 $eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
 $eks->easyCell('Catatan Proses','align:C; valign:M');
 $eks->printRow();
-$eks->rowStyle('font-size:12; min-height:50');
+$eks->rowStyle('font-size:12;');
 $eks->easyCell("".$ctt['simpulan']."",'align:L; valign:T');
 $eks->printRow();
 $eks->endTable(5);
