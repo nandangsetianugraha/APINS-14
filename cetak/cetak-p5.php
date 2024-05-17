@@ -201,6 +201,7 @@ while($s=$query->fetch_assoc()) {
 	
 	//$pdf->AddPage(); 
 }
+$pdf->AddPage(); 
 $ctt=$connect->query("select * from simpulan_proyek where peserta_didik_id='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND proyek='$proyek'")->fetch_assoc();
 $eks=new easyTable($pdf, '{320}', 'border:1');
 $eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
@@ -209,10 +210,10 @@ $eks->printRow();
 $eks->rowStyle('font-size:12;');
 $eks->easyCell("".$ctt['simpulan']."",'align:L; valign:T');
 $eks->printRow();
-$eks->endTable(5);
+$eks->endTable(2);
 //$pdf->AddPage();
 $table6=new easyTable($pdf, '{20,40,5,20,60}', 'align:L');
-$table6->rowStyle('font-size:12; font-style:B;');
+$table6->rowStyle('font-size:10; font-style:B;');
 $table6->easyCell('Keterangan Asesmen :','colspan:5;align:L; valign:M');
 $table6->printRow();
 $table6->rowStyle('font-size:8;');
