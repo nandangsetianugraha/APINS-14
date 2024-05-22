@@ -53,6 +53,10 @@ $proyek=$_POST['proyek'];
 							<option value="0">Pilih Sub Elemen</option>
 					  </select>
 					</div>
+					<div class="mb-4">
+					  <label>Capaian</label>
+					  <div id="capaian"><textarea class="form-control" name="capaian"></textarea></div>
+					</div>
                     <?php } ?>
 				</div>
 				<div class="modal-footer">
@@ -104,6 +108,28 @@ $proyek=$_POST['proyek'];
 					//jika data berhasil didapatkan, tampilkan ke dalam option select mp
 					$('#okkk').unblock();
 					$("#sub_elemen").html(data);
+				}
+			});
+		});
+		$('#sub_elemen').change(function(){
+				//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var dimensi = $('#dimensi').val();
+			var kelas = $('#kelas').val();
+			var elemen = $('#elemen').val();
+			var sub_elemen = $('#sub_elemen').val();
+			
+			$.ajax({
+				type : 'GET',
+				url : 'modul/proyek/daftar-capaian.php',
+				data :  'dimensi='+dimensi+'&kelas='+kelas+'&elemen='+elemen+'&subelemen='+sub_elemen,
+				beforeSend: function()
+				{	
+					$('#okkk').block({ message: '\n<div class="spinner-grow text-success"></div>\n<h1 class="blockui blockui-title">Tunggu sebentar...</h1>\n'});
+				},
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select mp
+					$('#okkk').unblock();
+					$("#capaian").html(data);
 				}
 			});
 		});

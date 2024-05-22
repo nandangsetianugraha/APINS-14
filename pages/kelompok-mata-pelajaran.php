@@ -1,4 +1,4 @@
-<?php $data="Mata Pelajaran";?>
+<?php $data="Kelompok Mata Pelajaran";?>
 <?php include "layout/head.php"; ?>
 </head>
 
@@ -45,7 +45,7 @@
 								<div class="portlet-body">
 									<div class="row">
 										<div class="col-lg-4 col-sm-6">
-											<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#info"><i class="fas fa-plus"></i> Mata Pelajaran</button>
+											<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#info"><i class="fas fa-plus"></i> Kelompok Mata Pelajaran</button>
 										</div>
 									</div>
 									<hr>
@@ -53,9 +53,8 @@
 									<table id="datatable-1" class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>
-												<th>Kelompok</th>
 												<th>Kode</th>
-												<th>Mata Pelajaran</th>
+												<th>Kelompok Mata Pelajaran</th>
 												<th></th>
 											</tr>
 										</thead>
@@ -81,7 +80,7 @@
 	<div class="modal fade" id="info">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="form-horizontal" action="modul/setting/tambah-mapel.php" autocomplete="off" method="POST" id="buatmapel">
+				<form class="form-horizontal" action="modul/setting/tambah-kelompok-mapel.php" autocomplete="off" method="POST" id="buatmapel">
 				<div class="fetched-data"></div>
 				</form>
 			</div>
@@ -90,7 +89,7 @@
 	<div class="modal fade" id="edit-info">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="form-horizontal" action="modul/setting/update-mapel.php" autocomplete="off" method="POST" id="ubahproyek">
+				<form class="form-horizontal" action="modul/setting/update-kelompok-mapel.php" autocomplete="off" method="POST" id="ubahproyek">
 				<div class="fetched-data1"></div>
 				</form>
 			</div>
@@ -125,7 +124,7 @@
 			"searching": true,
 			"paging":true,
 			"responsive":true,
-			"ajax": "modul/setting/mapel.php?kurikulum="+kur
+			"ajax": "modul/setting/kelompok-mapel.php?kurikulum="+kur
 		});
 		$('#caridata').on( 'keyup', function () {
 			TabelRombel.search( this.value ).draw();
