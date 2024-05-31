@@ -16,6 +16,7 @@ if($kur==='Kurikulum 2013'){
 		';
 		$output['data'][] = array(
 			$klp['kelompok'],
+			$s['urutan'],
 			$s['kd_mapel'],
 			$s['nama_mapel'],
 			$actionButton
@@ -35,6 +36,7 @@ if($kur==='Kurikulum 2013'){
 		';
 		$output['data'][] = array(
 			$klp['kelompok'],
+			$s['urutan'],
 			$s['kd_mapel'],
 			$s['nama_mapel'],
 			$actionButton

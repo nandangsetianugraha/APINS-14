@@ -668,27 +668,9 @@ $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "
 	pdfjsLib.GlobalWorkerOptions.workerSrc = '<?=base_url();?>assets/js/pdf.worker.min.js';
 	
 	<?php if(empty($regis['file_ijazah']) or $regis['file_ijazah']==''){}else{
-	$remoteFile = base_url().'ijazah/sd/'.$regis['file_ijazah'];
-
-	// Initialize cURL
-	$ch = curl_init($remoteFile);
-	curl_setopt($ch, CURLOPT_NOBODY, true);
-	curl_exec($ch);
-	$responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	curl_close($ch);
-
-	// Check the response code
-	if($responseCode == 200){
+	
 	?>
-	var url = '<?=base_url();?>ijazah/sd/<?=$regis['file_ijazah'];?>';
-	<?php 
-	}else{
-	?>
-	var url = '<?=base_url();?>ijazah/sd/noijazah.pdf';
-	<?php	
-	}	
-	?>
-		
+		var url = '<?=base_url();?>ijazah/sd/<?=$regis['file_ijazah'];?>';
 		var pdfjsLib = window['pdfjs-dist/build/pdf'];
 		pdfjsLib.GlobalWorkerOptions.workerSrc = '<?=base_url();?>assets/js/pdf.worker.min.js';
 		var pdfDoc = null,

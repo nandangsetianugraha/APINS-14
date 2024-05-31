@@ -36,6 +36,26 @@ if($jns=='0'){
 			<label class="form-label" for="example-text-input">Mata Pelajaran</label>
 			<input type="text" name="mapel" autocomplete=off class="form-control" value="<?=$nmapel['nama_mapel'];?>">
 		</div>
+		<div class="mb-4">
+			<label class="form-label" for="example-text-input">Kelompok Mata Pelajaran</label>
+			<select id="kelompok" name="kelompok" class="form-select">
+				<?php 
+				$sql4 = "select * from kelompok_mapel where kurikulum='$jns' order by urut asc";
+				$query4 = $connect->query($sql4);
+				while($nk=$query4->fetch_assoc()){
+					$idk = $nk['id_kelompok'];
+					$nkur = $nk['kelompok'];
+				?>
+					<option value="<?=$idk;?>" <?php if($nmapel['kd_kelompok']==$nkur){ echo "selected";} ?>><?=$nkur;?></option>
+				<?php 
+				}	
+				?>
+			</select>
+		</div>
+		<div class="mb-4">
+			<label class="form-label" for="example-text-input">Urutan Mata Pelajaran</label>
+			<input type="text" name="urutan" autocomplete=off class="form-control" value="<?=$nmapel['urutan'];?>">
+		</div>
 </div>
 <div class="modal-footer">
 	<button type="submit" class="btn btn-primary">Simpan</button>

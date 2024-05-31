@@ -6,39 +6,35 @@ if($_POST) {
 
 	$validator = array('success' => false, 'messages' => array());
 	$jns=strip_tags($connect->real_escape_string($_POST['jns']));
-	$rowid=strip_tags($connect->real_escape_string($_POST['ids']));
-	$mapel=strip_tags($connect->real_escape_string($_POST['mapel']));
-	$kd_mapel=strip_tags($connect->real_escape_string($_POST['kd_mapel']));
 	$kelompok=strip_tags($connect->real_escape_string($_POST['kelompok']));
 	$urutan=strip_tags($connect->real_escape_string($_POST['urutan']));
 	if(!is_numeric($urutan)){
 		$validator['success'] = false;
 		$validator['messages'] = "Urutan harus berupa angka";
 	}else{
-		if(empty($kd_mapel) or empty($urutan) or empty($mapel)){
+		if(empty($jns) or empty($urutan) or empty($kelompok)){
 			$validator['success'] = false;
 			$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 		}else{
-			
-				if($jns=='Kurikulum 2013'){
-					$sql1 = "update mapel set kd_kelompok='$kelompok', urutan='$urutan', kd_mapel='$kd_mapel', nama_mapel='$mapel' where id_mapel='$rowid'";
-				}elseif($jns=='Kurikulum Merdeka'){
-					$sql1 = "update mata_pelajaran set kd_kelompok='$kelompok', urutan='$urutan', kd_mapel='$kd_mapel', nama_mapel='$mapel' where id_mapel='$rowid'";
-				}elseif($jns=='dta'){
-					$sql1 = "update mata_pelajaran set kd_kelompok='$kelompok', urutan='$urutan', kd_mapel='$kd_mapel', nama_mapel='$mapel' where id_mapel='$rowid'";
-				}else{
-					$sql1 = "update mapel set kd_kelompok='$kelompok', urutan='$urutan', kd_mapel='$kd_mapel', nama_mapel='$mapel' where id_mapel='$rowid'";
-				};
+			$sql = "select * from kelompok_mapel where kurikulum='$jns' and kelompok='$kelompok'";
+			$query = $connect->query($sql);
+			$cks = $query->fetch_assoc();
+			$ada=$query->num_rows;
+			if($ada>0){
+				$validator['success'] = false;
+				$validator['messages'] = "Kelompok Mapel sudah ada, silahkan hapus terlebih dahulu!";
+			}else{
+				$sql1 = "insert into kelompok_mapel(kurikulum,kelompok) values('$jns','$kelompok')";
 				//$sql1 = "insert into desa(id,id_kecamatan,nama) values('$id_desa','$id_kec','$nama_desa')";
 				$query1 = $connect->query($sql1);
 				if($query1 === TRUE) {			
 					$validator['success'] = true;
-					$validator['messages'] = "Perubahan Mata pelajaran berhasil dilakukan";		
+					$validator['messages'] = "Penambahan Kelompok Mata pelajaran berhasil dilakukan";		
 				} else {		
 					$validator['success'] = false;
 					$validator['messages'] = "Error while adding the member information";
 				};
-			
+			};
 			
 		};
 	}

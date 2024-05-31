@@ -53,7 +53,7 @@
 									<table id="datatable-1" class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>
-												<th>Kode</th>
+												<th>Urutan</th>
 												<th>Kelompok Mata Pelajaran</th>
 												<th></th>
 											</tr>
@@ -138,7 +138,7 @@
 				"searching": true,
 				"paging":true,
 				"responsive":true,
-				"ajax": "modul/setting/mapel.php?kurikulum="+kur
+				"ajax": "modul/setting/kelompok-mapel.php?kurikulum="+kur
 			});
 		});
 		
@@ -148,7 +148,7 @@
 			//menggunakan fungsi ajax untuk pengambilan data
 			$.ajax({
 				type : 'post',
-				url : 'modul/setting/m_mapel.php',
+				url : 'modul/setting/m_kelompok.php',
 				data :  'jns='+ kur,
 				beforeSend: function()
 				{	
@@ -166,7 +166,7 @@
 			//menggunakan fungsi ajax untuk pengambilan data
 			$.ajax({
 				type : 'post',
-				url : 'modul/setting/e_mapel.php',
+				url : 'modul/setting/e_kelompok.php',
 				data :  'rowid='+ rowid+'&jns='+kur,
 				beforeSend: function()
 				{	

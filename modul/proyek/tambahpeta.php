@@ -10,7 +10,7 @@ if($_POST) {
 		$validator['success'] = false;
 		$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 	}else{
-		$sql = "select * from pemetaan_proyek where proyek='$proyek' and dimensi='$dimensi' and elemen='$elemen'";
+		$sql = "select * from pemetaan_proyek where proyek='$proyek' and dimensi='$dimensi' and elemen='$sub_elemen'";
 		$query = $connect->query($sql);
 		$cks = $query->fetch_assoc();
 		$ada=$query->num_rows;

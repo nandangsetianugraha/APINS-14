@@ -54,6 +54,7 @@
 										<thead>
 											<tr>
 												<th>Kelompok</th>
+												<th>Urutan</th>
 												<th>Kode</th>
 												<th>Mata Pelajaran</th>
 												<th></th>
