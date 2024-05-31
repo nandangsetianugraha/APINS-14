@@ -16,7 +16,7 @@ if($_POST) {
 			$validator['success'] = false;
 			$validator['messages'] = "Tidak Boleh Kosong Datanya!";
 		}else{
-			$sql = "select * from kelompok_mapel where kurikulum='$jns' and kelompok='$kelompok'";
+			$sql = "select * from kelompok_mapel where kurikulum='$jns' and kelompok='$kelompok' and urut='$urutan'";
 			$query = $connect->query($sql);
 			$cks = $query->fetch_assoc();
 			$ada=$query->num_rows;
@@ -24,7 +24,7 @@ if($_POST) {
 				$validator['success'] = false;
 				$validator['messages'] = "Kelompok Mapel sudah ada, silahkan hapus terlebih dahulu!";
 			}else{
-				$sql1 = "insert into kelompok_mapel(kurikulum,kelompok) values('$jns','$kelompok')";
+				$sql1 = "insert into kelompok_mapel(kurikulum,kelompok,urut) values('$jns','$kelompok','$urutan')";
 				//$sql1 = "insert into desa(id,id_kecamatan,nama) values('$id_desa','$id_kec','$nama_desa')";
 				$query1 = $connect->query($sql1);
 				if($query1 === TRUE) {			
