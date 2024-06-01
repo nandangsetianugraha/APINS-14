@@ -106,37 +106,47 @@ $rapo->easyCell('Nilai Akhir', 'align:C; valign:M');
 $rapo->easyCell('Catatan Kompetensi', 'align:C; valign:M');
 $rapo->printRow(true);
 
-$sql1 = "select * from mata_pelajaran order by id_mapel asc";
+$sql1 = "select * from kelompok_mapel where kurikulum='Kurikulum Merdeka' order by urut asc";
 $query1 = $connect->query($sql1);
-$nilaimp = '';
-$nomor = 1;
+$nilaimp='';
 
-while ($row1 = $query1->fetch_assoc()) {
-    $idm = $row1['id_mapel'];
-    $adape = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
+while ($row2 = $query1->fetch_assoc()) {
+	$idk=$row2['id_kelompok'];
+	//$nkel = $connect->query("select * from kelompok_mapel where id_kelompok='$idk'")->fetch_assoc();
+		$rapo->rowStyle('font-size:12;');
+		$rapo->easyCell("<b>".$row2['urut'].". ".$row2['kelompok']."</b>", 'colspan:4;align:L; valign:T');
+		$rapo->printRow();
+	$sql11 = "select * from mata_pelajaran where kd_kelompok='$idk' order by urutan asc";
+	$query11 = $connect->query($sql11);
+	$nomor=1;
+	while ($row1 = $query11->fetch_assoc()) {
+		$idm = $row1['id_mapel'];
+		$adape = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
 
-    if ($adape > 0) {
-        $npe = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
-        $nilaipe = number_format($npe['nilai'], 0);
-        $data = explode("|", $npe['deskripsi']);
-        $kelebihan = $data[0];
-        $kelemahan = $data[1];
-        $deskripsi1 = $npe['deskripsi'];
-    } else {
-        // Lewati seluruh baris jika Nilai Akhir dan Catatan Kompetensi tidak tersedia
-        continue;
-    }
+			$npe = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
+			$nilaipe = number_format($npe['nilai'], 0);
+			if($nilaipe==0){
+				$nilainya='';
+			}else{
+				$nilainya=$nilaipe;
+			};
+			$data = explode("|", $npe['deskripsi']);
+			$kelebihan = $data[0];
+			$kelemahan = $data[1];
+			$deskripsi1 = $npe['deskripsi'];
+		
+		$mpl = $connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
 
-    $mpl = $connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
+		$rapo->rowStyle('font-size:12;min-height:31');
+		$rapo->easyCell($nomor, 'align:C; valign:T');
+		$rapo->easyCell($mpl['nama_mapel'], 'valign:T');
+		$rapo->easyCell($nilainya, 'align:C; valign:T');
+		$rapo->easyCell($kelebihan . "\n" . $kelemahan, 'valign:T');
 
-    $rapo->rowStyle('font-size:12;min-height:30');
-    $rapo->easyCell($nomor, 'align:C; valign:T');
-    $rapo->easyCell($mpl['nama_mapel'], 'valign:T');
-    $rapo->easyCell($nilaipe, 'align:C; valign:T');
-    $rapo->easyCell($kelebihan . "\n" . $kelemahan, 'valign:T');
-
-    $rapo->printRow();
-    $nomor = $nomor + 1;
+		$rapo->printRow();
+		$nomor = $nomor + 1;
+	};
+    
 }
 
 
@@ -156,7 +166,7 @@ $eks->rowStyle('font-size:12; font-style:B; bgcolor:#BEBEBE; min-height:10');
 $eks->easyCell('No','align:C; valign:M');
 $eks->easyCell('Kegiatan Ekstrakurikuler','align:C; valign:M');
 $eks->easyCell('Keterangan','align:C; valign:M');
-$eks->printRow();
+$eks->printRow(true);
 $ekstra = "select * from data_ekskul where peserta_didik_id='$idp' and smt='$smt' and tapel='$tapel' order by id_ekskul asc";
 $queryed = $connect->query($ekstra);
 $oke = $queryed->num_rows;
@@ -184,28 +194,14 @@ $eks->easyCell('2','align:C; valign:T');
 $eks->easyCell('');
 $eks->easyCell('');
 $eks->printRow();
-$eks->rowStyle('font-size:12; min-height:20');
-$eks->easyCell('3','align:C; valign:T');
-$eks->easyCell('');
-$eks->easyCell('');
-$eks->printRow();
 }elseif($oke==1){
 $eks->rowStyle('font-size:12; min-height:20');
 $eks->easyCell('2','align:C; valign:T');
 $eks->easyCell('');
 $eks->easyCell('');
 $eks->printRow();
-$eks->rowStyle('font-size:12; min-height:20');
-$eks->easyCell('3','align:C; valign:T');
-$eks->easyCell('');
-$eks->easyCell('');
-$eks->printRow();
 }else{
-$eks->rowStyle('font-size:12; min-height:20');
-$eks->easyCell('3','align:C; valign:T');
-$eks->easyCell('');
-$eks->easyCell('');
-$eks->printRow();
+
 };
 $eks->endTable(5);
 
