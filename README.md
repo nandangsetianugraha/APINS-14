@@ -1,4 +1,4 @@
-# APINS 14.02
+# APINS 14.06.01
 ### <i>Aplikasi Penilaian dan Informasi Nilai Siswa (SD) Kurikulum 2013 dan Kurikulum Merdeka</i>
 
 ## Introduction
@@ -17,6 +17,13 @@
 ## Version
 14.02b
 - [Fix] Penambahan, Edit, dan Hapus Tema pada Kurikulum K13
+  
+14.06.01
+- Penambahan Tabel Catatan Proses pada Rapor P5
+- Perbaikan Pemetaan Proyek P5 dengan mengambil 1 atau 2 Dimensi dan beberapa elemen saja yang dinilai
+- Tampilan Rapor P5 yang lebih simpel dengan adanya Catatan Proses selama Proyek P5
+- Perbaikan Kelompok Mata Pelajaran
+- Perbaikan Cetak Rapor
   
 14.02
 - [Update] Perubahan tabel data_register (skhun --> file_ijazah [varchar 250])
