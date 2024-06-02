@@ -479,43 +479,58 @@ $sql1 = "select * from kelompok_mapel where kurikulum='Kurikulum Merdeka' order 
 $query1 = $connect->query($sql1);
 $nilaimp='';
 
-while ($row2 = $query1->fetch_assoc()) {
-	$idk=$row2['id_kelompok'];
-	//$nkel = $connect->query("select * from kelompok_mapel where id_kelompok='$idk'")->fetch_assoc();
-		$rapo->rowStyle('font-size:12;');
-		$rapo->easyCell("<b>".$row2['urut'].". ".$row2['kelompok']."</b>", 'colspan:4;align:L; valign:T');
-		$rapo->printRow();
-	$sql11 = "select * from mata_pelajaran where kd_kelompok='$idk' order by urutan asc";
-	$query11 = $connect->query($sql11);
-	$nomor=1;
-	while ($row1 = $query11->fetch_assoc()) {
-		$idm = $row1['id_mapel'];
-		$adape = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->num_rows;
-
-			$npe = $connect->query("select * from raport_ikm where id_pd='$idp' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and mapel='$idm'")->fetch_assoc();
-			$nilaipe = number_format($npe['nilai'], 0);
-			if($nilaipe==0){
-				$nilainya='';
-			}else{
-				$nilainya=$nilaipe;
-			};
-			$data = explode("|", $npe['deskripsi']);
-			$kelebihan = $data[0];
-			$kelemahan = $data[1];
-			$deskripsi1 = $npe['deskripsi'];
-		
-		$mpl = $connect->query("select * from mata_pelajaran where id_mapel='$idm'")->fetch_assoc();
-
-		$rapo->rowStyle('font-size:12;min-height:31');
-		$rapo->easyCell($nomor, 'align:C; valign:T');
-		$rapo->easyCell($mpl['nama_mapel'], 'valign:T');
-		$rapo->easyCell($nilainya, 'align:C; valign:T');
-		$rapo->easyCell($kelebihan . "\n" . $kelemahan, 'valign:T');
-
-		$rapo->printRow();
-		$nomor = $nomor + 1;
-	};
+while ($kelompokRow = $query1->fetch_assoc()) {
+    $kelompokId = $kelompokRow['id_kelompok'];
     
+    // Uncomment if you need to fetch kelompok_mapel data
+    // $kelompokMapel = $connect->query("SELECT * FROM kelompok_mapel WHERE id_kelompok='$kelompokId'")->fetch_assoc();
+
+    // Set row style for kelompok header
+    $rapo->rowStyle('font-size:12;');
+    $rapo->easyCell("<b>" . $kelompokRow['urut'] . ". " . $kelompokRow['kelompok'] . "</b>", 'colspan:4;align:L;valign:T');
+    $rapo->printRow();
+
+    // Fetch all mata_pelajaran associated with the current kelompok
+    $mataPelajaranQuery = "SELECT * FROM mata_pelajaran WHERE kd_kelompok='$kelompokId' ORDER BY urutan ASC";
+    $mataPelajaranResult = $connect->query($mataPelajaranQuery);
+    $nomor = 1;
+
+    while ($mapelRow = $mataPelajaranResult->fetch_assoc()) {
+        $mapelId = $mapelRow['id_mapel'];
+
+        // Check if there are any rapor records for the current mapel
+        $raporCount = $connect->query("SELECT * FROM raport_ikm WHERE id_pd='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND mapel='$mapelId'")->num_rows;
+
+        // Fetch rapor details if records exist
+        if ($raporCount > 0) {
+            $raporData = $connect->query("SELECT * FROM raport_ikm WHERE id_pd='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND mapel='$mapelId'")->fetch_assoc();
+            $nilai = number_format($raporData['nilai'], 0);
+
+            // If nilai is 0, set it to an empty string
+            if ($nilai == 0) {
+                $nilai = '';
+            }
+
+            // Extract kelebihan and kelemahan from deskripsi
+            $deskripsiData = explode("|", $raporData['deskripsi']);
+            $kelebihan = $deskripsiData[0];
+            $kelemahan = $deskripsiData[1];
+
+            // Fetch mapel details
+            $mapelDetails = $connect->query("SELECT * FROM mata_pelajaran WHERE id_mapel='$mapelId'")->fetch_assoc();
+
+            // Set row style for mapel data
+            $rapo->rowStyle('font-size:12;min-height:31');
+            $rapo->easyCell($nomor, 'align:C;valign:T');
+            $rapo->easyCell($mapelDetails['nama_mapel'], 'valign:T');
+            $rapo->easyCell($nilai, 'align:C;valign:T');
+            $rapo->easyCell($kelebihan . "\n" . $kelemahan, 'valign:T');
+
+            // Print the row
+            $rapo->printRow();
+            $nomor++;
+        }
+    }
 }
 
 //akhir tabel rapor
