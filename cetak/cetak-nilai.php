@@ -105,6 +105,64 @@ $rapo->easyCell('Muatan Pelajaran', 'align:C; valign:M');
 $rapo->easyCell('Nilai Akhir', 'align:C; valign:M');
 $rapo->printRow(true);
 
+$sql1 = "select * from kelompok_mapel where kurikulum='Kurikulum Merdeka' order by urut asc";
+$query1 = $connect->query($sql1);
+$nilaimp='';
+
+while ($kelompokRow = $query1->fetch_assoc()) {
+    $kelompokId = $kelompokRow['id_kelompok'];
+    
+    // Uncomment if you need to fetch kelompok_mapel data
+    // $kelompokMapel = $connect->query("SELECT * FROM kelompok_mapel WHERE id_kelompok='$kelompokId'")->fetch_assoc();
+
+    // Set row style for kelompok header
+    $rapo->rowStyle('font-size:12;');
+    $rapo->easyCell("<b>" . $kelompokRow['urut'] . ". " . $kelompokRow['kelompok'] . "</b>", 'colspan:3;align:L;valign:T');
+    $rapo->printRow();
+
+    // Fetch all mata_pelajaran associated with the current kelompok
+    $mataPelajaranQuery = "SELECT * FROM mata_pelajaran WHERE kd_kelompok='$kelompokId' ORDER BY urutan ASC";
+    $mataPelajaranResult = $connect->query($mataPelajaranQuery);
+    $nomor = 1;
+
+    while ($mapelRow = $mataPelajaranResult->fetch_assoc()) {
+        $mapelId = $mapelRow['id_mapel'];
+
+        // Check if there are any rapor records for the current mapel
+        $raporCount = $connect->query("SELECT * FROM raport_ikm WHERE id_pd='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND mapel='$mapelId'")->num_rows;
+
+        // Fetch rapor details if records exist
+        if ($raporCount > 0) {
+            $raporData = $connect->query("SELECT * FROM raport_ikm WHERE id_pd='$idp' AND kelas='$kelas' AND smt='$smt' AND tapel='$tapel' AND mapel='$mapelId'")->fetch_assoc();
+            $nilai = number_format($raporData['nilai'], 0);
+
+            // If nilai is 0, set it to an empty string
+            if ($nilai == 0) {
+                $nilai = '';
+            }
+
+            // Extract kelebihan and kelemahan from deskripsi
+            $deskripsiData = explode("|", $raporData['deskripsi']);
+            $kelebihan = $deskripsiData[0];
+            $kelemahan = $deskripsiData[1];
+
+            // Fetch mapel details
+            $mapelDetails = $connect->query("SELECT * FROM mata_pelajaran WHERE id_mapel='$mapelId'")->fetch_assoc();
+
+            // Set row style for mapel data
+            $rapo->rowStyle('font-size:14;min-height:10');
+			$rapo->easyCell($nomor, 'align:C; valign:M');
+			$rapo->easyCell($mapelDetails['nama_mapel'], 'valign:M');
+			$rapo->easyCell($nilai, 'align:C; valign:M; font-style:B');
+			$rapo->printRow();
+			$nomor = $nomor + 1;
+        }
+    }
+}
+
+
+
+
 $sql1 = "select * from mata_pelajaran order by id_mapel asc";
 $query1 = $connect->query($sql1);
 $nilaimp = '';
